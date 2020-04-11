@@ -180,7 +180,7 @@ get_ala_covid_data <- function(ala_doc_path) {
   names(alabama_data) <- alabama_text[1:5]
   # tag the data as well as with the scrape date
   alabama_data %>%
-    modify_at(2:4, parse_number) %>%
+    modify_at(2:4, ~parse_number(.)) %>%
     mutate(scrape_date = today())
 }
 
@@ -217,3 +217,9 @@ get_arizona_covid_data <- function(az_doc_path) {
   list(az_totals = az_total_data, az_facility = az_facility_data)
 }
 get_arizona_covid_data(data_for_use[[3]])
+
+
+## get data
+data_for_use[[5]] %>% 
+  html_nodes("")
+  
