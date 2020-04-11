@@ -27,5 +27,5 @@ While we make every effort to ensure that the information scraped is accurate an
 
 
 ## Special thanks
-This repository is the product of the collaboration of the following people: [Jacob Kaplan](https://github.com/jacobkap), [Connor Concannon](https://github.com/concannon), [Aaron Littman](https://github.com/amlittman), [Hima Lakkaraju](https://github.com/lvhimabindu), [Wes Weaver](https://github.com/wesweaver)
+This repository is the product of the collaboration of the following people: [Jacob Kaplan](https://github.com/jacobkap), [Connor Concannon](https://github.com/concannon), [Aaron Littman](https://github.com/amlittman), [Hima Lakkaraju](https://github.com/lvhimabindu), [Wes Weaver](https://github.com/wesweaver), and Oren Gur
 

@@ -42,4 +42,4 @@ people: [Jacob Kaplan](https://github.com/jacobkap), [Connor
 Concannon](https://github.com/concannon), [Aaron
 Littman](https://github.com/amlittman), [Hima
 Lakkaraju](https://github.com/lvhimabindu), [Wes
-Weaver](https://github.com/wesweaver)
+Weaver](https://github.com/wesweaver), and Oren Gur
