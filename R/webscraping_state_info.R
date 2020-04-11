@@ -30,7 +30,6 @@ get_alaska_data <- function(alaska_doc) {
 }
 alaska_data <- get_alaska_data(data_for_use[[2]])
 
-
 # Connecticut ------------------------------------------------------------
 
 get_connecticut_covid_data <- function(ct_doc_path) {
@@ -201,7 +200,8 @@ get_arizona_covid_data <- function(az_doc_path) {
   # split the facilities table up and rename
   az_facility_data <- az_text[6:length(az_text)] %>%
     split(1:6) %>%
-    as_tibble()
+    as_tibble() %>% 
+    modify_at(2:4,~parse_number(.))
   names(az_facility_data) <-
     c(
       "Location",
@@ -250,15 +250,11 @@ get_mi_covid_data <- function(mi_covid_path){
     pull(link) %>% 
     download.file(., fn, mode = "wb")
   
-  
-  
   fn <- paste0("./data/raw_data/michigan/mi_doc_staff_covid_", 
                format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),
                ".png")
   imgs[13] %>% 
     html_attr("src") %>% 
     download.file(., fn, mode = "wb")
-  
 }
-
-get_mi_covid_data(data_for_use[[13]])
+get_mi_covid_data(data_for_use[[21]])
