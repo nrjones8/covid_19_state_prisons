@@ -6,7 +6,7 @@ library(googlesheets4)
 library(lubridate)
 library(magick)
 library(tabulizer)
-library(tabulizer)
+
 data_in_goog_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0")
 # create a safe function
 safe_get <- safely(read_html)
@@ -113,50 +113,35 @@ idaho_data %>%
 
 
 
+# Michigan --------------------------------------------------------------------
+get_mi_covid_data <- function(mi_covid_path){
+  
+  imgs <- mi_covid_path %>%
+    html_nodes("img") 
+  
+  
+  fn <- paste0("./data/raw_data/michigan/mi_doc_covid_", 
+               format(Sys.time(), "%Y_%m_%d_%H_%M_%S")
+               , ".png")
+  
+  imgs[8] %>%
+    html_attr("src") %>%
+    tibble() %>% 
+    mutate(link = gsub("/48/", "/3314/", .)) %>%
+    pull(link) %>% 
+    download.file(., fn, mode = "wb")
+  
+  
+  
+  fn <- paste0("./data/raw_data/michigan/mi_doc_staff_covid_", 
+               format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),
+               ".png")
+  imgs[13] %>% 
+    html_attr("src") %>% 
+    download.file(., fn, mode = "wb")
+  
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+get_mi_covid_data(data_for_use[[13]])
 
 
