@@ -1,12 +1,4 @@
-library(rvest)
-library(glue)
-library(tidyverse)
-library(tesseract)
-library(googlesheets4)
-library(lubridate)
-library(magick)
-library(tabulizer)
-library(tabulizer)
+source(here::here("R","utils.R"))
 data_in_goog_sheet <- read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0")
 # create a safe function
 safe_get <- safely(read_html)
@@ -31,7 +23,6 @@ get_alaska_data <- function(alaska_doc) {
 }
 
 alaska_data <- get_alaska_data(data_for_use[[1]])
-
 # get connecticut doc data
 get_connecticut_covid_data <- function(ct_doc_path) {
    img_path <- data_for_use[[4]] %>%
@@ -58,7 +49,7 @@ get_connecticut_covid_data <- function(ct_doc_path) {
    )
 }
 
-get_connecticut_covid_data()
+get_connecticut_covid_data(data_for_use[[4]])
 # extracting delaware
 get_delaware_covid_data <- function(delaware_pdf_path) {
   # extract the tables from the pdf
@@ -80,7 +71,6 @@ get_delaware_covid_data <- function(delaware_pdf_path) {
 
 # use link in text format to get the delaware data  
 del_data <- get_delaware_covid_data(data_in_goog_sheet[5,]$covid_link)
-
 # get georgia data
 get_georgia_covid_data <- function(georgia_doc_path) {
   georgia_text <- georgia_doc_path %>%
@@ -102,61 +92,66 @@ get_georgia_covid_data <- function(georgia_doc_path) {
 get_georgia_covid_data(data_for_use[[6]])
 
 # idaho data
-idaho_text <- data_for_use[[7]] %>% 
-  html_nodes(".covid-table:nth-child(2) td") %>% 
-  html_text()
-idaho_data <- as_tibble(split(idaho_text[5:8],1:4))
-names(idaho_data) <- idaho_text[1:4]
-idaho_data %>% 
-  mutate(state = "Idaho",scrape_date = today())
+get_idaho_covid_data <- function(idaho_doc_path) {
+  # extracts the text for idaho
+  idaho_text <- idaho_doc_path %>%
+    html_nodes(".covid-table:nth-child(2) td") %>%
+    html_text()
+  # make the numbers and split them so that they turn into 4 columns
+  idaho_data <- as_tibble(split(idaho_text[5:8], 1:4))
+  # overwrite the names of the tibble
+  names(idaho_data) <- idaho_text[1:4]
+  # get the labels in for the totals
+  idaho_data %>%
+    mutate(state = "Idaho", scrape_date = today())
+}
 
+get_idaho_covid_data(data_for_use[[7]])
 
+# illinois covid data
+get_illinois_covid_data <- function(il_doc_path) {
+  illinois_text <- il_doc_path %>%
+    html_nodes(
+      ".soi-rteTable-1:nth-child(2) .soi-rteTableOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableEvenCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderEvenCol-1"
+    ) %>%
+    html_text()
+  names_of_df <- illinois_text[1:3]
+  illinois_data <- illinois_text[4:length(illinois_text)] %>%
+    split(1:3) %>%
+    as_tibble()
+  names(illinois_data) <- names_of_df
+  illinois_data %>% 
+    modify_at(2:3,parse_number)
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+get_illinois_covid_data(data_for_use[[8]])
+#pa data
+#
+get_pa_covid_data <- function(pa_covid_doc_path){
+  pa_text <- pa_covid_doc_path %>%
+    html_nodes(
+      "p+ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableOddCol-default , .ms-rteTableOddRow-default strong , p+ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableEvenCol-default , p+ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableOddCol-default , p+ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableEvenCol-default"
+    ) %>%
+    html_text() %>%
+    str_trim()
+  #create a tibble from the data
+  pa_data <- pa_text[11:length(pa_text)] %>%
+    split(1:5) %>%
+    as_tibble()
+  # names of the dataframe
+  names(pa_data) <-
+    c(
+      "locations",
+      "employee_positive",
+      "employee_negative",
+      "inmate_positive",
+      "inmate_negative"
+    )
+  pa_data <- pa_data %>%
+    modify( ~ replace(., str_length(.) == 1, NA)) %>%
+    mutate(scrape_date = today())
+  # parse the columns
+  pa_data %>%
+    modify_at(2:5,  ~ parse_number(.))
+}
 
