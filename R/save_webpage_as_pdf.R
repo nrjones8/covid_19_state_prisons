@@ -23,6 +23,12 @@ save_website_pages <- function(url, state) {
     download.file(url, destfile = pdf_name, mode = "wb")
   } else {
     
+    
+    links <- 
+      read_html(url) %>%
+      html_nodes("a") %>%
+      html_attr('href')
+    
     tryCatch({
       webshot::webshot(url,
                        file  = png_name,
