@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- InstanceBegin template="/Templates/TemplateVer7.dwt" codeOutsideHTMLIsLocked="false" --><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --><script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script><!-- Include all compiled plugins (below), or include individual files as needed --><script src="../js/jquery-3.2.1.min.js"></script><script src="../js/popper.min.js"></script><script src="../js/bootstrap-4.0.0.js"></script><script src="../JavaScript/standard_code.js" type="text/javascript"></script><script src="../JavaScript/NJAdmin10aRuleListings.js" type="text/javascript"></script><script src="../JavaScript/emergency_alert.js" type="text/javascript"></script><script src="../JavaScript/escape_alert.js" type="text/javascript"></script><link href="../css/bootstrap-4.0.0_DOC.css" rel="stylesheet">
+<link href="../css/docStandards.css" rel="stylesheet">
+<link href="../css/njoit.css" rel="stylesheet">
+<link href="../css/njoit_Components.css" rel="stylesheet">
+<link href="../css/njoit_slick.css" rel="stylesheet">
+<link href="../css/njoit_slick_theme.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+</style>
+<!-- InstanceBeginEditable name="doctitle" --><!-- InstanceEndEditable --><!-- Bootstrap --><!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body>    
+	  <!-- Start  -->
+	  
+	  <div class="container-fluid" id="header"> 
+	  <header class="sonj row justify-content-center "><div class="col-sm-8 col-lg-6 col-xl-5" id="logo">
+			<h1 class="my-2"><a href="https://nj.gov/" target="_blank"><img title="" alt="State of New Jersey Seal" src="../images/state_seal_white.png">Official Site of The State of New Jersey</a></h1>
+		</div>
+		<div class=" col-sm-4 col-lg-6 col-xl-5">
+		  <div class="gov-bar text-right d-none d-lg-block">
+<a href="https://nj.gov/governor/" target="_blank">Governor Phil Murphy • Lt. Governor Sheila Oliver</a> </div>
+		  <ul class="my-sm-2 my-lg-0 social statewide text-right">
+<li class="d-none d-lg-inline"><a href="https://nj.gov">NJ.gov</a></li>
+			<li class="d-none d-lg-inline"><a href="https://nj.gov/nj/gov/njgov/alphaserv.html">Services</a></li>
+			<li class="d-none d-lg-inline"><a href="https://nj.gov/nj/gov/deptserv/">Agencies</a></li>
+			<li class="d-none d-lg-inline"><a href="https://nj.gov/faqs/">FAQs</a></li>
+			<li class="sonj-translate">
+				<a href="https://translate.google.com/">Translate</a>
+				<div class="drop px-4 pb-3">
+					<button class="pl-0 btn btn-link float-left drop-close" type="button"><i class="fas fa-times-circle"></i> close</button>
+					<div id="google_translate_element"></div>
+<script type="text/javascript">
+					function googleTranslateElementInit() {
+					  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.VERTICAL}, 'google_translate_element');
+					}
+					</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script><p class="disclaimer pt-3">The State of NJ site may contain optional links, information, services and/or content from other websites operated by third parties that are provided as a convenience, such as Google™ Translate. Google™ Translate is an online service for which the user pays nothing to obtain a purported language translation. The user is on notice that neither the State of NJ site nor its operators review any of the services, information and/or content from anything that may be linked to the State of NJ site for any reason. -<a href="https://nj.gov/nj/home/disclaimer.html" target="_blank"><strong>Read Full Disclaimer <i class="fas fa-link"></i></strong></a></p>
+				</div>
+			</li>
+			<li class="sonj-search">
+				<a href="https://search.state.nj.us/" id="search-label" role="button">Search <i class="fas fa-search"></i></a>
+				<div class="drop px-4 pb-3">
+					<button class="pl-0 btn btn-link float-left drop-close" type="button"><i class="fas fa-times-circle"></i> close</button>
+					<form id="search" action="https://search.state.nj.us/query.html" name="search">
+						<div class="input-group">
+							<input name="qt" class="form-control p-1" id="qt" aria-describedby="search-label" aria-label="Search Query" type="text" placeholder="Type Search Here"><div class="input-group-append">
+								<button class="input-group-text" type="submit"><i class="fas fa-search"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</li>
+		  </ul>
+</div>
+	  </header>
+</div>
+	  <!-- End  -->
+	  <!--DOC Title Banner -->
+  <div class="container-fluid">
+	  <div class="row" style="background:transparent url(../images/njdocBG.jpg) no-repeat center">
+	    <div class="col-2 d-none d-lg-block d-xl-block align-self-center" align="center"><img src="../images/NJ%20State%20Seal%20Color.png" width="100" height="100" alt=""></div>
+		  
+		<div class="col-8 d-none d-lg-block">
+			<table width="100%" border="0"><tbody><tr>
+<td width="60%">
+<font class="StateOfNewJersey">State of New Jersey</font><br><div class="d-xl-none">       </div>
+<font class="docBannerTitle">Department of Corrections</font><br><font class="protectingLives"> "Protecting Public Safety by Changing Offender Behavior"</font>
+</td>				
+      <td width="40%" valign="middle">
+<font class="CommissionerBanner">Commissioner</font><br>
+                         Marcus O. Hicks, Esq.</td>
+    </tr></tbody></table>
+</div>
+		  
+	    <div class="col-2 d-none d-xl-block align-self-center" align="center"><img src="../images/NJDOC%20Seal%20Color%203x3.png" width="85" height="100" alt=""></div>
+	  </div>
+	  <div class="row">
+	  		<div class="col-12 d-lg-none">
+			  <font class="docBannerTitle">NJDOC</font>
+		  	</div>
+	  </div>
+	  
+	  </div>
+	  <!--end of title banner -->
+	  
+	  
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-docBlue"><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMainContent" aria-controls="navbarMainContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+       </button>
+	  
+       <div class="navbar-collapse collapse" id="navbarMainContent">
+          <ul class="navbar-nav mr-auto">
+<!--<li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+             </li>--><li class="nav-item d-none d-xl-block">
+                                 
+             </li>
+			  <li class="nav-item">
+                <a class="nav-link" href="index.shtml">Home</a>
+             </li>
+			  <li class="nav-item">
+                <a class="nav-link" href="aboutUs.html">About Us</a>
+             </li>			  
+			  <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Offender Information</a>
+				  <div class="dropdown-menu">
+					  <a class="dropdown-item" href="OffenderInformation.html">Offender Information</a>
+					<a class="dropdown-item" href="Javascript:InmateCheck('I')">Offender Search Engine</a>
+					<a class="dropdown-item" href="Javascript:InmateCheck('R')">Offender Visit Restrictions</a>
+					<a class="dropdown-item" href="Javascript:InmateCheck('E')">Escapes</a>
+					  <a class="dropdown-item" href="OffenderInformation.html#OffenderStats">Offender Statistics</a>
+					  <a class="dropdown-item" href="OffenderInformation.html#OffenderAccounts">Offender Accounts</a>
+					  <a class="dropdown-item" href="OffenderInformation.html#Fines">Fines and Obligations</a>
+					  <a class="dropdown-item" href="OffenderInformation.html#Phone">Telephone System</a>
+					  <a class="dropdown-item" href="OffenderInformation.html#InmatePublications">Inmate Publications</a>					  
+				    <div class="dropdown-divider"></div>
+    				  <div class="dropdown-submenu">
+						<a class="dropdown-item" tabindex="-1" href="ots.html">Office of Transitional Services<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+<li><a tabindex="-1" class="dropdown-item" href="ots.html#Core">Core Programs</a></li>
+								<li><a tabindex="-1" class="dropdown-item" href="ots.html#Intake">Intake Assessments</a></li>
+								<li><a tabindex="-1" class="dropdown-item" href="ots.html#Services">Social Service Assistance</a></li>
+								<li><a tabindex="-1" class="dropdown-item" href="ots.html#Family">Inmate and Family Resources</a></li>
+								<li><a tabindex="-1" class="dropdown-item" href="ots.html#Projects">Special Projects</a></li>
+								<li><a tabindex="-1" class="dropdown-item" href="ots.html#FRARA">Fair Release and Reentry Act 2009</a></li>
+        					</ul>
+</div>
+				</div>
+             </li>
+			  <li class="nav-item">
+                <a href="victimServices.html" class="nav-link">Victim Services</a>
+             </li>
+			  <li class="nav-item">
+                <a href="OfficeCountyServices.html" class="nav-link">County Services</a>
+             </li>
+		    <li class="nav-item">
+                <a href="https://www.google.com/maps/d/viewer?mid=19oCJlVou1rAvf3KLu7Se3UfAJF0&amp;ll=40.589747300000006%2C-74.27372780000002&amp;z=8" target="_blank" class="nav-link">Facilities</a>
+             </li>
+			  <li class="nav-item">
+                <a href="COVID19Updates.shtml" class="nav-link"><div class="text-danger"><b>COVID-19</b></div></a>
+             </li>
+			  <!--<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Careers</a>
+				  <div class="dropdown-menu">
+					  	<a class="dropdown-item" href="../pages/careers.shtml">Careers in Corrections</a>
+						<a class="dropdown-item" href="../pages/careers.shtml#RECRUITMENT">Correctional Police Officer Recruitment</a>
+					  	<a class="dropdown-item" href="../pages/careers.shtml#Internships">Internships</a>
+					  	<a class="dropdown-item" href="../pages/careers.shtml#EED">Equal Employment Division</a>
+				  </div>
+             </li>-->
+		    <!--
+			  <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Grants/RFP</a>
+				  <div class="dropdown-menu">					
+					  <a class="dropdown-item" href="../pages/grants.html">Grants</a>
+					  <a class="dropdown-item" href="../pages/grants.html">Letters of Support</a>
+					  <a class="dropdown-item" href="../pages/grants.html">RFP</a>					  
+				</div>
+             </li>-->
+		    <!--test code -->
+			  			               
+          </ul>
+<!--<form class="form-inline my-2 my-lg-0">--><form class="form-inline my-2 my-lg-0" id="seek" name="seek" method="get" action="https://search.state.nj.us/query.html">
+              <input type="hidden" name="qp" value="+url:www.state.nj.us/corrections/"><input name="qt" type="text" id="qt" class="form-control mr-sm-2"><button class="btn btn-outline-success_doc my-2 my-sm-0" type="submit">Search</button>
+          </form>
+		   <span class="d-none d-xl-block">
+		                     
+		   </span>
+       </div>
+		  
+    </nav><!-- InstanceBeginEditable name="MainContent" --><div class="container">
+	    <div class="row">
+	      <div class="col-12">
+<br>
+          COVID 19 Updates</div>	    
+        </div>
+		  <div class="row">
+	      <div class="col-12"><hr color="#003366"></div>	    
+        </div>
+		  <div class="row">
+			  <div class="col-md-12 col-lg-6">                                	
+					<div class="card h-100 align-text-top">
+							<div class="card_title_DOC2">DOH CONFIRMED COVID CASES AT THE NJDOC</div>
+										<div class="card_body_doc">
+											<!--   *********************  COVID Facilities Updates ***********************-->
+				  
+         	<p class="standard_font">Last updated: 4/10/2020 9:42:34 PM</p>
+<table class="table table-striped standard_font" width="100%">
+<thead class="thead-light"><tr>
+<th scope="col">PRISONS AND ANCILLARY LOCATIONS</th>
+								<th scope="col"><div align="right">EMPLOYEES</div></th>	
+								<th scope="col"><div align="right">INMATES</div></th>
+                                <th scope="col"><div align="right">INMATE DEATHS</div></th>
+							  </tr></thead>
+<tr>
+<td>Adult Diagnostic and Treatment Center</td>
+<td align="right">5</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Bayside State Prison</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Central Office Headquarters</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Central Reception and Assignment Facility</td>
+<td align="right">12</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Correctional Staff Training Academy</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Custody Recruitment Unit</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>East Jersey State Prison</td>
+<td align="right">17</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Edna Mahan Correctional Facility for Women</td>
+<td align="right">32</td>
+<td align="right">3</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Garden State Youth Correctional Facility</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Mid-State Correctional Facility</td>
+<td align="right">12</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Mountainview Youth Correctional Facility</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>New Jersey State Prison</td>
+<td align="right">7</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Northern State Prison</td>
+<td align="right">34</td>
+<td align="right">5</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>South Woods State Prison</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Southern State Correctional Facility</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>STU</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td><b>Totals</b></td>
+<td align="right"><b>150</b></td>
+<td align="right"><b>17</b></td>
+<td align="right"><b>1</b></td>
+</tr>
+</table>
+<!--   *********************  END *********************************-->
+</div>
+									</div>								
+								</div>
+			  
+			  <div class="col-md-12 col-lg-6">                                	
+					<div class="card h-100 align-text-top">
+							<div class="card_title_DOC2">DOH CONFIRMED COVID CASES AT NJDOC RCRPS (HALFWAY HOUSES)</div>
+										<div class="card_body_doc">
+											<!--   *********************  COVID Facilities Updates ***********************-->
+				  
+         	<p class="standard_font">Last updated: 4/10/2020 9:42:34 PM    <i>*RCRP staff are not NJDOC employees.</i></p>
+<table class="table table-striped standard_font" width="100%">
+<thead class="thead-light"><tr>
+<th scope="col">RESIDENTIAL COMMUNITY RELEASE PROGRAM</th>
+								<th scope="col"><div align="right">INMATES</div></th>
+                                <th scope="col"><div align="right">INMATE DEATHS</div></th>
+							  </tr></thead>
+<tr>
+<td>Bo Robinson Assessment and Treatment</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Clinton House</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Columbus House</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>CURA, Inc.</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Fenwick House</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Fletcher House</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Garrett House</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Hope Hall</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>James A. Hemm House</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Kintock Bridgeton 1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Kintock Bridgeton 2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Kintock Newark</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>The Harbor House</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>Tully House</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td><b>Totals</b></td>
+<td align="right"><b>3</b></td>
+<td align="right"><b>0</b></td>
+</tr>
+</table>
+<!--   *********************  END *********************************-->
+</div>
+									</div>								
+			  </div>			
+		  </div>
+		  <br><br><div class="row">               
+								<div class="col-12">
+									<div class="card h-100">
+										<div class="card_title_DOC2">COVID-19 Frequently Asked Questions – as of 4/10/2020</div>
+										<div class="card_body_doc">
+											<p class="standard_font">The New Jersey Department of Corrections (NJDOC) takes the threat of coronavirus (COVID-19) seriously, and in consultation with the Department of Health, has taken proactive measures to mitigate the spread of the virus. These action steps are outlined in the frequently asked questions below.</p>
+											
+											<table class="table table-striped standard_font" width="100%">
+<tr>
+<td style="width:1%"><b>1.</b></td>
+													<td>
+<b>Are staff and incarcerated individuals being screened for COVID-19 before entering an NJDOC facility?</b><p>Yes. The NJDOC is conducting health screenings of all individuals entering its facilities that includes a temperature scan and subsequent questionnaire detailing recent travel activity and contact with individuals who tested positive for COVID-19.</p>
+													</td>
+</tr>
+<tr>
+<td><b>2.</b></td>
+													<td>
+													<b>How is the Department determining who should be quarantined?</b> 
+													<p>As per the Centers for Disease Control and Prevention (CDC) guidance, individuals who have come in contact with a person who has COVID-19 are required to be quarantined for 14 days. Contact is defined as being within approximately 6 feet (2 meters) of a COVID-19 case for more than 10 minutes. Secondary contacts are not required to quarantine. For example: John has been diagnosed with COVID-19. Mary was in a meeting with John for more than 10 minutes, sitting less than 5 feet away. Mary then had a meeting with Tim, also longer than 10 minutes and sat 4 feet away from John. Under the CDC guidance Mary would be required to self-quarantine for 14 days where Tim would not. 
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>3.</b></td>
+<td>
+													<b>Is social distancing being enforced throughout NJDOC facilities?  </b>
+												  <p>The Department is taking this issue very seriously and continuously assessing and amending its policies as the CDC and New Jersey Department of Health issue new guidance. The NJDOC is practicing social distancing among its workforce and limiting foot traffic in facilities with the implementation of flexible work arrangements for non-essential personnel that includes a reduced and rotational workforce. As it pertains to the incarcerated, group activities, dining, recreation, religious gatherings, and education have been either suspended or modified to minimize potential exposure and encourage social distancing. For example, individuals are provided access to religious materials and are encouraged to practice their faith in their living quarters. Also, educational programs have been adapted in support of independent study.
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>4.</b></td>
+													<td>
+													<b>What procedures is the NJDOC using to keep facilities clean?  </b>
+													<p>All facilities have enhanced sanitization efforts using bleach. The Department has also increased access to hand sanitizer for staff and soap for inmates, while also educating all on CDC guidance on mitigating the spread of germs.  
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>5.</b></td>
+<td>
+													<b>What operational steps has the Department taken to mitigate the impact of COVID-19?</b>
+													<p>
+														</p>
+<ul>
+<li>Ensuring proper staffing to maintain the safety and security of its facilities.</li>
+															<li>Managing and ensuring the reserve of PPE and disinfecting products.</li>
+															<li>Sanitization of our facilities and fleet.</li>
+															<li>Requiring all who enter our facilities to undergo a health screening with temperature scan and wear Department-issued surgical masks.</li>
+															<li>Suspending inmate visits with the exception of lawyer visits, while providing provisions for continued communication with loved ones.</li>
+															<li>Suspending community inmate details.</li>
+															<li>Suspending the inter-institutional transfers of inmates for visit hardship reasons.</li>
+															<li>Establishing facility quarantine units and expanding the capacity for medical isolation.</li>
+															<li>Holding all new inmates at intake for 15 days while monitoring for COVID-19.</li>
+															<li>Suspending county jail intake.</li>
+															<li>Implementing work from home/flex/alternative schedules for non-essential staff to reduce foot traffic in facilities and accommodate for social distancing.</li>
+															<li>Requiring all those entering facilities to wear surgical masks.</li>
+															<li>Modifying inmate gatherings to accommodate for social distancing, including recreation, dining, education, religious gatherings.</li>
+															<li>Partnering with the Administrative Office of the Courts to suspend evaluations for detainees or those pending criminal proceedings, thus reducing foot traffic at ADTC.</li>
+															<li>Reducing the number of inmates on each bus or van when conducting transports.</li>
+															<li>Assessing all transports on a case-by-case basis. </li>
+															<li>Partnering with NJ State Parole Board and the Administrative Office of the Courts regarding the scheduling of essential services and hearings.</li>
+															<li>Modifying treatment plans where medically advised and expanding the use of keep on person medications for the inmate population in support of social distancing. </li>
+															<li>Implementing independent treatment support for substance abuse programming.</li>				
+															<li>Tracking all DOH confirmed COVID-19 cases on our website.</li>
+															<li>Temporarily suspending the inter-institutional transfers of inmates released from a Restrictive Housing Unit to a General Population Unit.</li>
+															<li>Suspending all non-critical out-patient appointments or clinics at regional locations.</li>
+															<li>Halting construction projects throughout the Department with the exception of essential services to the power plants, water treatment plants, waste water treatment plants and critical infrastructure repairs.</li>
+														</ul>
+</td>
+</tr>
+<tr>
+<td><b>6.</b></td>
+													<td>
+													<b>How can I contact my loved one while visitation is suspended?  </b>
+													<p>The Department recognizes that families provide critical support and has increased access to other forms of communication such as telephone calls, JPay kiosk usage and access to U.S. mail postage, free of charge, to maintain ties to loved ones.   
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>7.</b></td>
+													<td>
+													<b>Is educational programming affected by the COVID-19 outbreak?  </b>
+													<p>The Department instituted a temporary suspension of group classes so that its team of internal educators can prepare coursework materials that inmates can complete without an instructor and to accommodate social distancing. A limited number of educators will continue to report on a reduced rotation schedule to distribute coursework and be available if students need additional help or guidance.    
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>8.</b></td>
+													<td>
+													<b>What is being done for the elderly and vulnerable people in custody?  </b>
+													<p>Under Executive Order No. 124, the NJDOC is granting temporary emergency home medical confinement to certain at-risk inmates who have not committed a serious offense, during the public health emergency. Eligible populations include individuals aged 60 years older; individuals with high-risk medical conditions, based on CDC COVID-19 guidance; individuals who will complete their sentences within the next three months; and individuals who were denied parole within the last year. Each case is to be assessed by an Emergency Medical Review Committee that would make individualized determinations of whether home confinement would better serve an eligible inmate. A copy of Executive Order No 124 can be found <a href="https://nj.gov/infobank/eo/056murphy/pdf/EO-124.pdf" target="_blank">here</a>    
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>9.</b></td>
+												  <td>
+<b>Why don’t all inmates have facemasks? </b>
+													  <p>Consistent with CDC recommendations, only patients who are ill or demonstrate symptoms consistent with COVID-19 will don an N95 facemask.   
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>10.</b></td>
+													<td>
+													<b>How does the social distancing mandate apply to offenders that sleep in dorms?  </b>
+													<p>Current housing situations will remain in place. As per the Department’s regular protocols, if anyone in custody is showing signs and symptoms of flu, respiratory illnesses or COVID-19, he or she will receive a medical assessment to determine testing needs and will be quarantined, placed in medical isolation or hospitalized as medically prescribed.  
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>11.</b></td>
+													<td>
+													<b>What happens if someone in the offender population shows possible signs of COVID-19 inside a facility?  </b>
+													<p>The NJDOC has prepared quarantine and medical isolation accommodations for asymptomatic and symptomatic individuals respectively, across its facilities. If someone shows possible signs of COVID-19 the NJDOC medical team in partnership with the Department of Health will determine testing needs and next steps for those who exhibit COVID-related symptoms; this includes quarantining, medically isolating, or transferring the impacted to a hospital, as needed.   
+													</p>													
+												</td>
+</tr>
+<tr>
+<td><b>12.</b></td>
+													<td>
+													<b>What happens if an employee shows possible signs of COVID-19 inside a facility?  </b>
+													<p>The Department is taking every precaution to mitigate the spread of the virus, including:
+														</p>
+<ul>
+<li>Providing health scans of all staff and state agencies entering our facilities and requiring that they wear Department-issued surgical masks</li>
+															<li>Providing N95 masks, as medically prescribed, to employees managing individuals with symptoms consistent with COVID-19</li>															
+															<li>Limiting foot traffic across our facilities to essential personnel</li>
+															<li>Restricting transfers from county facilities</li>
+															<li>Temporarily suspending all inter-institutional transfers based on an inmate’s request for visit hardship across NJDOC facilities.</li>
+															<li>Modifying activity schedules to accommodate for social distancing guidance</li>
+															<li>Enhancing sanitization and providing employees and inmates access to sanitization products</li>
+															<li>Temporarily suspending visitation, except for visits related to legal representation</li>		</ul>
+<p>Should an employee test positive, that individual will be instructed to self-quarantine or self-isolate at home. NJDOC will notify all individuals who have been in contact with the individual so that they can self-quarantine, as directed by the Department of Health. The Department would also quarantine inmates that have been in contact with the individual while monitoring symptoms. 
+												  </p>
+													<p>In terms of our operations, the Department has a contingency plan in place to ensure appropriate staffing coverage across our facility that does not compromise public safety. 
+												  </p>													
+												</td>
+</tr>
+<tr>
+<td><b>13.</b></td>
+													<td>
+													<b>Is my loved one eligible for early release?  </b>
+													<p>Under Executive Order No. 124, the NJDOC is granting temporary emergency home medical confinement to certain at-risk inmates who have not committed a serious offense, during the public health emergency. Eligible populations include individuals aged 60 years older; individuals with high-risk medical conditions, based on CDC COVID-19 guidance; individuals who will complete their sentences within the next three months; and individuals who were denied parole within the last year. Each case is to be assessed by an Emergency Medical Review Committee that would make individualized determinations of whether home confinement would better serve an eligible inmate. A copy of Executive Order No 124 can be found <a href="https://nj.gov/infobank/eo/056murphy/pdf/EO-124.pdf" target="_blank">here</a> 
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>14.</b></td>
+													<td>
+													<b>How does NJDOC determine who will be tested? Will testing be provided for prisoners who request it or show symptoms?  </b>
+													<p>Inmate patients presenting with mild upper respiratory symptoms are evaluated by medical staff and placed in medical isolation units in the facility. In accordance with NJDOH guidance, these inmates may be released from medical isolation seven days from the onset of symptoms and at least three days after the resolution of fever and significant improvement in symptoms. Inmate patients in the isolation unit must wear surgical masks for movements in and out of the unit. The staff, both medical and custody, must wear full PPE in and out of the isolation unit.<br><br>
+
+Inmate patients presenting with flu-like symptoms and/or COVID-19 symptoms shall be evaluated by medical staff and directed to the hospital if they exhibit fever/cough/shortness of breath. The inmate patient will be evaluated by the hospital, medically isolated, and provided a COVID-19 test.  Inmate patients may be discharged if the COVID-19 test is negative, and the inmate patient is medically cleared to return to the facility. Inmates released from the hospital are admitted to infirmary level care at the facility until released by medical staff. Inmates admitted to the infirmary are monitored for co-morbid conditions as they recover from their illness. Staff having contact with the inmate in the infirmary shall wear full PPE equipment.<br><br>
+
+Inmates with known exposure to COVID-19 shall be quarantined in a specifically designated quarantine unit within the facility. The inmates shall be monitored by medical staff. If the inmate becomes symptomatic during this 14-day quarantine period, they will be evaluated for medical isolation or referred to a hospital for evaluation and testing.
+ 
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>15.</b></td>
+													<td>
+													<b>Have you looked into canceling state transports? What about my loved one who had a routine health appointment in the community?  </b>
+													<p>All nonessential medical trips are on hold effective immediately and will be reassessed when appropriate. Essential medical trips will continue. 
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>16.</b></td>
+													<td>
+													<b>Are transfers happening between institutions and from jails?  </b>
+													<p>Out of an abundance of caution, the Department is:
+														</p>
+<ul>
+<li>suspending the transfer of inmates from county jails;</li>
+															<li>holding all new inmates for 15-days at the Central Reception and Assignment facility prior to transferring individuals to their assigned institutions; and</li>
+															<li>temporarily suspending all inter-institutional transfers based on an inmate’s request for visit hardship across NJDOC facilities.</li>
+														</ul>
+</td>
+</tr>
+<tr>
+<td><b>17.</b></td>
+													<td>
+													<b>Are laundry operations modified due to COVID-19?  </b>
+													<p>At this time, the CDC is not recommending any changes to the current processing standards for the commercial laundry industry. According to the CDC, there is a higher risk of exposure with close direct person-to-person contact than with indirect contact of potentially contaminated objects (such as laundry). The NJDOC will continue to utilize standard universal precautions in the handling and processing of all contaminated materials. As a precaution, NJDOC has enhanced the disinfecting of its laundry facilities.
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>18.</b></td>
+													<td>
+													<b>What steps are you taking to protect staff?  </b>
+													<p>Department is taking every precaution to mitigate the spread of the virus in its facilities including:
+														</p>
+<ul>
+<li>providing health screenings of all individuals entering NJDOC facilities;</li>
+															<li>providing N95 masks, as medically prescribed, to employees managing individuals with symptoms consistent with COVID-19</li>
+															<li>providing surgical masks to all staff and state agencies entering facilities;</li>
+															<li>enhancing sanitization and providing employees access to sanitization products;</li>
+															<li>adhering to social distancing guidance in prison activities;</li>
+															<li>limiting foot traffic across our facilities, including:</li>
+															<ul>
+<li>reducing non-essential workforce</li>
+																<li>restricting transfers from county facilities</li>
+																<li>suspending visitations</li>
+																<li>temporarily suspending all inter-institutional transfers based on an inmate’s request for visit hardship across NJDOC facilities.</li>
+															</ul>
+</ul>
+</td>
+</tr>
+<tr>
+<td><b>19.</b></td>
+													<td>
+													<b>What special precautions are you taking for inmates that are soon to be released?  </b>
+													<p>From a health perspective, as part of our regular discharge processes, all inmates nearing release will undergo a medical assessment that will now include CDC guidance on how to protect themselves from COVID-19. The discharge process also includes linkages to resources that provide support to offenders, from state-issued identification, to medical care coverage, medical services and housing support along with a two-week supply of prescription medication for existing conditions.
+													</p>
+												</td>
+</tr>
+<tr>
+<td><b>20.</b></td>
+												<td>
+												<b>What measures are in place in Residential Community Release Programs (RCRP)?</b>
+												<p>
+													NJDOC has instituted several measures to mitigate the spread of the virus at Residential Community Release Programs (RCRP).  These include:
+													</p>
+<ul>
+<li>Enhanced sanitization across our halfway houses and fleet.</li>
+														<li>Increased access to hand sanitizer for staff and soap for inmates, while also educating residents on all CDC guidance on mitigating the spread of germs. </li>
+														<li>Health screenings for all those entering the halfway houses that includes temperature scans twice daily. </li>
+														<li>Requiring all who enter to wear surgical masks.</li>
+														<li>Suspending large group events and ensuring smaller activities are aligned with social distancing guidance.</li>
+														<li>Temporarily suspending visitations, while offering other forms of communication such as telephone calls and access to U.S. mail postage, free of charge, to maintain ties to loved ones. </li>
+														<li>Advanced preparation for medical quarantines and medical isolation as medically prescribed.</li>
+														<li>Suspending work programs until further notice.</li>
+														<li>Suspending all transfers of inmates from NJDOC facilities to RCRP Assessment Centers and from RCRP Assessment Centers to other RCRP facilities.</li>
+														<li>Analyzing each RCRP return to ensure only those returns that are deemed crucial are being returned to an NJDOC facility.</li>
+														<li>Requiring approved returns to be medically quarantined at the NJDOC regional facility for a 14-day period from the date of transport to ensure no signs of COVID-19 or other illness are present. </li>
+														<li>Housing RCRP inmates returned for serious disciplinary infractions at the regional facility with their respective court line process. </li>
+													</ul>
+</td>
+</tr>
+<tr>
+<td><b>21.</b></td>
+												<td>
+												<b>What happens if an RCRP employee has a confirmed case of COVID-19?</b>
+												<p>
+													Should an RCRP employee test positive, that individual will be instructed to self-quarantine or self-isolate at home. The facility staff will notify all employees who have been in contact with the confirmed so that can self-quarantine, as directed by the Department of Health. The Department would also quarantine inmates that have been in contact with the individual, on site. 
+													</p>
+											</td>
+</tr>
+<tr>
+<td><b>22.</b></td>
+											<td>
+											<b>What happens if an inmate residing at an RCRP gets sick? </b>
+											<p>
+												If an inmate either exhibits signs of illness or seeks medical assistance, the RCRP staff will contact medical staff at the regional prison institution via phone to determine if an in-person assessment is needed. If medical staff determines that an in person evaluation is not needed, the inmate patient will be provided medical education through the regional institution’s registered nurse via phone.<br><br>
+												If medical staff determines that an in-person evaluation is needed, the inmate patient will be brought to the regional facility, and assessed in a pre-determined area so as to not mix with any other inmate patients and/or staff.<br><br>
+												Inmate patients presenting with mild upper respiratory symptoms are evaluated by medical staff and placed in medical isolation units in the facility. These inmates may be released from medical isolation seven days from the onset of symptoms and at least three days after the resolution of fever and significant improvement in symptoms. Inmate patients in the isolation unit must wear surgical masks for movements in and out of the unit. The staff, both medical and custody, must wear full PPE in and out of the isolation unit.<br><br>			
+												Inmate patients presenting with flu-like symptoms and/or COVID-19 symptoms shall be evaluated by medical staff and directed to the hospital if they exhibit fever/cough/shortness of breath. The inmate patient will be evaluated by the hospital, medically isolated, and provided a COVID-19 test.  Inmate patients may be discharged if the COVID-19 test is negative, and the inmate patient is medically cleared to return to the facility. Inmates released from the hospital are admitted to infirmary level care at the facility, until released by medical staff. Inmates admitted to the infirmary are monitored for co-morbid conditions as they recover from their illness. Staff having contact with the inmate in the infirmary shall wear full PPE equipment.<br><br>
+												Inmates with known exposure to COVID-19 shall be quarantined in a specifically designated quarantine unit within the facility. The inmates shall be monitored by medical staff. If the inmate becomes symptomatic during this 14-day quarantine period, they will be evaluated for medical isolation or referred to a hospital for evaluation and testing.
+												</p>
+											</td>
+</tr>
+</table>
+</div>
+									</div>
+								</div>							
+							</div>	  
+		  
+	</div>
+     
+	  <!-- InstanceEndEditable --><br><div class="container-fluid">
+	<div class="row footer">		   
+		<div class="col-lg-12"><br></div>
+	</div>		
+       <div class="row footer" align="center">		   
+		   <div class="col-lg-12">
+		     <p>             			   
+                   	<a class="docLinkWhiteFont" href="privacy.html">Privacy</a>     <a class="docLinkWhiteFont" href="legalStatement.html">Legal</a>     <a class="docLinkWhiteFont" href="associatedLinks.html">Associated Links</a>     
+				 <a class="docLinkWhiteFont" href="FallenOfficers.html">Fallen Officers</a>     
+				 <a class="docLinkWhiteFont" href="grants.html">Grants/RFP</a>     
+					<a class="docLinkWhiteFont text-nowrap" href="ContactUs.html">Contact Us</a>     
+			   		<a class="docLinkWhiteFont text-nowrap" href="careers.shtml">Careers</a>     
+			   		<a class="docLinkWhiteFont text-nowrap" href="Javascript:NJAdminAcceptMessage()">NJ Administrative Code title 10A</a>     
+					<a class="docLinkWhiteFont text-nowrap" href="VideoConference.html">Video Teleconferencing</a>
+					</p>             
+			   
+		   </div>
+		   
+       </div>
+   
+<div class="row footer">
+          <div class="col-12">
+             <hr color="white">
+</div>
+		   
+       </div>
+
+	
+<div class="row footer">
+          <div class="col-lg-2">
+            <a href="https://nj.gov/opra/" target="_blank"><img src="../images/Footer/opraBlue.png"><br><br></a>
+		   </div>
+			<div class="col-lg-2 text-center">
+            <a href="https://2020census.gov/en.html" target="_blank"><img src="../images/Footer/I_Count.png"><br><br></a>
+		   </div>
+		   <div class="col-lg-4">
+			   <div align="center">
+				   <h4>Follow Us on Social Media</h4>
+             <a href="https://www.facebook.com/NJDepartmentofCorrections" target="_blank"><i class="fa fa-facebook-square" style="font-size:36px;color:#003366"></i></a>   
+			<a href="https://twitter.com/NJ_DOC/" target="_blank"><i class="fa fa-twitter-square" style="font-size:36px;color:#003366"></i></a>   
+			  <a href="https://www.instagram.com/NJDepartmentofCorrections/" target="_blank"><i class="fa fa-instagram" style="font-size:36px;color:#003366"></i></a>   
+			  <a href="https://www.flickr.com/photos/njdoc/" target="_blank"><i class="fa fa-flickr" style="font-size:36px;color:#003366"></i></a>
+				   <br><br>
+</div> 
+		   </div>
+		   <div class="col-lg-4">             
+             <p>Copyright © <script language="javascript">getCopyright();</script> · All Rights Reserved · New Jersey Department of Corrections          
+		   </p>
+</div>
+		   
+       </div>
+</div>
+
+  
+  <script async type="text/javascript" src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&amp;ns=1&amp;cb=1000250382"></script>
+</body>
+<!-- InstanceEnd -->
+</html>

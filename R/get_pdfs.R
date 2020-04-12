@@ -82,3 +82,25 @@ for (i in 1:length(links)) {
   tryCatch({download.file(links[i], destfile = link_name[i], mode = "wb")}, error = function(e){})
 }
 
+
+
+
+# Pennsylvania ------------------------------------------------------------
+setwd(here::here("data/raw_data/pennsylvania"))
+links <- 
+  read_html("https://www.cor.pa.gov/About%20Us/Statistics/Pages/Monthly-Population-Reports.aspx") %>%
+  html_nodes("a") %>%
+  html_attr('href')
+
+links <- grep("Monthly.*Report.*pdf$", links, value = TRUE)
+links <- links[-grep("Current.*pdf$", links)]
+link_name <- gsub(".*/", "", links)
+links <- paste0("https://www.cor.pa.gov", links)
+for (i in 1:length(links)) {
+  tryCatch({
+    download.file(links[i], destfile = link_name[i], mode = "wb")}, 
+    error = function(e){
+    Sys.sleep(60)
+      download.file(links[i], destfile = link_name[i], mode = "wb")
+  })
+}
