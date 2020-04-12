@@ -3,7 +3,8 @@ data_in_goog_sheet <-
   read_sheet(
     "https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
   )
-
+data_in_goog_sheet %>% 
+  count(covid_scraped_binary)
 # create a safe function
 safe_get <- safely(read_html)
 
@@ -29,7 +30,7 @@ get_alaska_data <- function(alaska_doc) {
            scrape_date = today())
 }
 alaska_data <- get_alaska_data(data_for_use[[2]])
-
+alaska_data
 # Connecticut ------------------------------------------------------------
 
 get_connecticut_covid_data <- function(ct_doc_path) {
@@ -82,7 +83,8 @@ get_delaware_covid_data <- function(delaware_pdf_path) {
 
 del_data <-
   get_delaware_covid_data(data_in_goog_sheet[9, ]$covid_link)
-
+del_data %>% 
+  View()
 # Georgia -----------------------------------------------------------------
 
 get_georgia_covid_data <- function(georgia_doc_path) {
@@ -104,7 +106,8 @@ get_georgia_covid_data <- function(georgia_doc_path) {
     modify_at(2:3,  ~ parse_number(.)) %>%
     mutate(scrape_date = today())
 }
-get_georgia_covid_data(data_for_use[[10]])
+get_georgia_covid_data(data_for_use[[10]]) %>% 
+  View()
 
 
 
@@ -258,3 +261,76 @@ get_mi_covid_data <- function(mi_covid_path){
     download.file(., fn, mode = "wb")
 }
 get_mi_covid_data(data_for_use[[21]])
+
+
+
+# Florida --------------------------------------------------------------
+get_fl_covid_data <- function(fl_doc_path) {
+  fl_data <- fl_doc_path %>%
+    html_nodes("td") %>%
+    html_text() %>%
+    split(1:3) %>%
+    as_tibble()
+  names(fl_data) <-
+    c("facility", "employee_positive", "inmate_positive")
+  fl_data %>%
+    modify_at(2:3,  ~ parse_number(.)) %>%
+    mutate(scrape_date = today())
+}
+get_fl_covid_data(data_for_use[[9]])
+
+
+# Iowa --------------------------------------------------------------------
+
+
+# Kansas ------------------------------------------------------------------
+get_ks_covid_data <- function(ks_doc_path) {
+  data_for_ks <- ks_doc_path %>%
+    html_nodes("td") %>%
+    html_text() %>%
+    split(1:3) %>%
+    as_tibble() %>%
+    modify_at(2:3,  ~ parse_number(.))
+
+  names(data_for_ks) <-
+    c("facility", "staff_positive", "inmate_positive")
+  
+  data_for_ks %>%
+    mutate(scrape_date = today())
+}
+get_ks_covid_data(data_for_use[[16]])
+
+
+# Louisiana ---------------------------------------------------------------
+
+get_la_covid_data <- function(la_doc_path) {
+  la_inmate_data <- la_doc_path %>%
+    html_nodes(
+      ".column-5 , .column-4 , #tablepress-5 .column-3 , #tablepress-5 .column-2 , #tablepress-5 .column-1"
+    ) %>%
+    html_text()
+  column_names <- la_inmate_data[1:5]
+  la_data <- la_inmate_data[6:length(la_inmate_data)] %>%
+    split(1:5) %>%
+    as_tibble() %>%
+    modify_at(2:5,  ~ as.numeric(.))
+  names(la_data) <- column_names
+  la_data <- la_data %>%
+    mutate(scrape_date = today())
+  
+  la_staff_text <- la_doc_path %>%
+    html_nodes("#tablepress-4 .column-3 , #tablepress-4 .column-2 , #tablepress-4 .column-1") %>%
+    html_text()
+  col_staff_names <- la_staff_text[1:3]
+  la_staff_data <- la_staff_text[4:length(la_staff_text)] %>%
+    split(1:3) %>%
+    as_tibble() %>%
+    modify_at(2:3,  ~ as.numeric(.))
+  names(la_staff_data) <- col_staff_names
+  list(staff_data = la_staff_data, inmate_data = la_data)
+}
+get_la_covid_data( data_for_use[[18]])
+
+
+# Minnesota ---------------------------------------------------------------
+
