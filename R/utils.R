@@ -11,8 +11,11 @@ library(rvest)
 library(here)
 library(tidyr)
 library(haven)
-library(tabulizer)
 library(purrr)
+<<<<<<< HEAD
 library(magick)
 library(lubridate)
+=======
+>>>>>>> 84dadc7c38a428e96d25149af00ae43e9ef4ab3f
 library(xml2)
+library(webshot)

@@ -1,4 +1,26 @@
 source(here::here("R/utils.R"))
+
+
+# Delaware ----------------------------------------------------------------
+# https://data.delaware.gov/Public-Safety/Inmate-Population/vnau-c4rn/data
+delaware <- fread("https://data.delaware.gov/api/views/vnau-c4rn/rows.csv")
+names(delaware) <- tolower(names(delaware))
+names(delaware) <- gsub(" ", "_", names(delaware))
+delaware$month <- gsub(".. - ", "", delaware$month)
+# TEMPORARY - DATA ACTUALLY FROM LAST DAY OF MONTH
+delaware$date <- ymd(paste0(delaware$year, delaware$month, "01"))
+
+delaware <-
+  delaware %>%
+  mutate_if(is.character, tolower)
+
+z <-
+  delaware %>%
+  filter(type_of_institution %in% "prison") %>%
+  group_by(date) %>%
+  summarize(prisoners = sum(offender_count))
+
+
 # Oregon ------------------------------------------------------------------
 
 clean_oregon <- function() {
