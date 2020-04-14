@@ -12,8 +12,6 @@ library(here)
 library(tidyr)
 library(haven)
 library(purrr)
-library(magick)
-library(lubridate)
 library(xml2)
 library(webshot)
 
