@@ -1,20 +1,8 @@
 source(here::here("R", "utils.R"))
-data_in_goog_sheet <-
-  read_sheet(
-    "https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
-  )
+
+
 # create a safe function
 safe_get <- safely(read_html)
-
-# scraping of webpages happens heres
-url_data <- data_in_goog_sheet %>%
-  filter(!is.na(link)) %>%
-  pull(link) %>%
-  map( ~ safe_get(.))
-# extract results in a compact way
-data_for_use <- url_data %>%
-  map("result") %>%
-  compact()
 make_facility_table <- function(.data,splits,cols_to_turn_numeric){
   .data %>% 
     split(splits) %>% 
@@ -24,19 +12,18 @@ make_facility_table <- function(.data,splits,cols_to_turn_numeric){
 
 
 # Alaska ------------------------------------------------------------------
-
-get_alaska_data <- function(alaska_doc) {
+get_alaska_covid_data <- function(alaska_doc) {
   alaska_tracker <- alaska_doc %>%
     html_nodes(".tracker_text") %>%
     html_text()
-  tibble(category = alaska_tracker[seq(1, 8, 2)], people = alaska_tracker[seq(2, 8, 2)]) %>%
+  tibble(inmates_tested = alaska_tracker[2],
+         inmates_positive = alaska_tracker[4],
+          inmates_negative = alaska_tracker[6],
+         inmates_pending = alaska_tracker[8]) %>%
     mutate(state = "Alaska",
-           scrape_date = today())
+           scrape_date = today()) 
 }
-alaska_data <- get_alaska_data(data_for_use[[2]])
-
 # Connecticut ------------------------------------------------------------
-
 get_connecticut_covid_data <- function(ct_doc_path) {
   img_path <- ct_doc_path %>%
     html_nodes("img") %>%
@@ -61,12 +48,16 @@ get_connecticut_covid_data <- function(ct_doc_path) {
     scrape_date = today()
   )
 }
-get_connecticut_covid_data(data_for_use[[7]])
-
 
 # Delaware ----------------------------------------------------------------
-
-get_delaware_covid_data <- function(delaware_pdf_path) {
+get_delaware_covid_data <- function(delaware_doc_path) {
+  path_to_pdf <- delaware_doc_path %>%
+    html_nodes("a") %>%
+    html_attr("href") %>%
+    str_subset("\\.pdf") %>% 
+    pluck(2)
+  delaware_pdf_path <- glue("https://doc.delaware.gov{path_to_pdf}")
+  
   # extract the tables from the pdf
   delaware_data <- tabulizer::extract_tables(delaware_pdf_path)
   # make the matrix into a tibble
@@ -85,8 +76,6 @@ get_delaware_covid_data <- function(delaware_pdf_path) {
 }
 
 
-del_data <-
-  get_delaware_covid_data(data_in_goog_sheet[9, ]$link)
 # Georgia -----------------------------------------------------------------
 
 get_georgia_covid_data <- function(georgia_doc_path) {
@@ -102,12 +91,12 @@ get_georgia_covid_data <- function(georgia_doc_path) {
   # split into length 5 list of 20 elements each to make the 20x5 tibble
   georgia_data <- georgia_data %>%
     make_facility_table(1:5,2:3)
-  names(georgia_data) <- names_of_df
+  names(georgia_data) <- c("facilities","staff_positive","inmates_positive","staff_recovered","inmates_recovered")
   
   georgia_data %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state = "Georgia")
 }
-get_georgia_covid_data(data_for_use[[10]]) 
 
 
 
@@ -122,15 +111,15 @@ get_illinois_covid_data <- function(il_doc_path) {
   illinois_data <- illinois_text[4:length(illinois_text)] %>%
     make_facility_table(1:3,2:3)
     
-  names(illinois_data) <- names_of_df
+  names(illinois_data) <- c("facilities","staff_positive","inmates_positive","staff_recovered","inmate_recovered")
   illinois_data %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state = "Illinois")
 }
-get_illinois_covid_data(data_for_use[[13]])
-
 
 
 # Pennsylvania ------------------------------------------------------------
+
 
 get_pa_covid_data <- function(pa_covid_doc_path) {
   pa_text <- pa_covid_doc_path %>%
@@ -140,28 +129,31 @@ get_pa_covid_data <- function(pa_covid_doc_path) {
     html_text() %>%
     str_trim()
   #create a tibble from the data
-  pa_data <- pa_text[11:length(pa_text)] %>%
-    split(1:5) %>%
+  pa_data <- pa_text[16:length(pa_text)] %>%
+    split(1:7) %>%
     as_tibble()
   # names of the dataframe
   names(pa_data) <-
     c(
-      "locations",
-      "employee_positive",
-      "employee_negative",
-      "inmate_positive",
-      "inmate_negative"
+      "facilities",
+      "staff_positive",
+      "staff_negative",
+      "staff_deaths",
+      "inmates_positive",
+      "inmate_negative",
+      "inmate_deaths"
     )
   pa_data <- pa_data %>%
     modify(~ replace(., str_length(.) == 1, NA)) %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state = "Pennsylvania")
   # parse the columns
   pa_data %>%
-    modify_at(2:5,  ~ parse_number(.)) %>%
-    mutate(scrape_date = today())
+    modify_at(2:7,  ~ parse_number(.)) %>%
+    mutate(scrape_date = today(),
+           state = "Pennsylvania")
 }
 
-get_pa_covid_data(data_for_use[[37]])
 
 
 # alabama -----------------------------------------------------------------
@@ -173,13 +165,13 @@ get_ala_covid_data <- function(ala_doc_path) {
   alabama_data <- alabama_text[6:length(alabama_text)] %>%
     make_facility_table(1:5,2:4)
   # adjust the names of the data
-  names(alabama_data) <- alabama_text[1:5]
+  names(alabama_data) <- c("facilities","inmates_tested","test_pending","inmates_positive","inmate_deaths")
   # tag the data as well as with the scrape date
   alabama_data %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state = "Alabama")
 }
 
-get_ala_covid_data(data_for_use[[1]])
 # Arizona -----------------------------------------------------------------
 get_arizona_covid_data <- function(az_doc_path) {
   az_text <- az_doc_path %>%
@@ -194,27 +186,28 @@ get_arizona_covid_data <- function(az_doc_path) {
     c(
       "inmates_tested",
       "inmates_negative",
-      "inmates_confirmed",
+      "inmates_positive",
       "inmates_pending",
       "daily_total_population"
     )
   # split the facilities table up and rename
   az_facility_data <- az_text[6:length(az_text)] %>%
-    make_facility_table(1:6,2:4)
+    make_facility_table(1:6,2:4) 
     names(az_facility_data) <-
     c(
-      "Location",
+      "facilities",
       "inmates_tested",
       "inmates_negative",
-      "inmates_confirmed",
+      "inmates_positive",
       "inmates_pending",
       "daily_total_pop"
     )
-  list(az_totals = az_total_data, az_facility = az_facility_data)
+  list(az_totals = az_total_data, az_facility = az_facility_data)%>% 
+    map(~mutate(.,scrape_date = today(),
+           state = "Arizona"))
 }
 
 
-get_arizona_covid_data(data_for_use[[3]])
 
 # Idaho -------------------------------------------------------------------
 get_idaho_covid_data <- function(idaho_doc_path) {
@@ -228,35 +221,34 @@ get_idaho_covid_data <- function(idaho_doc_path) {
     mutate(state = "Idaho", scrape_date = today())
 }
 
-get_idaho_covid_data(data_for_use[[12]])
 
 
 # Michigan --------------------------------------------------------------------
-get_mi_covid_data <- function(mi_covid_path){
-  
-  imgs <- mi_covid_path %>%
-    html_nodes("img") 
-  
-  
-  fn <- paste0("./data/raw_data/michigan/mi_doc_covid_", 
-               format(Sys.time(), "%Y_%m_%d_%H_%M_%S")
-               , ".png")
-  
-  imgs[8] %>%
-    html_attr("src") %>%
-    tibble() %>% 
-    mutate(link = gsub("/48/", "/3314/", .)) %>%
-    pull(link) %>% 
-    download.file(., fn, mode = "wb")
-  
-  fn <- paste0("./data/raw_data/michigan/mi_doc_staff_covid_", 
-               format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),
-               ".png")
-  imgs[13] %>% 
-    html_attr("src") %>% 
-    download.file(., fn, mode = "wb")
-}
-get_mi_covid_data(data_for_use[[21]])
+# get_mi_covid_data <- function(mi_covid_path){
+#   
+#   imgs <- mi_covid_path %>%
+#     html_nodes("img") 
+#   
+#   
+#   fn <- paste0("./data/raw_data/michigan/mi_doc_covid_", 
+#                format(Sys.time(), "%Y_%m_%d_%H_%M_%S")
+#                , ".png")
+#   
+#   imgs[8] %>%
+#     html_attr("src") %>%
+#     tibble() %>% 
+#     mutate(link = gsub("/48/", "/3314/", .)) %>%
+#     pull(link) %>% 
+#     download.file(., fn, mode = "wb")
+#   
+#   fn <- paste0("./data/raw_data/michigan/mi_doc_staff_covid_", 
+#                format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),
+#                ".png")
+#   imgs[13] %>% 
+#     html_attr("src") %>% 
+#     download.file(., fn, mode = "wb")
+# }
+# get_mi_covid_data(data_for_use[[21]])
 
 
 
@@ -268,13 +260,12 @@ get_fl_covid_data <- function(fl_doc_path) {
     split(1:3) %>%
     as_tibble()
   names(fl_data) <-
-    c("facility", "employee_positive", "inmate_positive")
+    c("facilities", "staff_positive", "inmates_positive")
   fl_data %>%
     modify_at(2:3,  ~ parse_number(.)) %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state = "Florida")
 }
-get_fl_covid_data(data_for_use[[9]])
-
 
 
 
@@ -289,12 +280,12 @@ get_ks_covid_data <- function(ks_doc_path) {
     modify_at(2:3,  ~ parse_number(.))
 
   names(data_for_ks) <-
-    c("facility", "staff_positive", "inmate_positive")
+    c("facilities", "staff_positive", "inmates_positive")
   
   data_for_ks %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state = "Kansas")
 }
-get_ks_covid_data(data_for_use[[16]])
 
 
 # Louisiana ---------------------------------------------------------------
@@ -310,9 +301,10 @@ get_la_covid_data <- function(la_doc_path) {
     split(1:5) %>%
     as_tibble() %>%
     modify_at(2:5,  ~ as.numeric(.))
-  names(la_data) <- column_names
+  names(la_data) <- c("facilities","inmates_positive","inmates_death_underlying_cond","inmates_death","total_deaths")
   la_data <- la_data %>%
-    mutate(scrape_date = today())
+    mutate(scrape_date = today(),
+           state= "Louisiana")
   
   la_staff_text <- la_doc_path %>%
     html_nodes("#tablepress-4 .column-3 , #tablepress-4 .column-2 , #tablepress-4 .column-1") %>%
@@ -323,9 +315,10 @@ get_la_covid_data <- function(la_doc_path) {
     as_tibble() %>%
     modify_at(2:3,  ~ as.numeric(.))
   names(la_staff_data) <- col_staff_names
-  list(staff_data = la_staff_data, inmate_data = la_data)
+  list(staff_data = la_staff_data, inmate_data = la_data) %>% 
+    map(~mutate(.,scrape_date = today(),
+                state = "Louisiana"))
 }
-get_la_covid_data( data_for_use[[18]])
 
 
 
@@ -340,25 +333,24 @@ get_nys_covid_data <- function(nys_doc_path) {
     as_tibble(.name_repair = "minimal")
   names(new_york_text) <-
     c(
-      "staff_confirmed",
-      "incarcerated_confirmed",
-      "parolees_confirmed",
+      "staff_positive",
+      "incarcerated_positive",
+      "parolees_positive",
       "staff_deaths",
       "incarcerated_deaths",
-      "parolees_death"
+      "parolees_deaths"
     )
   new_york_text %>%
-    mutate(state = "NY",
+    mutate(state = "New York",
            scrape_date = today())
 }
 
-get_nys_covid_data(data_for_use[[31]])
-
 
 # Ohio --------------------------------------------------------------------
-
 # more code reformatted from Aaron
-
+not_all_empty_char <- function(x){
+  !all(x == "")
+}
 get_ohio_covid_data <- function(ohio_doc_path) {
   path_to_ohio_pdf <- ohio_doc_path %>%
     html_nodes("h1.alert > a:nth-child(1)") %>%
@@ -382,7 +374,7 @@ get_ohio_covid_data <- function(ohio_doc_path) {
     ) %>%
     map_at(2,
            ~  select_if(., not_all_empty_char)  %>%
-             when(names(.) == "V5" ~ .,
+             when(any(names(.) == "V5")~ .,
                   ~ rename(.,
                            V5 = V6,
                            V6 = V7,
@@ -394,7 +386,7 @@ get_ohio_covid_data <- function(ohio_doc_path) {
     reduce(rbind) %>%
     rename(
       facilities = V1,
-      staff_positives = V2,
+      staff_positive = V2,
       staff_deaths = V3,
       units_quarantine = V4,
       inmates_quarantine = V5,
@@ -409,7 +401,6 @@ get_ohio_covid_data <- function(ohio_doc_path) {
            state = "Ohio")
   list(ohio_facility = facility_ohio, ohio_totals = table_cleaning[[1]])
 }
-get_ohio_covid_data(data_for_use[[34]])
 
 # New Jersey --------------------------------------------------------------
 get_nj_covid_data <- function(nj_doc_path) {
@@ -430,9 +421,9 @@ get_nj_covid_data <- function(nj_doc_path) {
   
   list(confirmed_nj_doc = table_1,
        confirmed_halfway_house_doc = table_2) %>% 
-    map(~mutate(.,scrape_date = today()))
+    map(~mutate(.,scrape_date = today(),
+                state = "New Jersey"))
 }
-get_nj_covid_data(data_for_use[[29]])
 
 # North Dakota ------------------------------------------------------------
 #this function is probably the most likely to break
@@ -461,9 +452,10 @@ get_nd_covid_data <- function(nd_doc_path) {
     )
   names(nd_data) <- c("ndsp", "jrcc", "mrcc", "ycc", "type")
   nd_data %>% 
-    modify_at(1:4,~parse_number(.))
+    modify_at(1:4,~parse_number(.)) %>% 
+    mutate(scrape_date = today(),
+           state = "North Dakota")
 }
-get_nd_covid_data(data_for_use[[33]])
 
 
 
@@ -478,11 +470,12 @@ get_sc_covid_data <- function(sc_doc_path) {
   sc_data <- sc_text[4:length(sc_text)] %>%
     make_facility_table(1:3,2:3)
     
-  names(sc_data) <- table_headers
-  sc_data
+  names(sc_data) <- c("facilities","staff_positive","inmates_positive")
+  sc_data %>% 
+    mutate(scrape_date = today(),
+           state = "South Carolina")
 }
 
-get_sc_covid_data(data_for_use[[39]])
 
 
 # Virginia ----------------------------------------------------------------
@@ -493,10 +486,11 @@ get_virginia_covid_data <- function(virginia_doc_path) {
   table_names <- virginia_text[1:4]
   virginia_data <- virginia_text[5:length(virginia_text)] %>%
     make_facility_table(1:4, 2:4)
-  names(virginia_data) <- table_names
-  virginia_data
+  names(virginia_data) <- c("facilities","inmates_positive","inmates_hospital","staff_positive")
+  virginia_data %>% 
+    mutate(scrape_date = today(),
+           state = "Virginia")
 }
-get_virginia_covid_data(data_for_use[[45]])
 
 
 
@@ -511,7 +505,7 @@ get_washington_covid_data <- function(wash_doc_path) {
   table_1names <- text_table_1[1:3]
   table_1_data <- text_table_1[4:length(text_table_1)] %>%
     make_facility_table(1:3, 2:3)
-  names(table_1_data) <- table_1names
+  names(table_1_data) <- c("facilities","staff_positive","inmates_positive")
   
   table_2_names <- text_table_2[1:4]
   
@@ -526,6 +520,8 @@ get_washington_covid_data <- function(wash_doc_path) {
     confirmed_cases = table_1_data,
     tests_incarcerated = table_2_data,
     isolation_and_quarantine = table_3_data
-  )
+  ) %>% 
+    map(~mutate(.,scrape_date = today(),state = "Washington"))
 }
-get_washington_covid_data(data_for_use[[46]])
+
+
