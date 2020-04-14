@@ -24,30 +24,32 @@ get_alaska_covid_data <- function(alaska_doc) {
            scrape_date = today()) 
 }
 # Connecticut ------------------------------------------------------------
-get_connecticut_covid_data <- function(ct_doc_path) {
-  img_path <- ct_doc_path %>%
-    html_nodes("img") %>%
-    `[`(3) %>%
-    html_attr("src")
-  table_text <- glue("https://portal.ct.gov{img_path}") %>%
-    image_read() %>%
-    image_scale("3000") %>%
-    image_convert(type = "Grayscale") %>%
-    image_trim(fuzz = 60)  %>%
-    ocr() %>%
-    glue() %>%
-    str_extract_all(boundary("word")) %>%
-    unlist()
-  
-  tibble(
-    state = "Connecticut",
-    staff_members_positive = table_text[90],
-    inmates_tested  = table_text[91],
-    inmates_positive = table_text[92],
-    inmates_negative = table_text[93],
-    scrape_date = today()
-  )
-}
+# ct is broken for now because of the difficulty in extracting the text from image
+# as each new image offers new challenges
+# get_connecticut_covid_data <- function(ct_doc_path) {
+#   img_path <- ct_doc_path %>%
+#     html_nodes("img") %>%
+#     `[`(3) %>%
+#     html_attr("src")
+#   table_text <- glue("https://portal.ct.gov{img_path}") %>%
+#     image_read() %>%
+#     image_scale("3000") %>%
+#     image_convert(type = "Grayscale") %>%
+#     image_trim(fuzz = 60)  %>%
+#     ocr() %>%
+#     glue() %>%
+#     str_extract_all(boundary("word")) %>%
+#     unlist()
+#   
+#   tibble(
+#     state = "Connecticut",
+#     staff_members_positive = table_text[90],
+#     inmates_tested  = table_text[91],
+#     inmates_positive = table_text[92],
+#     inmates_negative = table_text[93],
+#     scrape_date = today()
+#   )
+# }
 
 # Delaware ----------------------------------------------------------------
 get_delaware_covid_data <- function(delaware_doc_path) {
