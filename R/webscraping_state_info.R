@@ -353,6 +353,7 @@ get_nys_covid_data <- function(nys_doc_path) {
 not_all_empty_char <- function(x){
   !all(x == "")
 }
+
 get_ohio_covid_data <- function(ohio_doc_path) {
   path_to_ohio_pdf <- ohio_doc_path %>%
     html_nodes("h1.alert > a:nth-child(1)") %>%
@@ -376,13 +377,13 @@ get_ohio_covid_data <- function(ohio_doc_path) {
     ) %>%
     map_at(2,
            ~  select_if(., not_all_empty_char)  %>%
-             when(any(names(.) == "V5")~ .,
+             when(any(names(.) == "V6")~ .,
                   ~ rename(.,
-                           V5 = V6,
                            V6 = V7,
                            V7 = V8,
                            V8 = V9,
-                           V9 = V10
+                           V9 = V10,
+                           V10 = V11 
                   )))
   facility_ohio <- table_cleaning[2:3] %>%
     reduce(rbind) %>%
@@ -403,7 +404,6 @@ get_ohio_covid_data <- function(ohio_doc_path) {
            state = "Ohio")
   list(ohio_facility = facility_ohio, ohio_totals = table_cleaning[[1]])
 }
-
 # New Jersey --------------------------------------------------------------
 get_nj_covid_data <- function(nj_doc_path) {
   new_jersey_text <- nj_doc_path %>%
@@ -481,19 +481,19 @@ get_sc_covid_data <- function(sc_doc_path) {
 
 
 # Virginia ----------------------------------------------------------------
+
 get_virginia_covid_data <- function(virginia_doc_path) {
   virginia_text <- virginia_doc_path %>%
     html_nodes("td , th") %>%
     html_text()
-  table_names <- virginia_text[1:4]
-  virginia_data <- virginia_text[5:length(virginia_text)] %>%
-    make_facility_table(1:4, 2:4)
-  names(virginia_data) <- c("facilities","inmates_positive","inmates_hospital","staff_positive")
+  table_names <- virginia_text[1:5]
+  virginia_data <- virginia_text[6:length(virginia_text)] %>%
+    make_facility_table(1:5, 2:5)
+  names(virginia_data) <- c("facilities","inmates_positive","inmates_hospital","inmate_death","staff_positive")
   virginia_data %>% 
     mutate(scrape_date = today(),
            state = "Virginia")
 }
-
 
 
 # Washington --------------------------------------------------------------
@@ -526,4 +526,34 @@ get_washington_covid_data <- function(wash_doc_path) {
     map(~mutate(.,scrape_date = today(),state = "Washington"))
 }
 
+
+
+# Texas -------------------------------------------------------------------
+
+get_texas_covid_data <- function(tx_doc_path) {
+  tx_text <-  tx_doc_path %>%
+    html_nodes("tr:nth-child(79) td , .positive+ .div_for_table td , .negative td , .pending td") %>%
+    html_text()
+  # subsetting everything since there are currently 107 facilities in tx
+  table_1 <- tx_text[1:214]
+  table_2 <- tx_text[215:(214 * 2)]
+  table_3 <- tx_text[(214 * 2 + 1):(214 * 3)]
+  # reducing the tables to one.
+  reduced_df <- list(table_1, table_2, table_3) %>%
+    map(
+      ~ split(., 1:2) %>%
+        as_tibble(.) %>%
+        rename("facilities" = 1) %>%
+        mutate(facilities = stringr::str_squish(facilities))
+    ) %>%
+    reduce(left_join, by = "facilities") %>%
+    rename(
+      "inmates_pending" = 2,
+      "inmates_negative" = 3,
+      "inmates_positive" = 4
+    )
+  reduced_df %>% 
+    mutate(scrape_date  = today(),
+           state = "Texas")
+}
 
