@@ -1,0 +1,9 @@
+name: "Covid Prison Data"
+exclude: ["data"]
+navbar: 
+  title: "Covid Prison Data"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html

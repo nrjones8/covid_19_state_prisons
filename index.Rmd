@@ -1,5 +1,5 @@
 ---
-output: github_document
+title: "Covid Prison Data"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -13,7 +13,6 @@ knitr::opts_chunk$set(
 
 # covid_19_state_prisons
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 ## What's in this repo?
 The goal of covid_19_state_prisons is to automate the collection of data from various state Department of Corrections into one repository. Specifically, we focused on collecting data related to the number of people who have been tested for NCoV-19 within state correctional facilities as well as historical data regarding state facilities. As a result, this repo has data pertaining to the following
