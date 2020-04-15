@@ -17,3 +17,5 @@ Imports:
     magrittr
 Suggests: 
     testthat
+URL: https://github.com/seathebass/covid_19_state_prisons
+BugReports: https://github.com/seathebass/covid_19_state_prisons/issues
