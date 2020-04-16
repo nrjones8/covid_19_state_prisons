@@ -1,5 +1,6 @@
 name: "Covid Prison Data"
 exclude: ["data"]
+output_dir: "docs"
 navbar: 
   title: "Covid Prison Data"
   left:
