@@ -1,10 +1,19 @@
 name: "Covid Prison Data"
+title: "Covid Prison Data"
+base_url: https://covidprisondata.com
 exclude: ["data"]
 output_dir: "docs"
 navbar: 
-  title: "Covid Prison Data"
-  left:
+  logo:
+    image: images/logo.png
+    href: https://www.covidprisondata.com
+  right:
     - text: "Home"
       href: index.html
     - text: "About"
       href: about.html
+    - icon: fab fa-twitter
+      href: https://twitter.com/DataPrison
+    - icon: fab fa-github
+      href: https://github.com/seathebass/covid_19_state_prisons
+output: distill::distill_article
