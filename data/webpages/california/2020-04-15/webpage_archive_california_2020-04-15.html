@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Microsoft Power BI</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge;">
+<base href="/">
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="format-detection" content="telephone=no">
+<link rel="shortcut icon" href="/images/PowerBI_Favicon.ico">
+<script>
+        var viewLoadingStarted = Date.now();
+
+
+
+        var skipCheckPowerBIAccessToken = true;
+        var powerBIAccessToken = 'any';
+        var reportId = 'any';
+        var getExplorationUrl = '/public/';
+        var getConceptualSchemaUrl = '/public/reports/conceptualschema';
+        var queryDataUrl = '/public/reports/querydata';
+        var resourceLoaderUrl = '/public/reports/resourcePackage/';
+        var routingUrl = '/public/routing/cluster/';
+        var resourceLoaderIncludePackageId = true;
+        var isLoadReportMessagePending = false;
+        var isReportControllerInitialized = false;
+        var isAnonymousEmbed = true;
+        var accessToken;
+        var oDataFilter;
+        var resolvedClusterUri = 'https://wabi-us-gov-iowa-redirect.analysis.usgovcloudapi.net/';
+        var resourceKey;
+        var resolveClusterError;
+        var modelsAndExplorationResponse;
+        var frontLoadStatus;
+        var frontLoadError;
+        var conceptualSchemaResponse;
+        var loadingState = "#Loading#";
+        var errorState = "#Error#";
+        var isConceptualSchemaCached;
+        var isModelsAndExplorationCached;
+        var conceptualSchemaDuration;
+        var clusterResolutionFrontLoadStartTime = null;
+        var clusterResolutionFrontLoadEndTime = null;
+        var modelsAndExplorationFrontLoadStartTime = null;
+        var modelsAndExplorationFrontLoadEndTime = null;
+        var conceptualSchemaFrontLoadStartTime = null;
+        var conceptualSchemaFrontLoadEndTime = null;
+        var responseRequestId;
+        var conceptualSchemaRequestId;
+        var conceptualSchemaResponseRequestId;
+        var modelsAndExplorationRequestId;
+
+        //register for messages from parent window
+        window.addEventListener("message", receiveMessage, false);
+
+        //handle message from parent window
+        function receiveMessage(event) {
+            if (event.data) {
+                try {
+                    var messageData = jsCommon.JsonExtensions.isJsonString(event.data) ? JSON.parse(event.data) : event.data;
+                    if (messageData.action === 'setPage') {
+                        if (!messageData.pageName) {
+                            return;
+                        }
+
+                        var pageName = messageData.pageName;
+                        if (isReportControllerInitialized) {
+                            setPage(pageName);
+                        }
+                    }
+                }
+                catch (e) {
+                    var embedReportLoadMessage = {
+                        event: 'error',
+                        error: 'Invalid message data:' + e.message,
+                    };
+                    window.parent.postMessage(JSON.stringify(embedReportLoadMessage), '*');
+                    return;
+                }
+            }
+        }
+
+        function resolveCluster() {
+            try {
+                var activityId = telemetrySessionId;
+                var requestId = '488d34d4-73bd-4e47-b98a-059aecfdc744';
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    try {
+                        if(xhr.readyState == XMLHttpRequest.DONE) {
+                            clusterResolutionFrontLoadEndTime = Date.now();
+                            var response = JSON.parse(xhr.responseText);
+                            if(response.FixedClusterUri) {
+                                resolvedClusterUri = response.FixedClusterUri;
+                                // Bug 121315: P2W frontload flow not working
+                                // getModelsAndExploration();
+                            }
+                            else {
+                                resolveClusterError = "FixedClusterUri is empty, activityid:" + activityId + "requestid:" + requestId;
+                            }
+                        }
+                    }
+                    catch(e) {
+                        resolveClusterError = "Exception:"+e.message +", activityid:" + activityId + "requestid:" + requestId;
+                    }
+                }
+
+                var apimClusterUri = getAPIMUrl(clusterUri);
+                xhr.open("GET", apimClusterUri + routingUrl + tenantId);
+                setGETRequestHeaders(xhr, telemetrySessionId, requestId, resourceKey);
+                clusterResolutionFrontLoadStartTime = Date.now();
+                xhr.send();
+            }
+            catch(e) {
+                resolveClusterError = "Exception:"+e.message +", activityid:" + activityId + "requestid:" + requestId;
+            }
+        }
+
+        function getModelsAndExploration() {
+            try {
+                var activityId = telemetrySessionId;
+                var requestId = 'be3cd82d-a76f-4e01-8a04-9a415a9305a1';
+                modelsAndExplorationResponse = loadingState;
+
+                if(!resolvedClusterUri) {
+                    modelsAndExplorationResponse = errorState;
+                    return;
+                }
+
+                var resolvedAPIMCluster = getAPIMUrl(resolvedClusterUri);
+                url = resolvedAPIMCluster + "/public/reports/" + resourceKey + "/modelsAndExploration?preferReadOnlySession=true";
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    try{
+                        var status = xhr.status;
+                        if(xhr.readyState == XMLHttpRequest.DONE) {
+                            modelsAndExplorationFrontLoadEndTime = Date.now();
+                            var isSuccess = status >= 200 && status < 300 || status === 304;
+                            frontLoadStatus = status;
+                            if(isSuccess) {
+                                var data = JSON.parse(xhr.responseText);
+                                responseRequestId =  xhr.getResponseHeader('requestId');
+                                isModelsAndExplorationCached = responseRequestId && responseRequestId !== requestId ? true: false;
+                                modelsAndExplorationRequestId = responseRequestId ? responseRequestId : requestId;
+                                setModelsAndExploration(data);
+                                getConceptualSchema();
+                            }
+                            else {
+                                try {
+                                    var data = JSON.parse(xhr.response);
+                                    if (data && data.error) {
+                                        frontLoadError = data.error;
+                                    }
+                                }
+                                catch (e) {
+                                    // If we cannot parse an error out of the response, just fall through to the end to return undefined
+                                }
+                                setModelsAndExploration(errorState);
+                            }
+                        }
+                    }
+                    catch(e) {
+                        setModelsAndExploration(errorState);
+                    }
+                }
+
+                xhr.open("GET", url);
+                setGETRequestHeaders(xhr, telemetrySessionId, requestId, resourceKey);
+                modelsAndExplorationFrontLoadStartTime = Date.now();
+                xhr.send();
+            }
+            catch(e) {
+                setModelsAndExploration(errorState);
+            }
+        }
+
+        function getConceptualSchema() {
+            try {
+                var modelId;
+                conceptualSchemaResponse = loadingState;
+
+                if(modelsAndExplorationResponse.models && modelsAndExplorationResponse.models.length > 0) {
+                    modelId = modelsAndExplorationResponse.models[0].id;
+                }
+                else {
+                    setConceptualSchema(errorState);
+                    return;
+                }
+
+                var activityId = telemetrySessionId;
+                var requestId = 'b734eee4-d0e5-4e04-9dd4-87ff45164ffc';
+                conceptualSchemaResponse = loadingState;
+
+                var resolvedAPIMCluster = getAPIMUrl(resolvedClusterUri);
+                url = resolvedAPIMCluster + getConceptualSchemaUrl;
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    try {
+                        conceptualSchemaFrontLoadEndTime = Date.now();
+                        var status = xhr.status;
+                        if(xhr.readyState == XMLHttpRequest.DONE) {
+                            var isSuccess = status >= 200 && status < 300 || status === 304;
+                            if(isSuccess) {
+                                var data = JSON.parse(xhr.responseText);
+                                conceptualSchemaDuration = conceptualSchemaFrontLoadEndTime - conceptualSchemaFrontLoadStartTime;
+                                responseRequestId =  xhr.getResponseHeader('requestId');
+                                isConceptualSchemaCached = responseRequestId && responseRequestId !== requestId ? true: false;
+                                conceptualSchemaRequestId = requestId;
+                                conceptualSchemaResponseRequestId = responseRequestId ? responseRequestId : requestId;
+                                setConceptualSchema(data);
+                            }
+                            else {
+                                setConceptualSchema(errorState);
+                            }
+                        }
+                    }
+                    catch(e) {
+                        setConceptualSchema(errorState);
+                    }
+                }
+
+                var data = "{\"modelIds\":["+ modelId +"]}";
+                xhr.open("POST", url);
+                setPOSTRequestHeaders(xhr, telemetrySessionId, requestId, resourceKey);
+                conceptualSchemaFrontLoadStartTime = Date.now();
+                xhr.send(data);
+            }catch(e) {
+                setConceptualSchema(errorState);
+            }
+        }
+
+        function setGETRequestHeaders(xhr, activityId, requestId, resourceKey) {
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader('ActivityId', activityId);
+            xhr.setRequestHeader('RequestId', requestId);
+            xhr.setRequestHeader('X-PowerBI-ResourceKey', resourceKey);
+        }
+
+        function setPOSTRequestHeaders(xhr, activityId, requestId, resourceKey) {
+            setGETRequestHeaders(xhr, activityId, requestId, resourceKey);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+        }
+
+        function setConceptualSchema(data) {
+            conceptualSchemaResponse = data;
+            notifyConceptualSchemaComplete();
+        }
+
+        function setModelsAndExploration(data) {
+            modelsAndExplorationResponse = data;
+            notifyModelsAndExplorationComplete();
+        }
+
+        function  notifyModelsAndExplorationComplete() {
+            if(powerbi && powerbi.explore && powerbi.explore.reportembed && powerbi.explore.reportembed.notifyModelsAndExplorationReady) {
+                powerbi.explore.reportembed.notifyModelsAndExplorationReady(modelsAndExplorationResponse);
+            }
+        }
+
+        function notifyConceptualSchemaComplete() {
+            if(powerbi && powerbi.explore && powerbi.explore.reportembed && powerbi.explore.reportembed.notifyConceptualSchemaReady) {
+                powerbi.explore.reportembed.notifyConceptualSchemaReady(conceptualSchemaResponse);
+            }
+        }
+
+        function getAPIMUrl(clusterUri) {
+            var parser = document.createElement('a');
+            parser.href = clusterUri;
+
+            var protocol =  parser.protocol;
+            var hostname =  parser.hostname;
+
+            var hostNameTakens = hostname.split(".");
+            hostNameTakens[0] = hostNameTakens[0].replace("-redirect", "");
+            hostNameTakens[0] = hostNameTakens[0].replace("global-", "");
+            hostNameTakens[0] += "-api";
+            var apiHostName = hostNameTakens.join(".");
+            return protocol + "//" + apiHostName;
+        }
+
+        function isResponseCached(responseRequestId, requestId) {
+            if(responseRequestId && responseRequestId !== requestId) {
+                return true;
+            }
+            return false;
+        }
+
+        var baseUrl = window.location.protocol + '//' + window.location.host;
+        var powerbi = {
+            session : {
+                userInfo: {
+                    alternateEmail: '',
+                }
+            }
+        };
+
+        powerbi.telemetrySamplingRules = 'embed';
+        powerbi.build = '13.0.12816.311';
+        powerbi.buildDetails = '13.0.12816.311 ((Main).200411-1356)';
+        powerbi.clientVersion = '2003.4.025';
+        powerbi.customVisualsUrl = 'https://visuals.azureedge.net/;https://visuals2.azureedge.net/;https://extendcustomvisual.blob.core.windows.net/';
+        powerbi.visualCDNBlobContainerUrl = 'prod';
+        powerbi.common = {};
+        powerbi.common.cultureInfo = 'en-US';
+        powerbi.common.formattingLocale = 'en-US';
+        var useCDN = 'False';
+        var clusterUri =  'https://api.powerbigov.us';
+        var cdnUrl = '';
+        var previousTenantId = '';
+        var telemetrySessionId =  'acd5b5f5-035b-4476-bb81-bd9802867412';
+        var sessionSource = "Embed";
+        var allowTelemetry = true;
+        var appInsightsV2InstrKey = '8adeeaf0-ca71-ff43-a91e-7afbce21a5f2';
+        var appInsightsV2EndpointUrl = 'https://dc.applicationinsights.us/v2/track';
+        var initialDashboardContainer = undefined;
+        var appLoadError = undefined;
+
+        var  url = window.location.href;
+        var reportQueryString = new RegExp('[\\?&]r=([^&#]*)').exec(url);
+        if (reportQueryString) {
+            try {
+                var embedCode = decodeURIComponent(reportQueryString[1]);
+                var encodedReport = JSON.parse(atob(embedCode));
+                var tenantId = encodedReport.t;
+                resourceKey = encodedReport.k;
+                if (resolvedClusterUri == '') {
+                    resolvedClusterUri = undefined;
+                    resolveCluster();
+                } else {
+                    // Bug 121315: P2W frontload flow not working
+                    // getModelsAndExploration();
+                }
+            }
+            catch(e) {
+                resolveClusterError = "Exception: " + e.message + ", activityid: " + telemetrySessionId;
+            }
+        }
+    </script><link rel="stylesheet" href="13.0.12816.311/styles/reportembed.bundle.min.css">
+</head>
+<body>
+    <meta property="og:locale" content="en_US">
+<meta property="og:title" content="Power BI Report">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Report powered by Power BI">
+<meta property="og:image" content="https://app.powerbigov.us/13.0.12816.311/images/PowerBI125x125.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Power BI Report">
+<meta name="twitter:description" content="Report powered by Power BI">
+<meta name="twitter:image:src" content="https://app.powerbigov.us/13.0.12816.311/images/PowerBI125x125.png">
+<meta name="twitter:image" content="https://app.powerbigov.us/13.0.12816.311/images/PowerBI125x125.png">
+<!-- perf: loading screen directly on page --><div id="pbi-loading"><svg version="1.1" class="pulsing-svg-item" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve"><g><path class="st1" d="M31.2,27.5h-0.7v-1.4h0.7c1.5,0,2.7-1.2,2.7-2.7V9.1c0-1.5-1.2-2.7-2.7-2.7H4.8c-1.5,0-2.7,1.2-2.7,2.7v14.2c0,1.5,1.2,2.7,2.7,2.7h0.7v1.4H4.8c-2.2,0-4.1-1.8-4.1-4.1V9.1c0-2.2,1.8-4.1,4.1-4.1h26.4c2.2,0,4.1,1.8,4.1,4.1v14.2C35.3,25.6,33.5,27.5,31.2,27.5"></path><path class="st1" d="M9.1,30.9c-1,0-1.9-0.8-1.9-1.9l0-4.4c0-1,0.8-1.9,1.9-1.9h0c1,0,1.9,0.8,1.9,1.9l0,4.4C11,30.1,10.1,30.9,9.1,30.9L9.1,30.9z"></path><path class="st1" d="M15,30.9c-1,0-1.9-0.8-1.9-1.9l0-11.2c0-1,0.8-1.9,1.9-1.9c1,0,1.9,0.8,1.9,1.9l0,11.2C16.9,30.1,16.1,30.9,15,30.9"></path><path class="st1" d="M26.9,30.9c-1,0-1.9-0.8-1.9-1.9l0-15.9c0-1,0.8-1.9,1.9-1.9c1,0,1.9,0.8,1.9,1.9l0,15.9C28.8,30,28,30.9,26.9,30.9"></path><path class="st1" d="M21,30.9c-1,0-1.9-0.8-1.9-1.9l0-8.3c0-1,0.8-1.9,1.9-1.9c1,0,1.9,0.8,1.9,1.9l0,8.3C22.9,30.1,22,30.9,21,30.9"></path></g></svg></div>
+
+    <div id="pbiAppPlaceHolder">
+        <ui-view></ui-view><root></root>
+</div>
+
+    <script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['globalize.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/jquery.globalize/globalize.min.js" defer></script><script type="text/javascript">this.parseTimeMarkers['globalize.min.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['globalize.culture.en-US.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/jquery.globalize/globalize.culture.en-US.js" defer></script><script type="text/javascript">this.parseTimeMarkers['globalize.culture.en-US.js'].end = Date.now();</script><script>
+
+        powerbi.common.localizedStrings = '';
+    </script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['hash-manifest.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/hash-manifest.js"></script><script type="text/javascript">this.parseTimeMarkers['hash-manifest.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['reportembed.externals.bundle.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/reportembed.externals.bundle.min.js"></script><script type="text/javascript">this.parseTimeMarkers['reportembed.externals.bundle.min.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['powerbiportal.dependencies.bundle.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/powerbiportal.dependencies.bundle.min.js"></script><script type="text/javascript">this.parseTimeMarkers['powerbiportal.dependencies.bundle.min.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['reportembed.common.bundle.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/reportembed.common.bundle.min.js"></script><script type="text/javascript">this.parseTimeMarkers['reportembed.common.bundle.min.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['powerbiportal.explore.bundle.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/powerbiportal.explore.bundle.min.js"></script><script type="text/javascript">this.parseTimeMarkers['powerbiportal.explore.bundle.min.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['reportembed.bundle.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/reportembed.bundle.min.js"></script><script type="text/javascript">this.parseTimeMarkers['reportembed.bundle.min.js'].end = Date.now();</script><script type="text/javascript">this.parseTimeMarkers = this.parseTimeMarkers || {};this.parseTimeMarkers['reportEmbed.min.js'] = { nominalStart: Date.now(), start: Date.now()};</script><script type="text/javascript" src="13.0.12816.311/scripts/reportEmbed.min.js"></script><script type="text/javascript">this.parseTimeMarkers['reportEmbed.min.js'].end = Date.now();</script>
+</body>
+</html>

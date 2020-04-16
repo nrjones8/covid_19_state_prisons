@@ -5,12 +5,11 @@
 
 <!-- badges: start -->
 
-<!-- badges: end -->
-
-## What’s in this repo?
-
-The goal of covid\_19\_state\_prisons is to automate the collection of
-data from various state Department of Corrections into one repository.
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end --> \#\# What’s in this repo? The goal of
+covid\_19\_state\_prisons is to automate the collection of data from
+various state Department of Corrections into one repository.
 Specifically, we focused on collecting data related to the number of
 people who have been tested for NCoV-19 within state correctional
 facilities as well as historical data regarding state facilities. As a
