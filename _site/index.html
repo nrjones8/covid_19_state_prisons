@@ -14,7 +14,7 @@
 <title>Covid Prison Data</title>
 
 <script src="site_libs/header-attrs-2.1/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -23,6 +23,25 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.13/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/jszip-1.10.20/jszip.min.js"></script>
+<script src="site_libs/pdfmake-1.10.20/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.10.20/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.10.20/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.10.20/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.flash.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.print.min.js"></script>
+<link href="site_libs/dt-ext-colreorder-1.10.20/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-colreorder-1.10.20/js/dataTables.colReorder.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -295,28 +314,18 @@ $(document).ready(function () {
 </div>
 
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="covid_19_state_prisons" class="section level1">
-<h1>covid_19_state_prisons</h1>
-<!-- badges: start -->
-<!-- badges: end -->
-<div id="whats-in-this-repo" class="section level2">
-<h2>What’s in this repo?</h2>
-<p>The goal of covid_19_state_prisons is to automate the collection of data from various state Department of Corrections into one repository. Specifically, we focused on collecting data related to the number of people who have been tested for NCoV-19 within state correctional facilities as well as historical data regarding state facilities. As a result, this repo has data pertaining to the following</p>
+<p>A week ago, a team of data scientists, criminologists, and law professors began a concerted effort to gather data to learn more about how incarcerated people and correctional staff are being affected by Covid-19. High-quality data are critical to provide transparency so advocates, experts, and government officials can be informed by the best information available. Here, data produced by states is integrated into one resource to facilitate access, a comparative perspective, and analysis. This is a work and progress and we appreciate feedback and suggestions.</p>
+<p>While we make every effort to ensure that the information scraped is accurate and updated everyday, there are the following caveats. First, not all state DOC’s update their information everyday or even every business day. As a result, while the scraper for data pertaining to Covid-19 is run daily, the data retrieved by the scraper may not reflect daily changes. While we make every effort to ensure that states who do not update their Covid-19 data daily are clearly marked, this all ultimately depends on the frequency that a state’s department of correction updates their data.</p>
 <ul>
 <li>Number of incarcerated people tested in correctional facilities by state (If data is available by the state’s DOC)</li>
-<li>Number of incarcerated people who tested positive for NCoV-19 in correctional facilities by state</li>
-<li>Number of incarcerated people who tested negative for NCoV-19 in correctional facilities by state</li>
+<li>Number of incarcerated people who tested positive for Covid-19 in correctional facilities by state</li>
+<li>Number of incarcerated people who tested negative for Covid-19 in correctional facilities by state</li>
 <li>Historical Population data for state prisons (if available).</li>
 <li>Web scrapers built to extract data from varying state DOCs</li>
 </ul>
-<p>While we make every effort to ensure that the information scraped is accurate and updated everyday, there are the following caveats. First, not all state DOC’s update their information everyday or even every business day. As a result, while the scraper for data pertaining to NCoV-19 is run daily, the data retrieved by the scraper may not reflect daily changes. While we make every effort to ensure that states who do not update their covid data daily are clearly marked, this all ultimately depends on the frequency that a state’s department of correction updates their data.</p>
-</div>
-<div id="special-thanks" class="section level2">
-<h2>Special thanks</h2>
-<p>This repository is the product of the collaboration of the following people: <a href="https://github.com/jacobkap">Jacob Kaplan</a>, <a href="https://github.com/concannon">Connor Concannon</a>, <a href="https://github.com/amlittman">Aaron Littman</a>, <a href="https://github.com/lvhimabindu">Hima Lakkaraju</a>, <a href="https://github.com/wesweaver">Wes Weaver</a>, and Oren Gur</p>
-</div>
-</div>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="htmlwidget-be673cdb9cecd1d1d802" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be673cdb9cecd1d1d802">{"x":{"filter":"none","extensions":["Buttons","ColReorder"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["Texas","New York","Illinois","Georgia","New Jersey","Florida","Louisiana","Virginia","Kansas","Arizona","Pennsylvania","Washington","South Carolina","Alaska"],["2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15","2020-04-15"],["284","160","146","127","100","84","65","40","21","17","17","11","0","0"],["284","160","146","127","100","84","65","40","21","17","17","11","0","0"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>State<\/th>\n      <th>Scrape Date<\/th>\n      <th>Total Inm Positive<\/th>\n      <th>Total Staff Positive<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":25,"dom":"Bfrtip","buttons":["copy","csv","excel","pdf","print"],"colReorder":true,"scrollX":true,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script>
 
 
 
