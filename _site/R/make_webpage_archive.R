@@ -10,15 +10,26 @@ get_all_current_website_pages <- function() {
   for (i in 1:nrow(sheet_info)) {
     if (!is.na(sheet_info$link[i])) {
       save_website_pages(url = sheet_info$link[i], state = sheet_info$state[i])
-      
     }
+    print(paste0(sheet_info$state[i], " completed!"))
   }
+}
+
+
+download_site_pdf <- function(directory, url, link) {
+  temp <- html_session(url) %>%
+    jump_to(URLencode(link, reserved = FALSE))
+  download.file(temp$url, 
+                destfile = paste0(directory, 
+                                  gsub(".*/|%20", "", temp$url)),
+                mode = "wb",
+                quiet = TRUE)
 }
 
 save_website_pages <- function(url, state) {
   
-  directory <- paste0(here::here("data/webpages//"), state, "//", 
-                      lubridate::today(), "//")
+  directory <- paste0(here::here("data/webpages//"), state, "/", 
+                      lubridate::today(), "/")
   
   dir.create(directory)
   
@@ -32,60 +43,108 @@ save_website_pages <- function(url, state) {
     download.file(url, destfile = pdf_name, mode = "wb")
   } else {
     
+    links <- tryCatch({
+        read_html(url) %>%
+        html_nodes("a") %>%
+        html_attr('href')
+    },
+    error = function(e){
+      links <- NULL
+      print(paste0("Links failure in ", state))
+    })
     
-    links <- 
-      read_html(url) %>%
-      html_nodes("a") %>%
-      html_attr('href')
+
     
     if (length(links) > 0) {
       links <- grep(".pdf$", links, value = TRUE)
       if (length(links) > 0) {
         for (link in links) {
-
-          tryCatch({
-            temp <- html_session(url) %>% 
-              jump_to(URLencode(link, reserved = FALSE))
-            Sys.sleep(2)
-            download.file(temp$url, 
-                          destfile = paste0(directory, gsub(".*/|%20", "", temp$url)),
-                          mode = "wb")
-          }, error = function(e) {
-            print(paste("Could not download PDF:", 
-                        gsub(".*/|%20", "", temp$url),  "in:", state))
-          })
           
-
+          result <- ""
+          attempt <- 1
+          while(attempt == 1 | (is.null(result) && attempt <= 5)) {
+            if (attempt > 1) {
+              Sys.sleep(5)        
+            }
+            attempt <- attempt + 1
+            result <- tryCatch({
+              download_site_pdf(directory, url, link)
+            },
+            error = function(e){
+              result <- NULL
+            })
+            if (is.null(result) & attempt == 6) {
+              print(paste("Could not download PDF:", 
+                          gsub(".*/|%20", "", link),  "in:", state))
+            }
+          }
         }
       }
     }
     
-    tryCatch({
-      webshot::webshot(url,
-                       file  = png_name,
-                       delay = 1)
-    }, error = function(e) {
-      print(paste("Load error for PNG in:", state))
-    })
+    # Save page as PNG
+    result <- ""
+    attempt <- 1
+    while(attempt == 1 | (is.null(result) && attempt <= 5)) {
+      if (attempt > 1) {
+        Sys.sleep(5)        
+      }
+      attempt <- attempt + 1
+      result <- tryCatch({
+        webshot::webshot(url,
+                         file  = png_name,
+                         delay = 7)
+      },
+      error = function(e){
+        result <- NULL
+      })
+      if (is.null(result) && attempt == 6) {
+        print(paste("Load error for PNG in:", state))
+      }
+    }
     
-    Sys.sleep(2)
-    tryCatch({
-      webshot::webshot(url, 
-                       file      = pdf_name,
-                       delay     = 1,
-                       zoom      = 2)
-    }, error = function(e) {
-      print(paste("Load error for PDF in:", state))
-    })
-    Sys.sleep(2)
     
-    tryCatch({
-      html_object = xml2::read_html(url)
-      xml2::write_xml(html_object, file = html_name)
-    }, error = function(e) {
-      print(paste("Load error for HTML in:", state))
-    })
-    Sys.sleep(2)
+    # Save page as PDF
+    result <- ""
+    attempt <- 1
+    while(attempt == 1 | (is.null(result) && attempt <= 5)) {
+      if (attempt > 1) {
+        Sys.sleep(5)        
+      }
+      attempt <- attempt + 1
+      result <- tryCatch({
+        webshot::webshot(url,
+                         file  = pdf_name,
+                         delay = 7)
+      },
+      error = function(e){
+        result <- NULL
+      })
+      if (is.null(result) && attempt == 6) {
+        print(paste("Load error for PDF in:", state))
+      }
+    }
+    
+    # Save page as HTML
+    result <- ""
+    attempt <- 1
+    while(attempt == 1 | (!is.null(result) && attempt <= 5)) {
+      if (attempt > 1) {
+        Sys.sleep(5)        
+      }
+      attempt <- attempt + 1
+      result <- tryCatch({
+        html_object <- xml2::read_html(url)
+        xml2::write_html(html_object, file = html_name)
+      },
+      error = function(e){
+        result <- 'ERROR'
+      })
+      if (!is.null(result) && attempt == 6) {
+        print(paste("Load error for HTML in:", state))
+      }
+    }
+    
   }
 }
 
