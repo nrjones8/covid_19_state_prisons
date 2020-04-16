@@ -16,4 +16,7 @@ library(magick)
 library(lubridate)
 library(xml2)
 library(webshot)
-
+devtools::install_github("jacobkap/crimeutils")
+library(crimeutils)
+library(DT)
+library(ggplot2)

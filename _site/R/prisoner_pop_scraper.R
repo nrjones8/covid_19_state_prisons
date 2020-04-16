@@ -99,3 +99,84 @@ page <-
   html_text()
 
 
+
+
+
+
+# Michigan --------------------------------------------------------------------
+
+clean_michigan <- function(){
+# from https://www.michigan.gov/documents/corrections/MDOC_2017_Statistical_Report_644556_7.pdf
+fn <- here::here("data/raw_data/michigan/MDOC_2017_Statistical_Report_644556_7.pdf")
+
+#Admissions
+t <- extract_tables(file = fn, 
+                    pages = 89,
+                    output = "data.frame",
+                    method = "lattice") %>% 
+  as_tibble(.name_repair = "unique")
+  
+
+t$...1 %>%
+  as.data.frame() %>% 
+  mutate(year = as.integer(str_sub(PrisonNumericalPercent, 1, 4)),
+         intakes = as.double(
+           gsub("\\(|,", "", 
+                str_sub(PrisonNumericalPercent, 5, 10)))
+         ) %>% 
+  filter(between(year, 2003, 2017)) %>%
+  mutate(intakes = case_when(intakes == 88801 ~ 8880,
+                             intakes == 92303 ~ 9230,
+                             TRUE ~ intakes)) %>% 
+  select(year, intakes) -> intakes
+
+#Year end population
+t <- extract_tables(file = fn, 
+                    pages = 152,
+                    output = "data.frame",
+                    method = "stream") %>% 
+  as_tibble(.name_repair = "unique")
+
+t$...1 %>% as.data.frame() %>%
+  select(X, Year.End) %>% 
+  filter(!X == "Year") %>% 
+  mutate(year = as.integer(X),
+         year_end_population = as.double(
+           gsub(",", "", Year.End))
+  ) %>% 
+  filter(between(year, 2003, 2017)) %>%
+  select(year, year_end_population) -> year_end
+
+
+# Discharges
+t <- extract_tables(file = fn, 
+                    pages = 227,
+                    output = "data.frame",
+                    method = "stream") %>% 
+  as_tibble(.name_repair = "unique")
+
+t$...1 %>% 
+  as.data.frame() %>%
+  select(X, `Actual`) %>% 
+  filter(!X %in% c("", "Year")) %>% 
+  mutate(year = as.integer(X),
+         discharged_to_parole = as.double(
+           gsub(",", "", Actual))
+  ) %>% 
+  select(year, discharged_to_parole) -> discharges
+
+
+discharges %>% 
+  left_join(., intakes, by = "year") %>% 
+  left_join(., year_end, by = "year") %>% 
+  select(year, intakes, discharged_to_parole, year_end_population) -> mi_pop_data
+
+ return(mi_pop_data)
+
+}
+
+
+clean_michigan()
+
+
+
