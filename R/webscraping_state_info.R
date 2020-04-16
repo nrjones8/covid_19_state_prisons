@@ -225,6 +225,33 @@ get_idaho_covid_data <- function(idaho_doc_path) {
 
 
 
+# Indiana ---------------------------------------------------------------------
+get_indiana_covid_data <- function(indiana_doc_path){
+in_off_data <- in_doc_path %>% 
+  read_html() %>%
+  html_node("table") %>%
+  html_table() %>% 
+  rename(facilities = `Correctional Facility`,
+         inmate_positive = `Offender Confirmed`,
+         inmate_death = `Offender Death`) %>% 
+  filter(!grepl("Total", facilities))
+
+
+in_staff_data <- in_doc_path %>%
+  read_html() %>% 
+  html_nodes(xpath = '//*[@id="main"]/div/div[2]/article/div/section/p[2]/span') %>% 
+  html_text() %>% 
+  tibble::enframe() %>% 
+  mutate(value = parse_number(value))# %>%  pull(value)
+
+list(offenders = in_off_data,
+     staff = in_staff_data) %>% 
+  map(~mutate(.,scrape_date = today(),
+              state = "Indiana"))
+  
+  
+}
+
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){
 #   
