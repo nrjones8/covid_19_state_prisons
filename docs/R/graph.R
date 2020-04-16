@@ -1,3 +1,5 @@
+
+
 make_mirror_graph <- function(data) {
   
   data$scrape_date <- NULL
@@ -22,11 +24,11 @@ make_mirror_graph <- function(data) {
                   x = "",
                   y = "")+
     ggplot2::coord_flip()+
-    ggplot2::scale_y_continuous(breaks = data$count,
-                                labels = abs(data$count)) +
-    patchwork::plot_annotation(caption = "State Departments of Corrections differ in their testing and reporting practices. 
-                  Data were collected from various State DOCs on 4/13.
-                  See covidprisonsdata.com for more") +
+    ggplot2::scale_y_continuous(breaks = pretty(data$count),
+                                labels = abs(pretty(data$count))) +
+    patchwork::plot_annotation(caption = glue::glue("State Departments of Corrections differ in their testing and reporting practices. 
+                  Data were collected from various State DOCs on {make_pretty_date(today())}.
+                  See covidprisondata.com for more")) +
     ggplot2::scale_fill_manual(values = c("#d95f02", "#1b9e77")) + 
     ggplot2::guides(fill = FALSE) +
     ggplot2::geom_text(x     = 8, 

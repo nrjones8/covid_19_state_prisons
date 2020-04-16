@@ -2,7 +2,7 @@
 title: "About Us"
 ---
 
-A week ago, a team of data scientists, criminologists, and law professors began a concerted effort to gather data to learn more about how incarcerated people and correctional staff are being affected by Covid-19. High-quality data are critical to provide transparency so advocates, experts, and government officials can be informed by the best information available. Here, data produced by states is integrated into one resource to facilitate access, a comparative perspective, and analysis. This is a work and progress and we appreciate feedback and suggestions.		
+A week ago, a team of data scientists, criminologists, and law professors began a concerted effort to gather data to learn more about how incarcerated people and correctional staff are being affected by Covid-19. High-quality data are critical to provide transparency so advocates, experts, and government officials can be informed by the best information available. Here, data produced by states are integrated into one resource to facilitate access, a comparative perspective, and analysis. This is a work and progress and we appreciate feedback and suggestions.		
 
 
 [Sebastian Hoyos-Torres](https://twitter.com/seathebass92) is a data analyst in the Philadelphia DATA Lab and a Ph.D. student in the John Jay College of Criminal Justice at the City University of New York.

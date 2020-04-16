@@ -20,3 +20,8 @@ devtools::install_github("jacobkap/crimeutils")
 library(crimeutils)
 library(DT)
 library(ggplot2)
+
+make_pretty_date <- function(date) {
+  return(paste0(lubridate::month(date, label = TRUE, abbr = FALSE),
+                " ", lubridate::day(date), ", ", lubridate::year(date)))
+}
