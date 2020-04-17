@@ -1,0 +1,1134 @@
+facilities,inmates_positive,inmates_deaths,scrape_date,state,inmates_tested,test_pending,inmates_negative,inmates_pending,daily_total_pop,staff_positive,staff_recovered,inmates_recovered,staff_negative,staff_deaths,inmates_hospital,inmates_step_down,recovered,inmates_death_underlying_cond,total_deaths
+Branchville (BTC),2,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Correctional Industrial (CIF),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Chain O' Lakes (COL),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Heritage Trail (HTCF),1,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Putnamville (ISF),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Indiana State Prison (ISP),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pendleton (ISR),1,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Indiana Women's Prison (IWP),13,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Plainfield (IYC),11,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Edinburgh (JCU),1,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Logansport Juvenile (LJCF),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+LaPorte Juvenile (LPJ),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Miami (MCF),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Madison (MCU),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+New Castle (NCCF),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pendleton Juvenile (PNJ),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Reception Diagnostic (RDC),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Rockville (RTC),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+South Bend Community (SBCRC),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Westville (WCC),87,1,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wabash Valley (WVCF),0,0,2020-04-16,Indiana,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Alex City,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ATEF,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bibb,NA,NA,2020-04-16,Alabama,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Birmingham,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bullock,NA,NA,2020-04-16,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Camden,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Childersburg,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Donaldson,NA,NA,2020-04-16,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Easterling,NA,NA,2020-04-16,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Elba,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Elmore,NA,NA,2020-04-16,Alabama,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Fountain,NA,NA,2020-04-16,Alabama,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Frank Lee,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton A&I,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton CBF,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Holman,NA,NA,2020-04-16,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kilby,NA,NA,2020-04-16,Alabama,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Limestone,NA,NA,2020-04-16,Alabama,5,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Loxley,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mobile,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Montgomery,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Alabama,NA,NA,2020-04-16,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Red Eagle,NA,NA,2020-04-16,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+St Clair,NA,NA,2020-04-16,Alabama,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Staton,NA,NA,2020-04-16,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tutwiler,NA,NA,2020-04-16,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ventress,NA,NA,2020-04-16,Alabama,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Safford,0,NA,2020-04-16,Arizona,0,NA,0,0,1617,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CACF*,0,NA,2020-04-16,Arizona,6,NA,6,0,1268,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Douglas,0,NA,2020-04-16,Arizona,3,NA,3,0,2125,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eyman,3,NA,2020-04-16,Arizona,12,NA,8,1,5663,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Yuma,0,NA,2020-04-16,Arizona,4,NA,4,0,4897,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Phoenix West*,0,NA,2020-04-16,Arizona,0,NA,0,0,479,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Red Rock*,0,NA,2020-04-16,Arizona,12,NA,12,0,2008,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Phoenix,0,NA,2020-04-16,Arizona,1,NA,1,0,572,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Perryville,0,NA,2020-04-16,Arizona,0,NA,0,0,4147,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MRC,0,NA,2020-04-16,Arizona,0,NA,0,0,18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lewis,0,NA,2020-04-16,Arizona,3,NA,3,0,4595,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kingman*,0,NA,2020-04-16,Arizona,5,NA,5,0,3210,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florence West*,0,NA,2020-04-16,Arizona,0,NA,0,0,666,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+PRC,0,NA,2020-04-16,Arizona,0,NA,0,0,10,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florence,9,NA,2020-04-16,Arizona,21,NA,7,5,3620,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Winslow,0,NA,2020-04-16,Arizona,2,NA,2,0,1345,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tucson,1,NA,2020-04-16,Arizona,20,NA,19,0,4939,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marana*,4,NA,2020-04-16,Arizona,5,NA,1,0,452,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Apalachee CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Blackwater CFPrivately-operated by
+                  The GEO Group Inc.*",34,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,9,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Century CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Columbia CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cross City CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Everglades CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florida State Prison,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+FWRC,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gadsden CFPrivately-operated by MTC.*,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hernando CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jackson CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lake City CFPrivately-operated by CoreCivic.*,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Liberty CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lowell CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marion CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Martin CI,1,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Okaloosa CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Santa Rosa CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"South Bay CFPrivately-operated by
+                  The GEO Group Inc.*",0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SFRC,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sumter CI,2,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tomoka CI,7,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wakulla CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Zephyrhills CI,0,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 2,NA,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 3,NA,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 4,NA,NA,2020-04-16,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Atlanta TC,1,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA
+ASMP,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Autry State Prison,6,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,4,2,0,NA,NA,NA,NA,NA,NA,NA
+Bacon PDC,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,1,0,NA,NA,NA,NA,NA,NA,NA
+Bainbridge PSAT,3,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,2,0,3,NA,NA,NA,NA,NA,NA,NA
+Baldwin State Prison,4,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,1,NA,NA,NA,NA,NA,NA,NA
+Burruss CTC,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,3,1,0,NA,NA,NA,NA,NA,NA,NA
+Calhoun State Prison,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,8,0,0,NA,NA,NA,NA,NA,NA,NA
+Clayton TC,1,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Coastal State Prison,6,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Dooly State Prison,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+GDCP,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Johnson State Prison,16,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,4,0,5,NA,NA,NA,NA,NA,NA,NA
+Lee Arrendale State Prison,1,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Lee State Prison,8,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,16,4,4,NA,NA,NA,NA,NA,NA,NA
+Macon State Prison,9,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+McEver PDC,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Metro Reentry Facility,2,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,4,0,0,NA,NA,NA,NA,NA,NA,NA
+Metro TC,1,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA
+Patten PDC,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Phillips State Prison,5,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,5,0,3,NA,NA,NA,NA,NA,NA,NA
+Phillips TC,1,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,2,1,0,NA,NA,NA,NA,NA,NA,NA
+Rutledge State Prison,1,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Turner RSAT,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Valdosta State Prison,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Ware State Prison,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+West Central ITF,0,NA,2020-04-16,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+​Crossroads ATC,1,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Danville,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Fox Valley ATC,4,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​General Office,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Graham,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Hill,3,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Joliet Treatment Center,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kewanee LSRC,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Logan,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Menard,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​North Lawndale ATC ,5,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Parole,0,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Pontiac,1,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Sheridan,10,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Stateville,122,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,69,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Stateville NRC,1,NA,2020-04-16,Illinois,NA,NA,NA,NA,NA,29,NA,NA,NA,NA,NA,NA,NA,NA,NA
+El Dorado,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ellsworth,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hutchinson,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lansing,29,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,36,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Larned,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Norton,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Topeka,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Winfield,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wichita Work Release,1,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+KJCC,0,NA,2020-04-16,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Central Office,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Albion,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Benner Township,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Cambridge Springs,NA,NA,2020-04-16,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA
+Camp Hill​,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,2,NA,NA,3,NA,NA,NA,NA,NA,NA
+​Chester,NA,NA,2020-04-16,Pennsylvania,NA,NA,1,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Coal Township,NA,NA,2020-04-16,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Dallas,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Fayette,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,3,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Forest,NA,NA,2020-04-16,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Frackville,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,16,NA,NA,NA,NA,NA,NA
+​Greene,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Houtzdale,0,NA,2020-04-16,Pennsylvania,NA,NA,4,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Huntingdon,NA,NA,2020-04-16,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Laurel Highlands,NA,NA,2020-04-16,Pennsylvania,NA,NA,6,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Mahanoy,NA,NA,2020-04-16,Pennsylvania,NA,NA,6,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Mercer,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Muncy,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,6,NA,NA,NA,NA,NA,NA
+​Phoenix,19,1,2020-04-16,Pennsylvania,NA,NA,6,NA,NA,8,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Pine Grove,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Quehanna Boot Camp,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Retreat,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,3,NA,NA,6,NA,NA,NA,NA,NA,NA
+​Rockview,NA,NA,2020-04-16,Pennsylvania,NA,NA,4,NA,NA,1,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Smithfield,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,1,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Somerset,NA,NA,2020-04-16,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Waymart,NA,NA,2020-04-16,Pennsylvania,NA,NA,4,NA,NA,2,NA,NA,24,NA,NA,NA,NA,NA,NA
+​Training Academy,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Parole,NA,NA,2020-04-16,Pennsylvania,NA,NA,NA,NA,NA,2,NA,NA,5,NA,NA,NA,NA,NA,NA
+Allendale,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Broad River,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Camille Graham,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Evans,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Goodman,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kershaw,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kirkland,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Leath,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lee,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lieber,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Livesay,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MacDougall,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Manning,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+McCormick,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Palmer,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Perry,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ridgeland,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Trenton,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Turbeville,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tyger River,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wateree River,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Non-Institutional Staff,0,NA,2020-04-16,South Carolina,NA,NA,NA,NA,NA,8,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Augusta Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Baskerville Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Bland Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Brunswick CCAP,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Buckingham Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Caroline Correctional Unit,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Central Virginia Correctional Unit #13,11,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Chesterfield Women’s CCAP,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Coffeewood Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Cold Springs CCAP,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Cold Springs Correctional Unit #10,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Deerfield Correctional Center (includes Deerfield Work Centers),0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,0,NA,NA,NA,NA
+Dillwyn Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Fluvanna Correctional Center for Women,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Green Rock Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Greensville Correctional Center (includes Greensville Work Center),0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Halifax Correctional Unit,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Harrisonburg Men’s CCAP,2,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Haynesville Correctional Center,4,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,1,NA,NA,NA,NA
+Haynesville Correctional Unit #17,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Indian Creek Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Keen Mountain Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Lawrenceville Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Lunenburg Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Marion Correctional Treatment Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Nottoway Correctional Center (includes Nottoway Work Center),0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Patrick Henry Correctional Unit,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Pocahontas State Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Red Onion State Prison,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+River North Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Rustburg Correctional Unit,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+St. Brides Correctional Center,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Stafford Men’s CCAP,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+State Farm Correctional Complex,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,0,NA,NA,NA,NA
+Sussex I State Prison,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Sussex II State Prison,11,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,2,NA,NA,NA,NA
+Virginia Correctional Center for Women (includes State Farm Work Center),13,1,2020-04-16,Virginia,NA,NA,NA,NA,NA,27,NA,NA,NA,NA,3,NA,NA,NA,NA
+Wallens Ridge State Prison,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Wise Correctional Unit,0,0,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Probation & Parole — Eastern Region,NA,NA,2020-04-16,Virginia,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Probation & Parole — Central Region,NA,NA,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Probation & Parole — Western Region,NA,NA,2020-04-16,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Airway Heights Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cedar Creek Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clallam Bay Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Coyote Ridge Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Larch Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mission Creek Corrections Center for Women,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Monroe Correctional Complex,10,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Olympic Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stafford Creek Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington Corrections Center,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington Corrections Center for Women,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington State Penitentiary,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Other Location*** (Based on location where individual tested positive for COVID-19),NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+County Jail,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Medical Center,1,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Work Release,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ahtanum View Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bellingham Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bishop Lewis Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Brownstone Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eleanor Chase House Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Helen B. Ratcliff Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Longview Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Olympia Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Peninsula Work Release**,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Progress House Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Reynolds Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tri-Cities Work Release,0,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 1,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 2,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 3,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 4,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 5,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 6,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 7,NA,NA,2020-04-16,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Allen Correctional Center,0,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,0,0,NA,NA,0,NA,0,0,0,0
+B.B. Rayburn Correctional Center,28,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,2,0,NA,NA,0,NA,7,0,0,0
+David Wade Correctional Center,0,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,3,2,NA,NA,0,NA,0,0,0,0
+Dixon Correctional Institute,1,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,5,0,NA,NA,0,NA,1,0,0,0
+Elayn Hunt Correctional Center,5,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,8,1,NA,NA,0,NA,0,0,0,0
+Louisiana Correctional Institute for Women,24,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,11,0,NA,NA,0,NA,7,0,0,0
+Louisiana State Penitentiary,17,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,20,3,NA,NA,1,NA,8,0,0,0
+Raymond Laborde Correctional Center,3,0,2020-04-16,Louisiana,NA,NA,NA,NA,NA,11,5,NA,NA,0,NA,2,0,0,0
+Allred,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Baten,3,NA,2020-04-16,Texas,NA,NA,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bell,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Beto,118,NA,2020-04-16,Texas,NA,NA,15,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Boyd,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bradshaw,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bridgeport,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Briscoe,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Byrd,4,NA,2020-04-16,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clemens,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clements,1,NA,2020-04-16,Texas,NA,NA,2,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Coffield,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cole,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Connally,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cotulla,0,NA,2020-04-16,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crain,0,NA,2020-04-16,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Dalhart,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Daniel,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Darrington,3,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Diboll,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Dominguez,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Duncan,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eastham,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ETTF,0,NA,2020-04-16,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ellis,0,NA,2020-04-16,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Estelle,5,NA,2020-04-16,Texas,NA,NA,32,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Estes,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ferguson,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Formby,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Fort Stockton,1,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Garza East,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Garza West,1,NA,2020-04-16,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gist,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Glossbrenner,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goodman,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goree,2,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gurney,1,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Halbert,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton,0,NA,2020-04-16,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Havins,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Henley,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hightower,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hilltop,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hobby,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hodge,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Holliday,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hospital Galveston,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hughes,0,NA,2020-04-16,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Huntsville,0,NA,2020-04-16,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hutchins,1,NA,2020-04-16,Texas,NA,NA,0,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 1,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 3,0,NA,2020-04-16,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 4,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Johnston,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jordan,3,NA,2020-04-16,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kegans,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kyle,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+LeBlanc,16,NA,2020-04-16,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lewis,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lindsay,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lockhart,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lopez,3,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Luther,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lychner,1,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lynaugh,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marlin,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+McConnell,0,NA,2020-04-16,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Michael,0,NA,2020-04-16,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Middleton,0,NA,2020-04-16,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Montford,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Moore B.,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Moore C.,0,NA,2020-04-16,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mountain View,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Murray,26,NA,2020-04-16,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Neal,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ney,0,NA,2020-04-16,Texas,NA,NA,2,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pack,2,NA,2020-04-16,Texas,NA,NA,11,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Plane,0,NA,2020-04-16,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Polunsky,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Powledge,0,NA,2020-04-16,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ramsey,0,NA,2020-04-16,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Roach,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Robertson,1,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Rudd,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sanchez,2,NA,2020-04-16,Texas,NA,NA,3,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sansaba,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sayle,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Scott,10,NA,2020-04-16,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Segovia,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Skyview,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Smith,4,NA,2020-04-16,Texas,NA,NA,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stevenson,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stiles,0,NA,2020-04-16,Texas,NA,NA,7,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stringfellow,13,NA,2020-04-16,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Telford,54,NA,2020-04-16,Texas,NA,NA,9,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Terrell,2,NA,2020-04-16,Texas,NA,NA,8,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Torres,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Travis,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tulia,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Vance,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wallace,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wheeler,0,NA,2020-04-16,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Willacy,0,NA,2020-04-16,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Woodman,12,NA,2020-04-16,Texas,NA,NA,6,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wynne,38,NA,2020-04-16,Texas,NA,NA,4,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Young,0,NA,2020-04-16,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bambi,0,NA,2020-04-16,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Headquarters (TUM5, Airport Office, CI Headquarters, ISRB, SWRBO, SWR Performance Center, Maple Lane)",NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Prisons,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Airway Heights Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cedar Creek Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clallam Bay Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Coyote Ridge Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Larch Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mission Creek Corrections Center for Women,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Monroe Correctional Complex,7,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Olympic Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stafford Creek Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington Corrections Center,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington Corrections Center for Women,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington State Penitentiary,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Other Location*** (Based on location where individual tested positive for COVID-19),NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+County Jail,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Medical Center,1,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Work Release,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ahtanum View Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bellingham Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bishop Lewis Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Brownstone Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eleanor Chase House Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Helen B. Ratcliff Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Longview Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Olympia Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Peninsula Work Release**,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Progress House Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Reynolds Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tri-Cities Work Release,0,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 1,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 2,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 3,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 4,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 5,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 6,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 7,NA,NA,2020-04-14,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Alex City,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ATEF,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bibb,NA,NA,2020-04-14,Alabama,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Birmingham,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bullock,NA,NA,2020-04-14,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Camden,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Childersburg,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Donaldson,NA,NA,2020-04-14,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Easterling,NA,NA,2020-04-14,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Elba,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Elmore,NA,NA,2020-04-14,Alabama,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Fountain,NA,NA,2020-04-14,Alabama,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Frank Lee,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton A&I,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton CBF,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Holman,NA,NA,2020-04-14,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kilby,NA,NA,2020-04-14,Alabama,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Limestone,NA,NA,2020-04-14,Alabama,5,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Loxley,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mobile,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Montgomery,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Alabama,NA,NA,2020-04-14,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Red Eagle,NA,NA,2020-04-14,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+St Clair,NA,NA,2020-04-14,Alabama,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Staton,NA,NA,2020-04-14,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tutwiler,NA,NA,2020-04-14,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ventress,NA,NA,2020-04-14,Alabama,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Safford,0,NA,2020-04-14,Arizona,0,NA,0,0,1621,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CACF*,0,NA,2020-04-14,Arizona,6,NA,6,0,1268,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Douglas,0,NA,2020-04-14,Arizona,3,NA,3,0,2133,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eyman,3,NA,2020-04-14,Arizona,11,NA,8,0,5666,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Yuma,0,NA,2020-04-14,Arizona,4,NA,3,1,4898,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Phoenix West*,0,NA,2020-04-14,Arizona,0,NA,0,0,480,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Red Rock*,0,NA,2020-04-14,Arizona,12,NA,12,0,2014,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Phoenix,0,NA,2020-04-14,Arizona,1,NA,1,0,565,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Perryville,0,NA,2020-04-14,Arizona,0,NA,0,0,4165,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MRC,0,NA,2020-04-14,Arizona,0,NA,0,0,18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lewis,0,NA,2020-04-14,Arizona,3,NA,3,0,4598,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kingman*,0,NA,2020-04-14,Arizona,5,NA,5,0,3234,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florence West*,0,NA,2020-04-14,Arizona,0,NA,0,0,673,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+PRC,0,NA,2020-04-14,Arizona,0,NA,0,0,10,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florence,3,NA,2020-04-14,Arizona,18,NA,5,10,3626,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Winslow,0,NA,2020-04-14,Arizona,2,NA,2,0,1353,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tucson,1,NA,2020-04-14,Arizona,19,NA,17,1,4951,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marana*,3,NA,2020-04-14,Arizona,4,NA,1,0,450,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Apalachee CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Blackwater CFPrivately-operated by
+                  The GEO Group Inc.*",33,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,8,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Century CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Columbia CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cross City CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Everglades CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florida State Prison,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+FWRC,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gadsden CFPrivately-operated by MTC.*,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hernando CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jackson CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lake City CFPrivately-operated by CoreCivic.*,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Liberty CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lowell CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marion CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Okaloosa CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Santa Rosa CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"South Bay CFPrivately-operated by
+                  The GEO Group Inc.*",0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SFRC,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sumter CI,2,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tomoka CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wakulla CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Zephyrhills CI,0,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 2,NA,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 3,NA,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 4,NA,NA,2020-04-14,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Atlanta TC,1,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA
+ASMP,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Autry State Prison,1,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,3,2,0,NA,NA,NA,NA,NA,NA,NA
+Bacon PDC,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Bainbridge PSAT,3,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,2,0,3,NA,NA,NA,NA,NA,NA,NA
+Baldwin State Prison,4,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Burruss CTC,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Calhoun State Prison,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,6,0,0,NA,NA,NA,NA,NA,NA,NA
+Clayton TC,1,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Coastal State Prison,2,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Dooly State Prison,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+GDCP,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Johnson State Prison,16,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,3,0,4,NA,NA,NA,NA,NA,NA,NA
+Lee Arrendale State Prison,1,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Lee State Prison,8,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,14,4,4,NA,NA,NA,NA,NA,NA,NA
+Macon State Prison,8,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+McEver PDC,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Metro Reentry Facility,2,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Metro TC,1,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA
+Phillips State Prison,5,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,5,0,3,NA,NA,NA,NA,NA,NA,NA
+Phillips TC,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Valdosta State Prison,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Ware State Prison,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+West Central ITF,0,NA,2020-04-14,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+​Crossroads ATC,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Danville,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Fox Valley ATC,3,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,6,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​General Office,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Graham,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Hill,2,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Joliet Treatment Center,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kewanee LSRC,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Logan,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Menard,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​North Lawndale ATC ,5,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Parole,0,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Pontiac,1,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Sheridan,10,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Stateville,123,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,65,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Stateville NRC,1,NA,2020-04-14,Illinois,NA,NA,NA,NA,NA,26,NA,NA,NA,NA,NA,NA,NA,NA,NA
+El Dorado,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ellsworth,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hutchinson,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lansing,18,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,21,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Larned,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Norton,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Topeka,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Winfield,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wichita Work Release,1,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+KJCC,0,NA,2020-04-14,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Central Office,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Albion,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Benner Township,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Cambridge Springs,NA,NA,2020-04-14,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA
+Camp Hill​,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,2,NA,NA,3,NA,NA,NA,NA,NA,NA
+​Chester,NA,NA,2020-04-14,Pennsylvania,NA,NA,1,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Coal Township,NA,NA,2020-04-14,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Dallas,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Fayette,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,3,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Forest,NA,NA,2020-04-14,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Frackville,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,16,NA,NA,NA,NA,NA,NA
+​Greene,NA,NA,2020-04-14,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Houtzdale,0,NA,2020-04-14,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Huntingdon,NA,NA,2020-04-14,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Laurel Highlands,NA,NA,2020-04-14,Pennsylvania,NA,NA,4,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Mahanoy,NA,NA,2020-04-14,Pennsylvania,NA,NA,6,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Mercer,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Muncy,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,6,NA,NA,NA,NA,NA,NA
+​Phoenix,14,1,2020-04-14,Pennsylvania,NA,NA,6,NA,NA,7,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Pine Grove,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Quehanna Boot Camp,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Retreat,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,3,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Rockview,NA,NA,2020-04-14,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Smithfield,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,1,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Somerset,NA,NA,2020-04-14,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Waymart,NA,NA,2020-04-14,Pennsylvania,NA,NA,4,NA,NA,1,NA,NA,24,NA,NA,NA,NA,NA,NA
+​Training Academy,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Parole,NA,NA,2020-04-14,Pennsylvania,NA,NA,NA,NA,NA,2,NA,NA,5,NA,NA,NA,NA,NA,NA
+Allendale,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Broad River,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Camille Graham,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Evans,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Goodman,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kershaw,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kirkland,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Leath,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lee,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lieber,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Livesay,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MacDougall,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Manning,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+McCormick,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Palmer,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Perry,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ridgeland,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Trenton,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Turbeville,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tyger River,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wateree River,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Non-Institutional Staff,0,NA,2020-04-14,South Carolina,NA,NA,NA,NA,NA,8,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Appalachian Men’s CCAP,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Augusta Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Baskerville Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Bland Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Brunswick CCAP,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Buckingham Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Caroline Correctional Unit,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Central Virginia Correctional Unit #13,8,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Chesterfield Women’s CCAP,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Coffeewood Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Cold Springs CCAP,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Cold Springs Correctional Unit #10,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Deerfield Correctional Center (includes Deerfield Work Centers),0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Dillwyn Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Fluvanna Correctional Center for Women,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Green Rock Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Greensville Correctional Center (includes Greensville Work Center),0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Halifax Correctional Unit,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Harrisonburg Men’s CCAP,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Haynesville Correctional Center,3,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,1,NA,NA,NA,NA
+Haynesville Correctional Unit #17,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Indian Creek Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Keen Mountain Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Lawrenceville Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Lunenburg Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Marion Correctional Treatment Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Nottoway Correctional Center (includes Nottoway Work Center),0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Patrick Henry Correctional Unit,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Pocahontas State Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Red Onion State Prison,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+River North Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Rustburg Correctional Unit,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+St. Brides Correctional Center,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Stafford Men’s CCAP,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+State Farm Correctional Complex,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,0,NA,NA,NA,NA
+Sussex I State Prison,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Sussex II State Prison,4,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,2,NA,NA,NA,NA
+Virginia Correctional Center for Women (includes State Farm Work Center),21,1,2020-04-14,Virginia,NA,NA,NA,NA,NA,21,NA,NA,NA,NA,3,NA,NA,NA,NA
+Wallens Ridge State Prison,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Wise Correctional Unit,0,0,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Probation & Parole — Eastern Region,NA,NA,2020-04-14,Virginia,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Probation & Parole — Central Region,NA,NA,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Probation & Parole — Western Region,NA,NA,2020-04-14,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Allen Correctional Center,0,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,0,0,NA,NA,0,NA,0,0,0,0
+B.B. Rayburn Correctional Center,24,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,2,0,NA,NA,0,NA,7,0,0,0
+David Wade Correctional Center,0,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,3,2,NA,NA,0,NA,0,0,0,0
+Dixon Correctional Institute,1,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,4,0,NA,NA,0,NA,1,0,0,0
+Elayn Hunt Correctional Center,4,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,7,0,NA,NA,0,NA,0,0,0,0
+Louisiana Correctional Institute for Women,18,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,10,0,NA,NA,0,NA,0,0,0,0
+Louisiana State Penitentiary,11,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,16,0,NA,NA,1,NA,6,0,0,0
+Raymond Laborde Correctional Center,2,0,2020-04-14,Louisiana,NA,NA,NA,NA,NA,10,3,NA,NA,0,NA,1,0,0,0
+Allred,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Baten,1,NA,2020-04-14,Texas,NA,NA,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bell,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Beto,97,NA,2020-04-14,Texas,NA,NA,13,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Boyd,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bradshaw,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bridgeport,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Briscoe,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Byrd,2,NA,2020-04-14,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clemens,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clements,0,NA,2020-04-14,Texas,NA,NA,2,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Coffield,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cole,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Connally,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cotulla,0,NA,2020-04-14,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crain,0,NA,2020-04-14,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Dalhart,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Daniel,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Darrington,2,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Diboll,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Dominguez,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Duncan,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eastham,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ETTF,0,NA,2020-04-14,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ellis,0,NA,2020-04-14,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Estelle,2,NA,2020-04-14,Texas,NA,NA,31,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Estes,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ferguson,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Formby,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Fort Stockton,0,NA,2020-04-14,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Garza East,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Garza West,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gist,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Glossbrenner,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goodman,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goree,2,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gurney,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Halbert,0,NA,2020-04-14,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Havins,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Henley,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hightower,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hilltop,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hobby,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hodge,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Holliday,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hospital Galveston,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hughes,0,NA,2020-04-14,Texas,NA,NA,3,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Huntsville,0,NA,2020-04-14,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hutchins,1,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 1,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 3,0,NA,2020-04-14,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 4,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Johnston,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jordan,1,NA,2020-04-14,Texas,NA,NA,0,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kegans,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kyle,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+LeBlanc,5,NA,2020-04-14,Texas,NA,NA,4,4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lewis,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lindsay,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lockhart,0,NA,2020-04-14,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lopez,1,NA,2020-04-14,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Luther,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lychner,1,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lynaugh,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marlin,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+McConnell,0,NA,2020-04-14,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Michael,0,NA,2020-04-14,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Middleton,0,NA,2020-04-14,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Montford,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Moore B.,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Moore C.,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mountain View,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Murray,26,NA,2020-04-14,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Neal,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ney,0,NA,2020-04-14,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pack,1,NA,2020-04-14,Texas,NA,NA,11,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Plane,0,NA,2020-04-14,Texas,NA,NA,2,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Polunsky,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Powledge,0,NA,2020-04-14,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ramsey,0,NA,2020-04-14,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Roach,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Robertson,1,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Rudd,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sanchez,1,NA,2020-04-14,Texas,NA,NA,3,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sansaba,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sayle,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Scott,1,NA,2020-04-14,Texas,NA,NA,5,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Segovia,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Skyview,0,NA,2020-04-14,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Smith,2,NA,2020-04-14,Texas,NA,NA,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stevenson,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stiles,0,NA,2020-04-14,Texas,NA,NA,6,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stringfellow,10,NA,2020-04-14,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Telford,37,NA,2020-04-14,Texas,NA,NA,8,14,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Terrell,1,NA,2020-04-14,Texas,NA,NA,8,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Torres,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Travis,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tulia,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Vance,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wallace,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wheeler,0,NA,2020-04-14,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Willacy,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Woodman,11,NA,2020-04-14,Texas,NA,NA,5,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wynne,30,NA,2020-04-14,Texas,NA,NA,4,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Young,0,NA,2020-04-14,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bambi,0,NA,2020-04-14,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Headquarters (TUM5, Airport Office, CI Headquarters, ISRB, SWRBO, SWR Performance Center, Maple Lane)",NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Prisons,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Airway Heights Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cedar Creek Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clallam Bay Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Coyote Ridge Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Larch Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mission Creek Corrections Center for Women,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Monroe Correctional Complex,10,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Olympic Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stafford Creek Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington Corrections Center,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington Corrections Center for Women,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Washington State Penitentiary,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Other Location*** (Based on location where individual tested positive for COVID-19),NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+County Jail,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Medical Center,1,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Work Release,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ahtanum View Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bellingham Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bishop Lewis Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Brownstone Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eleanor Chase House Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Helen B. Ratcliff Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Longview Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Olympia Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Peninsula Work Release**,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Progress House Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Reynolds Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tri-Cities Work Release,0,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 1,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 2,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 3,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 4,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 5,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 6,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Section 7,NA,NA,2020-04-15,Washington,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Alex City,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ATEF,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bibb,NA,NA,2020-04-15,Alabama,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Birmingham,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bullock,NA,NA,2020-04-15,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Camden,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Childersburg,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Donaldson,NA,NA,2020-04-15,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Easterling,NA,NA,2020-04-15,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Elba,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Elmore,NA,NA,2020-04-15,Alabama,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Fountain,NA,NA,2020-04-15,Alabama,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Frank Lee,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton A&I,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton CBF,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Holman,NA,NA,2020-04-15,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kilby,NA,NA,2020-04-15,Alabama,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Limestone,NA,NA,2020-04-15,Alabama,5,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Loxley,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mobile,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Montgomery,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+North Alabama,NA,NA,2020-04-15,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Red Eagle,NA,NA,2020-04-15,Alabama,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+St Clair,NA,NA,2020-04-15,Alabama,3,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Staton,NA,NA,2020-04-15,Alabama,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tutwiler,NA,NA,2020-04-15,Alabama,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ventress,NA,NA,2020-04-15,Alabama,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Safford,0,NA,2020-04-15,Arizona,0,NA,0,0,1621,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+CACF*,0,NA,2020-04-15,Arizona,6,NA,6,0,1268,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Douglas,0,NA,2020-04-15,Arizona,3,NA,3,0,2129,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eyman,3,NA,2020-04-15,Arizona,12,NA,8,1,5665,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Yuma,0,NA,2020-04-15,Arizona,4,NA,3,1,4896,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Phoenix West*,0,NA,2020-04-15,Arizona,0,NA,0,0,479,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Red Rock*,0,NA,2020-04-15,Arizona,12,NA,12,0,2013,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Phoenix,0,NA,2020-04-15,Arizona,1,NA,1,0,564,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Perryville,0,NA,2020-04-15,Arizona,0,NA,0,0,4156,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MRC,0,NA,2020-04-15,Arizona,0,NA,0,0,18,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lewis,0,NA,2020-04-15,Arizona,3,NA,3,0,4595,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kingman*,0,NA,2020-04-15,Arizona,5,NA,5,0,3224,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florence West*,0,NA,2020-04-15,Arizona,0,NA,0,0,672,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+PRC,0,NA,2020-04-15,Arizona,0,NA,0,0,10,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florence,9,NA,2020-04-15,Arizona,18,NA,8,1,3624,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Winslow,0,NA,2020-04-15,Arizona,2,NA,2,0,1350,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tucson,1,NA,2020-04-15,Arizona,20,NA,19,0,4940,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marana*,4,NA,2020-04-15,Arizona,5,NA,1,0,450,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Apalachee CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Blackwater CFPrivately-operated by
+                  The GEO Group Inc.*",33,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,8,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Century CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Columbia CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cross City CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Everglades CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Florida State Prison,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+FWRC,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gadsden CFPrivately-operated by MTC.*,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hernando CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jackson CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lake City CFPrivately-operated by CoreCivic.*,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Liberty CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lowell CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marion CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Okaloosa CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Santa Rosa CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"South Bay CFPrivately-operated by
+                  The GEO Group Inc.*",0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+SFRC,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sumter CI,2,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tomoka CI,7,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wakulla CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Zephyrhills CI,0,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 2,NA,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 3,NA,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Community Corrections Region 4,NA,NA,2020-04-15,Florida,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Atlanta TC,1,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA
+ASMP,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Autry State Prison,6,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,4,2,0,NA,NA,NA,NA,NA,NA,NA
+Bacon PDC,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,1,1,0,NA,NA,NA,NA,NA,NA,NA
+Bainbridge PSAT,3,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,0,3,NA,NA,NA,NA,NA,NA,NA
+Baldwin State Prison,4,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,1,0,1,NA,NA,NA,NA,NA,NA,NA
+Burruss CTC,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Calhoun State Prison,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,8,0,0,NA,NA,NA,NA,NA,NA,NA
+Clayton TC,1,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Coastal State Prison,2,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Dooly State Prison,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+GDCP,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Johnson State Prison,16,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,4,0,4,NA,NA,NA,NA,NA,NA,NA
+Lee Arrendale State Prison,1,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+Lee State Prison,8,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,16,4,4,NA,NA,NA,NA,NA,NA,NA
+Macon State Prison,9,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+McEver PDC,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Metro Reentry Facility,2,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,3,0,0,NA,NA,NA,NA,NA,NA,NA
+Metro TC,1,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,0,0,1,NA,NA,NA,NA,NA,NA,NA
+Phillips State Prison,5,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,5,0,3,NA,NA,NA,NA,NA,NA,NA
+Phillips TC,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,1,0,NA,NA,NA,NA,NA,NA,NA
+Rutledge State Prison,1,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Turner RSAT,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+Valdosta State Prison,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,0,0,0,NA,NA,NA,NA,NA,NA,NA
+Ware State Prison,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,1,0,0,NA,NA,NA,NA,NA,NA,NA
+West Central ITF,0,NA,2020-04-15,Georgia,NA,NA,NA,NA,NA,2,0,0,NA,NA,NA,NA,NA,NA,NA
+​Crossroads ATC,1,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Danville,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Fox Valley ATC,3,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​General Office,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Graham,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Hill,2,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Joliet Treatment Center,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kewanee LSRC,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Logan,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Menard,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​North Lawndale ATC ,5,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Parole,0,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Pontiac,1,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Sheridan,10,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Stateville,123,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,65,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Stateville NRC,1,NA,2020-04-15,Illinois,NA,NA,NA,NA,NA,27,NA,NA,NA,NA,NA,NA,NA,NA,NA
+El Dorado,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ellsworth,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hutchinson,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lansing,20,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,24,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Larned,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Norton,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Topeka,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Winfield,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wichita Work Release,1,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+KJCC,0,NA,2020-04-15,Kansas,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Central Office,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Albion,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Benner Township,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Cambridge Springs,NA,NA,2020-04-15,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA
+Camp Hill​,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,2,NA,NA,3,NA,NA,NA,NA,NA,NA
+​Chester,NA,NA,2020-04-15,Pennsylvania,NA,NA,1,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Coal Township,NA,NA,2020-04-15,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Dallas,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Fayette,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,3,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Forest,NA,NA,2020-04-15,Pennsylvania,NA,NA,3,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Frackville,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,16,NA,NA,NA,NA,NA,NA
+​Greene,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Houtzdale,0,NA,2020-04-15,Pennsylvania,NA,NA,4,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Huntingdon,NA,NA,2020-04-15,Pennsylvania,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Laurel Highlands,NA,NA,2020-04-15,Pennsylvania,NA,NA,4,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Mahanoy,NA,NA,2020-04-15,Pennsylvania,NA,NA,6,NA,NA,NA,NA,NA,4,NA,NA,NA,NA,NA,NA
+​Mercer,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Muncy,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,6,NA,NA,NA,NA,NA,NA
+​Phoenix,17,1,2020-04-15,Pennsylvania,NA,NA,6,NA,NA,7,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Pine Grove,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Quehanna Boot Camp,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Retreat,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,3,NA,NA,5,NA,NA,NA,NA,NA,NA
+​Rockview,NA,NA,2020-04-15,Pennsylvania,NA,NA,4,NA,NA,1,NA,NA,1,NA,NA,NA,NA,NA,NA
+​Smithfield,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,1,NA,NA,2,NA,NA,NA,NA,NA,NA
+​Somerset,NA,NA,2020-04-15,Pennsylvania,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Waymart,NA,NA,2020-04-15,Pennsylvania,NA,NA,4,NA,NA,1,NA,NA,24,NA,NA,NA,NA,NA,NA
+​Training Academy,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Parole,NA,NA,2020-04-15,Pennsylvania,NA,NA,NA,NA,NA,2,NA,NA,5,NA,NA,NA,NA,NA,NA
+Allendale,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Broad River,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,7,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Camille Graham,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Evans,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Goodman,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kershaw,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Kirkland,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+​Leath,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lee,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lieber,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Livesay,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+MacDougall,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Manning,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+McCormick,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Palmer,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Perry,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ridgeland,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Trenton,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Turbeville,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tyger River,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wateree River,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Non-Institutional Staff,0,NA,2020-04-15,South Carolina,NA,NA,NA,NA,NA,8,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Augusta Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Baskerville Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Bland Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Brunswick CCAP,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Buckingham Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Caroline Correctional Unit,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Central Virginia Correctional Unit #13,10,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Chesterfield Women’s CCAP,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Coffeewood Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Cold Springs CCAP,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Cold Springs Correctional Unit #10,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Deerfield Correctional Center (includes Deerfield Work Centers),0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,0,NA,NA,NA,NA
+Dillwyn Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Fluvanna Correctional Center for Women,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Green Rock Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Greensville Correctional Center (includes Greensville Work Center),0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Halifax Correctional Unit,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Harrisonburg Men’s CCAP,1,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Haynesville Correctional Center,3,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,1,NA,NA,NA,NA
+Haynesville Correctional Unit #17,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Indian Creek Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Keen Mountain Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Lawrenceville Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Lunenburg Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Marion Correctional Treatment Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Nottoway Correctional Center (includes Nottoway Work Center),0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Patrick Henry Correctional Unit,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Pocahontas State Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Red Onion State Prison,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+River North Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Rustburg Correctional Unit,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+St. Brides Correctional Center,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Stafford Men’s CCAP,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+State Farm Correctional Complex,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,0,NA,NA,NA,NA
+Sussex I State Prison,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Sussex II State Prison,5,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,2,NA,NA,NA,NA,2,NA,NA,NA,NA
+Virginia Correctional Center for Women (includes State Farm Work Center),21,1,2020-04-15,Virginia,NA,NA,NA,NA,NA,23,NA,NA,NA,NA,3,NA,NA,NA,NA
+Wallens Ridge State Prison,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Wise Correctional Unit,0,0,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,0,NA,NA,NA,NA
+Probation & Parole — Eastern Region,NA,NA,2020-04-15,Virginia,NA,NA,NA,NA,NA,3,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Probation & Parole — Central Region,NA,NA,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Probation & Parole — Western Region,NA,NA,2020-04-15,Virginia,NA,NA,NA,NA,NA,0,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Allen Correctional Center,0,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,0,0,NA,NA,0,NA,0,0,0,0
+B.B. Rayburn Correctional Center,25,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,2,0,NA,NA,0,NA,7,0,0,0
+David Wade Correctional Center,0,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,3,2,NA,NA,0,NA,0,0,0,0
+Dixon Correctional Institute,1,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,4,0,NA,NA,0,NA,1,0,0,0
+Elayn Hunt Correctional Center,5,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,7,1,NA,NA,0,NA,0,0,0,0
+Louisiana Correctional Institute for Women,21,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,10,0,NA,NA,0,NA,2,0,0,0
+Louisiana State Penitentiary,11,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,18,3,NA,NA,1,NA,6,0,0,0
+Raymond Laborde Correctional Center,2,0,2020-04-15,Louisiana,NA,NA,NA,NA,NA,11,3,NA,NA,0,NA,2,0,0,0
+Allred,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Baten,3,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bell,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Beto,106,NA,2020-04-15,Texas,NA,NA,13,6,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Boyd,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bradshaw,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bridgeport,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Briscoe,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Byrd,4,NA,2020-04-15,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clemens,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Clements,1,NA,2020-04-15,Texas,NA,NA,2,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Coffield,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cole,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Connally,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Cotulla,0,NA,2020-04-15,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crain,0,NA,2020-04-15,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Dalhart,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Daniel,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Darrington,3,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Diboll,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Dominguez,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Duncan,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eastham,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+ETTF,0,NA,2020-04-15,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ellis,0,NA,2020-04-15,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Estelle,3,NA,2020-04-15,Texas,NA,NA,33,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Estes,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ferguson,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Formby,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Fort Stockton,1,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Garza East,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Garza West,0,NA,2020-04-15,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gist,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Glossbrenner,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goodman,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goree,2,NA,2020-04-15,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Gurney,0,NA,2020-04-15,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Halbert,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hamilton,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Havins,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Henley,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hightower,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hilltop,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hobby,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hodge,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Holliday,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hospital Galveston,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hughes,0,NA,2020-04-15,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Huntsville,0,NA,2020-04-15,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hutchins,1,NA,2020-04-15,Texas,NA,NA,0,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 1,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 3,0,NA,2020-04-15,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jester 4,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Johnston,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Jordan,3,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kegans,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Kyle,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+LeBlanc,10,NA,2020-04-15,Texas,NA,NA,4,5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lewis,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lindsay,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lockhart,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lopez,1,NA,2020-04-15,Texas,NA,NA,0,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Luther,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lychner,1,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Lynaugh,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Marlin,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+McConnell,0,NA,2020-04-15,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Michael,0,NA,2020-04-15,Texas,NA,NA,4,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Middleton,0,NA,2020-04-15,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Montford,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Moore B.,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Moore C.,0,NA,2020-04-15,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Mountain View,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Murray,26,NA,2020-04-15,Texas,NA,NA,5,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Neal,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ney,0,NA,2020-04-15,Texas,NA,NA,1,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Pack,2,NA,2020-04-15,Texas,NA,NA,11,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Plane,0,NA,2020-04-15,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Polunsky,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Powledge,0,NA,2020-04-15,Texas,NA,NA,5,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ramsey,0,NA,2020-04-15,Texas,NA,NA,2,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Roach,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Robertson,1,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Rudd,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sanchez,2,NA,2020-04-15,Texas,NA,NA,3,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sansaba,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sayle,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Scott,6,NA,2020-04-15,Texas,NA,NA,5,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Segovia,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Skyview,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Smith,4,NA,2020-04-15,Texas,NA,NA,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stevenson,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stiles,0,NA,2020-04-15,Texas,NA,NA,7,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Stringfellow,11,NA,2020-04-15,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Telford,48,NA,2020-04-15,Texas,NA,NA,9,7,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Terrell,1,NA,2020-04-15,Texas,NA,NA,8,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Torres,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Travis,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tulia,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Vance,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wallace,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wheeler,0,NA,2020-04-15,Texas,NA,NA,1,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Willacy,0,NA,2020-04-15,Texas,NA,NA,0,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Woodman,12,NA,2020-04-15,Texas,NA,NA,6,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Wynne,32,NA,2020-04-15,Texas,NA,NA,4,1,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Young,0,NA,2020-04-15,Texas,NA,NA,3,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bambi,0,NA,2020-04-15,Texas,NA,NA,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
