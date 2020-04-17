@@ -1,11 +1,12 @@
 name: "Covid Prison Data"
+creative_commons: CC BY
 title: "Covid Prison Data"
 base_url: https://covidprisondata.com
 exclude: ["data"]
 output_dir: "docs"
 navbar: 
   logo:
-    image: images/logo.png
+    image: "https://pbs.twimg.com/profile_banners/1249820329838546945/1587005542/1500x500"
     href: https://www.covidprisondata.com
   right:
     - text: "Home"
@@ -16,4 +17,6 @@ navbar:
       href: https://twitter.com/DataPrison
     - icon: fab fa-github
       href: https://github.com/seathebass/covid_19_state_prisons
+    - icon: fas fa-envelope-open
+      href: mailto:covidprisondata@gmail.com
 output: distill::distill_article

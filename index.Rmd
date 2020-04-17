@@ -8,29 +8,36 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(error = FALSE)
 source(here::here("R/utils.R"))
 source(here::here("R/graph.R"))
+source(here::here("R/map.R"))
 data <- readr::read_csv(here::here("data/daily/state_summaries_inm_pos_4_15.csv"))
 ```
 
 
-A week ago, a team of data scientists, criminologists, and law professors began a concerted effort to gather data to learn more about how incarcerated people and correctional staff are being affected by Covid-19. High-quality data are critical to provide transparency so advocates, experts, and government officials can be informed by the best information available. Here, data produced by states are integrated into one resource to facilitate access, a comparative perspective, and analysis. This is a work and progress and we appreciate feedback and suggestions.
+A week ago, a team of data scientists, criminologists, and law professors began a concerted effort to gather data to learn more about how incarcerated people and correctional staff are being affected by Covid-19. High-quality data are critical to provide transparency so advocates, experts, and government officials can be informed by the best information available. Here, data produced by states are integrated into one resource to facilitate access, a comparative perspective, and analysis. This is a work in progress and we appreciate feedback and suggestions.
 
-While we make every effort to ensure that the information scraped is accurate and updated everyday, there are the following caveats. First, not all state DOC's update their information everyday or even every business day. As a result, while the scraper for data pertaining to Covid-19 is run daily, the data retrieved by the scraper may not reflect daily changes. While we make every effort to ensure that states who do not update their Covid-19 data daily are clearly marked, this all ultimately depends on the frequency that a state's department of correction updates their data.
+While we have made every effort to ensure that the information scraped is accurate and updated every day, there are the following caveats. First, not all state DOC's update their information every day or even every business day. As a result, while the scraper for data pertaining to Covid-19 is run daily, the data retrieved by the scraper may not reflect daily changes. We have endeavored to mark those departments that indicate they do not update their dashboards daily.
 
-- Number of incarcerated people tested in correctional facilities by state (If data is available by the state's  DOC)
-- Number of incarcerated people who tested positive for Covid-19 in correctional facilities by state 
-- Number of incarcerated people who tested negative for Covid-19 in correctional facilities by state
-- Historical Population data for state prisons (if available).
-- Web scrapers built to extract data from varying state DOCs
+This site offers the following data (some states have less data available than the variables below):
 
-```{r}
+- Number of incarcerated people tested for Covid-19 in correctional facilities by state.
+- Number of incarcerated people who tested positive for Covid-19 in correctional facilities by state.
+- Number of incarcerated people who tested negative for Covid-19 in correctional facilities by state.
+- Historical population data for state prisons.
+- Web scrapers built to extract data from Department of Corrections dashboards.
+
+```{r, layout="l-body-outset"}
+make_state_choropleth_map()
+```
+
+
+```{r, layout="l-body-outset"}
 data$total_staff_positive <- data$total_inm_positive
 make_mirror_graph(data)
-
 ```
 
 
 
-```{r}
+```{r, layout="l-body-outset"}
 
 data <-
   data %>%
