@@ -9,6 +9,11 @@ knitr::opts_chunk$set(error = FALSE)
 source(here::here("R/utils.R"))
 source(here::here("R/graph.R"))
 source(here::here("R/map.R"))
+
+library(crosstalk)
+library(manipulateWidget)
+
+
 data <- readr::read_csv(here::here("data/daily/state_summaries_inm_pos_4_15.csv"))
 ```
 
@@ -42,13 +47,15 @@ make_mirror_graph(data)
 data <-
   data %>%
   arrange(desc(total_inm_positive)) %>%
-  mutate_if(is.numeric, prettyNum, big.mark = ",")
+ # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
+  mutate(state = as.factor(state))
 names(data) <- gsub("_", " ", names(data))
 names(data) <- crimeutils::capitalize_words(names(data))
 
   
 
 DT::datatable(data,
+              filter = 'top',
               class = 'cell-border stripe',
               extensions = c('Buttons', "ColReorder"),
               options = list(

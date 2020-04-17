@@ -23,6 +23,7 @@ library(webshot)
 library(crimeutils)
 library(DT)
 library(ggplot2)
+library(plotly)
 
 make_pretty_date <- function(date) {
   return(paste0(lubridate::month(date, label = TRUE, abbr = FALSE),

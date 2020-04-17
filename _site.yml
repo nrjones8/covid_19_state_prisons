@@ -7,7 +7,7 @@ output_dir: "docs"
 navbar: 
   logo:
     image: logo.jpg
-    href: https://www.google.com
+    href: https://www.covidprisondata.com
   right:
     - text: "Home"
       href: index.html
