@@ -2,6 +2,7 @@ name: "Covid Prison Data"
 creative_commons: CC BY
 title: "Covid Prison Data"
 base_url: https://covidprisondata.com
+google_analytics: "UA-99359926-7"
 exclude: ["data"]
 output_dir: "docs"
 navbar: 
@@ -19,4 +20,6 @@ navbar:
       href: https://github.com/seathebass/covid_19_state_prisons
     - icon: fas fa-envelope-open
       href: mailto:covidprisondata@gmail.com
-output: distill::distill_article
+output: 
+  distill::distill_article:
+    css: style.css

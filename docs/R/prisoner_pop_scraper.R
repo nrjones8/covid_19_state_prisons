@@ -91,6 +91,24 @@ for (file in files) {
 
 
 
+# Illinois --------------------------------------------------------------------  
+clean_illinois <- function(){
+  
+  i <- readr::read_csv("https://icjia.illinois.gov/researchhub/files/2018_idoc_admission-191011T20091334.csv")
+  
+  fn <- paste0("data/raw_data/illinois/admissions_",
+               format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),
+               ".csv")
+  
+  write_csv(i, here::here(fn))
+  
+  il_adm <- i %>% 
+    group_by(year) %>% 
+    summarise(admissions = sum(new_court + technical_violation_other, na.rm = T)) 
+  
+  return(il_adm)
+}
+
 
 # Iowa --------------------------------------------------------------------
 page <-
@@ -175,8 +193,6 @@ discharges %>%
 
 }
 
+  
 
-clean_michigan()
-
-
-
+  

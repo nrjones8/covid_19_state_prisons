@@ -13,8 +13,8 @@ source(here::here("R/map.R"))
 library(crosstalk)
 library(manipulateWidget)
 
-
-data <- readr::read_csv(here::here("data/daily/state_summaries_inm_pos_4_15.csv"))
+facility_data <- readr::read_csv(here::here("data/daily/facilities_data_2020_04_16.csv"))
+state_data <- readr::read_csv(here::here("data/daily/state_summaries_inm_pos_4_15.csv"))
 ```
 
 
@@ -30,40 +30,78 @@ This site offers the following data (some states have less data available than t
 - Historical population data for state prisons.
 - Web scrapers built to extract data from Department of Corrections dashboards.
 
-```{r, layout="l-body-outset"}
+```{r, layout="l-page"}
 make_state_choropleth_map()
 ```
 
 
-```{r, layout="l-body-outset"}
-data$total_staff_positive <- data$total_inm_positive
-make_mirror_graph(data)
+```{r, layout="l-page"}
+state_data$total_staff_positive <- state_data$total_inm_positive
+make_mirror_graph(state_data)
 ```
 
 
 
-```{r, layout="l-body-outset"}
+```{r, layout="l-page"}
 
-data <-
-  data %>%
+state_data <-
+  state_data %>%
   arrange(desc(total_inm_positive)) %>%
- # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
+  # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
   mutate(state = as.factor(state))
-names(data) <- gsub("_", " ", names(data))
-names(data) <- crimeutils::capitalize_words(names(data))
+names(state_data) <- gsub("_", " ", names(state_data))
+names(state_data) <- crimeutils::capitalize_words(names(state_data))
 
-  
 
-DT::datatable(data,
-              filter = 'top',
-              class = 'cell-border stripe',
-              extensions = c('Buttons', "ColReorder"),
-              options = list(
-                pageLength = 25,
-                dom = 'Bfrtip',
-                buttons = c('copy', 'csv', 'excel', 'pdf', 'print'),
+
+DT::datatable(state_data,
+              filter       = 'top',
+              class        = 'cell-border stripe',
+              extensions   = c('Buttons', "ColReorder"),
+              options      = list(
+                pageLength = 15,
+                dom        = 'Bfrtip',
+                buttons    = c('copy', 'csv', 'excel', 'pdf', 'print'),
                 colReorder = TRUE,
-                dom = 't',
-                scrollX = TRUE)) 
+                dom        = 't',
+                scrollX    = TRUE)) 
 ```
 
+
+
+```{r, layout="l-screen "}
+
+facility_data <- facility_data %>%
+  filter(scrape_date %in% max(scrape_date)) %>%
+  arrange(desc(inmates_positive),
+          state,
+          facilities) %>%
+  # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
+  mutate(state = as.factor(state)) %>%
+  rename(facility = facilities) %>%
+  select(state,
+         facility,
+         scrape_date,
+         inmates_positive,
+         inmates_negative,
+         inmates_pending,
+         inmates_tested,
+         inmates_recovered,
+         inmates_deaths)
+names(facility_data) <- gsub("_", " ", names(facility_data))
+names(facility_data) <- crimeutils::capitalize_words(names(facility_data))
+
+
+
+DT::datatable(facility_data,
+              filter       = 'top',
+              class        = 'cell-border stripe',
+              extensions   = c('Buttons', "ColReorder"),
+              options      = list(
+                pageLength = 15,
+                dom        = 'Bfrtip',
+                buttons    = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                colReorder = TRUE,
+                dom        = 't',
+                scrollX    = TRUE)) 
+```
