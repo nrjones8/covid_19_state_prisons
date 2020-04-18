@@ -29,7 +29,8 @@ render_all_pages <- function(google_prison_sheet) {
       south_carolina = get_sc_covid_data,
       texas = get_texas_covid_data,
       virginia = get_virginia_covid_data,
-      washington = get_washington_covid_data
+      washington = get_washington_covid_data,
+      federal = get_federal_data
     )
   urls_to_scrape <- google_prison_sheet %>%
     filter(scraped_binary == 1,
@@ -54,13 +55,12 @@ group_summary <- function(.data,...){
     group_by(state,scrape_date) %>% 
     summarise(...)
 }
-
 write_facilities_data <-
   function(rendered_jail_data,
            path_to_facilities_data) {
     # read in data from prior period
     past_period <- read_csv(path_to_facilities_data)
-    # get data for states which have facilities
+    # get data for states or feds which have facilities
     states_with_cc_facility <-
       rendered_jail_data[c(
         "alabama",
@@ -73,18 +73,28 @@ write_facilities_data <-
         "new_jersey",
         "pennsylvania",
         "south_carolina",
+        "ohio",
         "virginia",
         "washington",
         "louisiana",
         "texas",
-        "north_dakota"
+        "north_dakota",
+        "federal"
       )]
     
     # indiana has two or more  sets of data and will need to be fixed up in the scraper somehow
     cc_facilities  <-
-      states_with_cc_facility[!names(states_with_cc_facility) %in% c("indiana","ohio","new_jersey")] %>%
+      states_with_cc_facility[!names(states_with_cc_facility) %in% c("indiana","ohio","new_jersey","federal")] %>%
       reduce(bind_rows) %>%
       select(facilities, state, scrape_date, everything()) 
+    
+    # modifying fed info
+    fed_info <- states_with_cc_facility[["federal"]]$offenders %>% 
+      rename_with(cols = vars(contains("_amt")),.fn = ~str_remove_all(.,"_amt")) %>% 
+      rename_with(cols = vars(contains("inmates")),.fn = ~str_replace_all(.,"inmate","inmates")) %>% 
+      rename_with(cols= vars(contains("death")),.fn = ~str_replace_all(.,"death","deaths")) %>% 
+      select(facilities  = id,everything())
+    
     
     # join all confirmed facilities
     all_confirmed_facilities <-
@@ -92,27 +102,29 @@ write_facilities_data <-
         states_with_cc_facility[["indiana"]]$offenders,
         states_with_cc_facility[["ohio"]]$ohio_facility,
         states_with_cc_facility[["new_jersey"]]$confirmed_nj_doc,
-        cc_facilities
+        cc_facilities,
+        fed_info
       ) %>%
       reduce(bind_rows) %>%
       #this line of code is sacrosanct. remove it at your own risk
       filter(!str_detect(facilities, regex("Total")))
  
-list( all_confirmed_facilities %>% 
+list(all_confirmed_facilities %>% 
    modify_if(is.integer,~as.numeric(.)), 
   past_period)
   } 
+
 path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
 path_to_facilities_data <- glue("data/daily/{path_to_data}")
+# write and collapse the past and present data
 data_facilities <- write_facilities_data(rendered_jail_data = jails_data,path_to_facilities_data = path_to_facilities_data)  %>% 
   map(~as_tibble(.)) %>% 
   bind_rows()
-
-# write the new csv file
+# write the new csv file for facilities out
 path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today())}.csv")
+
 data_facilities %>% 
   write_csv(glue("data/daily/{path_date}"))
-
 
 write_state_summaries <- function(data_facilities, jails_data) {
   # making the facilities data more modular
@@ -148,20 +160,22 @@ write_state_summaries <- function(data_facilities, jails_data) {
       inmates_pending = Pending,
       inmates_positive = Positive,
       inmates_negative = Negative
-    )
+    ) 
   # collapse data into one df
   reduced_data <- list(summaries_states_facilities,
                        alaska_summary,
                        idaho_totals,
-                       new_york_totals,
+                       new_york_totals
   ) %>%
     reduce(bind_rows)
 }
+reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data)
 
-
+path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
 
 reduced_data %>% 
-  write_csv("data/daily/state_summaries_2020_04_16.csv")
-
+  write_csv(path_today_summary)
+reduced_data %>% 
+  write_csv("data/daily/state_summaries_current.csv")
 
 

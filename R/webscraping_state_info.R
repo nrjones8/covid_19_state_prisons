@@ -82,7 +82,7 @@ get_georgia_covid_data <- function(georgia_doc_path) {
   georgia_text <- georgia_doc_path %>%
     html_nodes("table:nth-child(1) td") %>%
     html_text()
-  # fix up the names of the data
+   # fix up the names of the data
   recovered_text <- paste(georgia_text[7:8], georgia_text[3])
   confirmed_text <- paste(georgia_text[5:6], georgia_text[2])
   names_of_df <-
@@ -204,6 +204,25 @@ get_idaho_covid_data <- function(idaho_doc_path) {
 }
 
 
+
+
+# Federal BOP -----------------------------------------------------------------
+
+get_federal_data <- function(federal_bop_path){
+  f <- federal_bop_path %>%
+    html_text() %>% 
+    jsonlite::fromJSON(.)
+  
+  list(offenders = f[[3]],
+       reentry = f[[2]],
+       overall_stats = f[[1]] %>% 
+         modify_at(2:5,~parse_number(.))) %>% 
+    map(~mutate(., scrape_date = today(),
+                state = "Federal") %>% 
+          as_tibble(.) %>% 
+          clean_names())
+    
+}
 
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){

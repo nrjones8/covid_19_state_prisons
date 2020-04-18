@@ -1,21 +1,22 @@
 
 
 make_mirror_graph <- function(data) {
-  
+
   data$scrape_date <- NULL
   library(tidyr)
   data$total_staff_positive <- data$total_staff_positive * -1
   data <- tidyr::gather(data,type,  count, c("total_inm_positive", "total_staff_positive"))
-  
+
   data <-
     data %>%
     dplyr::arrange(dplyr::desc(count))
   data$state <- factor(data$state, levels = rev(unique(data$state)))
-  
+
   
   data %>%
     ggplot2::ggplot(ggplot2::aes(x = state,
-                                 y = count, fill = type)) +
+                                 y = count,
+                                 fill = type)) +
     ggplot2::geom_bar(stat="identity",position="identity") +
     ggplot2::labs(title = "Reported Positive COVID-19 Tests",
                   subtitle = glue::glue("Among State Prison Populations: 
@@ -53,6 +54,6 @@ make_mirror_graph <- function(data) {
                       yend   = 270, 
                       colour = "#d95f02",
                       arrow  = ggplot2::arrow()) +
-    ggplot2::theme_minimal()
-  
+    ggplot2::theme_minimal() 
+ # plotly::ggplotly()
 }
