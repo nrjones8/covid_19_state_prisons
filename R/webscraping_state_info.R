@@ -83,7 +83,7 @@ get_georgia_covid_data <- function(georgia_doc_path) {
   georgia_text <- georgia_doc_path %>%
     html_nodes("table:nth-child(1) td") %>%
     html_text()
-  # fix up the names of the data
+   # fix up the names of the data
   recovered_text <- paste(georgia_text[7:8], georgia_text[3])
   confirmed_text <- paste(georgia_text[5:6], georgia_text[2])
   names_of_df <-
