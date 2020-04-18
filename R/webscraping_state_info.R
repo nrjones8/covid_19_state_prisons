@@ -77,7 +77,6 @@ get_delaware_covid_data <- function(delaware_doc_path) {
            scrape_date = today())
 }
 
-
 # Georgia -----------------------------------------------------------------
 get_georgia_covid_data <- function(georgia_doc_path) {
   georgia_text <- georgia_doc_path %>%
@@ -108,11 +107,10 @@ get_illinois_covid_data <- function(il_doc_path) {
       ".soi-rteTable-1:nth-child(2) .soi-rteTableOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableEvenCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderEvenCol-1"
     ) %>%
     html_text()
-  names_of_df <- illinois_text[1:3]
-  illinois_data <- illinois_text[4:length(illinois_text)] %>%
-    make_facility_table(1:3,2:3)
+  illinois_data <- illinois_text %>%
+    make_facility_table(1:5,2:5)
     
-  names(illinois_data) <- c("facilities","staff_positive","inmates_positive","staff_recovered","inmate_recovered")
+  names(illinois_data) <- c("facilities","staff_positive","inmates_positive","staff_recovered","inmates_recovered")
   illinois_data %>%
     mutate(scrape_date = today(),
            state = "Illinois")
@@ -120,19 +118,17 @@ get_illinois_covid_data <- function(il_doc_path) {
 
 
 # Pennsylvania ------------------------------------------------------------
-
-
 get_pa_covid_data <- function(pa_covid_doc_path) {
   pa_text <- pa_covid_doc_path %>%
-    html_nodes(
-      "p+ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableOddCol-default , .ms-rteTableOddRow-default strong , p+ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableEvenCol-default , p+ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableOddCol-default , p+ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableEvenCol-default"
-    ) %>%
-    html_text() %>%
+    html_nodes("br~ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableOddCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableEvenCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableOddCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableEvenCol-default"
+    ) %>% 
+  html_text() %>%
     str_trim()
   #create a tibble from the data
-  pa_data <- pa_text[16:length(pa_text)] %>%
-    split(1:7) %>%
-    as_tibble()
+  pa_data <- pa_text %>%
+    split(1:7) %>% 
+    as_tibble() %>% 
+    slice(2:nrow(.))
   # names of the dataframe
   names(pa_data) <-
     c(
@@ -203,51 +199,30 @@ get_idaho_covid_data <- function(idaho_doc_path) {
   idaho_data <- as_tibble(split(idaho_text[5:8], 1:4))
   names(idaho_data) <- idaho_text[1:4]
   idaho_data %>%
+    modify_at(1:4,~parse_number(.)) %>% 
     mutate(state = "Idaho", scrape_date = today())
 }
 
 
 
-# Indiana ---------------------------------------------------------------------
-get_indiana_covid_data <- function(indiana_doc_path){
-in_off_data <- in_doc_path %>% 
-  read_html() %>%
-  html_node("table") %>%
-  html_table() %>% 
-  rename(facilities = `Correctional Facility`,
-         inmate_positive = `Offender Confirmed`,
-         inmate_death = `Offender Death`) %>% 
-  filter(!grepl("Total", facilities))
-
-
-in_staff_data <- in_doc_path %>%
-  read_html() %>% 
-  html_nodes(xpath = '//*[@id="main"]/div/div[2]/article/div/section/p[2]/span') %>% 
-  html_text() %>% 
-  tibble::enframe() %>% 
-  mutate(value = parse_number(value))# %>%  pull(value)
-
-list(offenders = in_off_data,
-     staff = in_staff_data) %>% 
-  map(~mutate(.,scrape_date = today(),
-              state = "Indiana"))
-  
-  
-}
 
 # Federal BOP -----------------------------------------------------------------
+
 get_federal_data <- function(federal_bop_path){
   f <- federal_bop_path %>%
+    html_text() %>% 
     jsonlite::fromJSON(.)
   
   list(offenders = f[[3]],
        reentry = f[[2]],
-       overall_stats = f[[1]]) %>% 
+       overall_stats = f[[1]] %>% 
+         modify_at(2:5,~parse_number(.))) %>% 
     map(~mutate(., scrape_date = today(),
-                state = "Federal"))
+                state = "Federal") %>% 
+          as_tibble(.) %>% 
+          clean_names())
     
 }
-
 
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){
@@ -279,17 +254,17 @@ get_federal_data <- function(federal_bop_path){
 
 
 # Florida --------------------------------------------------------------
-
 get_fl_covid_data <- function(fl_doc_path) {
   fl_data <- fl_doc_path %>%
-    html_nodes("table:nth-child(10) td") %>%
-    html_text() %>%
-    split(1:3) %>%
-    as_tibble()
+    html_nodes(".tableHead~ tr td") %>% 
+    html_text() %>% 
+    str_trim() %>% 
+    make_facility_table(1:8,2:8)
   names(fl_data) <-
-    c("facilities", "staff_positive", "inmates_positive")
+    c("facilities","security_quarantine","medical_quarantine",
+      "medical_isolation","inmates_pending","inmates_negative","inmates_positive",
+      "staff_positive")
   fl_data %>%
-    modify_at(2:3,  ~ parse_number(.)) %>%
     mutate(scrape_date = today(),
            state = "Florida")
 }
@@ -429,7 +404,7 @@ get_nj_covid_data <- function(nj_doc_path) {
   table_1 <- table_1[5:length(table_1)] %>%
     make_facility_table(1:4,2:4)
   
-  names(table_1) <- c(new_jersey_text[1:4])
+  names(table_1) <- c("facilities","staff_positive","inmates_positive","inmates_deaths")
   
   table_2 <- table_2[4:length(table_2)] %>%
     make_facility_table(1:3,2:3)
@@ -460,16 +435,21 @@ get_nd_covid_data <- function(nd_doc_path) {
     as_tibble() %>%
     mutate(
       type = c(
-        "positive",
-        "negative",
+        "inmates_positive",
+        "inmates_negative",
         "persons_under_med_investigation",
-        "recovered",
-        "deaths"
+        "inmates_recovered",
+        "inmates_deaths"
       )
     )
   names(nd_data) <- c("ndsp", "jrcc", "mrcc", "ycc", "type")
   nd_data %>% 
-    modify_at(1:4,~parse_number(.)) %>% 
+    select(type,everything()) %>% 
+    t() %>% 
+    as_tibble() %>% 
+    row_to_names(1) %>% 
+    mutate(facilities = c("ndsp", "jrcc", "mrcc", "ycc")) %>% 
+    modify_at(1:5,~parse_number(.)) %>% 
     mutate(scrape_date = today(),
            state = "North Dakota")
 }
@@ -512,34 +492,15 @@ get_virginia_covid_data <- function(virginia_doc_path) {
 # Washington --------------------------------------------------------------
 get_washington_covid_data <- function(wash_doc_path) {
   wash_text <- wash_doc_path %>%
-    html_nodes("td , .center .center , .center .center") %>%
+    html_nodes(".default-top-border+ .default-top-border td") %>%
     html_text()
-  text_table_1 <- wash_text[1:117]
-  text_table_2 <- wash_text[118:126]
-  text_table_3 <- wash_text[127:length(wash_text) - 1]
-  table_1names <- text_table_1[1:3]
-  table_1_data <- text_table_1[4:length(text_table_1)] %>%
-    make_facility_table(1:3, 2:3)
+  text_table_1 <- wash_text
+  table_1_data <- text_table_1 %>%
+    make_facility_table(1:3, 2:3)  
   names(table_1_data) <- c("facilities","staff_positive","inmates_positive")
-  
-  table_2_names <- text_table_2[1:4]
-  
-  table_2_data <- text_table_2[5:8] %>%
-    make_facility_table(1:4, 1:4)
-  names(table_2_data) <- table_2_names
-  
-  table_3_data <- text_table_3[3:4] %>%
-    make_facility_table(1:2, 1:2)
-  names(table_3_data) <- text_table_3[1:2]
-  list(
-    confirmed_cases = table_1_data,
-    tests_incarcerated = table_2_data,
-    isolation_and_quarantine = table_3_data
-  ) %>% 
-    map(~mutate(.,scrape_date = today(),state = "Washington"))
+  table_1_data %>% 
+    mutate(.,scrape_date = today(),state = "Washington")
 }
-
-
 
 # Texas -------------------------------------------------------------------
 
@@ -573,10 +534,8 @@ get_texas_covid_data <- function(tx_doc_path) {
 
 
 # California --------------------------------------------------------------
-
 get_california_covid_data <- function(cali_doc_path) {
   cali_emp_text <-cali_doc_path %>% 
-    read_html() %>%
     html_nodes("tr+ tr td") %>%
     html_text() %>%
     split(1:2) %>%
@@ -586,3 +545,32 @@ get_california_covid_data <- function(cali_doc_path) {
     filter(!str_detect(facilities, regex("Total", ignore_case = T))) %>%
     modify_at(2,  ~ as.numeric(.))
 }
+
+
+
+# Indiana ---------------------------------------------------------------------
+get_indiana_covid_data <- function(indiana_doc_path){
+  in_off_data <- indiana_doc_path %>% 
+    html_node("table") %>%
+    html_table() %>% 
+    rename(facilities = `Correctional Facility`,
+           inmates_positive = `Offender Confirmed`,
+           inmates_deaths = `Offender Death`) %>% 
+    filter(!grepl("Total", facilities))
+  
+  
+  in_staff_data <- indiana_doc_path %>%
+    html_nodes(xpath = '//*[@id="main"]/div/div[2]/article/div/section/p[2]/span') %>% 
+    html_text() %>% 
+    tibble::enframe() %>% 
+    mutate(value = parse_number(value)) %>% 
+    select(-name,staff_positive = value)
+  
+  list(offenders = in_off_data,
+       staff = in_staff_data) %>% 
+    map(~mutate(.,scrape_date = today(),
+                state = "Indiana"))
+  
+}
+
+
