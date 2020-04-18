@@ -10,11 +10,8 @@ source(here::here("R/utils.R"))
 source(here::here("R/graph.R"))
 source(here::here("R/map.R"))
 
-library(crosstalk)
-library(manipulateWidget)
-
-facility_data <- readr::read_csv(here::here("data/daily/facilities_data_2020_04_16.csv"))
-state_data <- readr::read_csv(here::here("data/daily/state_summaries_inm_pos_4_15.csv"))
+facility_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/facilities_data_2020_04_16.csv")
+state_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/state_summaries_2020_04_16.csv")
 ```
 
 
@@ -30,24 +27,32 @@ This site offers the following data (some states have less data available than t
 - Historical population data for state prisons.
 - Web scrapers built to extract data from Department of Corrections dashboards.
 
-```{r, layout="l-page"}
-make_state_choropleth_map()
+```{r, layout="l-screen"}
+make_choropleth_map(state_data)
 ```
 
 
 ```{r, layout="l-page"}
-state_data$total_staff_positive <- state_data$total_inm_positive
 make_mirror_graph(state_data)
 ```
 
 
 
-```{r, layout="l-page"}
+```{r, layout="l-screen"}
 
 state_data <-
   state_data %>%
-  arrange(desc(total_inm_positive)) %>%
-  # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
+  arrange(desc(inmates_positive)) %>%
+  select(state,
+         scrape_date,
+         inmates_positive,
+         inmates_negative,
+         inmates_pending,
+         inmates_tested,
+         inmates_deaths,
+         staff_positive,
+         staff_negative,
+         staff_deaths) %>%
   mutate(state = as.factor(state))
 names(state_data) <- gsub("_", " ", names(state_data))
 names(state_data) <- crimeutils::capitalize_words(names(state_data))
@@ -69,7 +74,7 @@ DT::datatable(state_data,
 
 
 
-```{r, layout="l-screen "}
+```{r, layout="l-screen"}
 
 facility_data <- facility_data %>%
   filter(scrape_date %in% max(scrape_date)) %>%
