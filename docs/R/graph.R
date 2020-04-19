@@ -2,8 +2,12 @@
 
 make_mirror_graph <- function(data) {
 
+  data$total <- data$inmates_positive + data$staff_positive
   data$inmates_positive <- data$inmates_positive * -1
   current_date <- unique(data$scrape_date)
+  
+  temp <- data[, c("state", "total")]
+  
   data <-
     data %>%
     dplyr::select(state,
@@ -11,17 +15,19 @@ make_mirror_graph <- function(data) {
            staff_positive)
   data <- tidyr::gather(data,type,  count, c("inmates_positive", "staff_positive"))
   
+  
 
   data <-
     data %>%
-    dplyr::arrange(count)
+    left_join(temp) %>%
+    dplyr::arrange(dplyr::desc(total))
   data$state <- factor(data$state, levels = rev(unique(data$state)))
   
   data %>%
     ggplot2::ggplot(ggplot2::aes(x = state,
                                  y = count,
                                  fill = type)) +
-    ggplot2::geom_bar(stat = "identity", position = position_stack(reverse = FALSE)) +
+    ggplot2::geom_bar(stat = "identity") +
     ggplot2::labs(title = "Reported Positive COVID-19 Tests",
                   subtitle = glue::glue("Among State Prison Populations: 
     Total States: {length(unique(data$state))}
@@ -37,24 +43,24 @@ make_mirror_graph <- function(data) {
     ggplot2::scale_fill_manual(values = c("#d95f02", "#1b9e77")) + 
     ggplot2::guides(fill = FALSE) +
     ggplot2::geom_text(x     = 8, 
-                       y     = max(data$count, na.rm = TRUE) * 0.65 * -1, 
+                       y     = min(data$count, na.rm = TRUE) * 0.60,
                        label = "Incarcerated People", 
                        color = "#d95f02") +
     ggplot2::annotate("segment",
                       x      = 7, 
                       xend   = 7, 
-                      y      = max(data$count, na.rm = TRUE) * .4 * -1,
-                      yend   = max(data$count, na.rm = TRUE) * -1, 
+                      y      = min(data$count, na.rm = TRUE) * .3,
+                      yend   = min(data$count, na.rm = TRUE), 
                       colour = "#d95f02",
                       arrow  = ggplot2::arrow()) +
     ggplot2::geom_text(x     = 8,
-                       y     = max(data$count, na.rm = TRUE) * .65, 
+                       y     = max(data$count, na.rm = TRUE) * .60, 
                        label = "Corrections Staff", 
                        color = "#1b9e77") +
     ggplot2::annotate("segment",
                       x      = 7,
                       xend   = 7,
-                      y      = max(data$count, na.rm = TRUE) * .4,
+                      y      = max(data$count, na.rm = TRUE) * .3,
                       yend   = max(data$count, na.rm = TRUE), 
                       colour = "#1b9e77",
                       arrow  = ggplot2::arrow()) +

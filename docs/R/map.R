@@ -15,12 +15,12 @@ make_choropleth_map <- function(data) {
   counties$popup <-  paste0("<b>",
                             counties$cnty_name, ", ",
                             counties$state,
-                          "</b>",
-                          "<br>",
-                          "Population Aged 60+: ",
-                          counties$X60plus_pct_pretty,
-                          "<br>",
-                          "Total ICU Beds: ", counties$all_icu)
+                            "</b>",
+                            "<br>",
+                            "Population Aged 60+: ",
+                            counties$X60plus_pct_pretty,
+                            "<br>",
+                            "Total ICU Beds: ", counties$all_icu)
   county_labs <- as.list(counties$popup)
   
   
@@ -29,20 +29,33 @@ make_choropleth_map <- function(data) {
   states$state <- states$NAME
   states <-
     states %>%
-    left_join(data)
+    dplyr::left_join(data)
   states$popup <-  paste0("<b>",
                           states$NAME,
                           "</b>",
                           "<br>",
-                          "Incarerated People Confirmed Positive: ", states$inmates_positive)
+                          "Incarerated People Confirmed Positive: ", 
+                          format(states$inmates_positive, big.mark = ","),
+                          "<br>",
+                          "Incarerated People Deaths: ", 
+                          format(states$inmates_deaths, big.mark = ","),
+                          "<br>",
+                          "Corrections Staff Confirmed Positive: ",   
+                          format(states$staff_positive, big.mark = ","),
+                          "<br>",
+                          "Corrections Staff Deaths: ",   
+                          format(states$staff_deaths, big.mark = ","))
   labs <- as.list(states$popup)
+  
+  
+  
   pal  <- leaflet::colorNumeric("OrRd", states$inmates_positive)
   
   county_pal  <- leaflet::colorNumeric("OrRd", counties$X60plus_pct)
-
+  
   css_fix <- "div.info.legend.leaflet-control br {clear: both;}" # CSS to correct spacing
   html_fix <- htmltools::tags$style(type = "text/css", css_fix)  # Convert CSS to HTML
-    
+  
   leaflet::leaflet() %>%
     leaflet::addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
                       attribution = '&copy; <a href="http://openstreetmap.org">
@@ -65,21 +78,19 @@ make_choropleth_map <- function(data) {
                          label  = lapply(county_labs, htmltools::HTML),
                          popup  = counties$popup) %>%
     leaflet::addLegend(pal      = pal, 
-                       group    = "state_legend",
+                       group    = "states",
                        values   = states$inmates_positive,
                        opacity  = 1,
                        na.label = "Data Not Available",
-                       title    = "Incarerated People <br>Confirmed Positive") %>%
+                       title    = "Incarcerated People <br>Confirmed Positive") %>%
     leaflet::addLegend(pal      = county_pal, 
-                       group    = "county_legend",
+                       group    = "counties",
                        values   = counties$X60plus_pct,
                        opacity  = 1,
                        na.label = "Data Not Available",
                        title    = "Percent of Population <br>Aged 60+: ") %>%
     leaflet::groupOptions("states",       zoomLevels = 0:5) %>%
-    leaflet::groupOptions("state_legend", zoomLevels = 0:5) %>%
     leaflet::groupOptions("counties",     zoomLevels = 6:18) %>%
-    leaflet::groupOptions("county_legend", zoomLevels = 6:18) %>%
     htmlwidgets::prependContent(html_fix) 
   
 }
