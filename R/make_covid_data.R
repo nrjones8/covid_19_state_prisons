@@ -1,5 +1,4 @@
 source(here::here("R","webscraping_state_info.R"))
-safe_get <- safely(read_html)
 data_in_goog_sheet <-
   read_sheet(
     "https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
@@ -55,11 +54,13 @@ group_summary <- function(.data,...){
     group_by(state,scrape_date) %>% 
     summarise(...)
 }
+
 write_facilities_data <-
   function(rendered_jail_data,
            path_to_facilities_data) {
     # read in data from prior period
-    past_period <- read_csv(path_to_facilities_data)
+    past_period <- read_csv(path_to_facilities_data) %>% 
+      filter(state != "Ohio")
     # get data for states or feds which have facilities
     states_with_cc_facility <-
       rendered_jail_data[c(
@@ -122,6 +123,9 @@ data_facilities <- write_facilities_data(rendered_jail_data = jails_data,path_to
   bind_rows()
 # write the new csv file for facilities out
 path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today())}.csv")
+
+data_facilities %>% 
+  write_csv("data/daily/facilities_data_current.csv")
 
 data_facilities %>% 
   write_csv(glue("data/daily/{path_date}"))

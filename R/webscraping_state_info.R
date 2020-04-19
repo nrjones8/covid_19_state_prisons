@@ -3,6 +3,7 @@ source(here::here("R", "utils.R"))
 
 # create a safe function
 safe_get <- safely(read_html)
+# this is somewhat useful to reduce replication
 make_facility_table <- function(.data,splits,cols_to_turn_numeric){
   .data %>% 
     split(splits) %>% 
@@ -56,9 +57,8 @@ get_delaware_covid_data <- function(delaware_doc_path) {
   path_to_pdf <- delaware_doc_path %>%
     html_nodes("a") %>%
     html_attr("href") %>%
-    str_subset("\\.pdf") %>% 
-    pluck(2)
-  delaware_pdf_path <- glue("https://doc.delaware.gov{path_to_pdf}")
+    str_subset("\\.pdf") 
+  delaware_pdf_path <- glue("https://doc.delaware.gov{path_to_pdf[2]}")
   
   # extract the tables from the pdf
   delaware_data <- tabulizer::extract_tables(delaware_pdf_path)
@@ -110,7 +110,7 @@ get_illinois_covid_data <- function(il_doc_path) {
   illinois_data <- illinois_text %>%
     make_facility_table(1:5,2:5)
     
-  names(illinois_data) <- c("facilities","staff_positive","inmates_positive","staff_recovered","inmates_recovered")
+  names(illinois_data) <- c("facilities","staff_positive","staff_recovered","inmates_positive","inmates_recovered")
   illinois_data %>%
     mutate(scrape_date = today(),
            state = "Illinois")
@@ -288,8 +288,6 @@ get_ks_covid_data <- function(ks_doc_path) {
     mutate(scrape_date = today(),
            state = "Kansas")
 }
-
-
 # Louisiana ---------------------------------------------------------------
 
 get_la_covid_data <- function(la_doc_path) {
@@ -349,6 +347,8 @@ not_all_empty_char <- function(x){
   !all(x == "")
 }
 
+
+
 get_ohio_covid_data <- function(ohio_doc_path) {
   path_to_ohio_pdf <- ohio_doc_path %>%
     html_nodes("h1.alert > a:nth-child(1)") %>%
@@ -380,15 +380,18 @@ get_ohio_covid_data <- function(ohio_doc_path) {
       facilities = V1,
       staff_positive = V2,
       staff_deaths = V3,
-      units_quarantine = V4,
-      inmates_quarantine = V5,
-      housing_type = V6,
-      inmates_isolation = V7,
-      inmates_positives = V8,
-      inmates_deaths = V9
+      staff_recovered = V4,
+      units_quarantine = V5,
+      inmates_quarantine = V6,
+      housing_type = V7,
+      inmates_isolation = V8,
+      inmates_positive = V9,
+      inmates_deaths = V10,
+      inmates_covid_deaths = V11
     ) %>%
     slice(5:33) %>%
-    modify_at(c(2:3, 5, 7:9),  ~ parse_number(.)) %>%
+    modify_at(c(2:4, 8:11),  ~ parse_number(.)) %>%
+    filter(facilities != "Totals") %>% 
     mutate(scrape_date = today(),
            state = "Ohio")
   list(ohio_facility = facility_ohio, ohio_totals = table_cleaning[[1]])
@@ -506,14 +509,18 @@ get_washington_covid_data <- function(wash_doc_path) {
 
 get_texas_covid_data <- function(tx_doc_path) {
   tx_text <-  tx_doc_path %>%
-    html_nodes("tr:nth-child(79) td , .positive+ .div_for_table td , .negative td , .pending td") %>%
+    html_nodes("img~ .div_for_table td") %>%
     html_text()
+  # this divides the columns so that things stay even
+  tx_length <- length(tx_text)/5 
   # subsetting everything since there are currently 107 facilities in tx
-  table_1 <- tx_text[1:214]
-  table_2 <- tx_text[215:(214 * 2)]
-  table_3 <- tx_text[(214 * 2 + 1):(214 * 3)]
+  table_1 <- tx_text[1:tx_length]
+  table_2 <- tx_text[221:(tx_length * 2)]
+  table_3 <- tx_text[(tx_length * 2 + 1):(tx_length * 3)]
+  table_4 <- tx_text[(tx_length * 3 + 1):(tx_length*4)]
+  table_5 <- tx_text[(tx_length * 4 + 1):(tx_length *5)]
   # reducing the tables to one.
-  reduced_df <- list(table_1, table_2, table_3) %>%
+  reduced_df <- list(table_1, table_2, table_3,table_4,table_5) %>%
     map(
       ~ split(., 1:2) %>%
         as_tibble(.) %>%
@@ -524,10 +531,13 @@ get_texas_covid_data <- function(tx_doc_path) {
     rename(
       "inmates_pending" = 2,
       "inmates_negative" = 3,
-      "inmates_positive" = 4
+      "inmates_positive" = 4,
+      "inmates_medical_restriction" = 5,
+      "inmates_medical_isolation" = 6
     )
   reduced_df %>% 
-    modify_at(2:4,~as.numeric(.)) %>% 
+    modify_at(2:6,~as.numeric(.)) %>%
+    filter(facilities != "No Longer in Custody") %>% 
     mutate(scrape_date  = today(),
            state = "Texas")
 }
