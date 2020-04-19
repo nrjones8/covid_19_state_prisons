@@ -10,7 +10,7 @@ source(here::here("R/utils.R"))
 source(here::here("R/graph.R"))
 source(here::here("R/map.R"))
 
-facility_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/facilities_data_2020_04_18.csv")
+facility_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/facilities_data_current.csv")
 state_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/state_summaries_current.csv")
 ```
 
