@@ -420,6 +420,22 @@ get_nj_covid_data <- function(nj_doc_path) {
                 state = "New Jersey"))
 }
 
+# North Carolina --------------------------------------------------------------
+get_nc_covid_data <- function(nc_doc_path) {
+  column_totals <- nc_doc_path %>%
+    html_nodes('.DPSDITDOPCovidInformation') %>%
+    html_nodes('.columntotal') %>%
+    html_text() %>%
+    str_trim()
+  # There are 8 "column total" entries; the last three are Tests Performed, Positive, Negative
+  total_tests <- as.integer(column_totals[6])
+  total_positives <- as.integer(column_totals[7])
+  total_negatives <- as.integer(column_totals[8])
+
+  tibble(inmates_positive=total_positives, inmates_negative=total_negatives, inmates_tested=total_tests) %>%
+    mutate(scrape_date = today(), state = 'North Carolina')
+}
+
 # North Dakota ------------------------------------------------------------
 #this function is probably the most likely to break
 get_nd_covid_data <- function(nd_doc_path) {
