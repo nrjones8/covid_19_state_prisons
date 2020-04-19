@@ -1,6 +1,6 @@
 source(here::here("R", "utils.R"))
 
-# get_all_current_website_pages()
+get_all_current_website_pages()
 
 get_all_current_website_pages <- function() {
   sheet_info <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/")
@@ -11,7 +11,7 @@ get_all_current_website_pages <- function() {
     if (!is.na(sheet_info$link[i])) {
       save_website_pages(url = sheet_info$link[i], state = sheet_info$state[i])
     }
-    print(paste0(sheet_info$state[i], " completed!"))
+    print(paste0(sheet_info$state[i], " completed!")) 
   }
 }
 

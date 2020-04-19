@@ -10,8 +10,8 @@ source(here::here("R/utils.R"))
 source(here::here("R/graph.R"))
 source(here::here("R/map.R"))
 
-facility_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/facilities_data_2020_04_16.csv")
-state_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/state_summaries_2020_04_16.csv")
+facility_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/facilities_data_2020_04_18.csv")
+state_data <- readr::read_csv("https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/state_summaries_current.csv")
 ```
 
 
@@ -27,7 +27,7 @@ This site offers the following data (some states have less data available than t
 - Historical population data for state prisons.
 - Web scrapers built to extract data from Department of Corrections dashboards.
 
-```{r, layout="l-screen"}
+```{r, layout="l-screen", height = 12}
 make_choropleth_map(state_data)
 ```
 
