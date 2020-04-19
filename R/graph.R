@@ -3,6 +3,7 @@
 make_mirror_graph <- function(data) {
 
   data$inmates_positive <- data$inmates_positive * -1
+  current_date <- unique(data$scrape_date)
   data <-
     data %>%
     dplyr::select(state,
@@ -31,7 +32,7 @@ make_mirror_graph <- function(data) {
     ggplot2::scale_y_continuous(breaks = pretty(data$count),
                                 labels = abs(pretty(data$count))) +
     patchwork::plot_annotation(caption = glue::glue("State Departments of Corrections differ in their testing and reporting practices. 
-                  Data were collected from various State DOCs on {make_pretty_date(today())}.
+                  Data were collected from various state DOCs on {make_pretty_date(current_date)}.
                   See covidprisondata.com for more")) +
     ggplot2::scale_fill_manual(values = c("#d95f02", "#1b9e77")) + 
     ggplot2::guides(fill = FALSE) +
