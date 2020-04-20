@@ -19,7 +19,7 @@ get_alaska_covid_data <- function(alaska_doc) {
     html_text()
   tibble(inmates_tested = alaska_tracker[2],
          inmates_positive = alaska_tracker[4],
-          inmates_negative = alaska_tracker[6],
+         inmates_negative = alaska_tracker[6],
          inmates_pending = alaska_tracker[8]) %>%
     mutate(state = "Alaska",
            scrape_date = today()) 
@@ -82,7 +82,7 @@ get_georgia_covid_data <- function(georgia_doc_path) {
   georgia_text <- georgia_doc_path %>%
     html_nodes("table:nth-child(1) td") %>%
     html_text()
-   # fix up the names of the data
+  # fix up the names of the data
   recovered_text <- paste(georgia_text[7:8], georgia_text[3])
   confirmed_text <- paste(georgia_text[5:6], georgia_text[2])
   names_of_df <-
@@ -107,10 +107,12 @@ get_illinois_covid_data <- function(il_doc_path) {
       ".soi-rteTable-1:nth-child(2) .soi-rteTableOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableEvenCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderEvenCol-1"
     ) %>%
     html_text()
+
   illinois_data <- illinois_text %>%
     make_facility_table(1:5,2:5)
     
   names(illinois_data) <- c("facilities","staff_positive","staff_recovered","inmates_positive","inmates_recovered")
+
   illinois_data %>%
     mutate(scrape_date = today(),
            state = "Illinois")
@@ -174,7 +176,7 @@ get_arizona_covid_data <- function(az_doc_path) {
   # split the facilities table up and rename
   az_facility_data <- az_text[6:length(az_text)] %>%
     make_facility_table(1:6,2:6) 
-    names(az_facility_data) <-
+  names(az_facility_data) <-
     c(
       "facilities",
       "inmates_tested",
@@ -202,6 +204,7 @@ get_idaho_covid_data <- function(idaho_doc_path) {
     modify_at(1:4,~parse_number(.)) %>% 
     mutate(state = "Idaho", scrape_date = today())
 }
+
 
 
 
@@ -280,7 +283,7 @@ get_ks_covid_data <- function(ks_doc_path) {
     split(1:3) %>%
     as_tibble() %>%
     modify_at(2:3,  ~ parse_number(.))
-
+  
   names(data_for_ks) <-
     c("facilities", "staff_positive", "inmates_positive")
   
@@ -485,7 +488,7 @@ get_sc_covid_data <- function(sc_doc_path) {
   
   sc_data <- sc_text[4:length(sc_text)] %>%
     make_facility_table(1:3,2:3)
-    
+  
   names(sc_data) <- c("facilities","staff_positive","inmates_positive")
   sc_data %>% 
     mutate(scrape_date = today(),
@@ -569,7 +572,56 @@ get_california_covid_data <- function(cali_doc_path) {
   names(cali_emp_text) <- c("facilities", "staff_positive")
   cali_emp_text %>%
     filter(!str_detect(facilities, regex("Total", ignore_case = T))) %>%
-    modify_at(2,  ~ as.numeric(.))
+    modify_at(2,  ~ as.numeric(.)) %>% 
+    mutate(scrape_date= today(),
+           state = "California")
+}
+
+
+
+# Montana -----------------------------------------------------------------
+get_montana_covid_data <- function(montana_doc_path) {
+  data <- montana_doc_path %>%
+    html_nodes("td") %>%
+    html_text()
+  data <- matrix(data, ncol = 2, byrow = TRUE)
+  data <- data.frame(data, stringsAsFactors = FALSE)
+  names(data) <- c("facilities", "inmates_positive")
+  data <- data[-1, ]
+  data <-
+    data %>%
+    filter(stringr::str_trim(inmates_positive) != "",
+           facilities != "Total confirmed cases") %>%
+    mutate(inmates_positive = stringr::str_trim(inmates_positive),
+           facilities         = stringr::str_trim(facilities),
+           state            = "Montana",
+           scrape_date      = lubridate::today(),
+           inmates_positive = as.numeric(inmates_positive))
+  
+  return(data)
+}
+
+
+# Iowa --------------------------------------------------------------------
+get_iowa_covid_data <- function(iowa_doc_path) {
+  data <- iowa_doc_path %>%
+    html_nodes("td") %>%
+    html_text()
+  data <- matrix(data, ncol = 4, byrow = TRUE)
+  data <- data.frame(data, stringsAsFactors = FALSE)
+  names(data) <- c("facilities", "inmates_tested", "inmates_positive", "staff_positive")
+  data <- data[-1, ]
+  
+  data <-
+    data %>%
+    mutate_all(stringr::str_trim) %>%
+    filter(facilities != "Total") %>%
+    mutate(state            = "Iowa",
+           scrape_date      = lubridate::today(),
+           inmates_positive = as.numeric(inmates_positive),
+           inmates_tested   = as.numeric(inmates_tested),
+           staff_positive   = as.numeric(staff_positive)) 
+  return(data)
 }
 
 
@@ -660,7 +712,7 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
       "inmates_isolation",
       "staff_positive"
     )
-  list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]])
+  list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]]) %>% 
+    map(~mutate(.,state = "Oklahoma",scrape_date = today()))
 }
-
 

@@ -23,6 +23,9 @@ make_mirror_graph <- function(data) {
     dplyr::arrange(dplyr::desc(total))
   data$state <- factor(data$state, levels = rev(unique(data$state)))
   
+  
+
+  
   data %>%
     ggplot2::ggplot(ggplot2::aes(x = state,
                                  y = count,
@@ -31,7 +34,7 @@ make_mirror_graph <- function(data) {
     ggplot2::labs(title = "Reported Positive COVID-19 Tests",
                   subtitle = glue::glue("Among State Prison Populations: 
     Total States: {length(unique(data$state))}
-    Total Positives: {abs(sum(data$count[data$type == 'inmates_positive'], na.rm = TRUE))} Incarcerated People, {abs(sum(data$count[data$type == 'staff_positive'], na.rm = TRUE))} Corrections Staff"),
+    Total Positives: {  format(abs(sum(data$count[data$type == 'inmates_positive'], na.rm = TRUE)), big.mark = ",")} Incarcerated People, {  format(abs(sum(data$count[data$type == 'staff_positive'], na.rm = TRUE)), big.mark = ",")} Corrections Staff"),
                   x = "",
                   y = "" )+
     ggplot2::coord_flip() +

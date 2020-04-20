@@ -27,12 +27,13 @@ This site offers the following data (some states have less data available than t
 - Historical population data for state prisons.
 - Web scrapers built to extract data from Department of Corrections dashboards.
 
-## Figure 1. A State-and-County Level Map of the USA Showing 1) Positive COVID-19 Tests Among Incarcerated People and Correctional Staff, by State, and 2) Intensive Care Unit Beds and Percent of Population Aged 60+, by County
+### Figure 1. A State-and-County Level Map of the USA Showing 1) Positive COVID-19 Tests Among Incarcerated People and Correctional Staff, by State, and 2) Intensive Care Unit Beds and Percent of Population Aged 60+, by County
 
-```{r, layout="l-screen", fig.height = 6}
+```{r, layout="l-page", fig.height = 6}
 make_choropleth_map(state_data)
 ```
-### Figure 2. Reported Positive COVID-19 Tests Among Incarcerated People and Correctional Staff by State, From Highest to Lowest Total Number or Reported Positive Tests
+
+### Figure 2. Reported Positive COVID-19 Tests Among Incarcerated People and Correctional Staff by State, From Highest to Lowest Total Number of Reported Positive Tests
 
 ```{r, layout="l-page"}
 make_mirror_graph(state_data)
@@ -74,7 +75,7 @@ DT::datatable(state_data,
                 scrollX    = TRUE)) 
 ```
 
-## Figure 4. Available Facility-Level Data
+### Figure 4. Available Facility-Level Data
 
 ```{r, layout="l-screen"}
 
