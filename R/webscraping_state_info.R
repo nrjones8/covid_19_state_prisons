@@ -605,7 +605,7 @@ get_indiana_covid_data <- function(indiana_doc_path){
 
 
 get_new_hampshire_covid_data <- function(nh_doc_path) {
-  nh_text <- nh_page %>%
+  nh_text <- nh_doc_path %>%
     html_nodes(
       "tr:nth-child(6) p , tr:nth-child(5) p , td td td tr:nth-child(4) td , tr:nth-child(3) p , tr:nth-child(2) p"
     ) %>%
@@ -649,7 +649,7 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
   names(oklahoma_data[[2]]) <- names(oklahoma_data[[3]])
   facilities_data <- oklahoma_data[2:3] %>%
     reduce(bind_rows) %>%
-    modify_at(2:7,  ~ parse_number(.))
+    modify_at(c(2,6:7),  ~ parse_number(.))
   names(facilities_data) <-
     c(
       "facilities",
@@ -663,6 +663,4 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
   list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]])
 }
 
-
-# Oregon ------------------------------------------------------------------
 
