@@ -625,3 +625,17 @@ get_iowa_covid_data <- function() {
   return(data)
 }
 
+
+# Utah --------------------------------------------------------------------
+
+get_utah_covid_data <- function() {
+  data <- read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates") %>%
+    html_nodes("p:nth-child(16) strong") %>%
+    html_text()
+  data <- data.frame(state = "Utah",
+                     scraped_data = lubridate::today(),
+                     inmates_positive = data)
+  data$inmates_positive <- gsub(".*: ", "", data$inmates_positive)
+  data$inmates_positive <- as.numeric(data$inmates_positive)
+  return(data)
+}
