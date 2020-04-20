@@ -501,7 +501,19 @@ get_vermont_covid_data <- function() {
   total_negatives <- as.integer(just_integer_fields$word[3])
   pending_results <- as.integer(just_integer_fields$word[4])
 
-  tibble(inmates_positive=total_positives, inmates_negative=total_negatives, inmates_pending=pending_results, inmates_tested=total_tests) %>%
+  currently_incarcerated_positives <- as.integer(just_integer_fields$word[5])
+  # "Inmates in Medical Isolation"
+  inmates_medical_isolation <- as.integer(just_integer_fields$word[6])
+  inmates_released_medical_isolation <- as.integer(just_integer_fields$word[7])
+  inmates_hospital <- as.integer(just_integer_fields$word[8])
+
+  tibble(inmates_positive=total_positives,
+         inmates_negative=total_negatives,
+         inmates_pending=pending_results,
+         inmates_tested=total_tests,
+         inmates_medical_isolation=inmates_medical_isolation,
+         inmates_released_medical_isolation=inmates_released_medical_isolation,
+         inmates_hospital=inmates_hospital) %>%
     mutate(scrape_date = today(), state = 'Vermont')
 }
 
