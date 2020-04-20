@@ -12,6 +12,8 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "External Resources"
+      href: resources.html
     - text: "About"
       href: about.html
     - icon: fab fa-twitter
