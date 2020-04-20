@@ -32,3 +32,4 @@ This site offers the following data (some states have less data available than t
 
 [Aaron Littman](https://law.ucla.edu/faculty/faculty-profiles/aaron-littman/) is a clinical teaching fellow and the Deputy Director of the Covid Behind Bars Data Project at UCLA School of Law and has a J.D. from Yale Law School and an M.Phil. from the Institute of Criminology at the University of Cambridge.
 
+[Nick Jones](https://twitter.com/nrjones8) is a software engineer and civic technologist based in NYC.

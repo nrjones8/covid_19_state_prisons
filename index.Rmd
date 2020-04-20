@@ -35,13 +35,13 @@ make_choropleth_map(state_data)
 
 ### Figure 2. Reported Positive COVID-19 Tests Among Incarcerated People and Correctional Staff by State, From Highest to Lowest Total Number of Reported Positive Tests
 
-```{r, layout="l-page"}
+```{r, layout="l-page", fig.height = 6.5}
 make_mirror_graph(state_data)
 ```
 
 ### Figure 3. Available State-Level Data
 
-```{r, layout="l-screen"}
+```{r, layout="l-page"}
 
 state_data <-
   state_data %>%
@@ -65,8 +65,9 @@ names(state_data) <- crimeutils::capitalize_words(names(state_data))
 DT::datatable(state_data,
               filter       = 'top',
               class        = 'cell-border stripe',
-              extensions   = c('Buttons', "ColReorder"),
+              extensions   = c('Buttons', "ColReorder", "FixedColumns"),
               options      = list(
+                fixedColumns = list(leftColumns = 2),
                 pageLength = 15,
                 dom        = 'Bfrtip',
                 buttons    = c('copy', 'csv', 'excel', 'pdf', 'print'),
@@ -77,7 +78,7 @@ DT::datatable(state_data,
 
 ### Figure 4. Available Facility-Level Data
 
-```{r, layout="l-screen"}
+```{r, layout="l-page"}
 
 facility_data <- facility_data %>%
   filter(scrape_date %in% max(scrape_date)) %>%
@@ -104,8 +105,9 @@ names(facility_data) <- crimeutils::capitalize_words(names(facility_data))
 DT::datatable(facility_data,
               filter       = 'top',
               class        = 'cell-border stripe',
-              extensions   = c('Buttons', "ColReorder"),
+              extensions   = c('Buttons', "ColReorder", "FixedColumns"),
               options      = list(
+                fixedColumns = list(leftColumns = 3),
                 pageLength = 15,
                 dom        = 'Bfrtip',
                 buttons    = c('copy', 'csv', 'excel', 'pdf', 'print'),

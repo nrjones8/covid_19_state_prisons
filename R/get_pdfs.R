@@ -104,3 +104,9 @@ for (i in 1:length(links)) {
       download.file(links[i], destfile = link_name[i], mode = "wb")
   })
 }
+
+
+
+# Rhode Island ------------------------------------------------------------
+
+
