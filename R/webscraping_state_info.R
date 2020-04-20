@@ -584,3 +584,69 @@ get_indiana_covid_data <- function(indiana_doc_path){
 }
 
 
+
+# New Hampshire -----------------------------------------------------------
+
+
+get_new_hampshire_covid_data <- function(nh_doc_path) {
+  nh_text <- nh_page %>%
+    html_nodes(
+      "tr:nth-child(6) p , tr:nth-child(5) p , td td td tr:nth-child(4) td , tr:nth-child(3) p , tr:nth-child(2) p"
+    ) %>%
+    html_text() %>%
+    str_squish()
+  nh_data <- nh_text %>%
+    split(1:4) %>%
+    as_tibble()
+  names(nh_data) <-
+    c("facilities",
+      "staff_positive",
+      "inmates_tested",
+      "inmates_positive")
+  nh_data %>%
+    modify_at(2:4,  ~ parse_number(.)) %>%
+    mutate(scrape_date = today(),
+           state = "New Hampshire")
+}
+
+
+# Oklahoma --------------------------------------------------------------
+get_oklahoma_covid_data <- function(ok_doc_path) {
+  path_to_pdf <- ok_doc_path %>%
+    html_nodes("h4 a") %>%
+    html_attr("href")
+  oklahoma_data <- tabulizer::extract_tables(path_to_pdf[2]) %>%
+    map( ~ as_tibble(.)) %>%
+    map_at(
+      1,
+      ~ row_to_names(., row_number = 1) %>%
+        rename(
+          inmates_tested = Tested,
+          inmates_pending = Pending,
+          inmates_positive = Positive,
+          inmates_negative = Negative
+        )
+    ) %>%
+    map_at(2,
+           ~  select_if(., not_all_empty_char) %>%
+             dplyr::slice(5:10))
+  names(oklahoma_data[[2]]) <- names(oklahoma_data[[3]])
+  facilities_data <- oklahoma_data[2:3] %>%
+    reduce(bind_rows) %>%
+    modify_at(2:7,  ~ parse_number(.))
+  names(facilities_data) <-
+    c(
+      "facilities",
+      "inmates_positive",
+      "units_quarantine",
+      "inmates_quarantine",
+      "housing_type",
+      "inmates_isolation",
+      "staff_positive"
+    )
+  list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]])
+}
+
+
+# Oregon ------------------------------------------------------------------
+
