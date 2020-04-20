@@ -1,6 +1,11 @@
 
 make_choropleth_map <- function(data) {
-  data$total_positive <- data$inmates_positive + data$staff_positive
+  # If either of these columns is NA, treat as if it is 0!
+  data$total_positive <- rowSums(data[, c("inmates_positive", "staff_positive")],
+                                  na.rm = TRUE)
+    
+  
+  
   
   counties <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_county_20m.shp"))
   counties$cnty_fips <- paste0(counties$STATEFP, counties$COUNTYFP)
