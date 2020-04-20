@@ -476,6 +476,34 @@ get_nd_covid_data <- function(nd_doc_path) {
            state = "North Dakota")
 }
 
+# Vermont --------------------------------------------------------------------
+get_vermont_covid_data <- function() {
+  # This is pretty fragile, but works at the moment. Selector will probably need to be updated
+  inmate_data_img_src <- read_html("https://doc.vermont.gov/covid-19-information-page") %>%
+    html_nodes("#content > div > article > div > div > div > p:nth-child(16) > img") %>%
+    html_attr('src')
+  # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
+  # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
+  img_data <- substring(inmate_data_img_src, 23)
+  decoded_img <- base64decode(img_data)
+  # Write the decoded image to a tmp file
+  fconn <- file(tf <- tempfile(fileext = ".png"), "wb")
+  writeBin(decoded_img, fconn)
+  close(fconn)
+
+  # 3 cols, "word" contains OCR'd text
+  ocr_inmate_data <- tesseract::ocr_data(tf)
+  just_integer_fields <- ocr_inmate_data %>% filter(grepl("^[0-9]+$", word))
+
+  # First 4 fields are total tests, pos, neg, pending
+  total_tests <- as.integer(just_integer_fields$word[1])
+  total_positives <- as.integer(just_integer_fields$word[2])
+  total_negatives <- as.integer(just_integer_fields$word[3])
+  pending_results <- as.integer(just_integer_fields$word[4])
+
+  tibble(inmates_positive=total_positives, inmates_negative=total_negatives, inmates_pending=pending_results, inmates_tested=total_tests) %>%
+    mutate(scrape_date = today(), state = 'Vermont')
+}
 
 
 # South Carolina ----------------------------------------------------------
