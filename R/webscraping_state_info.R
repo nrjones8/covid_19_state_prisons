@@ -667,3 +667,49 @@ get_indiana_covid_data <- function(indiana_doc_path){
   
 }
 
+
+# Oregon ------------------------------------------------------------------
+
+get_oregon_covid_data <- function() {
+  library(RSelenium)
+  remDr <- RSelenium::remoteDriver(
+    remoteServerAddr = "localhost",
+    browser = "firefox",
+    port = 13L)
+  remDr$open()
+  remDr$navigate("https://www.oregon.gov/doc/covid19/Pages/covid19-tracking.aspx")
+  Sys.sleep(15)
+  
+  
+  # Get table
+  data <-
+    read_html(remDr$getPageSource()[[1]]) %>%
+    html_nodes("td") %>%
+    html_text()
+  
+  
+  # Get column names
+  column_names <-
+    read_html(remDr$getPageSource()[[1]]) %>%
+    html_nodes(".sorting_disabled") %>%
+    html_text()
+  column_names <- tolower(column_names)
+  column_names <- gsub(" ", "_", column_names)
+  
+  data <- matrix(data, ncol = 3, byrow = TRUE)
+  data <- data.frame(data, stringsAsFactors = FALSE)
+  names(data) <- column_names
+  
+  data <-
+    data %>%
+    rename(facility         = location,
+           staff_positive   = staff_confirmed,
+           inmates_positive = adults_in_custody_confirmed) %>%
+    mutate(state            = "Oregon",
+           scrape_date      = lubridate::today(),
+           inmates_positive = as.numeric(inmates_positive),
+           staff_positive   = as.numeric(staff_positive))
+  
+  return(data)
+}
+

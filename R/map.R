@@ -1,5 +1,7 @@
 
 make_choropleth_map <- function(data) {
+  data$total_positive <- data$inmates_positive + data$staff_positive
+  
   counties <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_county_20m.shp"))
   counties$cnty_fips <- paste0(counties$STATEFP, counties$COUNTYFP)
   county_hospitals <- readxl::read_excel(here::here("data/misc/KHN_ICU_bed_county_analysis_2.xlsx"))
@@ -34,6 +36,9 @@ make_choropleth_map <- function(data) {
                           states$NAME,
                           "</b>",
                           "<br>",
+                          "Total Confirmed Positive: ", 
+                          format(states$total_positive, big.mark = ","),
+                          "<br>",
                           "Incarerated People Confirmed Positive: ", 
                           format(states$inmates_positive, big.mark = ","),
                           "<br>",
@@ -49,7 +54,7 @@ make_choropleth_map <- function(data) {
   
   
   
-  pal  <- leaflet::colorNumeric("OrRd", states$inmates_positive)
+  pal  <- leaflet::colorNumeric("OrRd", states$total_positive)
   
   county_pal  <- leaflet::colorNumeric("OrRd", counties$X60plus_pct)
   
@@ -65,7 +70,7 @@ make_choropleth_map <- function(data) {
                          group       = "states",
                          col         = "black",
                          weight      = 1,
-                         fillColor   = pal(states$inmates_positive),
+                         fillColor   = pal(states$total_positive),
                          fillOpacity = 1,
                          label  = lapply(labs, htmltools::HTML),
                          popup  = states$popup) %>%
@@ -79,10 +84,14 @@ make_choropleth_map <- function(data) {
                          popup  = counties$popup) %>%
     leaflet::addLegend(pal      = pal, 
                        group    = "states",
-                       values   = states$inmates_positive,
+                       values   = states$total_positive,
                        opacity  = 1,
                        na.label = "Data Not Available",
-                       title    = "Incarcerated People <br>Confirmed Positive") %>%
+                       title    = paste0("Incarcerated People + 
+                                  <br>Corrections Staff <br>Confirmed Positive
+                                  <br>(",
+                                         make_pretty_date(unique(data$scrape_date)),
+                                         ")")) %>%
     leaflet::addLegend(pal      = county_pal, 
                        group    = "counties",
                        values   = counties$X60plus_pct,

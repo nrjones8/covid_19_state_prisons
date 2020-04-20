@@ -41,7 +41,7 @@ make_mirror_graph(state_data)
 
 ### Figure 3. Available State-Level Data
 
-```{r, layout="l-screen"}
+```{r, layout="l-page"}
 
 state_data <-
   state_data %>%
@@ -77,7 +77,7 @@ DT::datatable(state_data,
 
 ### Figure 4. Available Facility-Level Data
 
-```{r, layout="l-screen"}
+```{r, layout="l-page"}
 
 facility_data <- facility_data %>%
   filter(scrape_date %in% max(scrape_date)) %>%
