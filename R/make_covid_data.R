@@ -154,7 +154,6 @@ data_facilities %>%
 
 data_facilities %>% 
   write_csv(glue("data/daily/{path_date}"))
-jails_data
 
 write_state_summaries <- function(data_facilities, jails_data) {
   # making the facilities data more modular
@@ -213,15 +212,12 @@ write_state_summaries <- function(data_facilities, jails_data) {
     reduce(bind_rows)
   reduced_data
 }
-data_in_goog_sheet %>% 
-  filter(scraped_binary == 1) %>% 
-  pull(state)
 reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data)
 path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
-
 reduced_data %>% 
   write_csv(path_today_summary)
 reduced_data %>% 
   write_csv("data/daily/state_summaries_current.csv")
+
 
 
