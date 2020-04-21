@@ -308,7 +308,7 @@ get_la_covid_data <- function(la_doc_path) {
       "inmates_positive",
       "inmates_current_positive",
       "inmates_step_down",
-      "recovered",
+      "inmates_recovered",
       "inmates_death_underlying_cond",
       "inmates_deaths",
       "total_deaths"
@@ -485,10 +485,12 @@ get_nd_covid_data <- function(nd_doc_path) {
 }
 
 # Vermont --------------------------------------------------------------------
-get_vermont_covid_data <- function() {
+read_html("https://doc.vermont.gov/covid-19-information-page") %>% 
+  get_vermont_covid_data()
+get_vermont_covid_data <- function(vermont_doc_path) {
   # As of 4/20/20, there are two imgs on the page - the first one contains data about incarcerated people, the
   # second about staff
-  imgs <- read_html("https://doc.vermont.gov/covid-19-information-page") %>%
+  imgs <- vermont_doc_path %>%
     html_nodes("img") %>%
     html_attr("src")
   inmate_data_img_src <- imgs[1]
@@ -497,7 +499,7 @@ get_vermont_covid_data <- function() {
   # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
   # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
   img_data <- substring(inmate_data_img_src, 23)
-  decoded_img <- base64decode(img_data)
+  decoded_img <- base64enc::base64decode(img_data)
   # Write the decoded image to a tmp file
   fconn <- file(tf <- tempfile(fileext = ".png"), "wb")
   writeBin(decoded_img, fconn)
@@ -524,7 +526,7 @@ get_vermont_covid_data <- function() {
   # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
   # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
   staff_img_data <- substring(staff_data_img_src, 23)
-  staff_decoded_img <- base64decode(staff_img_data)
+  staff_decoded_img <- base64enc::base64decode(staff_img_data)
   # Write the decoded image to a tmp file
   fconn <- file(staff_tf <- tempfile(fileext = ".png"), "wb")
   writeBin(staff_decoded_img, fconn)
@@ -547,7 +549,6 @@ get_vermont_covid_data <- function() {
          staff_positive=num_staff_positive) %>%
     mutate(scrape_date = today(), state = 'Vermont')
 }
-
 
 # South Carolina ----------------------------------------------------------
 get_sc_covid_data <- function(sc_doc_path) {
@@ -697,12 +698,11 @@ get_iowa_covid_data <- function(iowa_doc_path) {
 
 
 # Utah --------------------------------------------------------------------
-
-get_utah_covid_data <- function() {
-  data <- read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates") %>%
+get_utah_covid_data <- function(ut_doc_path) {
+  data <- ut_doc_path %>%
     html_nodes("p:nth-child(16) strong") %>%
     html_text()
-  data <- data.frame(state = "Utah",
+  data <- tibble(state = "Utah",
                      scraped_data = lubridate::today(),
                      inmates_positive = data)
   data$inmates_positive <- gsub(".*: ", "", data$inmates_positive)
@@ -746,7 +746,7 @@ get_oregon_covid_data <- function() {
   remDr <- RSelenium::remoteDriver(
     remoteServerAddr = "localhost",
     browser = "firefox",
-    port = 14L)
+    port = 4445L)
   remDr$open()
   remDr$navigate("https://www.oregon.gov/doc/covid19/Pages/covid19-tracking.aspx")
   Sys.sleep(15)
@@ -764,6 +764,7 @@ get_oregon_covid_data <- function() {
     read_html(remDr$getPageSource()[[1]]) %>%
     html_nodes(".sorting_disabled") %>%
     html_text()
+  remDr$quit()
   
   column_names <- tolower(column_names)
   column_names <- gsub(" ", "_", column_names)
@@ -780,8 +781,7 @@ get_oregon_covid_data <- function() {
     mutate(state            = "Oregon",
            scrape_date      = lubridate::today(),
            inmates_positive = as.numeric(inmates_positive),
-           staff_positive   = as.numeric(staff_positive))
-  
+           staff_positive   = as.numeric(staff_positive)) 
   return(data)
 }
 
