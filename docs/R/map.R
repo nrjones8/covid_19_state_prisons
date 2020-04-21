@@ -15,7 +15,12 @@ make_choropleth_map <- function(data) {
   
   counties <-
     counties %>%
-    left_join(county_hospitals)
+    left_join(county_hospitals) %>%
+    select(X60plus_pct, 
+           geometry,
+           all_icu,
+           cnty_name,
+           state)
   counties$X60plus_pct <- counties$X60plus_pct * 100
   counties$X60plus_pct_pretty <- paste0(counties$X60plus_pct, "%")
   
@@ -42,7 +47,7 @@ make_choropleth_map <- function(data) {
     states %>%
     dplyr::left_join(data)
   states$popup <-  paste0("<b>",
-                          states$NAME,
+                          states$state,
                           "</b>",
                           "<br>",
                           "Total Confirmed Positive: ", 
@@ -60,11 +65,20 @@ make_choropleth_map <- function(data) {
                           "Corrections Staff Deaths: ",   
                           format(states$staff_deaths, big.mark = ","))
   
+  states <-
+    states %>%
+    select(geometry,
+           popup,
+           total_positive)
+  
   labs <- as.list(states$popup)
   pal  <- leaflet::colorNumeric("OrRd", states$total_positive)
   county_pal  <- leaflet::colorNumeric("OrRd", counties$X60plus_pct)
   css_fix <- "div.info.legend.leaflet-control br {clear: both;}" # CSS to correct spacing
   html_fix <- htmltools::tags$style(type = "text/css", css_fix)  # Convert CSS to HTML
+  
+  unique_date <- unique(data$scrape_date)
+  unique_date <- unique_date[!is.na(unique_date)]
   
   leaflet::leaflet() %>%
     leaflet::addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
@@ -73,7 +87,7 @@ make_choropleth_map <- function(data) {
     leaflet::setView(-98.483330, 38.712046, zoom = 4) %>% 
     leaflet::addPolygons(data        = states,
                          group       = "states",
-                         col         = "black",
+                         color       = "black",
                          weight      = 1,
                          fillColor   = pal(states$total_positive),
                          fillOpacity = 1,
@@ -81,12 +95,18 @@ make_choropleth_map <- function(data) {
                          popup  = states$popup) %>%
     leaflet::addPolygons(data   = counties,
                          group  = "counties",
-                         col    = "black",
+                         color    = "black",
                          weight = 1,
                          fillOpacity = 1,
                          fillColor = county_pal(counties$X60plus_pct),
-                         label  = lapply(county_labs, htmltools::HTML),
-                         popup  = counties$popup) %>%
+                         label   = lapply(county_labs, htmltools::HTML),
+                         popup   = counties$popup) %>%
+    leaflet::addPolylines(data    = states,
+                          color   = "black",
+                          group   = "borders",
+                          stroke  = TRUE,
+                          opacity = 1,
+                          weight  = 1.5) %>%
     leaflet::addLegend(pal      = pal, 
                        group    = "states",
                        values   = states$total_positive,
@@ -95,7 +115,7 @@ make_choropleth_map <- function(data) {
                        title    = paste0("Incarcerated People + 
                                   <br>Corrections Staff <br>Confirmed Positive
                                   <br>(",
-                                         make_pretty_date(unique(data$scrape_date)),
+                                         make_pretty_date(unique_date),
                                          ")")) %>%
     leaflet::addLegend(pal      = county_pal, 
                        group    = "counties",
@@ -105,6 +125,7 @@ make_choropleth_map <- function(data) {
                        title    = "Percent of Population <br>Aged 60+: ") %>%
     leaflet::groupOptions("states",       zoomLevels = 0:5) %>%
     leaflet::groupOptions("counties",     zoomLevels = 6:18) %>%
+    leaflet::groupOptions("borders",     zoomLevels = 6:18) %>%
     htmlwidgets::prependContent(html_fix) 
   
 }
