@@ -1,27 +1,27 @@
 state,scrape_date,inmates_positive,staff_positive,inmates_negative,staff_negative,test_pending,inmates_pending,inmates_deaths,staff_deaths,inmates_covid_deaths,inmates_death_underlying_cond,total_deaths,inmates_tested,inmates_tests,contract_staff_positive
-Alabama,2020-04-19,3,0,0,0,5,0,1,0,0,0,0,NA,NA,NA
-Arizona,2020-04-19,25,0,75,0,0,36,0,0,0,0,0,NA,NA,NA
-California,2020-04-19,0,89,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Federal,2020-04-19,471,309,0,0,0,0,22,0,0,0,0,NA,NA,NA
-Florida,2020-04-19,113,80,159,0,0,89,0,0,0,0,0,NA,NA,NA
-Georgia,2020-04-19,131,74,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Illinois,2020-04-19,148,135,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Indiana,2020-04-19,211,0,0,0,0,0,1,0,0,0,0,NA,NA,NA
-Iowa,2020-04-19,1,1,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Kansas,2020-04-19,31,39,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Montana,2020-04-19,2,0,0,0,0,0,0,0,0,0,0,NA,NA,NA
-New Hampshire,2020-04-19,0,6,0,0,0,0,0,0,0,0,0,NA,NA,NA
-New Jersey,2020-04-19,63,309,0,0,0,0,8,0,0,0,0,NA,NA,NA
-North Dakota,2020-04-19,0,0,29,0,0,0,0,0,0,0,0,NA,NA,NA
-Ohio,2020-04-19,2400,244,0,0,0,0,1,1,6,0,0,NA,NA,NA
-Oklahoma,2020-04-19,0,4,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Pennsylvania,2020-04-19,22,35,58,112,0,0,1,0,0,0,0,NA,NA,NA
-South Carolina,2020-04-19,0,35,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Texas,2020-04-19,351,0,224,0,0,120,0,0,0,0,0,NA,NA,NA
-Virginia,2020-04-19,108,50,0,0,0,0,1,0,0,0,0,NA,NA,NA
-Washington,2020-04-19,12,15,0,0,0,0,0,0,0,0,0,NA,NA,NA
-Alaska,2020-04-19,0,NA,31,NA,NA,9,NA,NA,NA,NA,NA,40,NA,NA
-Idaho,2020-04-19,0,NA,26,NA,NA,1,NA,NA,NA,NA,NA,NA,27,NA
-New York,2020-04-19,210,783,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
-North Carolina,2020-04-19,274,NA,308,NA,NA,NA,NA,NA,NA,NA,NA,582,NA,NA
-Delaware,2020-04-19,20,20,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3
+Alabama,4/19/2020,3,0,0,0,5,0,1,0,0,0,0,NA,NA,NA
+Arizona,4/19/2020,25,0,75,0,0,36,0,0,0,0,0,NA,NA,NA
+California,4/19/2020,128,89,450,0,0,0,1,0,0,0,0,NA,NA,NA
+Federal,4/19/2020,471,309,0,0,0,0,22,0,0,0,0,NA,NA,NA
+Florida,4/19/2020,113,80,159,0,0,89,0,0,0,0,0,NA,NA,NA
+Georgia,4/19/2020,131,74,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Illinois,4/19/2020,148,135,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Indiana,4/19/2020,211,0,0,0,0,0,1,0,0,0,0,NA,NA,NA
+Iowa,4/19/2020,1,1,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Kansas,4/19/2020,31,39,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Montana,4/19/2020,2,0,0,0,0,0,0,0,0,0,0,NA,NA,NA
+New Hampshire,4/19/2020,0,6,0,0,0,0,0,0,0,0,0,NA,NA,NA
+New Jersey,4/19/2020,63,309,0,0,0,0,8,0,0,0,0,NA,NA,NA
+North Dakota,4/19/2020,0,0,29,0,0,0,0,0,0,0,0,NA,NA,NA
+Ohio,4/19/2020,2400,244,0,0,0,0,1,1,6,0,0,NA,NA,NA
+Oklahoma,4/19/2020,0,4,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Pennsylvania,4/19/2020,22,35,58,112,0,0,1,0,0,0,0,NA,NA,NA
+South Carolina,4/19/2020,0,35,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Texas,4/19/2020,351,0,224,0,0,120,0,0,0,0,0,NA,NA,NA
+Virginia,4/19/2020,108,50,0,0,0,0,1,0,0,0,0,NA,NA,NA
+Washington,4/19/2020,12,15,0,0,0,0,0,0,0,0,0,NA,NA,NA
+Alaska,4/19/2020,0,NA,31,NA,NA,9,NA,NA,NA,NA,NA,40,NA,NA
+Idaho,4/19/2020,0,NA,26,NA,NA,1,NA,NA,NA,NA,NA,NA,27,NA
+New York,4/19/2020,210,783,NA,NA,NA,NA,NA,1,NA,NA,NA,NA,NA,NA
+North Carolina,4/19/2020,274,NA,308,NA,NA,NA,NA,NA,NA,NA,NA,582,NA,NA
+Delaware,4/19/2020,20,20,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,3

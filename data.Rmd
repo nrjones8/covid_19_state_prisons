@@ -11,9 +11,6 @@ xfun::embed_file('https://raw.githubusercontent.com/seathebass/covid_19_state_pr
 ```
 
 
-<a href="base64 data" download="filename">
-
-
 ### Facility-level data
 
 ```{r echo=FALSE}
@@ -22,4 +19,3 @@ xfun::embed_file('https://raw.githubusercontent.com/seathebass/covid_19_state_pr
                  text = "Download CSV")
 ```
 
-<a href="base64 data" download="filename">
