@@ -742,9 +742,11 @@ get_utah_covid_data <- function(ut_doc_path) {
   data <- ut_doc_path %>%
     html_nodes("p:nth-child(16) strong") %>%
     html_text()
-  data <- tibble(state = "Utah",
-                     scrape_date = lubridate::today(),
-                     inmates_positive = data)
+  data <- tibble(
+    state = "Utah",
+    scrape_date = lubridate::today(),
+    inmates_positive = data
+  )
   data$inmates_positive <- gsub(".*: ", "", data$inmates_positive)
   data$inmates_positive <- as.numeric(data$inmates_positive)
   return(data)

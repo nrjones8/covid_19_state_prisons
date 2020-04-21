@@ -212,7 +212,6 @@ write_state_summaries <- function(data_facilities, jails_data) {
     reduce(bind_rows)
   reduced_data
 }
-
 reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data)
 path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
 reduced_data %>% 
