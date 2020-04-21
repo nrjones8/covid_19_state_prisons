@@ -299,10 +299,20 @@ get_la_covid_data <- function(la_doc_path) {
       "#tablepress-5 td"  ) %>%
     html_text()
   la_data <- la_inmate_data %>%
-    split(1:7) %>%
+    split(1:8) %>%
     as_tibble() %>%
-    modify_at(2:7,  ~ as.numeric(.))
-  names(la_data) <- c("facilities","inmates_positive","inmates_step_down","recovered","inmates_death_underlying_cond","inmates_deaths","total_deaths")
+    modify_at(2:8,  ~ as.numeric(.))
+  names(la_data) <-
+    c(
+      "facilities",
+      "inmates_positive",
+      "inmates_current_positive",
+      "inmates_step_down",
+      "inmates_recovered",
+      "inmates_death_underlying_cond",
+      "inmates_deaths",
+      "total_deaths"
+    )
   
   la_staff_text <- la_doc_path %>%
     html_nodes("#tablepress-4 td") %>%
@@ -317,8 +327,6 @@ get_la_covid_data <- function(la_doc_path) {
                 state = "Louisiana")) %>% 
     reduce(left_join)
 }
-
-
 
 # New York ----------------------------------------------------------------
 # reformat Aaron's code
@@ -476,7 +484,111 @@ get_nd_covid_data <- function(nd_doc_path) {
            state = "North Dakota")
 }
 
+# Minnesota ------------------------------------------------------------
 
+get_minnesota_covid_data <- function(minn_doc_path) {
+  mn_img_src_relative <-  minn_doc_path %>%
+    html_nodes('img[title="covid testing chart"]') %>%
+    html_attr('src')
+
+  mn_img_src_full <- paste('https://mn.gov', mn_img_src_relative, sep='')
+  mn_img <- mn_img_src_full %>% image_read()
+
+  mn_img_details <- image_info(mn_img)
+  # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
+  # for an example of what this should look like - from the docs:
+  # image_crop(image, "100x150+50"): crop out width:100px and height:150px starting +50px from the left
+  #
+  # Basically we want the full width, but just the bottom 30px, which contain the totals. Trying to OCR
+  # the entire table was failing miserably, but this works.
+  crop_str <- sprintf('%sx30+0+%s', mn_img_details$width, mn_img_details$height - 30)
+  cropped <- mn_img %>% image_crop(crop_str)
+
+  # The bottom row is just numbers, so only look for digits (a "4" was being interpreted as an "a" without this)
+  tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
+  mn_ocr_data <- cropped %>% tesseract::ocr_data(engine=tesseract_digit_eng)
+  ocred_data <- mn_ocr_data %>% mutate(as_ints = as.integer(word)) %>% pull(as_ints)
+  tibble(
+    inmates_tested=ocred_data[1],
+    inmates_positive=ocred_data[2],
+    inmates_negative=ocred_data[3],
+    inmates_pending=ocred_data[4],
+    inmates_presumed_positive=ocred_data[5],
+    inmates_released_medical_isolation=ocred_data[6],
+    inmates_hospital=ocred_data[7],
+    inmates_deaths=ocred_data[8],
+
+    scrape_date = today(),
+    state = 'Minnesota'
+  )
+}
+
+
+# Vermont --------------------------------------------------------------------
+read_html("https://doc.vermont.gov/covid-19-information-page") %>% 
+  get_vermont_covid_data()
+get_vermont_covid_data <- function(vermont_doc_path) {
+  # As of 4/20/20, there are two imgs on the page - the first one contains data about incarcerated people, the
+  # second about staff
+  imgs <- vermont_doc_path %>%
+    html_nodes("img") %>%
+    html_attr("src")
+  inmate_data_img_src <- imgs[1]
+  staff_data_img_src <- imgs[2]
+
+  # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
+  # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
+  img_data <- substring(inmate_data_img_src, 23)
+  decoded_img <- base64enc::base64decode(img_data)
+  # Write the decoded image to a tmp file
+  fconn <- file(tf <- tempfile(fileext = ".png"), "wb")
+  writeBin(decoded_img, fconn)
+  close(fconn)
+
+  # 3 cols, "word" contains OCR'd text
+  ocr_inmate_data <- tesseract::ocr_data(tf)
+  just_integer_fields <- ocr_inmate_data %>% filter(grepl("^[0-9]+$", word))
+
+  # First 4 fields are total tests, pos, neg, pending
+  total_tests <- as.integer(just_integer_fields$word[1])
+  total_positives <- as.integer(just_integer_fields$word[2])
+  total_negatives <- as.integer(just_integer_fields$word[3])
+  pending_results <- as.integer(just_integer_fields$word[4])
+
+  currently_incarcerated_positives <- as.integer(just_integer_fields$word[5])
+  # "Inmates in Medical Isolation"
+  inmates_medical_isolation <- as.integer(just_integer_fields$word[6])
+  inmates_released_medical_isolation <- as.integer(just_integer_fields$word[7])
+  inmates_hospital <- as.integer(just_integer_fields$word[8])
+
+  ##
+  ## Now do similar parsing for the second image, which contains data about staff testing
+  # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
+  # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
+  staff_img_data <- substring(staff_data_img_src, 23)
+  staff_decoded_img <- base64enc::base64decode(staff_img_data)
+  # Write the decoded image to a tmp file
+  fconn <- file(staff_tf <- tempfile(fileext = ".png"), "wb")
+  writeBin(staff_decoded_img, fconn)
+  close(fconn)
+
+  ocr_staff_data <- tesseract::ocr_data(staff_tf)
+  words <- ocr_staff_data$word
+  # The image, when read left to right, has the word "Total" before the number of total staff who
+  # have tested positive
+  index_of_total <- which(words == 'Total')
+  num_staff_positive <- as.integer(words[index_of_total + 1])
+
+  tibble(inmates_positive=total_positives,
+         inmates_negative=total_negatives,
+         inmates_pending=pending_results,
+         inmates_tested=total_tests,
+         inmates_medical_isolation=inmates_medical_isolation,
+         inmates_released_medical_isolation=inmates_released_medical_isolation,
+         inmates_hospital=inmates_hospital,
+         staff_positive=num_staff_positive) %>%
+    mutate(scrape_date = today(), state = 'Vermont')
+}
 
 # South Carolina ----------------------------------------------------------
 get_sc_covid_data <- function(sc_doc_path) {
@@ -626,18 +738,20 @@ get_iowa_covid_data <- function(iowa_doc_path) {
 
 
 # Utah --------------------------------------------------------------------
-
-get_utah_covid_data <- function() {
-  data <- read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates") %>%
+get_utah_covid_data <- function(ut_doc_path) {
+  data <- ut_doc_path %>%
     html_nodes("p:nth-child(16) strong") %>%
     html_text()
-  data <- data.frame(state = "Utah",
-                     scraped_data = lubridate::today(),
-                     inmates_positive = data)
+  data <- tibble(
+    state = "Utah",
+    scrape_date = lubridate::today(),
+    inmates_positive = data
+  )
   data$inmates_positive <- gsub(".*: ", "", data$inmates_positive)
   data$inmates_positive <- as.numeric(data$inmates_positive)
   return(data)
 }
+
 
 # Indiana ---------------------------------------------------------------------
 get_indiana_covid_data <- function(indiana_doc_path){
@@ -667,12 +781,14 @@ get_indiana_covid_data <- function(indiana_doc_path){
 
 # Oregon ------------------------------------------------------------------
 
+
+
 get_oregon_covid_data <- function() {
   library(RSelenium)
   remDr <- RSelenium::remoteDriver(
     remoteServerAddr = "localhost",
     browser = "firefox",
-    port = 13L)
+    port = 4445L)
   remDr$open()
   remDr$navigate("https://www.oregon.gov/doc/covid19/Pages/covid19-tracking.aspx")
   Sys.sleep(15)
@@ -690,6 +806,8 @@ get_oregon_covid_data <- function() {
     read_html(remDr$getPageSource()[[1]]) %>%
     html_nodes(".sorting_disabled") %>%
     html_text()
+  remDr$quit()
+  
   column_names <- tolower(column_names)
   column_names <- gsub(" ", "_", column_names)
   
@@ -699,20 +817,17 @@ get_oregon_covid_data <- function() {
   
   data <-
     data %>%
-    rename(facility         = location,
+    rename(facilities         = location,
            staff_positive   = staff_confirmed,
            inmates_positive = adults_in_custody_confirmed) %>%
     mutate(state            = "Oregon",
            scrape_date      = lubridate::today(),
            inmates_positive = as.numeric(inmates_positive),
-           staff_positive   = as.numeric(staff_positive))
-  
+           staff_positive   = as.numeric(staff_positive)) 
   return(data)
 }
 
 # New Hampshire -----------------------------------------------------------
-
-
 get_new_hampshire_covid_data <- function(nh_doc_path) {
   nh_text <- nh_doc_path %>%
     html_nodes(
@@ -771,6 +886,7 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
     )
   list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]]) %>% 
     map(~mutate(.,state = "Oklahoma",scrape_date = today()))
+
 }
 
 
