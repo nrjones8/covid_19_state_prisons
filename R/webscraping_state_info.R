@@ -485,8 +485,9 @@ get_nd_covid_data <- function(nd_doc_path) {
 }
 
 # Minnesota ------------------------------------------------------------
-get_minnesota_covid_data <- function() {
-  mn_img_src_relative <- read_html('https://mn.gov/doc/about/covid-19-updates/') %>%
+
+get_minnesota_covid_data <- function(minn_doc_path) {
+  mn_img_src_relative <-  minn_doc_path %>%
     html_nodes('img[title="covid testing chart"]') %>%
     html_attr('src')
 
