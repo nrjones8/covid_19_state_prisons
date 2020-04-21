@@ -2,3 +2,8 @@
 
 language: R
 cache: packages
+
+
+
+# Build the site in `/site`
+Rscript -e "rmarkdown::render_site()"

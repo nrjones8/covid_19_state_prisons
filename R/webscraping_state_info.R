@@ -299,10 +299,20 @@ get_la_covid_data <- function(la_doc_path) {
       "#tablepress-5 td"  ) %>%
     html_text()
   la_data <- la_inmate_data %>%
-    split(1:7) %>%
+    split(1:8) %>%
     as_tibble() %>%
-    modify_at(2:7,  ~ as.numeric(.))
-  names(la_data) <- c("facilities","inmates_positive","inmates_step_down","recovered","inmates_death_underlying_cond","inmates_deaths","total_deaths")
+    modify_at(2:8,  ~ as.numeric(.))
+  names(la_data) <-
+    c(
+      "facilities",
+      "inmates_positive",
+      "inmates_current_positive",
+      "inmates_step_down",
+      "recovered",
+      "inmates_death_underlying_cond",
+      "inmates_deaths",
+      "total_deaths"
+    )
   
   la_staff_text <- la_doc_path %>%
     html_nodes("#tablepress-4 td") %>%
@@ -317,8 +327,6 @@ get_la_covid_data <- function(la_doc_path) {
                 state = "Louisiana")) %>% 
     reduce(left_join)
 }
-
-
 
 # New York ----------------------------------------------------------------
 # reformat Aaron's code
@@ -625,6 +633,20 @@ get_iowa_covid_data <- function(iowa_doc_path) {
 }
 
 
+# Utah --------------------------------------------------------------------
+
+get_utah_covid_data <- function() {
+  data <- read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates") %>%
+    html_nodes("p:nth-child(16) strong") %>%
+    html_text()
+  data <- data.frame(state = "Utah",
+                     scraped_data = lubridate::today(),
+                     inmates_positive = data)
+  data$inmates_positive <- gsub(".*: ", "", data$inmates_positive)
+  data$inmates_positive <- as.numeric(data$inmates_positive)
+  return(data)
+}
+
 
 # Indiana ---------------------------------------------------------------------
 get_indiana_covid_data <- function(indiana_doc_path){
@@ -652,10 +674,55 @@ get_indiana_covid_data <- function(indiana_doc_path){
 }
 
 
+# Oregon ------------------------------------------------------------------
+
+
+
+get_oregon_covid_data <- function() {
+  library(RSelenium)
+  remDr <- RSelenium::remoteDriver(
+    remoteServerAddr = "localhost",
+    browser = "firefox",
+    port = 14L)
+  remDr$open()
+  remDr$navigate("https://www.oregon.gov/doc/covid19/Pages/covid19-tracking.aspx")
+  Sys.sleep(15)
+  
+  
+  # Get table
+  data <-
+    read_html(remDr$getPageSource()[[1]]) %>%
+    html_nodes("td") %>%
+    html_text()
+  
+  
+  # Get column names
+  column_names <-
+    read_html(remDr$getPageSource()[[1]]) %>%
+    html_nodes(".sorting_disabled") %>%
+    html_text()
+  
+  column_names <- tolower(column_names)
+  column_names <- gsub(" ", "_", column_names)
+  
+  data <- matrix(data, ncol = 3, byrow = TRUE)
+  data <- data.frame(data, stringsAsFactors = FALSE)
+  names(data) <- column_names
+  
+  data <-
+    data %>%
+    rename(facilities         = location,
+           staff_positive   = staff_confirmed,
+           inmates_positive = adults_in_custody_confirmed) %>%
+    mutate(state            = "Oregon",
+           scrape_date      = lubridate::today(),
+           inmates_positive = as.numeric(inmates_positive),
+           staff_positive   = as.numeric(staff_positive))
+  
+  return(data)
+}
 
 # New Hampshire -----------------------------------------------------------
-
-
 get_new_hampshire_covid_data <- function(nh_doc_path) {
   nh_text <- nh_doc_path %>%
     html_nodes(
@@ -715,4 +782,3 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
   list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]]) %>% 
     map(~mutate(.,state = "Oklahoma",scrape_date = today()))
 }
-
