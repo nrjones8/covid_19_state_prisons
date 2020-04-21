@@ -3,7 +3,7 @@ creative_commons: CC BY
 title: "Covid Prison Data"
 base_url: https://covidprisondata.com
 google_analytics: "UA-99359926-7"
-exclude: ["data"]
+exclude: ["data", "CODE_OF_CONDUCT.md", "LICENSE"]
 output_dir: "docs"
 navbar: 
   logo:
