@@ -476,6 +476,45 @@ get_nd_covid_data <- function(nd_doc_path) {
            state = "North Dakota")
 }
 
+# Minnesota ------------------------------------------------------------
+get_minnesota_covid_data <- function() {
+  mn_img_src_relative <- read_html('https://mn.gov/doc/about/covid-19-updates/') %>%
+    html_nodes('img[title="covid testing chart"]') %>%
+    html_attr('src')
+
+  mn_img_src_full <- paste('https://mn.gov', mn_img_src_relative, sep='')
+  mn_img <- mn_img_src_full %>% image_read()
+
+  mn_img_details <- image_info(mn_img)
+  # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
+  # for an example of what this should look like - from the docs:
+  # image_crop(image, "100x150+50"): crop out width:100px and height:150px starting +50px from the left
+  #
+  # Basically we want the full width, but just the bottom 30px, which contain the totals. Trying to OCR
+  # the entire table was failing miserably, but this works.
+  crop_str <- sprintf('%sx30+0+%s', mn_img_details$width, mn_img_details$height - 30)
+  cropped <- mn_img %>% image_crop(crop_str)
+
+  # The bottom row is just numbers, so only look for digits (a "4" was being interpreted as an "a" without this)
+  tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
+  mn_ocr_data <- cropped %>% tesseract::ocr_data(engine=tesseract_digit_eng)
+  ocred_data <- mn_ocr_data %>% mutate(as_ints = as.integer(word)) %>% pull(as_ints)
+  tibble(
+    inmates_tested=ocred_data[1],
+    inmates_positive=ocred_data[2],
+    inmates_negative=ocred_data[3],
+    inmates_pending=ocred_data[4],
+    inmates_presumed_positive=ocred_data[5],
+    inmates_released_medical_isolation=ocred_data[6],
+    inmates_hospital=ocred_data[7],
+    inmates_deaths=ocred_data[8],
+
+    scrape_date = today(),
+    state = 'Minnesota'
+  )
+}
+
+
 # Vermont --------------------------------------------------------------------
 get_vermont_covid_data <- function() {
   # As of 4/20/20, there are two imgs on the page - the first one contains data about incarcerated people, the
