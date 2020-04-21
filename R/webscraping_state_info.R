@@ -886,4 +886,81 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
     )
   list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]]) %>% 
     map(~mutate(.,state = "Oklahoma",scrape_date = today()))
+
+}
+
+
+
+# Missouri ----------------------------------------------------------------
+
+get_missouri_covid_data <- function() {
+  data <-
+    xml2::read_html("https://doc.mo.gov/media-center/newsroom/covid-19/data") %>%
+    html_nodes("h4+ ul li") %>%
+    html_text()
+  data <- stringr::str_split_fixed(data, ":", n = 2)
+  data <- t(data)
+  column_names <- gsub(":.*", "", data[1, ])
+  column_names <- tolower(column_names)
+  column_names <- gsub(" |-", "_", column_names)
+  column_names <- gsub("prison.*staff", "prison_staff", column_names)
+  
+  data <- data.frame(data, stringsAsFactors = FALSE)
+  names(data) <- column_names
+  data <- data[-1, ]
+  data <-
+    data %>%
+    dplyr::mutate_all(readr::parse_number) %>%
+    dplyr::mutate(scrape_date      = lubridate::today(),
+                  state            = "Missouri") %>%
+    rename(inmates_positive        = positive_inmates,
+           inmates_deaths          = inmate_deaths,
+           contract_staff_positive = positive_non_prison_staff,
+           staff_positive          = positive_prison_staff)
+  
+  
+  return(data)  
+}
+
+
+
+# Wisconsin ---------------------------------------------------------------
+
+get_wisconsin_covid_data <- function() {
+data <- tabulizer::extract_tables(here::here("Testing_Table.pdf"),
+                               output = "data.frame",
+                               columns = list(4))
+
+data <- pdftools::pdf_text("Testing_Table.pdf")
+data <- trimws(data)
+data <- strsplit(data, "\r\n")
+data <- data[[1]]
+update_date <- data[grep("Updated:", data)]
+update_date <- gsub(".*:", "", update_date)
+update_date <- lubridate::mdy(update_date)
+
+data <- trimws(data)
+column_names <- data[grep("Completed Tests", data)]
+column_names <- gsub("Tests ", "Tests     ", column_names)
+column_names <- c("facilities", strsplit(column_names, " {2, }")[[1]])
+column_names <- tolower(column_names)
+column_names <- gsub(" ", "_", column_names)
+
+data <- data[(grep("Completed Tests", data) + 1):length(data)]
+data <- data[-grep("Grand Total", data)]
+data <- stringr::str_split_fixed(data, " {2,}", n = 5)
+data <- data.frame(data, stringsAsFactors = FALSE)
+names(data) <- column_names
+data <-
+  data %>%
+  mutate_at(2:ncol(.), readr::parse_number) %>%
+  rename(inmates_positive = positive_tests,
+         inmates_negative = negative_tests,
+         inmates_pending  = pending_tests,
+         inmates_tested   = completed_tests) %>%
+  mutate(scrape_date = lubridate::today(),
+         update_date = update_date,
+         state = "Wisconsin")
+
+return(data)
 }
