@@ -3,18 +3,19 @@ make_choropleth_map <- function(data) {
   # If either of these columns is NA, treat as if it is 0!
   data$total_positive <- rowSums(data[, c("inmates_positive", "staff_positive")],
                                   na.rm = TRUE)
-    
   
+  counties <- tigris::counties(cb = TRUE, resolution = "20m")
+  counties <- sf::st_as_sf(counties)  %>%
+    mutate(cnty_fips = paste0(STATEFP, COUNTYFP)) %>%
+    select(geometry,
+           cnty_fips)
   
-  
-  counties <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_county_20m.shp"))
-  counties$cnty_fips <- paste0(counties$STATEFP, counties$COUNTYFP)
   county_hospitals <- readxl::read_excel(here::here("data/misc/KHN_ICU_bed_county_analysis_2.xlsx"))
+  names(county_hospitals)[9:11] <- paste0("X", names(county_hospitals)[9:11])
   
   counties <-
     counties %>%
     left_join(county_hospitals)
-  names(counties)[19:21] <- paste0("X", names(counties)[19:21])
   counties$X60plus_pct <- counties$X60plus_pct * 100
   counties$X60plus_pct_pretty <- paste0(counties$X60plus_pct, "%")
   
@@ -31,9 +32,12 @@ make_choropleth_map <- function(data) {
   county_labs <- as.list(counties$popup)
   
   
-  states <- tigris::states()
-  states <- sf::st_as_sf(states)
+  states <- tigris::states(cb = TRUE, resolution = "20m")
+  states <- sf::st_as_sf(states) %>%
+    select(geometry,
+           NAME)
   states$state <- states$NAME
+  states$NAME <- NULL
   states <-
     states %>%
     dplyr::left_join(data)
@@ -55,14 +59,10 @@ make_choropleth_map <- function(data) {
                           "<br>",
                           "Corrections Staff Deaths: ",   
                           format(states$staff_deaths, big.mark = ","))
+  
   labs <- as.list(states$popup)
-  
-  
-  
   pal  <- leaflet::colorNumeric("OrRd", states$total_positive)
-  
   county_pal  <- leaflet::colorNumeric("OrRd", counties$X60plus_pct)
-  
   css_fix <- "div.info.legend.leaflet-control br {clear: both;}" # CSS to correct spacing
   html_fix <- htmltools::tags$style(type = "text/css", css_fix)  # Convert CSS to HTML
   
