@@ -478,10 +478,14 @@ get_nd_covid_data <- function(nd_doc_path) {
 
 # Vermont --------------------------------------------------------------------
 get_vermont_covid_data <- function() {
-  # This is pretty fragile, but works at the moment. Selector will probably need to be updated
-  inmate_data_img_src <- read_html("https://doc.vermont.gov/covid-19-information-page") %>%
-    html_nodes("#content > div > article > div > div > div > p:nth-child(16) > img") %>%
-    html_attr('src')
+  # As of 4/20/20, there are two imgs on the page - the first one contains data about incarcerated people, the
+  # second about staff
+  imgs <- read_html("https://doc.vermont.gov/covid-19-information-page") %>%
+    html_nodes("img") %>%
+    html_attr("src")
+  inmate_data_img_src <- imgs[1]
+  staff_data_img_src <- imgs[2]
+
   # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
   # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
   img_data <- substring(inmate_data_img_src, 23)
@@ -507,13 +511,32 @@ get_vermont_covid_data <- function() {
   inmates_released_medical_isolation <- as.integer(just_integer_fields$word[7])
   inmates_hospital <- as.integer(just_integer_fields$word[8])
 
+  ##
+  ## Now do similar parsing for the second image, which contains data about staff testing
+  # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
+  # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
+  staff_img_data <- substring(staff_data_img_src, 23)
+  staff_decoded_img <- base64decode(staff_img_data)
+  # Write the decoded image to a tmp file
+  fconn <- file(staff_tf <- tempfile(fileext = ".png"), "wb")
+  writeBin(staff_decoded_img, fconn)
+  close(fconn)
+
+  ocr_staff_data <- tesseract::ocr_data(staff_tf)
+  words <- ocr_staff_data$word
+  # The image, when read left to right, has the word "Total" before the number of total staff who
+  # have tested positive
+  index_of_total <- which(words == 'Total')
+  num_staff_positive <- as.integer(words[index_of_total + 1])
+
   tibble(inmates_positive=total_positives,
          inmates_negative=total_negatives,
          inmates_pending=pending_results,
          inmates_tested=total_tests,
          inmates_medical_isolation=inmates_medical_isolation,
          inmates_released_medical_isolation=inmates_released_medical_isolation,
-         inmates_hospital=inmates_hospital) %>%
+         inmates_hospital=inmates_hospital,
+         staff_positive=num_staff_positive) %>%
     mutate(scrape_date = today(), state = 'Vermont')
 }
 
