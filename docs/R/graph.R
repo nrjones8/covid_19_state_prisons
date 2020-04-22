@@ -45,7 +45,6 @@ make_mirror_graph <- function(data) {
                   Data were collected from various state DOCs on {make_pretty_date(current_date)}.
                   See covidprisondata.com for more")) +
     ggplot2::scale_fill_manual(values = c("#d95f02", "#1b9e77")) + 
-    ggplot2::guides(fill = FALSE) +
     ggplot2::geom_text(x     = 8, 
                        y     = min(data$count, na.rm = TRUE) * 0.60,
                        label = "Incarcerated People", 
@@ -68,6 +67,7 @@ make_mirror_graph <- function(data) {
                       yend   = max(data$count, na.rm = TRUE), 
                       colour = "#1b9e77",
                       arrow  = ggplot2::arrow()) +
-    ggplot2::theme_minimal() 
- # plotly::ggplotly()
+    ggplot2::theme_minimal() +
+    ggplot2::theme(legend.position='none') 
+  #  plotly::ggplotly()
 }

@@ -4,11 +4,11 @@ title: "About Us"
 
 [Sebastian Hoyos-Torres](https://twitter.com/seathebass92) is a data analyst in the Philadelphia DATA Lab and a Ph.D. student in the John Jay College of Criminal Justice at the City University of New York.
 
-[Jacob Kaplan](jacobdkaplan.com/) is a Ph.D. candidate in the Department of Criminology at the University of Pennsylvania.
+[Jacob Kaplan](https://jacobdkaplan.com/) is a Ph.D. candidate in the Department of Criminology at the University of Pennsylvania.
 
 [Connor Concannon](https://twitter.com/cconcannon1) is a Ph.D. candidate in the John Jay College of Criminal Justice at the City University of New York and the former Deputy Director of Analytics in the New York County District Attorney’s Office.
 
-[Oren Gur](data.philadao.com) is the Director of the Philadelphia District Attorney’s Transparency Analytics (DATA) Lab and has a Ph.D. from the Department of Criminology, Law, and Justice at the University of Illinois at Chicago.
+[Oren Gur](https://data.philadao.com/) is the Director of the Philadelphia District Attorney’s Transparency Analytics (DATA) Lab and has a Ph.D. from the Department of Criminology, Law, and Justice at the University of Illinois at Chicago.
 
 [Aaron Littman](https://law.ucla.edu/faculty/faculty-profiles/aaron-littman/) is a clinical teaching fellow and the Deputy Director of the Covid Behind Bars Data Project at UCLA School of Law and has a J.D. from Yale Law School and an M.Phil. from the Institute of Criminology at the University of Cambridge.
 

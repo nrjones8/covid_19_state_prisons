@@ -107,12 +107,12 @@ get_illinois_covid_data <- function(il_doc_path) {
       ".soi-rteTable-1:nth-child(2) .soi-rteTableOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableEvenCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderOddCol-1 , .soi-rteTable-1:nth-child(2) .soi-rteTableHeaderEvenCol-1"
     ) %>%
     html_text()
-
+  
   illinois_data <- illinois_text %>%
     make_facility_table(1:5,2:5)
-    
+  
   names(illinois_data) <- c("facilities","staff_positive","staff_recovered","inmates_positive","inmates_recovered")
-
+  
   illinois_data %>%
     mutate(scrape_date = today(),
            state = "Illinois")
@@ -124,7 +124,7 @@ get_pa_covid_data <- function(pa_covid_doc_path) {
   pa_text <- pa_covid_doc_path %>%
     html_nodes("br~ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableOddCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableEvenCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableOddCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableEvenCol-default"
     ) %>% 
-  html_text() %>%
+    html_text() %>%
     str_trim()
   #create a tibble from the data
   pa_data <- pa_text %>%
@@ -223,7 +223,7 @@ get_federal_data <- function(federal_bop_path){
                 state = "Federal") %>% 
           as_tibble(.) %>% 
           clean_names())
-    
+  
 }
 
 # Michigan --------------------------------------------------------------------
@@ -441,7 +441,7 @@ get_nc_covid_data <- function(nc_doc_path) {
   total_tests <- as.integer(column_totals[6])
   total_positives <- as.integer(column_totals[7])
   total_negatives <- as.integer(column_totals[8])
-
+  
   tibble(inmates_positive=total_positives, inmates_negative=total_negatives, inmates_tested=total_tests) %>%
     mutate(scrape_date = today(), state = 'North Carolina')
 }
@@ -489,10 +489,10 @@ get_minnesota_covid_data <- function(minn_doc_path) {
   mn_img_src_relative <-  minn_doc_path %>%
     html_nodes('img[title="covid testing chart"]') %>%
     html_attr('src')
-
+  
   mn_img_src_full <- paste('https://mn.gov', mn_img_src_relative, sep='')
   mn_img <- mn_img_src_full %>% image_read()
-
+  
   mn_img_details <- image_info(mn_img)
   # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
   # for an example of what this should look like - from the docs:
@@ -502,7 +502,7 @@ get_minnesota_covid_data <- function(minn_doc_path) {
   # the entire table was failing miserably, but this works.
   crop_str <- sprintf('%sx30+0+%s', mn_img_details$width, mn_img_details$height - 30)
   cropped <- mn_img %>% image_crop(crop_str)
-
+  
   # The bottom row is just numbers, so only look for digits (a "4" was being interpreted as an "a" without this)
   tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
   mn_ocr_data <- cropped %>% tesseract::ocr_data(engine=tesseract_digit_eng)
@@ -516,7 +516,7 @@ get_minnesota_covid_data <- function(minn_doc_path) {
     inmates_released_medical_isolation=ocred_data[6],
     inmates_hospital=ocred_data[7],
     inmates_deaths=ocred_data[8],
-
+    
     scrape_date = today(),
     state = 'Minnesota'
   )
@@ -532,7 +532,7 @@ get_vermont_covid_data <- function(vermont_doc_path) {
     html_attr("src")
   inmate_data_img_src <- imgs[1]
   staff_data_img_src <- imgs[2]
-
+  
   # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
   # First 23 characters are "data:image/png;base64," - which is not actually part of the image data
   img_data <- substring(inmate_data_img_src, 23)
@@ -541,23 +541,23 @@ get_vermont_covid_data <- function(vermont_doc_path) {
   fconn <- file(tf <- tempfile(fileext = ".png"), "wb")
   writeBin(decoded_img, fconn)
   close(fconn)
-
+  
   # 3 cols, "word" contains OCR'd text
   ocr_inmate_data <- tesseract::ocr_data(tf)
   just_integer_fields <- ocr_inmate_data %>% filter(grepl("^[0-9]+$", word))
-
+  
   # First 4 fields are total tests, pos, neg, pending
   total_tests <- as.integer(just_integer_fields$word[1])
   total_positives <- as.integer(just_integer_fields$word[2])
   total_negatives <- as.integer(just_integer_fields$word[3])
   pending_results <- as.integer(just_integer_fields$word[4])
-
+  
   currently_incarcerated_positives <- as.integer(just_integer_fields$word[5])
   # "Inmates in Medical Isolation"
   inmates_medical_isolation <- as.integer(just_integer_fields$word[6])
   inmates_released_medical_isolation <- as.integer(just_integer_fields$word[7])
   inmates_hospital <- as.integer(just_integer_fields$word[8])
-
+  
   ##
   ## Now do similar parsing for the second image, which contains data about staff testing
   # https://stackoverflow.com/questions/44349267/r-read-inline-base64-png-image-and-parse-text
@@ -568,14 +568,14 @@ get_vermont_covid_data <- function(vermont_doc_path) {
   fconn <- file(staff_tf <- tempfile(fileext = ".png"), "wb")
   writeBin(staff_decoded_img, fconn)
   close(fconn)
-
+  
   ocr_staff_data <- tesseract::ocr_data(staff_tf)
   words <- ocr_staff_data$word
   # The image, when read left to right, has the word "Total" before the number of total staff who
   # have tested positive
   index_of_total <- which(words == 'Total')
   num_staff_positive <- as.integer(words[index_of_total + 1])
-
+  
   tibble(inmates_positive=total_positives,
          inmates_negative=total_negatives,
          inmates_pending=pending_results,
@@ -881,7 +881,7 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
     )
   list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]]) %>% 
     map(~mutate(.,state = "Oklahoma",scrape_date = today()))
-
+  
 }
 
 
@@ -916,7 +916,29 @@ get_missouri_covid_data <- function(miss_doc_path) {
 }
 
 
-# Wisconsin ---------------------------------------------------------------
+
+url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
+areas <- tabulizer::locate_areas(url,
+                                 pages = 1)
+areas <- c(198.5982, 281.4743, 238.0785, 544.6768)
+names(areas) <- c("top", "left", "bottom", "right")
+areas <- list(areas)
+
+adult <- tabulizer::extract_tables(url, area = areas)
+adult <- adult[[1]]
+
+column_names <- adult[1,]
+column_names <- column_names[column_names != ""]
+column_names <- tolower(column_names)
+column_names <- gsub(" ", "_", column_names)
+
+values <- adult[2, ]
+values <- values[values != ""]
+
+
+adult <- data.frame(t(values), stringsAsFactors = FALSE)
+names(adult) <- column_names
+adult[] <- sapply(adult, readr::parse_number)
 
   
 
