@@ -152,18 +152,17 @@ get_pa_covid_data <- function(pa_covid_doc_path) {
 
 # alabama -----------------------------------------------------------------
 get_ala_covid_data <- function(ala_doc_path) {
-  alabama_text <- ala_doc_path %>%
-    html_nodes("td , th") %>%
-    html_text()
-  # split the text and make into a tibble
-  alabama_data <- alabama_text[6:length(alabama_text)] %>%
-    make_facility_table(1:5,2:5)
+  alabama_data <- ala_doc_path %>%
+    html_node("table ") %>%
+    html_table() 
   # adjust the names of the data
-  names(alabama_data) <- c("facilities","inmates_tested","test_pending","inmates_positive","inmates_deaths")
+  names(alabama_data) <- c("facilities","inmates_tested","inmates_pending","inmates_positive","inmates_deaths")
   # tag the data as well as with the scrape date
   alabama_data %>%
+    as_tibble() %>% 
     mutate(scrape_date = today(),
-           state = "Alabama")
+           state = "Alabama") %>% 
+    modify_at(2:5,~parse_number(.))
 }
 
 # Arizona -----------------------------------------------------------------
@@ -525,8 +524,6 @@ get_minnesota_covid_data <- function(minn_doc_path) {
 
 
 # Vermont --------------------------------------------------------------------
-read_html("https://doc.vermont.gov/covid-19-information-page") %>% 
-  get_vermont_covid_data()
 get_vermont_covid_data <- function(vermont_doc_path) {
   # As of 4/20/20, there are two imgs on the page - the first one contains data about incarcerated people, the
   # second about staff
@@ -779,9 +776,7 @@ get_indiana_covid_data <- function(indiana_doc_path){
 }
 
 
-# Oregon ------------------------------------------------------------------
-
-
+# oregon ------------------------------------------------------------------
 
 get_oregon_covid_data <- function() {
   library(RSelenium)
@@ -892,10 +887,8 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
 
 
 # Missouri ----------------------------------------------------------------
-
-get_missouri_covid_data <- function() {
-  data <-
-    xml2::read_html("https://doc.mo.gov/media-center/newsroom/covid-19/data") %>%
+get_missouri_covid_data <- function(miss_doc_path) {
+  data <- miss_doc_path %>% 
     html_nodes("h4+ ul li") %>%
     html_text()
   data <- stringr::str_split_fixed(data, ":", n = 2)
@@ -923,44 +916,74 @@ get_missouri_covid_data <- function() {
 }
 
 
-
 # Wisconsin ---------------------------------------------------------------
 
-get_wisconsin_covid_data <- function() {
-data <- tabulizer::extract_tables(here::here("Testing_Table.pdf"),
-                               output = "data.frame",
-                               columns = list(4))
+  
 
-data <- pdftools::pdf_text("Testing_Table.pdf")
-data <- trimws(data)
-data <- strsplit(data, "\r\n")
-data <- data[[1]]
-update_date <- data[grep("Updated:", data)]
-update_date <- gsub(".*:", "", update_date)
-update_date <- lubridate::mdy(update_date)
+# get_wisconsin_covid_data <- function(wisc_doc_path) {
+#   
+# data <- tabulizer::extract_tables(here::here("Testing_Table.pdf"),
+#                                output = "data.frame",
+#                                columns = list(4))
+# 
+# data <- pdftools::pdf_text("Testing_Table.pdf")
+# data <- trimws(data)
+# data <- strsplit(data, "\r\n")
+# data <- data[[1]]
+# update_date <- data[grep("Updated:", data)]
+# update_date <- gsub(".*:", "", update_date)
+# update_date <- lubridate::mdy(update_date)
+# 
+# data <- trimws(data)
+# column_names <- data[grep("Completed Tests", data)]
+# column_names <- gsub("Tests ", "Tests     ", column_names)
+# column_names <- c("facilities", strsplit(column_names, " {2, }")[[1]])
+# column_names <- tolower(column_names)
+# column_names <- gsub(" ", "_", column_names)
+# 
+# data <- data[(grep("Completed Tests", data) + 1):length(data)]
+# data <- data[-grep("Grand Total", data)]
+# data <- stringr::str_split_fixed(data, " {2,}", n = 5)
+# data <- data.frame(data, stringsAsFactors = FALSE)
+# names(data) <- column_names
+# data <-
+#   data %>%
+#   mutate_at(2:ncol(.), readr::parse_number) %>%
+#   rename(inmates_positive = positive_tests,
+#          inmates_negative = negative_tests,
+#          inmates_pending  = pending_tests,
+#          inmates_tested   = completed_tests) %>%
+#   mutate(scrape_date = lubridate::today(),
+#          update_date = update_date,
+#          state = "Wisconsin")
+# 
+# return(data)
+# }
+# 
+# get_wisconsin_covid_data("https://doc.wi.gov/Pages/COVID19(Coronavirus)/COVID19TestingDashboard.aspx")
 
-data <- trimws(data)
-column_names <- data[grep("Completed Tests", data)]
-column_names <- gsub("Tests ", "Tests     ", column_names)
-column_names <- c("facilities", strsplit(column_names, " {2, }")[[1]])
-column_names <- tolower(column_names)
-column_names <- gsub(" ", "_", column_names)
+# Massachusetts -----------------------------------------------------------
 
-data <- data[(grep("Completed Tests", data) + 1):length(data)]
-data <- data[-grep("Grand Total", data)]
-data <- stringr::str_split_fixed(data, " {2,}", n = 5)
-data <- data.frame(data, stringsAsFactors = FALSE)
-names(data) <- column_names
-data <-
-  data %>%
-  mutate_at(2:ncol(.), readr::parse_number) %>%
-  rename(inmates_positive = positive_tests,
-         inmates_negative = negative_tests,
-         inmates_pending  = pending_tests,
-         inmates_tested   = completed_tests) %>%
-  mutate(scrape_date = lubridate::today(),
-         update_date = update_date,
-         state = "Wisconsin")
-
-return(data)
+get_mass_covid_data <- function() {
+  download.file(
+    "https://data.aclum.org/sjc-12926-tracker/session/1880c1fe8550b3f648d3c7a9e7a76cb9/download/downloadData?w=",
+    destfile = "test.xlsx"
+  )
+  mass_data <- read_xlsx("test.xlsx")
+  unlink("test.xlsx")
+  mass_data %>%
+    clean_names() %>%
+    rename(
+      scrape_date = date,
+      facilities = county,
+      inmates_tested = n_positive_detainees_inmates,
+      inmates_positive = n_positive_detainees_inmates,
+      staff_tested = n_tested_staff,
+      staff_positive = n_positive_staff,
+      contract_staff_tested = n_tested_contractors,
+      contract_staff_positive = n_positive_contractor
+    ) %>% 
+    mutate(state = "Massachusetts") %>% 
+    modify_at(3:18,~as.numeric(.))
 }
+
