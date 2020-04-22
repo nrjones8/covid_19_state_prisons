@@ -3,6 +3,11 @@ data_in_goog_sheet <-
   read_sheet(
     "https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
   )
+
+manual_entries <- 
+  read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
+  ,sheet = "manual")
+
 render_all_pages <- function(google_prison_sheet) {
   #covid scraper for connecticut is broken and need a better way to automate from the image on
   # website to text. mass will be directly from aclu
@@ -13,6 +18,7 @@ render_all_pages <- function(google_prison_sheet) {
       arizona = get_arizona_covid_data,
       california = get_california_covid_data,
       delaware = get_delaware_covid_data,
+      federal = get_federal_data,
       florida = get_fl_covid_data,
       georgia = get_georgia_covid_data,
       idaho = get_idaho_covid_data,
@@ -22,6 +28,7 @@ render_all_pages <- function(google_prison_sheet) {
       kansas = get_ks_covid_data,
       louisiana = get_la_covid_data,
       minnesota = get_minnesota_covid_data,
+      missouri = get_missouri_covid_data,
       montana = get_montana_covid_data,
       new_hampshire = get_new_hampshire_covid_data,
       new_jersey = get_nj_covid_data,
@@ -34,13 +41,15 @@ render_all_pages <- function(google_prison_sheet) {
       south_carolina = get_sc_covid_data,
       texas = get_texas_covid_data,
       utah = get_utah_covid_data,
+      vermont = get_vermont_covid_data,
       virginia = get_virginia_covid_data,
-      washington = get_washington_covid_data,
-      federal = get_federal_data
+      washington = get_washington_covid_data
     )
+
   urls_to_scrape <- google_prison_sheet %>%
     filter(scraped_binary == 1,
            !state %in% c("Massachusetts", "Connecticut","Oregon")) %>%
+    arrange(state) %>% 
     pull(link) %>%
     map( ~ safe_get(.))
   # extract results in a compact way. idk if this is necessary anymore since the links should all technically pass
@@ -55,7 +64,6 @@ render_all_pages <- function(google_prison_sheet) {
   jails_data
 }
 jails_data <- render_all_pages(data_in_goog_sheet)
-
 # create summaries and extract summaries for a variety of states with the needed fields
 group_summary <- function(.data,...){
   .data %>% 
@@ -63,7 +71,6 @@ group_summary <- function(.data,...){
     summarise(...)
 }
 
-jails_data
 write_facilities_data <-
   function(rendered_jail_data,
            path_to_facilities_data) {
@@ -79,6 +86,7 @@ write_facilities_data <-
         "georgia",
         "indiana",
         "illinois",
+        "louisiana",
         "kansas",
         "new_hampshire",
         "north_dakota",
@@ -114,8 +122,8 @@ write_facilities_data <-
       rename_with(cols = vars(contains("inmates")),.fn = ~str_replace_all(.,"inmate","inmates")) %>% 
       rename_with(cols= vars(contains("death")),.fn = ~str_replace_all(.,"death","deaths")) %>% 
       select(facilities  = id,everything())
-    
-    
+    # massachussets data
+    mass_data <- get_mass_covid_data()    
     # join all confirmed facilities
     all_confirmed_facilities <-
       list(
@@ -125,7 +133,8 @@ write_facilities_data <-
         states_with_cc_facility[["oklahoma"]]$ok_facilities,
         oregon_data,
         cc_facilities,
-        fed_info
+        fed_info,
+        mass_data
       ) %>% 
       reduce(bind_rows) %>% 
       #this line of code is sacrosanct. remove it at your own risk
@@ -136,9 +145,9 @@ list(all_confirmed_facilities %>%
   past_period)
 
   } 
-
 path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
 path_to_facilities_data <- glue("data/daily/{path_to_data}")
+
 # write and collapse the past and present data
 data_facilities <- write_facilities_data(rendered_jail_data = jails_data,path_to_facilities_data = path_to_facilities_data)  %>% 
   map(~as_tibble(.) %>% 
@@ -155,7 +164,7 @@ data_facilities %>%
 data_facilities %>% 
   write_csv(glue("data/daily/{path_date}"))
 
-write_state_summaries <- function(data_facilities, jails_data) {
+write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
   # making the facilities data more modular
   summaries_states_facilities <- data_facilities %>%
     filter(scrape_date == max(scrape_date,na.rm = T)) %>%
@@ -199,6 +208,7 @@ write_state_summaries <- function(data_facilities, jails_data) {
     contract_staff_positive = `Contracted Staff_total`,
     inmates_positive = Offenders_total
   )
+  
   # collapse data into one df
   reduced_data <- list(summaries_states_facilities,
                        alaska_summary,
@@ -207,17 +217,26 @@ write_state_summaries <- function(data_facilities, jails_data) {
                        nc_totals,
                        delaware_totals,
                        jails_data$utah,
-                       jails_data$minnesota
+                       jails_data$minnesota,
+                       jails_data$vermont,
+                       jails_data$missouri,
+                       manual_entries
   ) %>%
     reduce(bind_rows)
   reduced_data
 }
-reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data)
+reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data,manual_entries = manual_entries)
+
+
 path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
+
 reduced_data %>% 
+  mutate(scrape_date = if_else(scrape_date == ymd(today()),today()-1,ymd(scrape_date))) %>% 
   write_csv(path_today_summary)
 reduced_data %>% 
+  mutate(scrape_date = if_else(scrape_date == ymd(today()),today()-1,ymd(scrape_date))) %>% 
   write_csv("data/daily/state_summaries_current.csv")
 
 
 
+ja
