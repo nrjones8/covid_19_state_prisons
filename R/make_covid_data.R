@@ -227,16 +227,11 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
 }
 reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data,manual_entries = manual_entries)
 
-
 path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
 
 reduced_data %>% 
-  mutate(scrape_date = if_else(scrape_date == ymd(today()),today()-1,ymd(scrape_date))) %>% 
   write_csv(path_today_summary)
 reduced_data %>% 
-  mutate(scrape_date = if_else(scrape_date == ymd(today()),today()-1,ymd(scrape_date))) %>% 
   write_csv("data/daily/state_summaries_current.csv")
 
 
-
-ja

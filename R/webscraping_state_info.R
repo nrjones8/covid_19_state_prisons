@@ -279,12 +279,12 @@ get_ks_covid_data <- function(ks_doc_path) {
   data_for_ks <- ks_doc_path %>%
     html_nodes("td") %>%
     html_text() %>%
-    split(1:3) %>%
+    split(1:5) %>%
     as_tibble() %>%
-    modify_at(2:3,  ~ parse_number(.))
+    modify_at(2:5,  ~ parse_number(.))
   
   names(data_for_ks) <-
-    c("facilities", "staff_positive", "inmates_positive")
+    c("facilities", "staff_positive", "inmates_positive","staff_recovered","inmates_recovered")
   
   data_for_ks %>%
     mutate(scrape_date = today(),
@@ -354,18 +354,17 @@ get_nys_covid_data <- function(nys_doc_path) {
 # Ohio --------------------------------------------------------------------
 # more code reformatted from Aaron
 not_all_empty_char <- function(x){
-  !all(x == "")
+  !all(trimws(x) == "")
 }
-
-
 
 get_ohio_covid_data <- function(ohio_doc_path) {
   path_to_ohio_pdf <- ohio_doc_path %>%
-    html_nodes("h1.alert > a:nth-child(1)") %>%
-    html_attr('href')
+    html_nodes("p a")  %>% 
+    html_attr("href") %>% 
+    pluck(2)
   path_to_ohio_pdf <- glue("https://drc.ohio.gov{path_to_ohio_pdf}")
   scrape_table <-
-    extract_tables(path_to_ohio_pdf, method = "decide", output = "matrix")
+    extract_tables(path_to_ohio_pdf,method = "decide",output = "matrix")
   scrape_text <- extract_text(path_to_ohio_pdf)
   
   table_cleaning <- scrape_table %>%
@@ -380,33 +379,34 @@ get_ohio_covid_data <- function(ohio_doc_path) {
           inmates_negative = Negative
         )
     ) %>%
-    map_at(2,
-           ~  select_if(., not_all_empty_char))
+    map_at(3,~filter_at(.,.vars = vars("V1"),~!str_detect(.,"Total"))) %>% 
+    map_at(2:3,
+           ~  select_if(., not_all_empty_char)) 
   #rename the 2nd table with first table names
   names(table_cleaning[[2]]) <- names(table_cleaning[[3]])
+
   facility_ohio <- table_cleaning[2:3] %>%
-    reduce(rbind) %>%
+    bind_rows() %>%
     rename(
-      facilities = V1,
-      staff_positive = V2,
-      staff_deaths = V3,
-      staff_recovered = V4,
-      units_quarantine = V5,
-      inmates_quarantine = V6,
-      housing_type = V7,
-      inmates_isolation = V8,
-      inmates_positive = V9,
-      inmates_deaths = V10,
-      inmates_covid_deaths = V11
+      facilities = 1,
+      staff_positive = 2,
+      staff_deaths = 3,
+      staff_recovered = 4,
+      units_quarantine = 5,
+      inmates_quarantine = 6,
+      housing_type = 7,
+      inmates_isolation = 8,
+      inmates_positive = 9,
+      inmates_deaths = 10,
+      inmates_covid_deaths = 11
     ) %>%
-    slice(5:33) %>%
+    slice(12:39) %>% 
     modify_at(c(2:4, 8:11),  ~ parse_number(.)) %>%
     filter(facilities != "Totals") %>% 
     mutate(scrape_date = today(),
            state = "Ohio")
   list(ohio_facility = facility_ohio, ohio_totals = table_cleaning[[1]])
 }
-
 # New Jersey --------------------------------------------------------------
 get_nj_covid_data <- function(nj_doc_path) {
   new_jersey_text <- nj_doc_path %>%
@@ -916,9 +916,11 @@ get_missouri_covid_data <- function(miss_doc_path) {
 }
 
 
+# Maine -------------------------------------------------------------------
 
+get_maine_covid_data <- function(maine_doc_path){
 url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
-areas <- tabulizer::locate_areas(url,
+areas <- tabulizer::locate_areas(maine_doc_path,
                                  pages = 1)
 areas <- c(198.5982, 281.4743, 238.0785, 544.6768)
 names(areas) <- c("top", "left", "bottom", "right")
@@ -926,7 +928,6 @@ areas <- list(areas)
 
 adult <- tabulizer::extract_tables(url, area = areas)
 adult <- adult[[1]]
-
 column_names <- adult[1,]
 column_names <- column_names[column_names != ""]
 column_names <- tolower(column_names)
@@ -939,9 +940,11 @@ values <- values[values != ""]
 adult <- data.frame(t(values), stringsAsFactors = FALSE)
 names(adult) <- column_names
 adult[] <- sapply(adult, readr::parse_number)
-
-  
-
+adult %>% 
+  mutate(scrape_date = today(),
+         state = "Maine")
+}
+# Wisconsin ---------------------------------------------------------------
 # get_wisconsin_covid_data <- function(wisc_doc_path) {
 #   
 # data <- tabulizer::extract_tables(here::here("Testing_Table.pdf"),
@@ -1008,4 +1011,3 @@ get_mass_covid_data <- function() {
     mutate(state = "Massachusetts") %>% 
     modify_at(3:18,~as.numeric(.))
 }
-
