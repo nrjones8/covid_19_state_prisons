@@ -236,6 +236,20 @@ get_federal_data <- function(federal_bop_path){
   
 }
 
+# Federal BOP -----------------------------------------------------------------
+get_federal_data <- function(federal_bop_path){
+  f <- federal_bop_path %>%
+    jsonlite::fromJSON(.)
+  
+  list(offenders = f[[3]],
+       reentry = f[[2]],
+       overall_stats = f[[1]]) %>% 
+    map(~mutate(., scrape_date = today(),
+                state = "Federal"))
+    
+}
+
+
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){
 #   
