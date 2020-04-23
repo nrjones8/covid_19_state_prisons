@@ -11,7 +11,7 @@ get_all_current_website_pages <- function() {
     if (!is.na(sheet_info$link[i])) {
       save_website_pages(url = sheet_info$link[i], state = sheet_info$state[i])
     }
-    print(paste0(sheet_info$state[i], " completed!"))
+    print(paste0(sheet_info$state[i], " completed!")) 
   }
 }
 

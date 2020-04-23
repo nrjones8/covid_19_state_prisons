@@ -1,0 +1,18 @@
+state,scrape_date,inmates_positive,staff_positive,inmates_negative,staff_negative,test_pending,inmates_pending,inmates_deaths,staff_deaths,inmates_death_underlying_cond,total_deaths,inmates_tested,inmate_deaths
+Alabama,2020-04-16,0,0,0,0,5,0,0,0,0,0,NA,NA
+Arizona,2020-04-16,17,0,71,0,0,6,0,0,0,0,NA,NA
+Florida,2020-04-16,44,63,0,0,0,0,0,0,0,0,NA,NA
+Georgia,2020-04-16,65,67,0,0,0,0,0,0,0,0,NA,NA
+Illinois,2020-04-16,147,130,0,0,0,0,0,0,0,0,NA,NA
+Indiana,2020-04-16,116,0,0,0,0,0,1,0,0,0,NA,NA
+Kansas,2020-04-16,30,36,0,0,0,0,0,0,0,0,NA,NA
+Louisiana,2020-04-16,78,60,0,0,0,0,0,1,0,0,NA,NA
+Pennsylvania,2020-04-16,19,27,55,106,0,0,1,0,0,0,NA,NA
+South Carolina,2020-04-16,0,29,0,0,0,0,0,0,0,0,NA,NA
+Texas,2020-04-16,327,0,204,0,0,31,0,0,0,0,NA,NA
+Virginia,2020-04-16,41,40,0,0,0,0,1,0,0,0,NA,NA
+Washington,2020-04-16,11,14,0,0,0,0,0,0,0,0,NA,NA
+Alaska,2020-04-16,0,NA,32,NA,NA,7,NA,NA,NA,NA,39,NA
+New Jersey,2020-04-16,55,295,NA,NA,NA,NA,NA,NA,NA,NA,NA,5
+New York,2020-04-16,165,693,NA,NA,NA,NA,NA,1,NA,NA,NA,NA
+Texas,2020-04-16,327,NA,204,NA,NA,31,NA,NA,NA,NA,NA,NA

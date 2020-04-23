@@ -1,0 +1,21 @@
+---
+title: "Download Data"
+---
+
+### State-level data
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/state_summaries_current.csv',
+                 text = "Download CSV")
+```
+
+
+### Facility-level data
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('https://raw.githubusercontent.com/seathebass/covid_19_state_prisons/master/data/daily/facilities_data_current.csv',
+                 text = "Download CSV")
+```
+
