@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COVID-19 Updates | Alaska Department of Corrections</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<link href="/css/core.css?v1.0" rel="stylesheet" type="text/css">
+<!-- This CSS controls all the main required elements --><link href="/css/main.css?v1.3" rel="stylesheet" type="text/css">
+<!-- This is all the optional options --><link href="/css/navmenu.css?v1.0" rel="stylesheet" type="text/css">
+<!-- This controls the agency menut --><link href="/css/table.css?v1.0" rel="stylesheet" type="text/css">
+<!-- This controls tables --><link href="/css/one_column.css?v1.2" rel="stylesheet" type="text/css">
+<!-- This positions the column in the content --><!--[if IE 6]>
+	<link href="/scripts/ie6.css" rel="stylesheet" type="text/css" media="projection, screen" />
+<![endif]--><!--[if IE 7]>
+	<link href="/scripts/ie7.css" rel="stylesheet" type="text/css" media="projection, screen" />
+<![endif]--><!--<link href="/scripts/print.css" rel="stylesheet" type="text/css" media="print" />--><link rel="stylesheet" id="alaska-font-css" href="//webcontent.alaska.gov/style/soa/20170315/font-style.css" type="text/css" media="all">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="stylesheet" id="google-font-css" href="//fonts.googleapis.com/css?family=Open+Sans%3A400italic%2C700italic%2C400%2C600%2C300&amp;ver=1.0.2" type="text/css" media="all">
+<link rel="stylesheet" id="google-font-roboto-css" href="//fonts.googleapis.com/css?family=Roboto+Slab&amp;ver=1.0.2" type="text/css" media="all">
+<!-- MJP CODE ADDITIONS --><!-- Init jQuery --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><script src="/js/greetings.js"></script><script><!--//--><![CDATA[//><!--
+
+$(document).ready(function(){
+
+	
+
+	// jScroll
+	//(function($){$.fn.jScroll=function(e){var f=$.extend({},$.fn.jScroll.defaults,e);return this.each(function(){var a=$(this);var b=$(window);var c=new location(a);b.scroll(function(){a.stop().animate(c.getMargin(b),f.speed)})});function location(d){this.min=d.offset().top;this.originalMargin=parseInt(d.css("margin-top"),10)||0;this.getMargin=function(a){var b=d.parent().height()-d.outerHeight();var c=this.originalMargin;if(a.scrollTop()>=this.min)c=c+f.top+a.scrollTop()-this.min;if(c>b)c=b;return({"marginTop":c+'px'})}}};$.fn.jScroll.defaults={speed:"slow",top:10}})(jQuery);
+
+
+    // Hide all elements of class expand_body
+	$(".expand_body").hide();
+	
+	// Show all elements of class star_open
+	$(".start_open").show();
+
+	// Initialize image paths as variables
+	var show_all = '/images/bt-show_all2.png';
+	var hide_all = '/images/bt-hide_all2.png';
+	/*
+	var arrow_right = '/images/expand_arrow_right.png';
+	var arrow_down = '/images/expand_arrow_down.png';
+	*/
+	
+	// CHEATING
+	var arrow_right = '/images/info_button.png';
+	var arrow_down = '/images/info_button.png';
+
+	// Initialize show/hide DIV related variables
+	var expand_body_count = $('.expand_body').length;
+	var expanded_divs = $(".expand_body:visible").length;
+
+	// Get query string variables
+	$.extend({
+		getUrlVars: function(){
+			var vars = [], hash;
+			var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+			for(var i = 0; i < hashes.length; i++) {
+				hash = hashes[i].split('=');
+				vars.push(hash[0]);
+				vars[hash[0]] = hash[1];
+			}
+			return vars;
+	  	},
+	  	getUrlVar: function(name){
+			return $.getUrlVars()[name];
+		}
+	});
+
+	// Show all on page load if specified in query string
+	var show_all_on_load = $.getUrlVar('show_all');
+
+	if (show_all_on_load) {
+		$("#show_all").find("img").attr('src', hide_all);
+		$(".expand_header").find("img").attr('src', arrow_down);
+		$(".expand_body").show();
+		expanded_divs = expand_body_count;
+	}
+
+	// Show selected tab
+	var view = $.getUrlVar('view');
+	if (typeof view !==	'undefined') {
+		console.log("Showing view id: " + view);
+		$('#'+view).addClass('selected');
+		$('#'+view).show();
+	}
+
+	// From the query string, extract the corresponding ID of
+	// which expand_body section is to be shown on page load
+	var selected_body = $.getUrlVar('section');
+
+	
+	// If there was a section flagged in the query string, set which expand_header
+	// (eh0, eh1, etc) corresponds to it to ensure arrow in header points down on page load
+	if (typeof selected_body !== 'undefined') {
+		var selected_header = 'eh'+selected_body;
+		// If page has only one section and it is set to be expanded
+		// on page load, change button to show "Hide All" on load
+		if (expand_body_count == 1) {
+			$("#show_all").find("img").attr('src', hide_all);
+		}
+	}
+
+	// On page load, show certain .expand_body DIV IDs (eb0, eb1, etc.)
+	// if they are flagged to be displayed in the query string
+	// (i.e., "/probation-parole/juneau-special-programs?section=1"
+	$('.expand_body').each(function(index) {
+		if (selected_body == index) {
+			$('#eb'+index).show();
+			$('html,body').animate({
+        		scrollTop: $('#eh'+index).offset().top}, 300); // Scroll to DIV
+			// Account for already-expanded DIV upon page load so "Hide All" tab works properly if all other DIVs are manually expanded by user
+			expanded_divs++;
+		} else {
+			$(index).hide();
+		}
+	});
+
+	// Function to expand or hide all .expand_body DIVs on click of the #show_all tab
+	$("#show_all").click(function(){
+		if ($("#show_all").find("img").attr('src') == show_all) {
+			$("#show_all").find("img").attr('src', hide_all);
+			$("#show_all").find("img").attr('alt', "hide all");
+			$(".expand_header").find("img").attr('src', arrow_down);
+			$(".expand_body").show();
+			expanded_divs = expand_body_count;
+		}
+		else if ($("#show_all").find("img").attr('src') == hide_all) {
+			$("#show_all").find("img").attr('src', show_all);
+			$("#show_all").find("img").attr('alt', "show all");
+			$(".expand_header").find("img").attr('src', arrow_right);
+			$(".expand_body").hide();
+			// Scroll to top of page so #show_all tab doesn't get stuck at bottom
+			//$('html,body').animate({scrollTop: $("#dropdown_wrap").offset().top},'fast');
+			expanded_divs = 0;
+		}
+		// Debug
+		/*
+		if (document.title == 'Wildwood Employee of the Year | Institutions | Alaska Department of Corrections') {
+			alert ('expanded_divs: ' + expanded_divs + ' | expand_body_count: ' + expand_body_count);
+		}
+		*/
+	});
+
+	$(".expand_header")
+	.click(function(){
+		if (!$(this).parent().is("h2") && !$(this).parent().is(".dropdown_header")){ // Eventually remove -  Used for transitioning page to new layout
+			$(this).next(".expand_body").slideToggle(150);
+		}
+		else {
+			$(this).parent().next(".expand_body").slideToggle(150);
+		}
+		// If all DIVs have been manually expanded then change
+		// #show_all tab to display "Hide All" graphic
+		if (expanded_divs == expand_body_count) {
+			$("#show_all").find("img").attr('src', hide_all);
+		} else if (expanded_divs == 0) {
+			$("#show_all").find("img").attr('src', show_all);
+		}
+		// Debug
+		/*
+		if (document.title == 'Wildwood Employee of the Year | Institutions | Alaska Department of Corrections') {
+			alert ('expanded_divs: ' + expanded_divs + ' | expand_body_count: ' + expand_body_count);
+		}
+		*/
+	});
+	
+	// Disable the focus outline when clicking a button with the mouse
+	var mousedown_button = false;
+	
+	$(':button').on('mousedown', function () {
+		//console.log("Clicking on button with mouse...");
+		if(!$(this).is(':focus'))
+			mousedown_button = true;
+	});
+
+	$(':button').on('focusin', function () {
+		//console.log("Button coming into focus. mousedown_button: " + mousedown_button);
+		if(!mousedown_button) {
+			//console.log("Arriving from keyboard: adding outline");
+			$(this).css("outline", "");
+		} 
+		else {
+			//console.log("Arriving from mouse: removing outline");
+			$(this).css("outline", "none");
+		}
+		mousedown_button = false;
+	});
+	/*
+	$(':button').on('focusout', function () {
+		$(this).css("outline", "");
+		mousedown_button = false;
+	});*/
+	
+
+	// Create tooltips
+	$('.info_button[id^="info_button_"]').each(function() {
+		$(this).qtip({
+			content: {
+				title: $(this).attr('title'),
+				text: $('#data_' + $(this).attr('id'))
+			},
+
+			style: {
+				classes: 'ui-tooltip-light ui-tooltip-shadow'
+			},
+			show: {
+				event: 'click'
+			},
+			hide: {
+				event: 'click blur'
+			},
+			position: {
+				viewport: $('#content'),
+				adjust:{
+					method: 'shift'	
+				}
+			}
+			/*
+			content: {
+				title: {
+					text: $(this).attr('title'),
+
+					button: true
+				},
+				text: $(this).next('.popup_text')
+			},
+			show: {
+				event: 'click',
+				solo: true, // Only show one tooltip at a time
+			},
+			hide: {
+				event: 'click',
+			}
+			*/
+		});
+	});
+	/*
+	$(window).on('resize', function(){
+		if (win.width() < 900){
+		$('.info_button[id^="info_button_"]').each(function() {
+		$(this).qtip({
+			position: {
+				my: 'top center',  // Position my top left...
+				at: 'bottom right', // at the bottom right of...
+				target: $(this) // my target
+			}
+
+			});
+		});
+      }
+	});*/
+
+	if ($(".slider").length) {
+		$(".slider").carouFredSel({
+			auto : false,
+			circular : false,
+			prev: {
+				button: function() {
+					return $(this).parents( ".image_carousel" ).find( "a.prev" );
+				}
+			},
+			next : {
+				button: function() {
+					return $(this).parents( ".image_carousel" ).find( "a.next" );
+				}
+			}
+		});
+	}
+/*
+	$(function() {
+    	$("#show_all").jScroll({speed : "fast", top: 73});
+	});
+	*/
+	
+	 /*
+    * jQuery accessible and keyboard-enhanced navigation with dropdown
+    * Website: http://a11y.nicolas-hoffmann.net/subnav-dropdown/
+    * License MIT: https://github.com/nico3333fr/jquery-accessible-subnav-dropdown/blob/master/LICENSE
+    */
+   // loading expand paragraphs
+   var $nav_system = $('.js-nav-system'),
+       $body = $('body');
+   if ($nav_system.length) { // if there is at least one :)
+
+      // initialization
+      var $nav_system_link = $('.js-nav-system__link');
+      
+      $nav_system_link.each(function(index_to_expand) {
+         var $this = $(this),
+             index_lisible = index_to_expand + 1,
+             //$subnav = $this.next('.js-nav-system__subnav'); // Edit to reflect our nav menu structure -- Micah S. 06/23/17
+			 $subnav = $('#' + $this.attr('target_ul')); 
+
+         // if there is a subnav adjacent to the link
+         if ($subnav.length === 1) {
+            $subnav.attr({
+               'data-visually-hidden': 'true'
+            });
+         }
+      });
+
+   }
+
+   // events on main menu
+   // mouse !
+   $body.on('mouseenter', '.js-nav-system__item', function(event) {
+         var $this = $(this),
+             $subnav_link = $this.children('.js-nav-system__link'),
+             $subnav = $this.children('.js-nav-system__subnav');
+
+         $this.attr({
+            'data-show-sub': 'true'
+         });
+
+         // show submenu
+         if ($subnav.length === 1) {
+            $subnav.attr({
+               'data-visually-hidden': 'false'
+            });
+         }
+
+      })
+      .on('mouseleave', '.js-nav-system__item', function(event) {
+         var $this = $(this),
+             $subnav_link = $this.children('.js-nav-system__link'),
+             $subnav = $this.children('.js-nav-system__subnav');
+
+         $this.attr({
+            'data-show-sub': 'false'
+         });
+         // show submenu
+         if ($subnav.length === 1) {
+            $subnav.attr({
+               'data-visually-hidden': 'true'
+            });
+         }
+
+      })
+      // keyboard
+      .on('focus', '.js-nav-system__link', function(event) {
+         var $this = $(this),
+             $parent = $this.parents('.js-nav-system'),
+             $parent_item = $this.parents('.js-nav-system__item'),
+             //$subnav = $this.next('.js-nav-system__subnav'); // Edit to reflect our nav menu structure -- Micah S. 06/23/17
+			 $subnav = $('#' + $this.attr('target_ul')); 
+
+         $parent_item.attr({
+            'data-show-sub': 'true'
+         });
+
+         // hide other menus and show submenu activated
+         $parent.find('.js-nav-system__subnav').attr({
+            'data-visually-hidden': 'true'
+         });
+
+         if ($subnav.length === 1) {
+            $subnav.attr({
+               'data-visually-hidden': 'false'
+            });
+         }
+      })
+      .on('focusout', '.js-nav-system__link', function(event) {
+         var $this = $(this),
+             $parent = $this.parents('.js-nav-system'),
+             $parent_item = $this.parents('.js-nav-system__item');
+
+         $parent_item.attr({
+            'data-show-sub': 'false'
+         });
+      })
+      .on('keydown', '.js-nav-system__link', function(event) {
+         var $this = $(this),
+             $parent = $this.parents('.js-nav-system'),
+             $parent_item = $this.parents('.js-nav-system__item'),
+             //$subnav = $this.next('.js-nav-system__subnav'); // Edit to reflect our nav menu structure -- Micah S. 06/23/17
+			 $subnav = $('#' + $this.attr('target_ul')); 
+
+         // event keyboard left
+         if (event.keyCode == 37) {
+            // select previous nav-system__link
+
+            // if we are on first => activate last
+            if ($parent_item.is(".js-nav-system__item:first-child")) {
+               $parent.find(" .js-nav-system__item:last-child ").children(".js-nav-system__link").focus();
+            }
+            // else activate previous
+            else {
+               $parent_item.prev().children(".js-nav-system__link").focus();
+            }
+            event.preventDefault();
+         }
+
+         // event keyboard right
+         if (event.keyCode == 39) {
+            // select previous nav-system__link
+
+            // if we are on last => activate first
+            if ($parent_item.is(".js-nav-system__item:last-child")) {
+               $parent.find(" .js-nav-system__item:first-child ").children(".js-nav-system__link").focus();
+            }
+            // else activate next
+            else {
+               $parent_item.next().children(".js-nav-system__link").focus();
+            }
+            event.preventDefault();
+         }
+
+         // event keyboard bottom
+         if (event.keyCode == 40) {
+            // select first nav-system__subnav__link
+            if ($subnav.length === 1) {
+               // if submenu has been closed => reopen
+               $subnav.attr({
+                  'data-visually-hidden': 'false'
+               });
+               // and select first item
+               $subnav.find(" .js-nav-system__subnav__item:first-child ").children(".js-nav-system__subnav__link").focus();
+            }
+            event.preventDefault();
+         }
+
+         // event shift + tab 
+         if (event.shiftKey && event.keyCode == 9) {
+            if ($parent_item.is(".js-nav-system__item:first-child")) {
+               $subnav.attr({
+                  'data-visually-hidden': 'true'
+               });
+            } else {
+
+               var $prev_nav_link = $parent_item.prev('.js-nav-system__item').children(".js-nav-system__link");
+                   $subnav_prev = $prev_nav_link.next('.js-nav-system__subnav');
+               if ($subnav_prev.length === 1) { // hide current subnav, show previous and select last element
+                  $subnav.attr({
+                     'data-visually-hidden': 'true'
+                  });
+                  $subnav_prev.attr({
+                    'data-visually-hidden': 'false'
+                  });
+                  $subnav_prev.find(" .js-nav-system__subnav__item:last-child ").children(".js-nav-system__subnav__link").focus();
+                  event.preventDefault();
+               }
+            }
+         }
+
+      });
+
+   // events on submenu item
+   $body.on('keydown', '.js-nav-system__subnav__link', function(event) {
+         var $this = $(this),
+             $subnav = $this.parents('.js-nav-system__subnav'),
+             $subnav_item = $this.parents('.js-nav-system__subnav__item'),
+             $nav_link = $('#' + $subnav.attr('from'));
+             $nav_item = $nav_link.parents('.js-nav-system__item'),
+             $nav = $nav_link.parents('.js-nav-system');
+			 
+			 // TESTING
+			 //console.log("subnav id: " + $subnav.attr('id')); 
+			// console.log("nav_link id: " + $nav_link.attr('id')); 
+			// console.log("nav_item id: " + $nav_item.attr('id'));
+			 
+			 var num_children = $subnav.children().length;
+			// console.log("num_children: " + num_children);
+			 
+			 var length_col = Math.ceil(num_children/2);
+			// console.log("column length: " + length_col);
+			 
+			 var index_curr = $subnav_item.index();
+			// console.log("Current index: " + index_curr);
+			 
+
+         // event keyboard bottom
+         if (event.keyCode == 40) {
+            // if we are on last => activate first
+            if ($subnav_item.is(".js-nav-system__subnav__item:last-child")) {
+               $subnav.find(".js-nav-system__subnav__item:first-child ").children(".js-nav-system__subnav__link").focus();
+            }
+            // else activate next
+            else {
+               $subnav_item.next().children(".js-nav-system__subnav__link").focus();
+            }
+            event.preventDefault();
+         }
+         // event keyboard top
+         if (event.keyCode == 38) {
+            // if we are on first => activate last
+            if ($subnav_item.is(".js-nav-system__subnav__item:first-child")) {
+               $subnav.find(" .js-nav-system__subnav__item:last-child ").children(".js-nav-system__subnav__link").focus();
+            }
+            // else activate previous
+            else {
+               $subnav_item.prev().children(".js-nav-system__subnav__link").focus();
+            }
+            event.preventDefault();
+         }
+         // event keyboard Esc
+         if (event.keyCode == 27) {
+            // close the menu
+            $nav_link.focus();
+            $subnav.attr({
+               'data-visually-hidden': 'true'
+            });
+            event.preventDefault();
+         }
+         // event keyboard right
+         if (event.keyCode == 39) {
+           
+			// if we are in first of two columns, move to next column -- added by Micah S. 06/23/17
+			if ($subnav.hasClass("two_col") && index_curr < length_col){
+				var next_index = index_curr + length_col;
+				if (next_index > num_children - 1) 
+					next_index = num_children - 1;
+				//console.log("next index: " + next_index);
+				$next = $subnav.children().eq(next_index);
+				//console.log("next id: " + $next.attr('id'));
+				$next.children(".js-nav-system__subnav__link").focus();
+			}
+			else {
+				 // select next nav-system__link
+				$subnav.attr({
+				   'data-visually-hidden': 'true'
+				});
+				
+				// if we are on last => activate first and choose first item
+				if ($nav_item.is(".js-nav-system__item:last-child")) {
+				   $next = $nav.find(" .js-nav-system__item:first-child ").children(".js-nav-system__link");
+				   $next.focus();
+				   $subnav_next = $next.next('.js-nav-system__subnav');
+				   if ($subnav_next.length === 1) {
+					  $subnav_next.find(" .js-nav-system__subnav__item:first-child ").children(".js-nav-system__subnav__link").focus();
+				   }
+				}
+				// else activate next
+				else {
+				   $next = $nav_item.next().children(".js-nav-system__link");
+				   $next.focus();
+				   $subnav_next = $next.next('.js-nav-system__subnav'); 
+				   if ($subnav_next.length === 1) {
+					  $subnav_next.find(" .js-nav-system__subnav__item:first-child ").children(".js-nav-system__subnav__link").focus();
+				   }
+				}
+			}
+            event.preventDefault();
+         }
+         // event keyboard left
+         if (event.keyCode == 37) {
+		 
+			// if we are in second of two columns, move to prev column -- added by Micah S. 06/23/17
+			if ($subnav.hasClass("two_col") && index_curr > length_col - 1){
+				var next_index = index_curr - length_col;
+				//console.log("next index: " + next_index);
+				$next = $subnav.children().eq(next_index);
+				//console.log("next id: " + $next.attr('id'));
+				$next.children(".js-nav-system__subnav__link").focus();
+			}
+			else{
+				// select prev nav-system__link
+				$subnav.attr({
+				   'data-visually-hidden': 'true'
+				});
+
+				// if we are on first => activate last and choose first item
+				if ($nav_item.is(".js-nav-system__item:first-child")) {
+				   $prev = $nav.find(" .js-nav-system__item:last-child ").children(".js-nav-system__link");
+				   $prev.focus();
+				   $subnav_prev = $prev.next('.js-nav-system__subnav');
+				   if ($subnav_prev.length === 1) {
+					  $subnav_prev.find(".js-nav-system__subnav__item:first-child ").children(".js-nav-system__subnav__link").focus();
+				   }
+				}
+				// else activate prev
+				else {
+				   $prev = $nav_item.prev().children(".js-nav-system__link");
+				   $prev.focus();
+				   $subnav_prev = $prev.next('.js-nav-system__subnav');
+				   if ($subnav_prev.length === 1) {
+					  $subnav_prev.find(".js-nav-system__subnav__item:first-child ").children(".js-nav-system__subnav__link").focus();
+				   }
+				}
+			}
+			event.preventDefault();
+         }
+         // event tab 
+         if (event.keyCode == 9 && !event.shiftKey) { // if we are on last subnav of last item and we go forward => hide subnav 
+            if ($nav_item.is(".js-nav-system__item:last-child") && $subnav_item.is(".js-nav-system__subnav__item:last-child")) {
+               $subnav.attr({
+                  'data-visually-hidden': 'true'
+               });
+            }
+         }
+
+      })
+      .on('focus', '.js-nav-system__subnav__link', function(event) {
+         var $this = $(this),
+             $subnav = $this.parents('.js-nav-system__subnav'),
+             $subnav_item = $this.parents('.js-nav-system__subnav__item'),
+             $nav_link = $subnav.prev('.js-nav-system__link'),
+             $nav_item = $nav_link.parents('.js-nav-system__item'),
+             $nav = $nav_link.parents('.js-nav-system__item');
+
+         $nav_item.attr({
+            'data-show-sub': 'true'
+         });
+      })
+      .on('focusout', '.js-nav-system__subnav__link', function(event) {
+         var $this = $(this),
+             $subnav = $this.parents('.js-nav-system__subnav'),
+             $subnav_item = $this.parents('.js-nav-system__subnav__item'),
+             $nav_link = $subnav.prev('.js-nav-system__link'),
+             $nav_item = $nav_link.parents('.js-nav-system__item'),
+             $nav = $nav_link.parents('.js-nav-system__item');
+
+         $nav_item.attr({
+            'data-show-sub': 'false'
+         });
+      });
+
+});
+//--><!]]></script><script>
+       $(function() {
+              $('.site-header').addClass('js_search_enabled');
+
+              $('#search_icon_placeholder').on( "click", function() {
+                     $('.site-header').addClass('js_search_icon_was_clicked');
+                     $('#search_input_area').focus();
+              });
+       });
+</script><script>
+	/*
+	Below functions fix a bug in Chrome on Press Release pages:
+	If user happens to choose "-- Select Year --" option, Parole Board or
+	Probation and Parole dropdown menus may suddenly appear due to position
+	of mouse cursor. These hide the menus then show them once the user
+	mouses out of the 'select' input field.
+	
+	Commented out by Micah S. 07/18 - do not appear to be necessary with new dropdown menu implementation
+	*/
+	function getArchive() {
+		archiveYear = document.getElementById("press_archive_year").value;
+		if (archiveYear != " ")
+			window.location.href = "/commissioner/press-releases/archives/" + archiveYear;
+	}
+
+	function hideDropdowns() {
+		//document.getElementById("parole").getElementsByClassName('one_col')[0].style.visibility = "hidden";
+		//document.getElementById("probation").getElementsByClassName('two_col')[0].style.visibility = "hidden";
+	}
+
+	function showDropdowns() {
+		//document.getElementById("parole").getElementsByClassName('one_col')[0].style.visibility = "visible";
+		//document.getElementById("probation").getElementsByClassName('two_col')[0].style.visibility = "visible";
+	}
+
+</script><!-- END MJP CODE ADDITIONS --><!-- This is the son of suckerfish dropdown javascript code for IE for the dropdown menu if being used, If not this below script can be deleted--><script><!--//--><![CDATA[//><!--
+
+sfHover = function() {
+	if(document.getElementbyID("menu_list")){
+	var sfEls = document.getElementById("menu_list").getElementsByTagName("LI");
+	for (var i=0; i<sfEls.length; i++) {
+		sfEls[i].onmouseover=function() {
+			this.className+=" sfhover";
+		}
+		sfEls[i].onmouseout=function() {
+			this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+		}
+	}
+	}
+}
+if (window.attachEvent) window.attachEvent("onload", sfHover);
+
+//--><!]]></script><!-- Google Analytics --><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-32394409-1', 'auto');  // Replace with your property ID.
+ga('send', 'pageview');
+
+</script><!-- End Google Analytics --><script>
+/**
+* Function that tracks a click on an outbound link in Analytics.
+* This function takes a valid URL string as an argument, and uses that URL string
+* as the event label. Setting the transport method to 'beacon' lets the hit be sent
+* using 'navigator.sendBeacon' in browser that support it.
+*/
+var trackOutboundLink = function(url) {
+   ga('send', 'event', 'outbound', 'click', url, {
+     'transport': 'beacon',
+     'hitCallback': function(){document.location = url;}
+   });
+}
+</script><script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+<!-- Hidden Skip Link for Screen Reader -->
+<a href="#main_content" class="visuallyhidden">Skip to content</a>
+<section id="required-greeting"><p class="visuallyhidden">The following is a greeting given in one of the 20 indigenous languages recognized by the State of Alaska.</p>
+    <dl id="language-greeting">
+<dt class="greeting"><a class="language-link" id="rg_greeting_link" href="https://www.commerce.alaska.gov/web/dcra/AKNativeLanguagePreservationAdvisoryCouncil/Languages.aspx"></a></dt>
+        <dd class="speaker" id="rg_speaker" hidden>
+            <audio id="rg_audio_greeting" src="/media/greetings/deg-xinag.mp3" preload="auto"></audio><button class="pronunciation" onclick="document.getElementById('rg_audio_greeting').play();">Listen to pronunciation</button>
+        </dd>
+        <dd class="language" id="rg_language"></dd>
+        <dd class="translation" id="rg_translation"></dd>
+	</dl></section><nav class="global-nav-menu"><div class="inline-div">
+  <ul id="menu-statewide-navigation">
+<li><a href="http://www.alaska.gov">State of Alaska</a></li>
+    <li><a href="http://my.alaska.gov">myAlaska</a></li>
+    <li><a href="http://www.alaska.gov/akdir1.html">Departments</a></li>
+    <li><a href="http://www.alaska.gov/employeeHome.html">State Employees</a></li>
+    <li><a href="#SOAfooterlinks">Statewide Links</a></li>
+  </ul>
+</div>
+</nav><div id="background_top">
+
+
+
+<div class="site-container">
+
+<div id="header_wrap">
+	<!-- Agency Header -->
+	<header class="site-header main-background-class js_search_enabled"><div class="wrap"> 
+	<!-- Agency Logo and Title -->
+	<div class="title-area">
+<a class="site-title-link" href="/"><span class="site-logo"><img src="/images/doc_seal.png" alt="Department, Divisions or State of Alaska logo, color scheme" height="69" width="69"></span></a>
+	<h1>
+<a class="site-title-link agency-title" href="#"><span class="site-title">Alaska Department of Corrections</span></a>
+	<a class="site-title-link agency-title" href="#"><span class="site-description" id="home"></span></a>
+</h1>
+</div>
+	<!-- Search Form designed by Karl Wood, ADFG, 2016-->
+	<div id="search_icon_placeholder" aria-label="Expand Search Box"></div>
+	<!-- Search Form -->
+	<div id="search-form">
+	<div class="wrap">
+	  <div class="search-form">
+		<form class="search-soa" action="/search" method="get" name="gs">
+		  <div role="search">
+			<input id="search-field-big" type="search" name="q" title="Search"><button id="search-button" type="submit" name="submit" aria-label="Submit Search"> <span class="search-soa-submit-text">Search</span> </button>
+		  </div>
+		  
+		</form>
+	  </div>
+	</div>
+	</div>
+	</div>
+	</header><div id="navmenu_wrap">
+	<nav id="navmenu" class="js-nav-system"><button id="toggle-navmenu">Menu<span class="drop-icon">☰</span></button>
+	  <div id="nav-div">
+	  <ul class="main-navmenu cf " id="main-navmenu">
+<li id="first_nav" class="js-nav-system__item" data-show-sub="false">
+			<a href="/" class="dropdown_header js-nav-system__link" target_ul="sm-home" aria-expanded="false" id="l-home">Home</a>
+			<button class="drop-icon" target_ul="sm-home" aria-label="Expand Home">▼</button>
+			<ul class="sub-navmenu js-nav-system__subnav" id="sm-home" from="l-home" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/news" class="js-nav-system__subnav__link">News</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/covid-19" class="js-nav-system__subnav__link">COVID-19</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/contact" class="js-nav-system__subnav__link">Contact</a></li>
+			</ul>
+</li>
+		<li class="js-nav-system__item" data-show-sub="false">
+<a href="/administrative-services" class="dropdown_header js-nav-system__link" target_ul="sm-admin" id="l-admin">Admin Services</a>
+			<button class="drop-icon" target_ul="sm-admin" aria-label="Expand Admin Services">▼</button>
+		    <ul class="sub-navmenu js-nav-system__subnav" id="sm-admin" from="l-admin" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/administrative-services/budget-office" class="js-nav-system__subnav__link">Budget Office</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/directors-office" class="js-nav-system__subnav__link">Director's Office</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/facilities-management" class="js-nav-system__subnav__link">Facilities Management</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/finance-office" class="js-nav-system__subnav__link">Finance Office</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/human-resources" class="js-nav-system__subnav__link">Human Resources</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/information-technology" class="js-nav-system__subnav__link">Information Technology</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/procurement-office" class="js-nav-system__subnav__link">Procurement Office</a></li>
+			  <li class="js-nav-system__subnav__item"><a href="/administrative-services/research-records" class="js-nav-system__subnav__link">Research &amp; Records</a></li>
+		    </ul>
+</li>
+		<li class="js-nav-system__item" data-show-sub="false">
+<a href="/commissioner" class="dropdown_header js-nav-system__link" target_ul="sm-commish" id="l-commish">Commissioner</a>
+			<button class="drop-icon" target_ul="sm-commish" aria-label="Expand Commissioner">▼</button>
+			<ul class="sub-navmenu js-nav-system__subnav" id="sm-commish" from="l-commish" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/commissioner/policies-procedures" class="js-nav-system__subnav__link">Policies &amp; Procedures</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/commissioner/press-releases" class="js-nav-system__subnav__link">Press Releases</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/commissioner/statutes-administrative-code" class="js-nav-system__subnav__link">Statutes &amp; Administrative Code</a></li>
+
+			</ul>
+</li>
+		
+		<li class="js-nav-system__item" data-show-sub="false">
+<a href="/institutions" class="dropdown_header js-nav-system__link two_columns" target_ul="sm-inst" id="l-inst">Institutions</a>
+			<button class="drop-icon" target_ul="sm-inst" aria-label="Expand Institutions">▼</button>
+			<ul class="sub-navmenu two_col two_col_size_1 js-nav-system__subnav" id="sm-inst" from="l-inst" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/institutions/anchorage" class="js-nav-system__subnav__link">Anchorage</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/anvil-mountain" class="js-nav-system__subnav__link">Anvil Mountain</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/fairbanks" class="js-nav-system__subnav__link">Fairbanks</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/goose-creek" class="js-nav-system__subnav__link">Goose Creek</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/hiland-mountain" class="js-nav-system__subnav__link">Hiland Mountain</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/ketchikan" class="js-nav-system__subnav__link">Ketchikan</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/lemon-creek" class="js-nav-system__subnav__link">Lemon Creek</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/mat-su" class="js-nav-system__subnav__link">Mat-Su Pretrial</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/palmer" class="js-nav-system__subnav__link">Palmer</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/point-mackenzie" class="js-nav-system__subnav__link">Pt. Mackenzie</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/spring-creek" class="js-nav-system__subnav__link">Spring Creek</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/wildwood" class="js-nav-system__subnav__link">Wildwood Correctional Complex</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/yukon-kuskokwim" class="js-nav-system__subnav__link">Yukon Kuskokwim</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/institutions/sentenced-electronic-monitoring" class="js-nav-system__subnav__link">Sentenced Electronic Monitoring</a></li>
+			</ul>
+</li>
+		<li id="pretrial" class="js-nav-system__item" data-show-sub="false">
+<a href="/pretrial" class="dropdown_header js-nav-system__link" target_ul="sm-pretrial" id="l-pretrial">Pretrial</a>
+		</li>
+		<li class="js-nav-system__item" data-show-sub="false"><a href="/rehabilitation-reentry" class="dropdown_header js-nav-system__link" id="l-reentry">Reentry</a></li>
+		<li id="parole" class="js-nav-system__item" data-show-sub="false">
+<a href="/parole-board" class="dropdown_header js-nav-system__link" target_ul="sm-parole" id="l-parole">Parole Board</a>
+			<button class="drop-icon" target_ul="sm-parole" aria-label="Expand Parole Board">▼</button>
+			<ul class="sub-navmenu js-nav-system__subnav" id="sm-parole" from="l-parole" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/parole-board/members" class="js-nav-system__subnav__link">Board Members</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/parole-board/clemency-update" class="js-nav-system__subnav__link">Clemency Update</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/parole-board/statutes-regulations" class="js-nav-system__subnav__link">Statutes &amp; Regulations</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/parole-board/orders-conditions" class="js-nav-system__subnav__link">Orders &amp; Conditions</a></li>
+
+			</ul>
+</li>
+		<li id="probation_nav" class="js-nav-system__item" data-show-sub="false">
+<a href="/probation-parole" class="dropdown_header js-nav-system__link two_columns" target_ul="sm-prob" id="l-prob">Probation &amp; Parole</a>
+			<button class="drop-icon" target_ul="sm-prob" aria-label="Expand Probation and Parole">▼</button>
+			<ul class="sub-navmenu two_col two_col_size_2 js-nav-system__subnav" id="sm-prob" from="l-prob" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/probation-parole/anchorage" class="js-nav-system__subnav__link">Anchorage</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/barrow" class="js-nav-system__subnav__link">Barrow</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/bethel" class="js-nav-system__subnav__link">Bethel</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/dillingham" class="js-nav-system__subnav__link">Dillingham</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/fairbanks" class="js-nav-system__subnav__link">Fairbanks</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/juneau" class="js-nav-system__subnav__link">Juneau</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/kenai" class="js-nav-system__subnav__link">Kenai</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/ketchikan" class="js-nav-system__subnav__link">Ketchikan</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/kodiak" class="js-nav-system__subnav__link">Kodiak</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/kotzebue" class="js-nav-system__subnav__link">Kotzebue</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/nome" class="js-nav-system__subnav__link">Nome</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/palmer" class="js-nav-system__subnav__link">Palmer</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/sitka" class="js-nav-system__subnav__link">Sitka</a></li>
+				<li class="js-nav-system__subnav__item"><a href="/probation-parole/victim-service-unit" class="js-nav-system__subnav__link">Victim Service Unit</a></li>
+				
+			</ul>
+</li>
+		
+		
+		
+		<li id="health" class="js-nav-system__item" data-show-sub="false">
+<a href="/health-rehab-services" class="dropdown_header js-nav-system__link" target_ul="sm-rehab" id="l-rehab">Health &amp; Rehab Services</a>
+			<button class="drop-icon" target_ul="sm-rehab" aria-label="Expand Health and Rehab Services">▼</button>
+			<ul class="sub-navmenu js-nav-system__subnav" id="sm-rehab" from="l-rehab" data-visually-hidden="true">
+<li class="js-nav-system__subnav__item"><a href="/health-rehab-services/sex-offender-monitoring" class="js-nav-system__subnav__link">Sex Offender Monitoring</a></li>
+			</ul>
+</li>
+		
+		
+		
+		<li id="last_nav" class="js-nav-system__item" data-show-sub="false"><a href="/contact" class="dropdown_header js-nav-system__link" id="l-contact">Contact</a></li>
+		
+	  </ul>
+</div>
+	</nav>
+</div>
+</div>
+<script>
+
+var nav_div_saved_dims = []; // Stores previous calculations of nav menu element dimensions
+var WINDOW_WIDTH_FULL_SIZE = 966; // Value of window.innerWidth when the website switches to full screen mode
+
+// Resizes the Navigation menu based on font size
+// Used to adapt to font size changes in the browser
+function resizeNavDiv(){
+
+	//console.log("window width: " + window.innerWidth);
+	if (window.innerWidth > WINDOW_WIDTH_FULL_SIZE) { // Full-screen only
+
+
+		//console.log("Resizing nav div!")
+		var first_h = $("#l-home").outerHeight();
+		var first_t = $("#l-home").offset().top;
+		var last_t = $("#l-contact").offset().top;
+		//console.log("home_div - height: " + first_h);
+		//console.log("home_div - top: " + first_t);
+		//console.log("contact_div - top: " + last_t);
+		var nav_height = first_h;
+		
+		// If the last link does not line up horizontally with the first link, add a second row
+		if (first_t != last_t) 
+			nav_height = first_h*2;
+		//console.log("Nav height: " + nav_height);
+		$("#nav-div").css("height",nav_height);
+		$("#navmenu_wrap").css("height",nav_height);
+		
+	}
+	else {
+		$("#nav-div").css("height","");
+		$("#navmenu_wrap").css("height","");
+	}
+	
+}
+
+function applyNavDivSavedDims(){
+	//console.log("applying saved dims:");
+	if(window.innerWidth > WINDOW_WIDTH_FULL_SIZE) {
+		for (var i in nav_div_saved_dims){
+			var name = nav_div_saved_dims[i].name;
+			var value = nav_div_saved_dims[i].value;
+			//console.log("name: " + name);
+			//console.log("value: " + value);
+			$(name).css("height",value);
+		}
+	}
+}
+
+
+$( window ).on( "load", function() {
+    resizeNavDiv();
+});
+
+// Adapt the nav menu to changes in window size and browser font size
+window.addEventListener("resize", resizeNavDiv);
+window.setInterval(resizeNavDiv, 1000);
+
+// Hack to detect when submenu becomes visible AFTER hover/focus on main nav menu links
+// Calls resizeDropdown() to change submenu size according to font size
+$(".dropdown_header.two_columns").on('transitionend', function(){resizeDropdown("#" + $(this).attr("target_ul"));});
+
+
+// Resizes given nav menu submenu based on font size
+// ul_id is an id string of the form "#id"
+function resizeDropdown(ul_id){
+	
+	if(window.innerWidth > WINDOW_WIDTH_FULL_SIZE) {
+		//console.log("Resizing dropdown: " + ul_id);
+		var ul_height = $(ul_id).height();
+		//console.log("ul height: " + ul_height);
+		var ul_dom = document.getElementById(ul_id);
+		
+		var li_set = $(ul_id).children();
+		var first_li = li_set.first();
+		var li_height = first_li.height();
+		if (li_height > 0)
+		{
+			var num_li = li_set.length;
+			//var num_rows = Math.ceil(num_li/2);
+			var num_rows = numDropdownRows(ul_id, li_set);
+			var height_padding = 1.5; // For IE: to ensure that a third column is not created
+			var new_height = num_rows*li_height + height_padding;
+			nav_div_saved_dims[ul_id] = {"name" : ul_id, "value" : new_height};
+			$(ul_id).css("height",new_height);
+		}
+	}	
+	return;
+}
+
+function numDropdownRows(ul_id, li_set){
+	var sum = 0;
+	var subsum = [];
+	var width_arr = [];
+	var next_li = li_set.first();
+	
+	for (var i = 0; i < li_set.length; i++){
+		sum = sum + next_li.height();
+		subsum[i] = sum;
+		width_arr[i] = next_li.width();
+		next_li = next_li.next();
+	}
+	
+	for (var i = 0; i < subsum.length; i++){
+		if (subsum[i] >= sum - subsum[i]){
+			num_rows = i+1;
+			break;
+		}
+	}
+	return num_rows;
+}
+
+
+jQuery(function( $ ){
+	$( "#toggle-navmenu" ).click(function() {
+		$("#nav-div .main-navmenu").css("display", "block");
+	  $( "#nav-div" ).slideToggle(function() {
+	  });
+	});
+	
+	$(window).resize(function(){
+		if(window.innerWidth > WINDOW_WIDTH_FULL_SIZE) {
+			$("#nav-div").removeAttr("style");
+		}
+		$(".sub-navmenu").removeAttr("style");
+		applyNavDivSavedDims();
+	});
+	
+	$( "#nav-div .drop-icon" ).click(function() {
+	var target_ul = $(this).attr("target_ul");
+	  $( "#" + target_ul ).slideToggle(function() {
+	  });
+	});
+	
+	/*
+	$( ".dropdown_header" ).focus(function() {
+		var target_ul = $(this).attr("target_ul");
+		$( "#" + target_ul ).toggle();
+	});
+	*/
+	//getNavDims();
+	//resizeNavDiv();
+	var amountScrolled = 300;
+
+	$(window).scroll(function() {
+		if ( $(window).scrollTop() > amountScrolled ) {
+			$('a.back-to-top').fadeIn('slow');
+		} else {
+			$('a.back-to-top').fadeOut('slow');
+		}
+	});
+	$('a.back-to-top').click(function() {
+		$('html, body').animate({
+			scrollTop: 0
+		}, 700);
+		return false;
+	});
+	
+	
+	var subTitle = $('.site-description');
+	var agencyTitle=$('.agency-title');
+	var headerClass = subTitle.attr('id');
+	
+	switch(headerClass){
+		case "home":
+			 $('.site-title').text("Alaska Department of");
+			subTitle.text("Corrections");
+			agencyTitle.attr("href", "/");
+			break;
+		case "admin":
+			subTitle.text("Administrative Services");
+			agencyTitle.attr("href", "/administrative-services");
+			break;
+		case "commissioner":
+			subTitle.text("Office of the Commissioner");
+			agencyTitle.attr("href", "/commissioner");
+			break;
+		case "institutions":
+			subTitle.text("Institutions");
+			agencyTitle.attr("href", "/institutions");
+			break;
+		case "rehab":
+			subTitle.text("Reentry");
+			agencyTitle.attr("href", "/rehabilitation-reentry");
+			break;
+		case "parole":
+			subTitle.text("Parole Board");
+			agencyTitle.attr("href", "/parole-board");
+			break;
+		case "probation":
+			subTitle.text("Probation & Parole");
+			agencyTitle.attr("href", "/probation-parole");
+			break;
+		case "pretrial":
+			subTitle.text("Pretrial  Enforcement Division");
+			agencyTitle.attr("href", "/pretrial");
+			break;
+		case "inmatehealth":
+			subTitle.text("Health & Rehabilitation Services");
+			agencyTitle.attr("href", "/health-rehab-services");
+			break;
+		case "co_recruitment":
+			subTitle.text("Officer Recruitment");
+			agencyTitle.attr("href", "/officer-recruitment");
+			break;
+		case "academy":
+			subTitle.text("Training Academy");
+			agencyTitle.attr("href", "/training-academy");
+			break;
+		case "akdoctoday":
+			subTitle.text("AK Doc Today");
+			agencyTitle.attr("href", "/blog/akdoctoday/");
+			break;
+		case "alaskapace":
+			subTitle.text("Alaska PACE");
+			agencyTitle.attr("href", "/blog/alaskapace/");
+			break;
+		case "akdocdogsintraining":
+			subTitle.text("AK Doc Dogs in Training");
+			agencyTitle.attr("href", "/blog/akdocdogs/");
+			break;
+		case "lnf":
+			subTitle.text("Look & Feel Prototype");
+			agencyTitle.attr("href", "#");
+			break;
+	}
+	
+	
+});
+
+</script><div class="clear"></div>
+
+
+
+
+<script src="/js/covid-email.js"></script><!-- Remove the #photo_banner div to not have a large photo on the page --><div id="photo_banner">
+<img src="/images/doc_photo_banner_home_E_mjp.jpg" alt="">
+</div>
+<!--This is the end of the #photo_banner div -->
+
+
+
+<a id="main_content"></a><!-- The anchor for skip to content on top of page -->
+<main id="content" role="main"><div id="main">
+	<div id="breadcrumbs">
+			<a href="http://alaska.gov">State of Alaska</a> &gt; <a href="/">Department of Corrections</a> &gt; COVID-19 Updates
+		</div>
+
+	<div class="mission_box_container mission_header_only mission_img2">
+		<div class="mission_box">
+			<div class="h1_container">
+			<h1>COVID-19 Updates</h1>
+			</div>
+			<div class="box">
+			<p>
+				The Department of Corrections is committed to protecting the health and welfare of the staff and offenders 
+				in our institutions and field offices. In addition to public safety, 
+				DOC's top priority right now is preventing the introduction of COVID-19 into our facilities. 
+				DOC has been heavily engaged in proactive mitigation efforts and response planning for COVID-19 
+				since early February when we first began screening inmates for the virus. 
+				The health and safety of the people who live and work in our correctional facilities is paramount, 
+				and DOC has taken swift and assertive action in confronting this public health emergency. 
+				We will do our absolute best to keep staff, offenders and the public updated on our efforts. 
+				Please check back frequently for updates. 
+			</p>
+			</div>
+		</div>
+	</div>
+
+
+
+<div id="primary_content">
+
+<div class="section text_box">
+	<h2>Department Overview</h2>
+	<p>
+		Since February 2, 2020 DOC has been screening every inmate booked into a DOC facility for COVID-19.  
+		On February 3, 2020 the DOC Infectious Disease Response Team held its first tabletop exercise for 
+		coronavirus response and has been meeting at least weekly since that time.  
+		A clinical care guide for DOC medical staff has been in place since 2/27 and a full departmental 
+		response plan was drafted March 4.  On March 23 the Centers for Disease Control (CDC) issued its 
+		<a href="https://www.cdc.gov/coronavirus/2019-ncov/community/correction-detention/guidance-correctional-detention.html">
+		Interim Guidance on Management of Coronavirus Disease 2019 (COVID-19) in Correctional and Detention Facilities</a>.  
+		The Department was pleased to see that the safeguards already put in place in Alaska met the standards 
+		issued by the CDC.  
+	</p>
+	<ul>
+<li>
+<a href="/covid-19/docs/DOC%20COVID19%20Preparedness%20&amp;%20Prevention.pdf?03312020" target="_blank" rel="noopener">
+               DOC COVID-19 Preparedness &amp; Prevention</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/DOC%20FAQ.pdf" target="_blank" rel="noopener">
+               DOC FAQ</a>
+		</li>
+		
+		
+		
+
+	</ul>
+</div>
+
+
+<div class="section tracker">
+<h2>DOC COVID-19 Tracker</h2>
+<div id="tracker">
+
+	<div id="tested_div" class="tracker_column">
+		<div class="tracker_category tracker_text">Tested</div>
+		<div class="tracker_count tracker_text">57</div>
+	</div>
+	<div id="results">
+		<div id="positive_div" class="tracker_column">
+			<div class="tracker_category tracker_text">Positive</div>
+			<div class="tracker_count tracker_text">0</div>
+		</div>
+		<div id="negative_div" class="tracker_column">
+			<div class="tracker_category tracker_text">Negative</div>
+			<div class="tracker_count tracker_text">50</div>
+		</div>
+		<div id="pending_div" class="tracker_column">
+			<div class="tracker_category tracker_text">Pending</div>
+			<div class="tracker_count tracker_text">7</div>
+		</div>
+	</div>
+</div>
+<p>
+Numbers updated by noon Monday - Friday. Last updated April 21, 2020
+</p>
+<p>
+Data above represents tests administered to DOC inmates only. 
+</p>
+</div>
+<div id="dropdown_wrap" class="no_showall">
+<div class="section text_box">
+
+	<h2><button class="expand_header"> Access to Institutions </button></h2>
+	<div class="expand_body">
+	<ul>
+<li>
+		Effective 3/13/2020, all visiting at institutions statewide has been temporarily suspended. This includes outside volunteers, attorneys and other tours and groups who routinely come into the institutions. 
+		</li>
+		<li>
+		Effective 3/18, all non-essential activity at all institutions statewide including contract services have been temporarily suspended. Limited chaplaincy services remain at each institution. 
+		</li>
+		<li>
+		Effective 3/23, Ketchikan Correctional Center and the Ketchikan Probation Office have begun screening all staff and any essential contractor who enter the facility. This will be done each time an individual reports to work and before they are allowed entrance into either the facility or the administrative area. 
+		</li>
+		<li>
+		Effective 3/24, all DOC Facilities statewide are to screen all employees and essential contractors at the start of every shift prior to entering the facility. Anyone with a temperature of 100.4F or higher, or anyone who chooses to refuse having their temperature checked will not be permitted into the facility. 
+		</li>
+		<li>
+		Effective 3/24, all inmates will be screened prior to transferring from one facility to another. Screening will include questions related to symptoms and recent travel, as well as a temperature check. Inmates with temperatures higher than 100.4F will not be transferred and will be taken to medical for further screening.  
+		</li>
+		<li>
+		Effective 3/24, all institutional lobbies will be closed to the public. As a result,  in-person bail and in-person contributions to Offender Trust Account funds have been suspended at this time. Bail should be paid either at the Courthouse or mailed to the institution with a money order or certified check. Contributions to OTA funds should also be mailed to the institution with a money order or certified check. Both items should clearly state the individuals name and offender number.  
+		For address information, visit the <a href="https://doc.alaska.gov/institutions">DOC Institutions</a> page. 
+		</li>
+	</ul>
+</div>
+	
+</div>
+
+
+
+
+
+<div class="section text_box">
+
+	<h2><button class="expand_header"> Staying Connected </button></h2>
+	<div class="expand_body">
+	<p>
+	DOC is committed to keeping the people in our custody connected with their loved ones and 
+	educated on the COVID-19 situation as it evolves. Effective 3/19, 
+	DOC is providing two free 15-minute phone calls per inmate per week while visitation is suspended. 
+	Additionally, the following video was played for the inmate population to keep them educated and 
+	informed of the situation at hand. 
+	</p>
+	
+	<div id="covid_video">
+	
+	<iframe id="covid_video_iframe" src="https://player.vimeo.com/video/398351215" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+	</div>
+	<ul>
+<li>
+		<a href="/covid-19/docs/FAQ%20-%20About%20the%20Virus.pdf" target="_blank" rel="noopener">
+               Inmate Handout: FAQ - About the Virus</a>
+		</li>
+		<li>
+		<a href="/covid-19/docs/FAQ%20-%20COVID&amp;ME.pdf" target="_blank" rel="noopener">
+               Inmate Handout: FAQ - How Will This Affect Me?</a>
+		</li>
+	</ul>
+</div>	
+</div>
+<div class="section text_box">
+	<h2><button class="expand_header"> Press Releases </button></h2>
+	<div class="expand_body">
+	<ul>
+<li><a href="/commish/pressreleases/DOC%20Press%20Release%20-%20COVID-19%20Outbreak%20Response%20Plan.pdf" target="_blank" rel="noopener">
+				   The Department of Corrections Implements Mitigation &amp; Response Plan for COVID-19
+				</a></li>
+	<li><a href="/commish/pressreleases/DOC%20Suspends%20All%20Non-Essential%20Activity.pdf" target="_blank" rel="noopener">
+					   Department of Corrections Suspends All Non-Essential Activity
+					</a></li>
+	<li><a href="/commish/pressreleases/DOC%20Press%20Release%20-%20COVID-19%20Additional%20Screenings%20Implemented.pdf" target="_blank" rel="noopener">
+				   Department of Corrections Takes Additional Steps to Protect Inmates &amp; Staff
+				</a></li>
+	<li><a href="/commish/pressreleases/DOC%20Press%20Release%20-%20DOC%20Staff%20Member%20Tests%20Positive%20for%20COVID-19.pdf" target="_blank" rel="noopener">
+				   Department of Corrections Employee Tests Positive for COVID-19
+				</a></li>
+	<li><a href="/commish/pressreleases/DOC%20Press%20Release%20-%20Additional%20Positive%20Cases%20Confirmed%20at%20LCCC.pdf" target="_blank" rel="noopener">
+				   Two Additional LCCC Staff Members Test Positive for COVID-19
+				</a></li>
+	</ul>
+</div>
+</div>
+
+<div class="section text_box">
+	<h2><button class="expand_header"> Staff Resources </button></h2>
+	<div class="expand_body">
+	<ul>
+<li>
+<a href="http://doa.alaska.gov/dop/directorsOffice/covid19/" target="_blank" rel="noopener">
+				Coronavirus (COVID-19) Resources for State of Alaska Employees</a>
+		</li>
+		<li>
+<a href="http://doa.alaska.gov/dop/fileadmin/DirectorsOffice/COVID19messages/COVID_19_LEAVE_Policy.pdf" target="_blank" rel="noopener">
+				State of Alaska COVID-19 Leave Policy</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/Alaska%20DOC%20Supervisor%20Guidance%20for%20COVID19.pdf?04132020" target="_blank" rel="noopener">
+               Alaska DOC Supervisor Guidance for COVID-19</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/ADOC%20Employee%20Self%20Screen%20for%20COVID19.pdf" target="_blank" rel="noopener">
+               Alaska DOC Employee Self-Screen for COVID-19</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/ADOC%20Entry%20Point%20Screening%20for%20COVID19.pdf" target="_blank" rel="noopener">
+               Alaska DOC Entry Point Screening Questionnaire for COVID19</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/ADOC%20Inmate%20Transfer%20Screening%20COVID19.pdf" target="_blank" rel="noopener">
+               Alaska DOC Inmate Transfer Screening for COVID-19</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/Confidentiality%20Agreement%20for%20Entry%20Point%20Screeners.pdf" target="_blank" rel="noopener">
+               Alaska DOC Confidentiality Agreement</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/Managing%20Stress%20&amp;%20Anxiety%20During%20a%20Pandemic.pdf" target="_blank" rel="noopener">
+               Managing Stress &amp; Anxiety During a Pandemic</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/CDC%20PPE%20Guidelines%20-%20Corrections.pdf" target="_blank" rel="noopener">
+               CDC PPE Guidlines</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/Sequence%20for%20Putting%20On%20PPE.pdf" target="_blank" rel="noopener">
+               Sequence for Putting On PPE</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/04.02.2020%20Alaska%20Health%20Care%20Presentation.pdf" target="_blank" rel="noopener">
+               Alaska Health Care Presentation</a>
+		</li>
+		<li>
+<a href="https://coronavirus-response-alaska-dhss.hub.arcgis.com/" target="_blank" rel="noopener">
+               Alaska Coronavirus Response Hub</a>
+		</li>
+		<li>
+<a href="http://doa.alaska.gov/dop/fileadmin/DirectorsOffice/COVID19messages/FFCRA_FAQ.pdf" target="_blank" rel="noopener">
+               Family first Coronavirus Response Act (FFCRA) FAQ</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/COVID-19%20at%20Home.pdf" target="_blank" rel="noopener">
+               COVID-19 at Home</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/Disinfecting%20Your%20Home%20When%20Someone%20is%20Sick.pdf" target="_blank" rel="noopener">
+               Cleaning and Disinfecting Your Home</a>
+		</li>
+		<li>
+<a href="/covid-19/docs/Prevent%20the%20Spread%20if%20You%20Are%20Sick.pdf" target="_blank" rel="noopener">
+               Prevent the Spread if You Are Sick</a>
+		</li>
+	
+	</ul>
+</div>
+	
+</div>
+</div>
+<!-- end dropdown_wrap -->
+<div class="clear"></div>
+
+<div class="section text_box">
+	
+	<p>
+		For further information about COVID-19 in Alaska, please visit 
+		<a href="http://dhss.alaska.gov/dph/Epi/id/Pages/COVID-19/default.aspx" target="_blank" rel="noopener">
+		the Department of Health and Social Services: Covid-19</a>
+	</p>
+	<p>
+		Follow <a href="https://www.facebook.com/AlaskaDOC/" target="_blank" rel="noopener">the Department of Corrections on Facebook</a> for further updates.
+	</p>
+</div>
+<div class="section contact_form last">
+	<h2>Send us a question:</h2>
+	<form id="contact_form" action="javascript:submitContact()">
+		<div class="text_fields">
+
+			<label for="name">Name:</label>
+			<input type="text" name="name" class="text_input" maxlength="100" required><label for="name">E-mail Address:</label>
+			<input type="email" name="contact_info" class="text_input" maxlength="100" required><label for="message">Question:</label>
+			<textarea name="message" rows="5" class="text_input" maxlength="500" required></textarea><div class="g-recaptcha" data-size="100%" data-sitekey="6LctMV0UAAAAAOfUIJHehG41E4Ky2xtAopyAu6Am" data-callback="recaptchaCallback" data-expired-callback="recaptchaExpiredCallback"></div>
+
+			<input id="submit" type="submit" value="Submit" disabled><div id="msg_div" hidden></div>
+			
+			 
+		</div>
+		
+	</form>
+</div>
+
+
+
+</div>
+</div>
+
+
+
+<div class="clear"></div>
+
+</main><!--End Container -->
+</div>
+</div>
+
+
+
+
+
+
+
+<footer id="footer"><div id="department_footer">
+
+<div id="links">
+
+<a href="/">Home</a> | <a href="/administrative-services">Administrative Services</a> | <a href="/commissioner">Commissioner</a> | <a href="/institutions">Institutions</a> | <a href="/rehabilitation-reentry">Reentry</a> | <a href="/parole-board">Parole Board</a> | <a href="/probation-parole">Probation &amp; Parole</a> |<a href="/health-rehab-services"> Health &amp; Rehab Services</a> | <a href="/contact">Contact</a>
+
+</div>
+
+<div id="accessibility_link">
+<a href="/accessibility">Web Content Accessibility</a>
+</div>
+
+<div class="left">
+<span class="department_title">Department of Corrections - Juneau</span>
+<p>
+P.O. Box 112000 <br> Juneau, Alaska 99811-2000<br>
+Phone: 907-465-4652<br> Fax: 907-465-3390
+</p>
+</div>
+
+
+
+
+
+<div class="right">
+<span class="department_title">Department of Corrections - Anchorage</span>
+<p>
+550 West 7th Avenue, Suite 1800<br> Anchorage, Alaska 99501<br>
+Phone: 907-334-2381<br> Toll Free: 844-934-2381
+</p>
+</div>
+
+
+
+<div class="clear"></div>
+
+
+</div>
+
+
+<footer class="global-footer footer"><div class="inline-div">
+    <div id="SOAfooterlinks" class="footer-global-nav-menu">
+      <ul>
+<li><a href="http://www.alaska.gov">State of Alaska</a></li>
+        <li><a href="//my.alaska.gov">myAlaska</a></li>
+        <li><a href="http://www.alaska.gov/akdir1.html">Departments</a></li>
+        <li><a href="http://www.alaska.gov/employeeHome.html">State Employees</a></li>
+      </ul>
+</div>
+    <div class="copyright">
+      <p>Copyright © State of Alaska · <a href="/">Department of Corrections</a> · <a href="mailto:doc.webmaster@alaska.gov">Email the Webmaster</a></p>
+    </div>
+  </div>
+</footer><a href="#" class="back-to-top">Back to Top</a>
+</footer>
+</body>
+</html>
