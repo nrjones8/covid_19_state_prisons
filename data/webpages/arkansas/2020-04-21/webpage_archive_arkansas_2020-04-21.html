@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arkansas Department of Corrections</title>
+<link type="text/css" media="screen" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/dataTables.foundation.min.css">
+<link rel="stylesheet" type="text/css" href="https://adc.arkansas.gov/themes/site_themes/default_site/css/slick.css">
+<link rel="stylesheet" href="https://adc.arkansas.gov/themes/site_themes/default_site/css/app.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="shortcut icon" type="image/x-icon" href="https://adc.arkansas.gov/themes/site_themes/default_site/images/favicon.ico">
+<!--leaflet--><link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script><!--fonts --><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+<style>
+
+    .deptBanner {
+      width:100%;
+      background-color: #ffffff;
+      margin: 0px;
+      padding: 5px;
+      height: 84px;
+      text-align:center;
+    }
+    
+    .deptContainer {
+      margin: auto;
+      width: 50%;
+    }
+    
+    .deptLogo {
+      float: left;
+      margin-right:10px;
+    }
+    
+    .deptLogo img {
+    float: left;
+      height: 74px;
+    }
+    
+    .deptTitle {
+      padding-top: 30px;
+      float:left;
+    }
+    
+    .deptCenter {display:inline-block;}
+    
+    @media screen and (max-width: 1003px) {
+          .deptContainer {
+          width: 100%;
+        }
+    
+        .deptLogo {
+          float: none;
+        }
+    
+        .deptLogo img {
+          float: none;
+          height: 74px;
+        }
+    
+        .deptTitle {
+          float: none;
+          display:none;
+        }
+      
+    }
+    
+    </style>
+</head>
+<body>
+    <!-- top department banner -->
+		<div class="deptBanner">
+    <div class="deptContainer">
+      <div class="deptCenter">
+      <div class="deptLogo"><a href="https://doc.arkansas.gov/"><img src="https://adc.arkansas.gov/images/uploads/ar-adc-logo.png" alt="A Division of the Department of Corrections: Cabinet Secretary: Wendy Kelly"></a></div>
+      <div class="deptTitle"><a href="https://doc.arkansas.gov/">A Division of the Department of Corrections: Cabinet Secretary: Wendy Kelley</a></div>
+      </div>
+    </div>
+  </div>
+	<!-- end top department banner -->
+         <div id="banner" class="row show-for-medium-up">
+         	<a href="https://adc.arkansas.gov/"><img src="https://adc.arkansas.gov/themes/site_themes/default_site/images/headerBanner.jpg" alt="Arkansas Department of Correction"></a>
+         </div>
+
+ <div id="mainNav" class="row">
+        <nav class="top-bar" data-topbar><ul class="title-area">
+<li class="name show-for-small-only"><h1><a href="https://adc.arkansas.gov/">Arkansas Department of Correction</a></h1></li>
+		  		<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        	</ul>
+<section class="top-bar-section"><ul class="left">
+<li class="">
+					<a href="/">Home</a>
+					
+				</li>
+<li class=" has-dropdown">
+					<a href="/welcome">About Us</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/welcome">Welcome</a>
+					
+				</li>
+<li class="">
+					<a href="/Accreditation">Accreditation</a>
+					
+				</li>
+<li class="">
+					<a href="/goals-and-objectives">ADC Mission, Vision, Core Values and Goals</a>
+					
+				</li>
+<li class="">
+					<a href="/board-of-corrections">Board of Corrections</a>
+					
+				</li>
+<li class="">
+					<a href="/constituent-services">Constituent Services</a>
+					
+				</li>
+<li class="">
+					<a href="/contact-us">Contact Us</a>
+					
+				</li>
+<li class="">
+					<a href="/organizational-chart">Organizational Chart</a>
+					
+				</li>
+<li class="">
+					<a href="/prison-history-and-events">Prison History and Events</a>
+					
+				</li>
+<li class="">
+					<a href="/procurement">Procurement</a>
+					
+				</li>
+						</ul>
+</li>
+<li class="active has-dropdown">
+					<a href="/visitor-quick-links">Visitors</a>
+					
+						<ul class="dropdown">
+<li class="active">
+					<a href="coronavirus-covid-19-updates">CORONAVIRUS (COVID-19) UPDATES</a>
+					
+				</li>
+<li class="">
+					<a href="/inmate-information">Inmate Information</a>
+					
+				</li>
+<li class="">
+					<a href="/mail-money">Mail &amp; Money</a>
+					
+				</li>
+<li class="">
+					<a href="/visitation">Visitation</a>
+					
+				</li>
+						</ul>
+</li>
+<li class=" has-dropdown">
+					<a href="/inmates">Inmates</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/death-row">Death Row</a>
+					
+				</li>
+<li class="">
+					<a href="/escapee">Escapee List</a>
+					
+				</li>
+<li class="">
+					<a href="/executions">Executions</a>
+					
+				</li>
+<li class="">
+					<a href="inmate-commissary-lists">Inmate Commissary Lists</a>
+					
+				</li>
+<li class="">
+					<a href="/inmate-handbook">Inmate Handbook</a>
+					
+				</li>
+<li class="">
+					<a href="/inmate-programs">Inmate Programs and Services</a>
+					
+				</li>
+<li class="">
+					<a href="https://apps.ark.org/inmate_info/index.php">Inmate Search</a>
+					
+				</li>
+<li class="">
+					<a href="/victim-services">Victim Services</a>
+					
+				</li>
+						</ul>
+</li>
+<li class="">
+					<a href="/facilities">Facilities</a>
+					
+				</li>
+<li class=" has-dropdown">
+					<a href="/publications">Publications</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/friends-and-family-guide">Friends and Family Guide</a>
+					
+				</li>
+<li class="">
+					<a href="/policies-and-procedures">Policies and Procedures</a>
+					
+				</li>
+<li class="">
+					<a href="/reports-and-forms">Reports, Brochures and Forms</a>
+					
+				</li>
+						</ul>
+</li>
+<li class=" has-dropdown">
+					<a href="/re-entry">Reentry</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/mythbusters">MythBusters</a>
+					
+				</li>
+<li class="">
+					<a href="/re-entry-occupational-outlook-handbook">Occupational Outlook Handbook</a>
+					
+				</li>
+<li class="">
+					<a href="/reentry-events">Reentry Events</a>
+					
+				</li>
+<li class="">
+					<a href="/images/uploads/ReEntryHandbook.pdf">Reentry Handbook - PDF</a>
+					
+				</li>
+<li class="">
+					<a href="/reentry-newsletters">Reentry Newsletters</a>
+					
+				</li>
+<li class="">
+					<a href="/re-entry">Resources</a>
+					
+				</li>
+						</ul>
+</li>
+<li class=" has-dropdown">
+					<a href="/online-services">Online Services</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="http://www.acicatalog.com/Pages/default.aspx">Arkansas Correctional Industries (ACI) Catalog</a>
+					
+				</li>
+<li class="">
+					<a href="/arkansas-escape-alert-system">Arkansas Escape Alert System</a>
+					
+				</li>
+<li class="">
+					<a href="/online-services/#inmate-database-download">Inmate Database Download</a>
+					
+				</li>
+<li class="">
+					<a href="https://www.ark.org/doc/inmatebanking/index.php">Inmate Deposit Service</a>
+					
+				</li>
+<li class="">
+					<a href="/online-services/#inmate-email-service">Inmate Email Service</a>
+					
+				</li>
+<li class="">
+					<a href="/online-services/#inmate-package-program">Inmate Package Program</a>
+					
+				</li>
+<li class="">
+					<a href="https://securustech.net/en/videovisitation">Inmate Video Visitation</a>
+					
+				</li>
+<li class="">
+					<a href="https://www.ark.org/doc/inmatebanking/index.php">Prepaid Phone Service</a>
+					
+				</li>
+<li class="">
+					<a href="https://www.securustablet.com/">SecureView Tablet Program</a>
+					
+				</li>
+<li class="">
+					<a href="/related-links">Related Links</a>
+					
+				</li>
+						</ul>
+</li>
+<li class=" has-dropdown">
+					<a href="/jobs">Jobs</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/arkansas-criminal-justice-programs">Arkansas Criminal Justice Programs</a>
+					
+				</li>
+<li class="">
+					<a href="/forms">Forms</a>
+					
+				</li>
+<li class="">
+					<a href="/frequently-asked-questions">Frequently Asked Questions</a>
+					
+				</li>
+<li class="">
+					<a href="/human-resources">Human Resources</a>
+					
+				</li>
+<li class="">
+					<a href="/job-fairs-and-hiring-events">Job Fairs and Hiring Events</a>
+					
+				</li>
+<li class="">
+					<a href="/public-service-loan-forgiveness-program">Public Service Loan Forgiveness (PSLF) Program</a>
+					
+				</li>
+<li class="">
+					<a href="/training">Training</a>
+					
+				</li>
+						</ul>
+</li>
+<li class=" has-dropdown">
+					<a href="/the-advocate">The Advocate</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/the-advocate/around-adc/">Around ADC</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate/awards-certificates-service/">Awards/Certificates/Service</a>
+					
+				</li>
+<li class="">
+					<a href="/calendar-of-events">Calendar of Events</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate/directors-corner/">The Director’s Corner</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate/new-hires-promotions/">New Hires and Promotions </a>
+					
+				</li>
+<li class="">
+					<a href="/news">News</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate/pinnings/">Pinnings</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate/retirement-news/">Retirement News</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate/training-academy-graduates/">Training Academy Graduates</a>
+					
+				</li>
+<li class="">
+					<a href="/the-advocate-archive">The Advocate Archive</a>
+					
+				</li>
+<li class="">
+					<a href="/calendar-archives">Calendar Archives</a>
+					
+				</li>
+						</ul>
+</li>
+<li class=" has-dropdown">
+					<a href="/paws-in-prison">Paws In Prison</a>
+					
+						<ul class="dropdown">
+<li class="">
+					<a href="/about-the-program">About the Program</a>
+					
+				</li>
+<li class="">
+					<a href="/trainers">Trainers</a>
+					
+				</li>
+<li class="">
+					<a href="/supporters">Supporters</a>
+					
+				</li>
+<li class="">
+					<a href="/available-dogs">Available Dogs</a>
+					
+				</li>
+<li class="">
+					<a href="/donate">Donate</a>
+					
+				</li>
+<li class="">
+					<a href="/shop-and-support">Shop and Support</a>
+					
+				</li>
+<li class="">
+					<a href="/contact-paws-in-prison">Contact Us</a>
+					
+				</li>
+						</ul>
+</li>
+		</ul></section></nav>
+</div>
+<div id="contactUs" class="row">
+    <div class="small-8 medium-4 columns">
+			<form method="post" action="https://adc.arkansas.gov/">
+<div class="hiddenFields">
+<input type="hidden" name="params" value="eyJyZXN1bHRfcGFnZSI6InNpdGVcL3NlYXJjaFJlc3VsdHMifQ"><input type="hidden" name="ACT" value="23"><input type="hidden" name="site_id" value="1"><input type="hidden" name="csrf_token" value="0f847c80ec068c20bd6c76d7ff0b1bfdf7c765f5">
+</div>
+
+
+     <input name="keywords" type="text" id="searchBox" placeholder="Search">
+</form>  
+	
+		</div>
+	<div class="small-4 columns text-right right">
+		<a href="https://adc.arkansas.gov/contact-us">Contact Us</a>
+	</div>
+</div>
+         <div id="mainContentBack" class="row">
+                     
+        <div id="contentBody" class="medium-9 columns push-3">
+	        <ul class="breadcrumbs">
+<li><ul class="breadcrumbs">
+<li><a href="https://adc.arkansas.gov/">Home</a></li>
+	
+	<li><a href="/visitor-quick-links">Visitors</a></li>
+<li><a href="coronavirus-covid-19-updates">CORONAVIRUS (COVID-19) UPDATES</a></li>
+</ul></li>
+			</ul>
+<h1>CORONAVIRUS (COVID-19) UPDATES</h1>
+			<p></p>
+<h3><strong>April 21, 2020</strong></h3>
+
+<p>In an effort to provide timely and accurate information regarding the impact of COVID-19 on our operations, the numbers of positive DOC-related COVID-19 cases under quarantine will be posted here each Tuesday and Friday:</p>
+
+<p><a href="/images/uploads/COVID-19_-_Stats_Update_-_4-21-2020_social.jpg"><img alt="" src="/images/uploads/COVID-19_-_Stats_Update_-_4-21-2020_web.jpg" style="width: 350px; height: 350px;"></a></p>
+
+<p>The groups referred to in the above chart are broken down as follows:<br>
+  • Inmates/Residents (Inmates reside in State Prison Units. Residents reside in our Community Correction Centers and<br>
+    Supervision Sanction Programs.);<br>
+  • Facility Security Staff;<br>
+  • Facility Non-Security Staff; and<br>
+  • Non-Facility Staff (Includes Central Office Staff, Parole &amp; Probation Officers, Teachers, etc.)<br><br><em>Each update will likely vary based on the number of positives under quarantine at that time.</em></p>
+
+<h3><strong>April 21, 2020</strong></h3>
+
+<h4 style="text-align: center;">
+<img alt="" src="/images/uploads/ADH_logo.jpg" style="width: 125px; height: 125px;"><br><br><strong>ARKANSAS DEPARTMENT OF HEALTH GUIDANCE FOR CORRECTIONAL FACILITIES:</strong>
+</h4>
+
+<ul>
+<li><a href="/images/uploads/ADH_Guidance_-_COVID-19_Guidance_for_State_Correctional_Facilities_and_Local_Detention_Facilities_-_March_27_2020.pdf">COVID-19: Guidance for State Correctional Facilities and Local Detention Facilities (March 27, 2020)</a></li>
+	<li><a href="/images/uploads/ADH_Guidance_-_Reducing_Spread_of_COVID-19_in_Correctional_Facilities_-_April_15_2020.pdf">Reducing Spread of COVID-19 in Correctional Facilities (April 15, 2020)</a></li>
+</ul>
+<h3><strong>April 17, 2020</strong></h3>
+
+<p><a href="/images/uploads/COVID-19_-_Stats_Update_-_4-17-2020_social.jpg"><img alt="" src="/images/uploads/COVID-19_-_Stats_Update_-_4-17-2020_web.jpg" style="width: 350px; height: 350px;"></a><br>
+Inmates reside in State Prison Units. <br>
+Residents reside in our Community Correction Centers and Supervision Sanction Programs.</p>
+
+<h3>
+<strong>April 16, 2020</strong><img alt="" src="/images/uploads/facemask-instructions-01.png" style="width: 175px; height: 175px; margin-top: 8px; margin-bottom: 8px; float: right;">
+</h3>
+
+<p><strong>FACE MASKS HELP SLOW THE SPREAD OF COVID-19</strong><br><br>
+The Centers for Disease Control (CDC) recommends wearing cloth face coverings (masks) to help slow the spread of COVID-19. They offer a great online resource with helpful information on the wear and care of cloth face coverings, as well as how to make them (even if you can’t sew).<br><br><strong>Check it out here: </strong><a href="http://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/diy-cloth-face-coverings.html">https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/diy-cloth-face-coverings.html</a></p>
+
+<h3><strong><a id="Visitation_Suspension_Extension" name="Visitation_Suspension_Extension"></a>April 15, 2020</strong></h3>
+
+<p><strong><strong>INMATE VISITATION SUSPENSION EXTENDED TO JUNE 1, 2020</strong></strong><br>
+Our continuing efforts to slow the spread of COVID-19 within our facilities has called for the Arkansas Department of Corrections to extend the suspension of inmate visitation until June 1, 2020. The suspension includes all prisons and community correction centers, and it applies to regular and special visits.<br><br><strong><strong>LOWER RATES FOR PHONE CALLS, VIDEO VISITS, AND EMAILS REMAIN IN EFFECT</strong></strong><br>
+Because we want you to remain in touch with your loved one during this time, lower rates for phone calls, video visitation and emails will remain in effect until June 1 as well.</p>
+
+<h3><strong>April 14, 2020</strong></h3>
+
+<p><a href="/images/uploads/COVID-19_-_Stats_Update_-_4-14-2020_social.jpg"><img alt="" src="/images/uploads/COVID-19_-_Stats_Update_-_4-14-2020_web.jpg"></a><br>
+*Inmates (Includes Residents in our Community Correction Centers and Supervision Sanction Programs)</p>
+
+<h3><strong>April 10, 2020</strong></h3>
+
+<p><a href="/images/uploads/COVID-19_-_Stats_Update_-_4-10-2020_social.jpg"><img alt="" src="/images/uploads/COVID-19_-_Stats_Update_-_4-10-2020_web.jpg" style="width: 350px; height: 350px;"></a><br>
+*Inmates (Includes Residents in our Community Correction Centers and Supervision Sanction Programs)</p>
+
+<h3><strong>April 7, 2020</strong></h3>
+
+<p><a href="/images/uploads/COVID-19_-_Stats_Update_-_4-7-2020_social.jpg"><img alt="" src="/images/uploads/COVID-19_-_Stats_Update_-_4-7-2020_web.jpg" style="width: 350px; height: 350px;"></a><br>
+*Inmates (Includes Residents in our Community Correction Centers and Supervision Sanction Programs)</p>
+
+<h3><strong>April 3, 2020</strong></h3>
+
+<p><a href="/images/uploads/COVID-19_Stats_-_4-3-2020.jpg"><img alt="" src="/images/uploads/COVID-19_Stats_-_4-3-2020_web.jpg" style="width: 350px; height: 350px;"></a><br>
+*Inmates (Includes Residents in our Community Correction Centers and Supervision Sanction Programs)</p>
+
+<h3><strong>March 20, 2020</strong></h3>
+
+<p><strong><em>Click Image to Enlarge Information on COVID-19 Precautions for Entering All Correctional and Detention Facilities -  Dated 3/20/2020:</em><br><a href="/images/uploads/COVID-19_-_Facility_Entrance_Precautions_-_POSTER_11x17_-_March_20_2020-FINAL.pdf"><img alt="" src="/images/uploads/COVID-19_-_Facility_Entrance_Precautions_-_March_20_2020-web.jpg" style="width: 350px; height: 118px;"></a></strong></p>
+
+<h3><strong>March 18, 2020</strong></h3>
+
+<p><strong><em>Click Image to Enlarge Info from Arkansas Department of Corrections on Adjusted Phone and Video Visitation Rates - Dated 3/18/2020:</em><br><a href="/images/uploads/Adjusted_Phone_and_Video_Visitation_Rates_-_Revised-March_18_2020.pdf"><img alt="" src="/images/uploads/DOC_Adjusted_Phone_and_Video_Visitation_Rates_-_REVISED_3-18-2020_web.jpg" style="width: 350px; height: 350px;"></a><br><br>
+HERE ARE SOME HELPFUL WEB LINKS FOR OUR INMATE COMMUNICATION SERVICES:</strong></p>
+
+<ul>
+<li><a href="https://securustech.net/"><strong>Division of Correction <u>PHONE</u> and <u>VIDEO</u> <u>VISITATION</u>:</strong> https://securustech.net</a></li>
+	<li><a href="https://securustech.net/"><strong>Division of Community Correction <u>PHONE</u>:</strong> https://securustech.net</a></li>
+	<li><a href="http://www.homewav.com"><strong>Division of Community Correction <u>VIDEO</u> <u>VISITATION</u>:</strong> www.homewav.com</a></li>
+</ul>
+<h3><strong>March 17, 2020</strong></h3>
+
+<p><strong><em>Click Image to Enlarge FAQs from Arkansas Department of Emergency Management on Preparing Your Home and Children - Dated 3/17/2020:</em><br><a href="/images/uploads/FAQs_Prepare_Your_Home_and_Children_ADEM-3-17-20.pdf"><img alt="" src="/images/uploads/FAQs_Prepare_Your_Home_and_Children_ADEM-3-17-20-web.jpg" style="width: 350px; height: 118px;"></a></strong></p>
+
+<h3><strong>March 16, 2020</strong></h3>
+
+<p><em><strong>Click Image to Enlarge News Release from Arkansas Department of Corrections on Suspension of Inmate Visitation - Dated 3/16/2020:<br><a href="/images/uploads/COVID_News_Release_-_Inmate_Visitation_Suspension_ADC-3-16-2020.pdf"><img alt="" src="/images/uploads/DOC_News_Release_-_Inmate_Visitation_Suspension_-_3-16-2020-web.jpg" style="width: 350px; height: 118px;"></a></strong></em></p>
+
+<h3><strong>March 15, 2020</strong></h3>
+
+<p><strong><em>Click Image to Enlarge Information on Health Care Resources - Dated 3/15/2020:</em><br><a href="/images/uploads/COVID19_in_Arkansas_UAMS-ACH-ADH-3-15-2020.pdf"><img alt="" src="/images/uploads/COVID19-Healthcare_Resources_UAMS-ACH-ADH-3-15-2020-web.jpg" style="width: 350px; height: 118px;"></a></strong></p>
+
+<h3><strong>March 14, 2020</strong></h3>
+
+<p><strong><em>Click Image to Enlarge Media Alert from the Arkansas National Guard - Dated 3/14/2020:</em><br><a href="/images/uploads/20_Guardsmen_Mobilized_for_COVID-19_State_Active_Duty_ARNG-3-14-2020.pdf"><img alt="" src="/images/uploads/Guardsmen_Mobilized_for_COVID-19_State_Active_Duty_ARNG-3-14-2020-web.jpg" style="width: 350px; height: 118px;"></a></strong></p>
+
+<h3><strong>March 13, 2020</strong></h3>
+
+<p><em><strong>Click Image to Check Out Details Regarding VIDEO VISITATION here:</strong></em><br><a href="https://securustech.net"><img alt="" src="/images/uploads/Video_Visitation-DidYouKnow_-_WEB_-_3-13-2020_FINAL.jpg" style="width: 350px; height: 350px;"></a></p>
+
+<h3><strong>March 11, 2020</strong></h3>
+
+<p><em><strong>Click Image for Message from Secretary Wendy Kelley Dated 3/11/2020:</strong></em><br><a href="/images/uploads/Coronavirus_Notice_for_Web_-_3-11-2020.pdf"><img alt="" src="/images/uploads/DOC_Message_from_Kelley_-_COVID-19_-_3-11-2020-web.jpg" style="width: 350px; height: 118px;"></a></p>
+
+		
+           
+           
+				</div>
+				
+				
+				<div id="sideBar" class="medium-3 columns pull-9">
+
+					<ul><h4><a href="/visitor-quick-links">Visitors</a></h4></ul>
+<ul id="navSections" class="side-nav">
+<li class="first"><a href="coronavirus-covid-19-updates" class="expanded active">CORONAVIRUS (COVID-19) UPDATES</a></li>
+<li class="first"><a href="/inmate-information" class=" collapsed">Inmate Information</a></li>
+<li class="first"><a href="/mail-money" class=" collapsed">Mail &amp; Money</a></li>
+<li class="first"><a href="/visitation" class=" collapsed">Visitation</a></li>
+</ul>
+</div>
+</div>
+
+
+    <div id="expandedFooter" class="row">
+	        <div class="medium-2 columns show-for-medium-up">
+		        	<ul>
+<li><a href="/">Home</a></li>
+		        		<li><a href="/welcome">About Us</a></li>
+		        		<li><a href="/visitors">Visitors</a></li>
+		        		<li><a href="/inmates">Inmates</a></li>
+		        		<li><a href="/facilities">Facilities</a></li>
+		        		<li><a href="/publications">Publications</a></li>
+		        		<li><a href="/re-entry">Re-Entry</a></li>
+		        		<li><a href="/online-services">Online Services</a></li>
+		        		<li><a href="/jobs">Jobs</a></li>
+		        		<li><a href="/the-advocate">The Advocate</a></li>
+		        		<li><a href="/paws-in-prison">Paws In Prison</a></li>	
+		        	</ul>
+</div>
+	        	        
+	        <div class="medium-3 columns show-for-medium-up">
+	        	<h4>Quick Links</h4>
+		        	<ul class="quickLinks">
+<li><a href="https://www.ark.org/doc/inmatebanking/index.php">Inmate Deposit Service</a></li>
+		        		<li><a href="https://adc.arkansas.gov/inmate_info/index.php">Inmate Search</a></li>
+		        		<li><a href="/visitation">Visitation</a></li>
+		        		<li><a href="https://www.vinelink.com/">Victim Notification System</a></li>
+		        		<li><a href="https://adc.arkansas.gov/escapee/">Escape Alert System</a></li>
+		        	</ul>
+</div>
+		      
+	        <div id="social" class="medium-2 columns">
+	        	<h4>Social Media</h4>
+					<a href="https://www.youtube.com/user/ArkansasADC"><i class="youTubeIcon fa fa-youtube-square fa-2x"></i></a>
+					<a href="https://www.flickr.com/photos/ardeptcorrection"><i class="flickrIcon fa fa-flickr fa-2x"></i></a>
+					<a href="https://www.facebook.com/ARDeptofCorrections"><i class="facebookIcon fa fa-facebook-square fa-2x"></i></a>
+					<a href="https://www.twitter.com/ADCPIO"><i class="twitterIcon fa fa-twitter-square fa-2x"></i></a>
+					<p> </p>
+					<a href="https://doc.arkansas.gov/"> <img src="https://adc.arkansas.gov/images/uploads/ar-adc-logo-r.png" alt="A Division of the Department of Corrections: Cabinet Secretary: Wendy Kelly"></a>
+	        </div>
+
+	        
+	        	<!-- logo goes here if needed -->
+				
+
+
+				
+		        <div id="social" class="medium-2 columns">
+			        <a href="http://www.aca.org/"><img src="https://adc.arkansas.gov/themes/site_themes/default_site/images/aca.jpg" alt="An ACA Accreditied Agency"></a>
+				</div>
+					
+	        <div id="contact" class="medium-3 columns">
+		        <h4>Contact Information</h4>
+	        	<p>Arkansas Department of Correction<br>
+	        	 6814 Princeton Pike<br>
+	        	 Pine Bluff, AR 71602<br><a href="/contact-us">Contact Us</a> | <a href="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=6814+Princeton+Pike+Pine+Bluff,+AR+71602-9411&amp;aq=&amp;sll=34.230609,-92.069335&amp;sspn=0.016002,0.038581&amp;ie=UTF8&amp;hq=&amp;hnear=6814+Princeton+Pike,+White+Hall,+Arkansas+71602&amp;ll=34.227576,-92.078626&amp;spn=0.008445,0.01929&amp;z=16">Google Map</a> </p>
+	        </div>  
+        </div>
+    
+
+      <footer class="row"><div class="medium-12 columns">
+          <div class="row">
+            <div id="arkansasGov" class="medium-6 columns">
+              <a href="http://www.arkansas.gov"><img src="https://adc.arkansas.gov/themes/site_themes/default_site/images/Arkansas.gov-color.png" alt="Arkansas.gov"></a>
+              <a href="http://www.arkansas.gov/policies/acceptable-use#accessibility" target="_blank">Accessibility</a> | 
+			  <a href="http://www.arkansas.gov/policies/acceptable-use#privacy" target="_blank">Privacy</a> | 
+			  <a href="http://www.arkansas.gov/policies/acceptable-use#security" target="_blank">Security</a> | 
+			  <a href="http://www.arkansas.gov/policies/acceptable-use#acceptable-use" target="_blank">Acceptable Use</a> <br><a href="http://www.arkansas.gov/government/agencies" target="_blank">Agencies</a> | 
+			  <a href="http://www.arkansas.gov/services/all-services" target="_blank">Online Services</a> | 
+			  <a href="http://www.arkansas.gov/directory/index.html" target="_blank">State Directory</a> | 
+			  <a href="http://transparency.arkansas.gov/Pages/default.aspx" target="_blank">Transparency.Arkansas.gov</a>
+            </div>
+            <div id="copyRight" class="medium-6 columns">
+				Copyright © 2020 State of Arkansas. All Rights Reserved.	
+            </div>
+          </div>
+        </div>
+      </footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script><script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script><script type="text/javascript" src="https://adc.arkansas.gov/themes/site_themes/default_site/js/app.js"></script><script>
+		$(document).foundation()	
+	</script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-75269307-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+</body>
+</html>

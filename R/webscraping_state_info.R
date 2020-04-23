@@ -991,7 +991,7 @@ adult %>%
 
 get_mass_covid_data <- function() {
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/641aec1f1675656b047a2eb8437ecc6b/download/downloadData?w=",
+    "https://data.aclum.org/sjc-12926-tracker/session/1880c1fe8550b3f648d3c7a9e7a76cb9/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
