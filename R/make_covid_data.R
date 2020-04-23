@@ -3,11 +3,9 @@ data_in_goog_sheet <-
   read_sheet(
     "https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
   )
-
 manual_entries <- 
   read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
   ,sheet = "manual")
-
 render_all_pages <- function(google_prison_sheet) {
   #covid scraper for connecticut is broken and need a better way to automate from the image on
   # website to text. mass will be directly from aclu
@@ -64,6 +62,7 @@ render_all_pages <- function(google_prison_sheet) {
   jails_data
 }
 jails_data <- render_all_pages(data_in_goog_sheet)
+
 # create summaries and extract summaries for a variety of states with the needed fields
 group_summary <- function(.data,...){
   .data %>% 
@@ -227,16 +226,10 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
 }
 reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data,manual_entries = manual_entries)
 
-
 path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
-
 reduced_data %>% 
-  mutate(scrape_date = if_else(scrape_date == ymd(today()),today()-1,ymd(scrape_date))) %>% 
   write_csv(path_today_summary)
 reduced_data %>% 
-  mutate(scrape_date = if_else(scrape_date == ymd(today()),today()-1,ymd(scrape_date))) %>% 
   write_csv("data/daily/state_summaries_current.csv")
 
 
-
-ja
