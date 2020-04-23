@@ -70,11 +70,21 @@ get_delaware_covid_data <- function(delaware_doc_path) {
   # this extracts the facilities and summarizes the data for now.
   # currently, the facilities can be flattened. i just need to remember how to
   # collapse the strings
-  de_data %>%
+  de_data <-
+    de_data %>%
     modify_at(2:4,  ~ as.numeric(.)) %>%
-    summarise_at(2:4, list(total = ~ sum(., na.rm = T))) %>%
+    rename_all(tolower) %>%
     mutate(state = "Delaware",
            scrape_date = today())
+  
+  names(de_data) <- gsub(" ", "_", names(de_data))
+  de_data <-
+    de_data %>%
+    rename(facilities                = facility,
+           staff_positive            = correctional_staff,
+           contract_staff_positive   = contracted_staff,
+           inmates_positive          = offenders)
+  return(de_data)
 }
 
 # Georgia -----------------------------------------------------------------
@@ -940,7 +950,7 @@ adult <- data.frame(t(values), stringsAsFactors = FALSE)
 names(adult) <- column_names
 adult[] <- sapply(adult, readr::parse_number)
 
-  
+
 
 # get_wisconsin_covid_data <- function(wisc_doc_path) {
 #   
@@ -987,8 +997,14 @@ adult[] <- sapply(adult, readr::parse_number)
 # Massachusetts -----------------------------------------------------------
 
 get_mass_covid_data <- function() {
+  links <- 
+    read_html("https://data.aclum.org/sjc-12926-tracker/") %>%
+    html_nodes("a") %>%
+    html_attr('href')
+  
+  
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/1880c1fe8550b3f648d3c7a9e7a76cb9/download/downloadData?w=",
+    "https://data.aclum.org/sjc-12926-tracker/session/b8c49700e11ae0df5334500957ec3b77/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
