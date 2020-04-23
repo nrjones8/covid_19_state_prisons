@@ -4,7 +4,7 @@ make_choropleth_map <- function(data) {
   data$total_positive <- rowSums(data[, c("inmates_positive", "staff_positive")],
                                   na.rm = TRUE)
   
-  counties <- tigris::counties(cb = TRUE, resolution = "20m")
+  counties <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_county_20m.shp"))
   counties <- sf::st_as_sf(counties)  %>%
     mutate(cnty_fips = paste0(STATEFP, COUNTYFP)) %>%
     select(geometry,
@@ -36,17 +36,14 @@ make_choropleth_map <- function(data) {
                             "Total ICU Beds: ", counties$all_icu)
   county_labs <- as.list(counties$popup)
   
-  
-  states <- tigris::states(cb = TRUE, resolution = "20m")
+  states <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_state_20m.shp"))
   states <- sf::st_as_sf(states) %>%
-    select(geometry,
-           NAME)
-  states$state <- states$NAME
-  states$NAME <- NULL
-  states <-
-    states %>%
+    dplyr::select(geometry,
+           NAME) %>%
+    dplyr::rename(state = NAME) %>%
     dplyr::left_join(data)
-  states$popup <-  paste0("<b>",
+
+    states$popup <-  paste0("<b>",
                           states$state,
                           "</b>",
                           "<br>",
