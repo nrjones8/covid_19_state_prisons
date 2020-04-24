@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"1a1ddd71e3",applicationID:"542839153"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-7886654-2", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script><link rel="canonical" href="https://doc.mo.gov/media-center/newsroom/covid-19/data">
+<meta name="description" content="">
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/sites/doc/themes/corrections/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="revision" href="https://doc.mo.gov/media-center/newsroom/covid-19/data">
+<title>COVID-19 Data | Missouri Department of Corrections</title>
+<link rel="stylesheet" media="all" href="/sites/doc/files/css/css_HVWgjRbj-reLyuQCZCG3ZPVQoGihruR_9aagQqT90Ws.css">
+<link rel="stylesheet" media="all" href="/sites/doc/files/css/css_9Chgs-cv6StFLR5fQD5veAWv1J_Ua3n8swFA4_DyH-w.css">
+<!--[if lte IE 8]>
+<script src="/sites/doc/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]-->
+</head>
+<body class="path-node page-node-type-page has-glyphicons">
+    <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+          <header class="navbar navbar-default" id="header-region" role="banner"><div class="container">
+        <div class="row">
+          <div class="navbar-header">
+            <a href="/" class="navbar-brand text-hide">Missouri Department of Agency<img src="/sites/doc/themes/corrections/logo.png" alt="Missouri Department of Agency" class="col-xs-9" id="logo"></a>
+
+                            <div class="region region-utility-bar col-sm-7 col-sm-push-5">
+    <section id="block-utilitybar" class="block block-system block-system-menu-blockutility-bar clearfix hidden-xs col-sm-8 col-md-9 col-lg-8"><ul class="menu menu--utility-bar nav">
+<li class="first">
+                                        <a href="https://www.mo.gov/">MO.gov</a>
+              </li>
+                      <li>
+                                        <a href="https://governor.mo.gov/">Governor Parson</a>
+              </li>
+                      <li>
+                                        <a href="https://www.mo.gov/search-results?mode=state_agencies">Find an Agency</a>
+              </li>
+                      <li class="last">
+                                        <a href="https://www.mo.gov/search-results?mode=online_services">Online Services</a>
+              </li>
+        </ul></section><div class="search-block-form block block-search block-search-form-block" data-drupal-selector="search-block-form" id="block-corrections-search" role="search">
+  
+    
+      <form action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+  <div class="form-item js-form-item form-type-search js-form-type-search form-item-keys js-form-item-keys form-no-label form-group">
+      <label for="edit-keys--2" class="control-label sr-only">Search</label>
+  
+  
+  <div class="input-group">
+<input title="Enter the terms you wish to search for." data-drupal-selector="edit-keys" class="form-search form-control" placeholder="Search" type="search" id="edit-keys--2" name="keys" value="" size="15" maxlength="128" data-toggle="tooltip"><span class="input-group-btn"><button type="submit" value="Search" class="button js-form-submit form-submit btn-primary btn icon-only" name=""><span class="sr-only">Search</span><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button></span>
+</div>
+
+  
+  
+  </div>
+<div class="form-actions form-group js-form-wrapper form-wrapper" data-drupal-selector="edit-actions" id="edit-actions"></div>
+
+</form>
+
+  </div>
+
+  </div>
+
+                      </div>
+        </div>
+      </div>
+
+      <div class="container" id="main-navigation">
+        <div class="row">
+            <div class="region region-navigation">
+    <section id="block-mainnavigation-3" class="hidden-xs block block-we-megamenu block-we-megamenu-blockmain clearfix"><div class="region-we-mega-menu">
+	<a class="navbar-toggle collapsed">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	</a>
+	<nav class="main navbar navbar-default navbar-we-mega-menu mobile-collapse hover-action" data-menu-name="main" data-block-theme="corrections" data-style="Default" data-animation="None" data-delay="" data-duration="" data-autoarrow="" data-alwayshowsubmenu="" data-action="hover" data-mobile-collapse="0"><div class="container-fluid">
+	    <ul class="we-mega-menu-ul nav nav-tabs">
+<li class="we-mega-menu-li" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="3402db62-78e6-4a36-a70e-7d3b21a012d2" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/about" target="">
+      
+      About
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="ddd093c5-ae92-4e97-8982-d450d5efb70e" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions" target="">
+      
+      Divisions
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="250" data-class="" style="width: 250px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li dropdown-menu" data-level="1" data-element-type="we-mega-menu-li" description="Adult Institutions" data-id="1a8b8a16-c736-45a2-a6b8-bde0c3cbe1ca" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Adult Institutions" href="/divisions/adult-institutions" target="">
+      
+      Adult Institutions
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="300" data-class="" style="width: 300px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="9cf2eb33-2001-4361-8571-49e9b91a48de" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/adult-institutions/address-listing" target="">
+      
+      Facility Addresses
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="e1abad2b-fc7e-4f49-bd0a-301848d1d439" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/adult-institutions/family-orientation-meetings" target="">
+      
+      Family Orientation Meetings
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="b0687a34-9f34-4eb8-91d8-ceecea8ea746" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/adult-institutions/money-transfer" target="">
+      
+      Money Transfer &amp; Secure Email
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="2672f462-2112-4548-9e98-cbbab8d742b5" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/programs/family-friends/visiting/phone" target="">
+      
+      Offender Phone Services
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="c0e0eec7-1e2f-42ad-969a-ac91b0fff565" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/adult-institutions/warden-listing" target="">
+      
+      Warden Listing
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="e992c6bd-9f82-4e3f-a398-92ade4979851" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/adult-institutions/religious-spiritual-support" target="">
+      
+      Religious and Spiritual Support
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="f26ba58a-daf9-452a-bcfb-cc701a24b85c" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/adult-institutions/chaplain-directory" target="">
+      
+      Chaplain Directory
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="12678377-1548-4e4d-915a-c1f1cb96f124" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/sites/doc/files/media/pdf/2020/03/Offender_Rulebook_REVISED_2019.pdf" target="">
+      
+      Offender Rulebook
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="d56bf5f2-536f-4f42-9b55-ef39977d1bf5" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/programs/puppies-parole" target="">
+      
+      Puppies for Parole
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="f64fa684-4ba5-4751-9443-f9a450952064" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="https://web.mo.gov/doc/PuppiesForParolePublic/" target="">
+      
+      Puppies for Parole Available Dogs
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="1" data-element-type="we-mega-menu-li" description="Probation &amp; Parole" data-id="b77be61a-085c-4c9a-86ac-0e893541d654" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Probation &amp;amp; Parole" href="/divisions/probation-parole" target="">
+      
+      Probation &amp; Parole
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="300" data-class="" style="width: 300px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="dc3d3083-2715-48d3-8cd0-d607db8c0350" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/sites/doc/files/media/pdf/2019/09/Credentialed_Batter_Intervention_Programs_2019.pdf" target="">
+      
+      Credentialed Batter Intervention Programs
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="8a4660a7-250e-493e-bec0-130b9e0bf1d3" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/probation-parole/early-discharge" target="">
+      
+      Early Discharge/ Earned Compliance Credit
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="107ff68f-ef60-40e6-a71c-461a4293a9c8" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/probation-parole/understanding-probation-parole-family-friends" target="">
+      
+      A Guide to Understanding P&amp;P for Family and Friends
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="cf5f6373-3f16-4f44-982c-2c548355af21" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/probation-parole/address-listing" target="">
+      
+      District Information/ Resource Guide
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="1102a8be-5ee9-49b9-a822-3e395fec47bc" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/probation-parole/executive-clemency" target="">
+      
+      Executive Clemency
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="063d7690-b83d-42b0-b659-1ed6dc9e554b" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/sites/doc/files/media/pdf/2020/02/Application_for_Executive_Clemency-Confined_Applicant.pdf" target="">
+      
+      Clemency Application - confined
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="a5b6b3b6-296d-4309-bbed-7641674b1328" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/sites/doc/files/media/pdf/2020/02/Application_for_Executive_Clemency-Non-Confined_Applicant.pdf" target="_self">
+      
+      Clemency Application - non-confined
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="42436710-210f-42b0-b24a-b711cefa0bdc" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="https://web.mo.gov/doc/MODOCFee/overview.do" target="">
+      
+      Intervention Fees Website
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="d7f84822-b8d5-41f0-98f9-7d4d386d859c" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/probation-parole/judicial-reference" target="">
+      
+      Judicial Reference
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="Level 1 Supervision Form" data-id="a451c96a-6930-4413-8c96-540e8bd82bc3" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Level 1 Supervision Form" href="https://doc.mo.gov/sites/doc/files/media/pdf/2019/01/Level-1_Supervision_Report_Form.pdf" target="">
+      
+      Level I Supervision Report Form (Only works with Internet Explorer)
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="e1d9ee04-033f-4b04-9348-5b2875b9ea0a" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/probation-parole/react" target="">
+      
+      Required Educational Assessment and Community Treatment (REACT)
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="Supervision Strategies and Treatment Alternatives Booklet" data-id="a71ff54f-4e5e-42eb-891e-1b308f3db597" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Supervision Strategies and Treatment Alternatives Booklet" href="/sites/doc/files/media/pdf/2020/03/Supervision_Strategies_and_Treatment_Alternatives_Booklet.pdf" target="">
+      
+      Supervision Strategies and Treatment Alternatives Booklet
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="a89b6f39-0b2e-4a59-bbc6-cf259a71da09" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/probation-parole/regional-administrators" target="">
+      
+      Regional Administrator Listing
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="Area Treatment Coordinator Map" data-id="4a02ae94-0a29-45ac-898e-65cd80c6561f" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Area Treatment Coordinator Map" href="/sites/doc/files/media/pdf/2019/12/Area-Treatment-Coordinator_map_2019.pdf" target="">
+      
+      Area Treatment Coordinator Map
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="1" data-element-type="we-mega-menu-li" description="Rehabilitative Services" data-id="89332daa-d432-4c99-a5a2-6ed861150d9d" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Rehabilitative Services" href="/divisions/rehabilitative-services" target="">
+      
+      Rehabilitative Services
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="300" data-class="" style="width: 300px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="acb75197-24f4-41d2-887d-2485c0f67c96" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="https://doc.mo.gov/mve/index.html" target="">
+      
+      Missouri Vocational Enterprises
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="d1d84f4c-9df3-4a03-8dcd-0ae62fc5fb58" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/rehabilitative-services/institutional-treatment-programs" target="">
+      
+      Institutional Treatment Programs
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="e807a554-2dca-4d4d-8740-6dbaf439400c" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/rehabilitative-services/sas-institutional-programs" target="">
+      
+      SAS Programs
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="1bc3beb6-6ef7-4dda-9736-05aefa257fcf" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="http://youtu.be/UW9thc_HmSQ" target="">
+      
+      Rehabilitation Through Job Skills
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="3bacc4ba-4c37-4684-ad32-5f98373c59dc" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="https://youtu.be/BjSCUb_JS58" target="">
+      
+      Suicide Is Forever video - male version
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="67a275c8-f8a4-4753-9c49-86bf6e7d6ed9" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="https://youtu.be/4C9qdOVUwPE" target="">
+      
+      Suicide Is Forever video - female version
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="1" data-element-type="we-mega-menu-li" description="Human Services" data-id="cfe0314d-cbb6-4146-9387-224414b384af" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="Human Services" href="/divisions/human-services" target="">
+      
+      Human Services
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="300" data-class="" style="width: 300px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="cc2a3d56-d7ba-4bc5-9b65-8949ed6a275c" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/employment-opportunities" target="_self">
+      
+      Jobs
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="355ecda5-bae8-4fa4-9e21-ab6ca5a003db" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/employee-expectations" target="">
+      
+      Employee Expectations
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="25d5a2bd-58ed-45ad-b6ba-490324318361" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/probation-parole-careers" target="">
+      
+      Probation and Parole Careers
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="ecfd02c8-2856-4b34-ad23-6646c1badd37" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/volunteer" target="">
+      
+      Volunteer and Intern Services
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="570d9fae-32b2-4388-817c-07c3b7865a8b" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/purchasing" target="">
+      
+      Contracts and Procurements
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="b2a0751d-aac6-4475-921e-535a863edc00" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/county-reimbursement" target="_self">
+      
+      County Reimbursement
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="57b502c4-c2a5-482a-bbd7-37f0839e92a1" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director" target="">
+      
+      Office of the Director
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="1f29b487-4c0c-444d-919e-7e70d108634d" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities" target="">
+      
+      Facilities
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="250" data-class="" style="width: 250px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="49c0fc02-4910-49cb-ab58-55f6edc5f02d" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/all" target="">
+      
+      All
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="d1a709f4-699d-478f-beb7-299c0be188e7" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/adult-institutions/address-listing" target="">
+      
+      Adult Institutions
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="caed83fd-c879-4621-966c-57598b08a884" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/probation-parole/address-listing" target="">
+      
+      Probation &amp; Parole
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="05e985d7-eeb3-4478-a79d-6f2719e5045e" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/probation-parole/csc-crc-address-listing" target="">
+      
+      Community Supervision Centers &amp; Community Release Centers
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="f860796f-039d-4d22-8d53-0f9fc759668e" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/adult-institutions/visiting-hours" target="">
+      
+      Visiting Hours
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="f68fc1b5-42ee-49ed-a470-5bcde5b179b4" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/adult-institutions/warden-listing" target="">
+      
+      Warden Listing
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="ea70bed5-68ab-4d2d-9b52-af62dd4498b3" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/facilities/map-all" target="">
+      
+      Map
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="8970b14b-943e-4dd7-bc09-26f3d9062231" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/programs" target="">
+      
+      Programs
+
+          </a>
+    <div class="we-mega-menu-submenu menu-middle" data-element-type="we-mega-menu-submenu" data-submenu-width="1000" data-class="menu-middle" style="width: 1000px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="1">
+  <div class="we-mega-menu-col span3" data-element-type="we-mega-menu-col" data-width="3" data-block="megamenuprogramscommunityblock" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+    <div class="type-of-block"><div class="block-inner"><section id="block-megamenuprogramscommunityblock" class="block block-block-content block-block-contenteb7df3d9-299c-4598-b3fd-935bb8be2d1f clearfix"><h2 class="block-title">Megamenu Programs Community block</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+<h3>Community</h3>
+
+<ul>
+<li><a href="/divisions/human-services/volunteer">Volunteers</a></li>
+	<li><a href="/family-friends">Family and Friends</a></li>
+	<li><a href="https://doc.mo.gov/programs/restorative-justice/restorative-justice-information">Restorative Justice</a></li>
+	<li><a href="/programs/gardens-food-donations">Gardens &amp; Food Donations</a></li>
+	<li><a href="/programs/puppies-parole">Puppies for Parole</a></li>
+	<li><a href="/programs/quilting-sewing-crochet">Quilting, Sewing &amp; Crochet</a></li>
+	<li><a href="/programs/community-service">Community Service</a></li>
+	<li><a href="/programs/reparation-restitution">Reparation &amp; Restitution</a></li>
+</ul>
+</div>
+      
+    </div>
+  </div>
+
+  </section></div></div>
+
+</div>
+<div class="we-mega-menu-col span3" data-element-type="we-mega-menu-col" data-width="3" data-block="megamenuprogramseducationblock" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+    <div class="type-of-block"><div class="block-inner"><section id="block-megamenuprogramseducationblock" class="block block-block-content block-block-contentefb58ab7-de77-4647-8110-4ad18a0c44b9 clearfix"><h2 class="block-title">Megamenu Programs Education block</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+<h3>Education &amp; Training</h3>
+
+<ul>
+<li><a href="https://docservices.mo.gov/mve/index.html" class="file file-inline text-html file--text-html file--text">Missouri Vocational Enterprises</a></li>
+	<li><a href="/programs/education/academic">Academic Education</a></li>
+	<li><a href="/programs/education/career-technical">Career &amp; Technical Training</a></li>
+	<li><a href="/programs/education/missouri-veterans-project">Missouri Veterans Project</a></li>
+	<li><a href="/programs/education/therapy-treatment">Therapy and Treatment</a></li>
+	<li><a href="/programs/PREA">Prison Rape Elimination Act</a></li>
+</ul>
+</div>
+      
+    </div>
+  </div>
+
+  </section></div></div>
+
+</div>
+<div class="we-mega-menu-col span3" data-element-type="we-mega-menu-col" data-width="3" data-block="megamenuprogramssuccessblock" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+    <div class="type-of-block"><div class="block-inner"><section id="block-megamenuprogramssuccessblock" class="block block-block-content block-block-content0e4b9a2f-7fec-4bc5-95d7-841653e89175 clearfix"><h2 class="block-title">Megamenu Programs Success block</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+<h3>Success Stories</h3>
+
+<ul>
+<li><a href="/media-center/success-stories">Success Stories by ARCHS</a></li>
+</ul>
+<div data-embed-button="image" data-entity-embed-display="view_mode:media.small" data-entity-type="media" data-entity-uuid="276cccb8-bfdc-4579-bb21-cd81e2a75c17" data-langcode="en" class="embedded-entity">  <article class="media media--type-image media--view-mode-small"><div class="field field--name-field-media-image field--type-image field--label-hidden field--item">  <img src="/sites/doc/files/styles/thumbnail/public/2018-03/Programs_megamenu_photo.jpg?itok=1V8cN9Nb" width="164" height="92" alt="Programs Megamenu photo" typeof="foaf:Image" class="img-responsive">
+</div>
+      
+      </article>
+</div>
+</div>
+      
+    </div>
+  </div>
+
+  </section></div></div>
+
+</div>
+<div class="we-mega-menu-col span3" data-element-type="we-mega-menu-col" data-width="3" data-block="megamenuprogramsreentryblock" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+    <div class="type-of-block"><div class="block-inner"><section id="block-megamenuprogramsreentryblock" class="block block-block-content block-block-content45fb66eb-bf1d-4ad5-a307-661d1486066d clearfix"><h2 class="block-title">Megamenu Programs Reentry block</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+<h3>Reentry</h3>
+
+<ul>
+<li><a href="https://doc.mo.gov/director/office-director/office-reentry-services">Reentry Services</a></li>
+	<li><a href="/programs/missouri-reentry-process/transitional-housing-units">Transitional Housing Units</a></li>
+	<li><a href="/programs/reentry-housing">Reentry Housing Map</a></li>
+	<li><a href="/programs/missouri-reentry-process/transition-center">Transition Center</a></li>
+	<li><a href="/programs/missouri-reentry-process/partnering-agencies">Partner Agencies</a></li>
+	<li><a href="/divisions/probation-parole">Probation &amp; Parole</a></li>
+</ul>
+</div>
+      
+    </div>
+  </div>
+
+  </section></div></div>
+
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="ca48a9ed-035e-4fb3-b125-c0551ebbcd24" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/initiatives" target="">
+      
+      Initiatives
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="250" data-class="" style="width: 250px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="fcc3caaf-51b2-42b3-8db5-3cd1afa81332" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/justice-reinvestment-initiative" target="">
+      
+      Justice Reinvestment
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="9cf595d7-6642-42ce-ae5b-904fc23343ab" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/about/strategic-plan" target="_self">
+      
+      Strategic Plan
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="Law Enforcement Notification System" data-id="201685fb-ef57-44c4-be86-1fc193c4313a" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="Law Enforcement Notification System" href="https://web.mo.gov/doc/lensWeb/Gateway.do" target="_self">
+      
+      Law Enforcement Notification System (LENS)
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="d7b18a11-5774-4862-a4be-1a0133b8ee5b" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/initiatives/supervisor-training" target="">
+      
+      Supervisor Training
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="2da4f633-574c-402b-a537-e6c0bb107244" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/initiatives/tobacco-free" target="_self">
+      
+      Tobacco Policy
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="00bfa764-3807-43e1-a821-67ac5610169f" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/divisions/human-services/county-reimbursement" target="_self">
+      
+      County Reimbursement
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="8f5c511e-14cf-4c72-9b9e-8b91ac3ff145" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director" target="">
+      
+      Director
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="250" data-class="" style="width: 250px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="f5b5047b-da90-495c-916e-89757ae33188" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/anne-precythe" target="">
+      
+      Anne Precythe
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="b592b16a-8bb1-4f8b-9aa2-2dab0a141342" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/anne-precythe/messages-media" target="">
+      
+      Media
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="d20d5569-c723-47e5-a9e7-b46f52ffa05b" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/director/anne-precythe/messages-staff" target="_self">
+      
+      Messages to Staff
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li dropdown-menu" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="30ce61f6-4a21-4eff-9286-1c82080d5d80" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director" target="">
+      
+      Office of the Director
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="300" data-class="" style="width: 300px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="0e69dbe8-dec4-4a3f-a788-8cc1d59804f3" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/leadership-team" target="">
+      
+      Leadership Team
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="ed62a08d-d281-4efa-9306-04c2855b1cdf" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/office-professional-standards" target="">
+      
+      Professional Standards
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="fe7e2679-783d-4b49-a0c5-ca72a403f3d8" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/office-research-planning-process-improvement" target="">
+      
+      Research, Planning &amp; Process Improvement
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="990db106-e8c1-47b5-a3b9-0f6fdbf64d65" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/budget-unit" target="">
+      
+      Budget Unit
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="61fdfb31-2b04-4751-9432-12b6ff967715" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/office-general-counsel" target="">
+      
+      General Counsel
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="49153a64-c17f-43c0-b948-aa688257f777" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/emergency-preparedness" target="">
+      
+      Emergency Preparedness &amp; Workplace Violence
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="23388578-160d-46cd-9f43-6ea4a242f9a0" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/legislative-affairs-office" target="">
+      
+      Legislative Affairs
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="6fa91091-3c62-4d30-9c6b-05d88d80b5c9" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/public-information-constituent-services" target="">
+      
+      Communications
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="2d2200d0-e4f1-4f77-a06a-b41503ec87a7" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-director/office-reentry-services" target="">
+      
+      Reentry Services
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="2" data-element-type="we-mega-menu-li" description="" data-id="dbec2ffb-295d-4d3c-bfc8-f99d0f0ab956" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/director/office-victim-services" target="">
+      
+      Victim Services
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+<li class="we-mega-menu-li dropdown-menu justify" data-level="0" data-element-type="we-mega-menu-li" description="" data-id="3f7405d1-1a2b-4b45-a9ca-4fba99232a95" data-submenu="1" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="justify" data-target="">
+      <a class="we-mega-menu-li" title="" href="/media-center/newsroom" target="">
+      
+      Media Center
+
+          </a>
+    <div class="we-mega-menu-submenu" data-element-type="we-mega-menu-submenu" data-submenu-width="250" data-class="" style="width: 250px">
+  <div class="we-mega-menu-submenu-inner">
+    <div class="we-mega-menu-row" data-element-type="we-mega-menu-row" data-custom-row="0">
+  <div class="we-mega-menu-col span12" data-element-type="we-mega-menu-col" data-width="12" data-block="" data-blocktitle="0" data-hidewhencollapse="" data-class="">
+  <ul class="nav nav-tabs subul">
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="7de48691-507c-4575-8233-8107335bebb7" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/media-center/newsroom" target="">
+      
+      Newsroom
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="80b98c2f-db8d-4293-afc3-bd3617e3d096" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/media-professionals" target="_self">
+      
+      Inquiries &amp; Interviews
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="0104d500-b981-46ed-86de-38b735c3c007" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/media-center/sunshine-law" target="">
+      
+      Sunshine Law - Offender Data
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="87a6388d-318a-4f69-85c4-19cb04d6cb73" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="https://doc.mo.gov/media-center/newsroom/staff-news" target="_self">
+      
+      Staff News
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="33844211-06c8-4fc7-9c9a-d06ed516986b" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/media-center/newsroom/staff-news/local-news" target="_self">
+      
+      Facility News
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="Media coverage of reentry services" data-id="87b19245-8fc0-49b3-9603-9fab0dd5952d" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="Media coverage of reentry services" href="/programs/missouri-reentry-process/news" target="_self">
+      
+      Reentry News
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="1229e937-1e86-42a7-ba74-576000925330" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/media-center/publications" target="">
+      
+      Reports &amp; Publications
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="ee4be34e-1c21-4dc2-8afa-f3bbd85b1c4b" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="" href="/media-center/offender-made-media" target="_self">
+      
+      Offender-Made Media
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="37a8fa16-dfd1-4fee-8cb8-51153cbfc9f3" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="/media-center/success-stories" target="">
+      
+      Success Stories 
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="alert" data-id="52becb98-a15f-4be2-ac62-9a45cbee9f57" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="_self">
+      <a class="we-mega-menu-li" title="alert" href="/alerts" target="_self">
+      
+      Incident &amp; Assault Advisories
+
+          </a>
+    
+</li>
+<li class="we-mega-menu-li" data-level="1" data-element-type="we-mega-menu-li" description="" data-id="b8c706fb-469f-4175-90cc-53497b38d9fa" data-submenu="0" hide-sub-when-collapse="" data-group="0" data-class="" data-icon="" data-caption="" data-alignsub="" data-target="">
+      <a class="we-mega-menu-li" title="" href="https://www.youtube.com/user/MissouriCorrections?feature=guide" target="">
+      
+      Videos
+
+          </a>
+    
+</li>
+</ul>
+</div>
+
+</div>
+
+  </div>
+</div>
+</li>
+</ul>
+</div>
+	</nav>
+</div>
+  </section>
+</div>
+
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+                                <div id="navbar-collapse" class="navbar-collapse collapse">
+                <div class="region region-navigation-collapsible">
+    <nav role="navigation" aria-labelledby="block-mainnavigation-2-menu" id="block-mainnavigation-2" class="hidden-md hidden-lg"><h2 class="visually-hidden" id="block-mainnavigation-2-menu">Main navigation</h2>
+  
+
+        
+      <ul class="menu menu--main nav navbar-nav">
+<li class="first">
+                                        <a href="/about" data-drupal-link-system-path="node/921">About</a>
+              </li>
+                      <li>
+                                        <a href="/divisions" data-drupal-link-system-path="divisions">Divisions</a>
+              </li>
+                      <li>
+                                        <a href="/facilities" data-drupal-link-system-path="facilities">Facilities</a>
+              </li>
+                      <li>
+                                        <a href="/programs" data-drupal-link-system-path="programs">Programs</a>
+              </li>
+                      <li>
+                                        <a href="/initiatives" data-drupal-link-system-path="initiatives">Initiatives</a>
+              </li>
+                      <li>
+                                        <a href="/director" data-drupal-link-system-path="director">Director</a>
+              </li>
+                      <li class="last">
+                                        <a href="/media-center/newsroom" data-drupal-link-system-path="media-center/newsroom">Media Center</a>
+              </li>
+        </ul></nav>
+</div>
+
+            </div>
+                  </div>
+      </div>
+    </header><div role="main" class="main-container container js-quickedit-main-content">
+    <div class="row">
+
+                                <div data-drupal-messages-fallback class="hidden"></div>
+
+
+              
+            
+                                      <section class="col-md-8"><a id="main-content"></a>
+            <div class="region region-content">
+        <h1 class="page-header">
+<span>COVID-19 Data</span>
+</h1>
+
+  <article role="article" about="/media-center/newsroom/covid-19/data" class="page full clearfix"><div class="content">
+      <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+<a data-entity-type="node" data-entity-uuid="f7f52a50-b86b-4413-8d97-08db8a3fac7f" href="/media-center/newsroom/covid-19/data" id="" title="COVID-19 Data">
+<div data-embed-button="insert_image" data-entity-embed-display="view_mode:media.original" data-entity-type="media" data-entity-uuid="d523f41e-28f7-476d-89f9-be3e23261009" data-langcode="en" class="embedded-entity">  <article class="media media--type-image media--view-mode-original"><div class="field field--name-field-media-image field--type-image field--label-hidden field--item">  <img src="/sites/doc/files/media/image/2020/04/COVID19-data_slim_0.JPG" width="750" height="101" alt="COVID-19 Data" typeof="foaf:Image" class="img-responsive">
+</div>
+      
+      </article>
+</div>
+</a>
+
+<p> </p>
+
+<hr>
+<h2><strong>New COVID-19 Positive Tests <em>April 23: 19</em></strong></h2>
+
+<ul>
+<li>Non-Prison Staff: 0</li>
+	<li>Prison Staff: 0</li>
+	<li>Inmates: 19
+	<ul>
+<li><em>Southeast Correctional Center</em></li>
+	</ul>
+</li>
+</ul>
+<hr>
+<h2>TOTAL COVID-19 CASES</h2>
+
+<p><em>since March 23, 2020</em></p>
+
+<h4>
+<br>
+Total COVID-19 Cases - INMATES: 23</h4>
+
+<ul>
+<li>Positive Inmates: 23</li>
+	<li>Inmate Deaths: 1 </li>
+</ul>
+<p><em>Inmates Tested: 132</em><br>
+ </p>
+
+<h4>Total COVID-19 Cases - STAFF: 13</h4>
+
+<ul>
+<li>Positive Non-Prison Staff: 7</li>
+	<li>Positive Prison Staff: 6</li>
+	<li>Staff Deaths: 0</li>
+</ul>
+<h4>
+<br>
+Locations Connected to Positive Cases</h4>
+
+<p><strong>Inmates</strong></p>
+
+<ul>
+<li>Southeast Correctional Center - 22</li>
+	<li>
+<em>Tested positive while hospitalized </em> - 1</li>
+</ul>
+<p><strong>Prison Staff</strong></p>
+
+<ul>
+<li>Southeast Correctional Center - 3</li>
+	<li>Western Missouri Correctional Center - 1</li>
+	<li>Women's Eastern Reception, Diagnostic &amp; Correctional Center - 1</li>
+	<li>
+<em>Tested positive while on leave</em> - 1</li>
+</ul>
+<p><strong>Non-Prison Staff</strong></p>
+
+<ul>
+<li>Jefferson City</li>
+	<li>St. Louis</li>
+	<li>Kansas City</li>
+	<li>Brookfield</li>
+	<li>Warrensburg</li>
+</ul>
+<hr>
+<p>All protocols are followed to minimize exposure.Everyone who has had close contact with a staff member testing positive for COVID-19 has been notified. Staff who have been exposed to a COVID-19-positive colleague have been sent home for 14 days of quarantine. Offenders in each facility are provided with protective face coverings and are monitored for symptoms. If symptoms appear, symptomatic offenders and their cell mates are isolated, separately, pending test results.</p>
+
+<p>When a staff member tests positive for COVID-19, the results are shared with people in the affected locations first, and then all staff are notified. </p>
+
+<p>For more information on Missouri Department of Corrections COVID-19-related health and safety measures, please visit <a href="https://doc.mo.gov/media-center/newsroom/covid-19">https://doc.mo.gov/media-center/newsroom/covid-19</a>.</p>
+</div>
+      
+    </div>
+  </div>
+
+  </div>
+
+</article>
+</div>
+
+              </section><aside class="col-md-4" role="complementary"><div class="region region-sidebar">
+    <section id="block-mediacenter" role="navigation" class="block block-block-content block-block-contentf24c8d63-abf3-416f-a720-a82123d85d05 clearfix"><h2 class="block-title">Media Center</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+  <div class="field field--name-field-related-link field--type-link field--label-visually_hidden">
+    <div class="field--label sr-only">Link Item</div>
+          <div class="field--items">
+              <div class="field--item"><a href="https://doc.mo.gov/media-center/newsroom">Newsroom</a></div>
+          <div class="field--item"><a href="/media-center/media-professionals">For Media Professionals: Inquiries &amp; Interviews</a></div>
+          <div class="field--item"><a href="/media-center/publications">Reports &amp; Publications</a></div>
+          <div class="field--item"><a href="/media-center/sunshine-law">Sunshine Law: Offender Data</a></div>
+          <div class="field--item"><a href="/alerts">Alerts</a></div>
+          <div class="field--item"><a href="/media-center/offender-made-media">Offender-Made Media</a></div>
+          <div class="field--item"><a href="/media-center/newsroom/staff-news">Staff News</a></div>
+          <div class="field--item"><a href="/media-center/newsroom/staff-news/local-news">Facility News</a></div>
+          <div class="field--item"><a href="https://doc.mo.gov/programs/missouri-reentry-process/news">Reentry News</a></div>
+          <div class="field--item"><a href="/media-center/success-stories">Success Stories</a></div>
+              </div>
+      </div>
+
+    </div>
+  </div>
+
+  </section><section id="block-covid19updatesidebar" role="navigation" class="block block-block-content block-block-contentdbca57a9-89ab-43de-9886-4a730897b6d3 clearfix"><h2 class="block-title">COVID-19 UPDATE</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-field-media field--type-entity-reference field--label-hidden field--item">  <article class="media media--type-image media--view-mode-default"><a href="/media-center/newsroom/covid-19">
+            <div class="field field--name-field-media-image field--type-image field--label-hidden field--item">  <img src="/sites/doc/files/media/image/2020/03/DOC_COVID-19-update_banner_0.jpg" width="750" height="408" alt="COVID-19 UPDATE" typeof="foaf:Image" class="img-responsive">
+</div>
+      </a>
+      </article>
+</div>
+      
+    </div>
+  </div>
+
+  </section><section id="block-staffnews" role="navigation" class="block block-block-content block-block-contentba08d4eb-a538-409c-87a1-37d6afb6a822 clearfix"><h2 class="block-title">Staff News</h2>
+    
+
+        <div class="layout layout--onecol">
+    <div class="layout__region layout__region--content">
+      
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">
+<div data-embed-button="insert_image" data-entity-embed-display="view_mode:media.landscape_lg_scale_fit" data-entity-type="media" data-entity-uuid="ca9a964e-4fd0-4da7-bddf-841dff6e822e" data-langcode="en" class="embedded-entity">
+<article class="media media--type-image media--view-mode-landscape-lg-scale-fit"><div class="field field--name-field-media-image field--type-image field--label-hidden field--item">  <img src="/sites/doc/files/styles/landscape_lg_scale_fit/public/media/image/2020/04/officers.JPG?itok=lHdMEr6L" width="450" height="300" alt="Nine officers in uniform in front of a fence." typeof="foaf:Image" class="img-responsive">
+</div>
+</article>
+</div>
+<ul>
+<li><span><span><span><span><span><span><a href="https://doc.mo.gov/media-center/newsroom/staff-news"><strong><span><span><span>Staff News</span></span></span></strong></a></span></span></span></span></span></span></li>
+<li><strong><a href="/media-center/newsroom/staff-news/staff-videos">Videos for Staff</a></strong></li>
+<li><span><span><span><span><span><span><span><a href="https://doc.mo.gov/director/anne-precythe/messages-staff"><strong><span><span><span>Messages from Director Precythe</span></span></span></strong></a></span></span></span></span></span></span></span></li>
+<li><span><span><span><span><span><span><span><a href="https://doc.mo.gov/media-center/newsroom/staff-news/local-news/"><strong><span><span><span>Local Facility News</span></span></span></strong></a></span></span></span></span></span></span></span></li>
+<li><span><span><span><span><span><span><span><a href="https://doc.mo.gov/media-center/newsroom"><strong><span><span><span>Media Center</span></span></span></strong></a></span></span></span></span></span></span></span></li>
+</ul>
+</div>
+      
+    </div>
+  </div>
+
+  </section>
+</div>
+
+          </aside>
+</div>
+  </div>
+
+  <footer><div>
+  <section class="region region-footer-menus container" role="navigation"><div class="row">
+      <nav role="navigation" aria-labelledby="block-footerresources-menu" id="block-footerresources" class="col-sm-3"><h2 id="block-footerresources-menu">About MODOC</h2>
+  
+
+        
+      <ul class="menu menu--footer-resources nav">
+<li class="first">
+                                        <a href="/director/office-director" title="Office of the Director" data-drupal-link-system-path="node/6">Office of the Director</a>
+              </li>
+                      <li>
+                                        <a href="/divisions/adult-institutions" data-drupal-link-system-path="node/11">Division of Adult Institutions</a>
+              </li>
+                      <li>
+                                        <a href="/divisions/probation-parole" data-drupal-link-system-path="divisions/probation-parole">Division of Probation and Parole</a>
+              </li>
+                      <li>
+                                        <a href="/divisions/rehabilitative-services" data-drupal-link-system-path="node/21">Division of Offender Rehabilitative Services</a>
+              </li>
+                      <li class="last">
+                                        <a href="/divisions/human-services" data-drupal-link-system-path="node/26">Division of Human Services</a>
+              </li>
+        </ul></nav><nav role="navigation" aria-labelledby="block-footerresources-2-menu" id="block-footerresources-2" class="col-sm-3"><h2 id="block-footerresources-2-menu">Popular Links</h2>
+  
+
+        
+      <ul class="menu menu--footer-resources nav">
+<li class="first">
+                                        <a href="https://web.mo.gov/doc/offSearchWeb/" title="Offender Web Search">Offender Web Search</a>
+              </li>
+                      <li>
+                                        <a href="/programs/puppies-parole" data-drupal-link-system-path="node/976">Puppies for Parole</a>
+              </li>
+                      <li>
+                                        <a href="/divisions/human-services/employment-opportunities" data-drupal-link-system-path="divisions/human-services/employment-opportunities">Employment and Volunteer Opportunities</a>
+              </li>
+                      <li>
+                                        <a href="/divisions/human-services/purchasing" data-drupal-link-system-path="node/421">Contracts and Procurements</a>
+              </li>
+                      <li>
+                                        <a href="https://docservices.mo.gov/mve/index.html">Missouri Vocational Enterprises (MVE)</a>
+              </li>
+                      <li class="last">
+                                        <a href="/media-center/sunshine-law" data-drupal-link-system-path="node/996">Sunshine Law - Offender Data</a>
+              </li>
+        </ul></nav><nav role="navigation" aria-labelledby="block-footerresources-3-menu" id="block-footerresources-3" class="col-sm-3"><h2 id="block-footerresources-3-menu">Resources</h2>
+  
+
+        
+      <ul class="menu menu--footer-resources nav">
+<li class="first">
+                                        <a href="/contact-us" title="Contact Us" data-drupal-link-system-path="node/1051">Contact Us</a>
+              </li>
+                      <li>
+                                        <a href="/facilities/adult-institutions/address-listing" data-drupal-link-system-path="facilities/adult-institutions/address-listing">Facility Locator</a>
+              </li>
+                      <li>
+                                        <a href="/director/office-victim-services" data-drupal-link-system-path="node/281">Office of Victim Services</a>
+              </li>
+                      <li>
+                                        <a href="/facilities/adult-institutions/visiting-hours" data-drupal-link-system-path="facilities/adult-institutions/visiting-hours">Visiting Hours</a>
+              </li>
+                      <li>
+                                        <a href="/programs/family-friends" data-drupal-link-system-path="node/1056">Family and Friends Information</a>
+              </li>
+                      <li>
+                                        <a href="/divisions/adult-institutions/money-transfer" data-drupal-link-system-path="divisions/adult-institutions/money-transfer">Money Transfer &amp; Secure Email</a>
+              </li>
+                      <li>
+                                        <a href="/programs/PREA" data-drupal-link-system-path="node/81">PREA</a>
+              </li>
+                      <li>
+                                        <a href="/media-center" data-drupal-link-system-path="media-center">Newsroom</a>
+              </li>
+                      <li>
+                                        <a href="http://mokidscount.org/">Missouri Kids Count</a>
+              </li>
+                      <li class="last">
+                                        <a href="/programs/reentry-housing" data-drupal-link-system-path="programs/reentry-housing">Reentry Housing Map</a>
+              </li>
+        </ul></nav><nav role="navigation" aria-labelledby="block-socialtoolbar-menu" id="block-socialtoolbar" class="col-sm-3"><h2 id="block-socialtoolbar-menu">Connect With Us</h2>
+  
+
+        
+              <ul class="menu nav">
+<li class="item--email-us text-hide">
+        <a href="mailto:constituentservices@doc.mo.gov">Email us</a>
+                  </li>
+                        <li class="item--watch-videos-on-youtube text-hide">
+        <a href="https://www.youtube.com/user/MissouriCorrections?feature=guide">Watch videos on YouTube</a>
+                  </li>
+                        <li class="item--follow-us-on-twitter text-hide">
+        <a href="https://twitter.com/MoCorrections">Follow us on Twitter</a>
+                  </li>
+                        <li class="item--like-us-on-facebook text-hide">
+        <a href="https://www.facebook.com/MissouriCorrections/">Like us on Facebook</a>
+                  </li>
+        </ul></nav>
+</div>
+  </section><section class="container" role="contentinfo"><div class="region region-footer">
+    
+<section id="block-leadership" class="block block-block-content block-block-content844c49cf-d256-42b8-affc-e0a3e81026ca clearfix leadership"><p>
+      <a href="https://governor.mo.gov/" class="gov">Governor<br>Michael L. Parson</a>
+    </p>
+    <p class="mogov">
+      <a href="https://mo.gov/" title="MO.gov | Official State of Missouri Website" class="state"><span class="hide">MO.gov State of Missouri</span></a>
+    </p>
+          <p class="donate_life"><a href="https://www.missouriorgandonor.com/odpublicsite/Default.aspx" class="life text-hide" title="Click here to Save a Life">Click here to Save a Life</a></p>
+        <p>
+      <a href="https://doc.mo.gov/director" class="agency">Director<br>Anne L. Precythe</a>
+    </p>
+  </section><nav role="navigation" aria-labelledby="block-footer-menu" id="block-footer"><h2 class="visually-hidden" id="block-footer-menu">Footer menu</h2>
+  
+
+        
+      <ul class="menu menu--footer nav">
+<li class="first">
+                                        <a href="https://www.mo.gov/privacy-policy">Privacy Policy</a>
+              </li>
+                      <li>
+                                        <a href="https://www.mo.gov/accessibility">Accessibility</a>
+              </li>
+                      <li>
+                                        <a href="https://www.mo.gov/data-policy">Data Policy</a>
+              </li>
+                      <li>
+                                        <a href="https://www.mo.gov/contact-us">Contact Us</a>
+              </li>
+                      <li>
+                                        <a href="/proposed-rules" data-drupal-link-system-path="node/1061">Proposed Rules</a>
+              </li>
+                      <li class="last">
+                                        <a href="/divisions/human-services/purchasing" data-drupal-link-system-path="node/421">Bid Opportunities</a>
+              </li>
+        </ul></nav>
+</div>
+
+        </section>
+</div>
+
+    
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/4681","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":true},"data":{"extlink":{"extTarget":true,"extTargetNoOverride":false,"extNofollow":false,"extNoreferrer":false,"extFollowNoOverride":false,"extClass":"ext","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"(mo\\.gov)|(state\\.mo\\.us)","extInclude":"","extCssExclude":"","extCssExplicit":"","extAlert":true,"extAlertText":"You are currently exiting to a site that is not part of the government (.gov) domain. Web sites are places where diverse groups of people interact, so please be aware that you will be subject to a wide variety of experiences beyond our control. Always use good judgment when using these platforms and when following links to other web sites. Click OK to continue.","mailtoClass":"mailto","mailtoLabel":"(link sends email)","extUseFontAwesome":false,"extIconPlacement":"append","extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","whitelistedDomains":null}},"gosquared":{"acctcode":"GSN-661494-N"},"bootstrap":{"forms_has_error_value_toggle":1,"modal_animation":1,"modal_backdrop":"true","modal_focus_input":1,"modal_keyboard":1,"modal_select_text":1,"modal_show":1,"modal_size":"","popover_enabled":1,"popover_animation":1,"popover_auto_close":1,"popover_container":"body","popover_content":"","popover_delay":"0","popover_html":0,"popover_placement":"right","popover_selector":"","popover_title":"","popover_trigger":"click","tooltip_enabled":1,"tooltip_animation":1,"tooltip_container":"body","tooltip_delay":"0","tooltip_html":0,"tooltip_placement":"auto left","tooltip_selector":"","tooltip_trigger":"hover"},"ajaxTrustedUrl":{"\/search\/node":true},"user":{"uid":0,"permissionsHash":"980fae3e5a05ced9803173db3a77b88dbeeb808b525b0f6547bc93f3ab08e153"}}</script><script src="/sites/doc/files/js/js_K5x3HODG8cZUVVURaGlwsAIH5K1t7uSxSghUCEewXX0.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"1a1ddd71e3","applicationID":"542839153","transactionName":"YF0BMkNTDEMDAkILDlkXIgVFWw1eTQdfBw1TZwQUXkcSbwcPQgsVTmcVD1RFPUAQBGkQBFlcBhQ=","queueTime":0,"applicationTime":608,"atts":"TBoCRAtJH00=","errorBeacon":"bam.nr-data.net","agent":""}</script><script async type="text/javascript" src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&amp;ns=1&amp;cb=237459193"></script></footer>
+</div>
+</body>
+</html>

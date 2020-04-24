@@ -147,12 +147,3 @@ save_website_pages <- function(url, state) {
     
   }
 }
-
-
-# files <- list.files()
-# for (file in files) {
-#   setwd(file)
-#   temp <- list.files()
-#   file.remove(temp)
-#   setwd("..")
-# }

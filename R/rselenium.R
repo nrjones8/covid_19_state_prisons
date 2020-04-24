@@ -1,8 +1,5 @@
 
 
-
-
-remDr$getCurrentUrl()
 get_california_incarcerated_data <- function() {
   library(RSelenium)
   remDr <- RSelenium::remoteDriver(
@@ -86,5 +83,5 @@ get_california_incarcerated_data <- function() {
   
   return(california_prison_level)
 }
-get_california_incarcerated_data()
+#get_california_incarcerated_data()
 

@@ -6,7 +6,7 @@ data_in_goog_sheet <-
 
 manual_entries <- 
   read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
-  ,sheet = "manual")
+             ,sheet = "manual")
 
 render_all_pages <- function(google_prison_sheet) {
   #covid scraper for connecticut is broken and need a better way to automate from the image on
@@ -45,7 +45,7 @@ render_all_pages <- function(google_prison_sheet) {
       virginia = get_virginia_covid_data,
       washington = get_washington_covid_data
     )
-
+  
   urls_to_scrape <- google_prison_sheet %>%
     filter(scraped_binary == 1,
            !state %in% c("Massachusetts", "Connecticut","Oregon")) %>%
@@ -71,80 +71,79 @@ group_summary <- function(.data,...){
     summarise(...)
 }
 
-write_facilities_data <-
-  function(rendered_jail_data,
-           path_to_facilities_data) {
-    # read in data from prior period
-    past_period <- read_csv(path_to_facilities_data)
-    # get data for states or feds which have facilities
-    states_with_cc_facility <-
-      rendered_jail_data[c(
-        "alabama",
-        "arizona",
-        "florida",
-        "california",
-        "georgia",
-        "indiana",
-        "illinois",
-        "louisiana",
-        "kansas",
-        "new_hampshire",
-        "north_dakota",
-        "iowa",
-        "new_jersey",
-        "ohio",
-        "oklahoma",
-        "pennsylvania",
-        "south_carolina",
-        "texas",
-        "montana",
-        "virginia",
-        "washington",
-        "federal"
-      )]
-    # oregon data needs to be run separately from the above processes since it uses RSelenium
-    # but ultimately produces facility level data
-    oregon_data <- get_oregon_covid_data()
-    
-    # indiana has two or more  sets of data and will need to be fixed up in the scraper somehow
-    cc_facilities  <-
-      states_with_cc_facility[!names(states_with_cc_facility) %in% c("indiana","ohio","new_jersey",
-                                                                     "federal",
-                                                                     "oklahoma")] %>%
-      map(~as_tibble(.)) %>% 
-      reduce(bind_rows) %>%
-      select(facilities, state, scrape_date, everything()) 
-    cc_facilities %>% 
-      filter(state == "Montana")
-    # modifying fed info
-    fed_info <- states_with_cc_facility[["federal"]]$offenders %>% 
-      rename_with(cols = vars(contains("_amt")),.fn = ~str_remove_all(.,"_amt")) %>% 
-      rename_with(cols = vars(contains("inmates")),.fn = ~str_replace_all(.,"inmate","inmates")) %>% 
-      rename_with(cols= vars(contains("death")),.fn = ~str_replace_all(.,"death","deaths")) %>% 
-      select(facilities  = id,everything())
-    # massachussets data
-    mass_data <- get_mass_covid_data()    
-    # join all confirmed facilities
-    all_confirmed_facilities <-
-      list(
-        as_tibble(states_with_cc_facility[["indiana"]]$offenders),
-        states_with_cc_facility[["ohio"]]$ohio_facility,
-        states_with_cc_facility[["new_jersey"]]$confirmed_nj_doc,
-        states_with_cc_facility[["oklahoma"]]$ok_facilities,
-        oregon_data,
-        cc_facilities,
-        fed_info,
-        mass_data
-      ) %>% 
-      reduce(bind_rows) %>% 
-      #this line of code is sacrosanct. remove it at your own risk
-      filter(!str_detect(facilities, regex("Total"))) 
- 
-list(all_confirmed_facilities %>% 
-   modify_if(is.integer,~as.numeric(.)), 
-  past_period)
-
-  } 
+write_facilities_data <- function(rendered_jail_data,
+                                  path_to_facilities_data) {
+  # read in data from prior period
+  past_period <- read_csv(path_to_facilities_data)
+  # get data for states or feds which have facilities
+  states_with_cc_facility <-
+    rendered_jail_data[c(
+      "alabama",
+      "arizona",
+      "florida",
+      "california",
+      "georgia",
+      "indiana",
+      "illinois",
+      "louisiana",
+      "kansas",
+      "new_hampshire",
+      "north_dakota",
+      "iowa",
+      "new_jersey",
+      "ohio",
+      "oklahoma",
+      "pennsylvania",
+      "south_carolina",
+      "texas",
+      "montana",
+      "virginia",
+      "washington",
+      "federal"
+    )]
+  # oregon data needs to be run separately from the above processes since it uses RSelenium
+  # but ultimately produces facility level data
+  oregon_data <- get_oregon_covid_data()
+  
+  # indiana has two or more  sets of data and will need to be fixed up in the scraper somehow
+  cc_facilities  <-
+    states_with_cc_facility[!names(states_with_cc_facility) %in% c("indiana","ohio","new_jersey",
+                                                                   "federal",
+                                                                   "oklahoma")] %>%
+    map(~as_tibble(.)) %>% 
+    reduce(bind_rows) %>%
+    select(facilities, state, scrape_date, everything()) 
+  cc_facilities %>% 
+    filter(state == "Montana")
+  # modifying fed info
+  fed_info <- states_with_cc_facility[["federal"]]$offenders %>% 
+    rename_with(cols = vars(contains("_amt")),.fn = ~str_remove_all(.,"_amt")) %>% 
+    rename_with(cols = vars(contains("inmates")),.fn = ~str_replace_all(.,"inmate","inmates")) %>% 
+    rename_with(cols= vars(contains("death")),.fn = ~str_replace_all(.,"death","deaths")) %>% 
+    select(facilities  = id,everything())
+  # massachussets data
+  mass_data <- get_mass_covid_data()    
+  # join all confirmed facilities
+  all_confirmed_facilities <-
+    list(
+      as_tibble(states_with_cc_facility[["indiana"]]$offenders),
+      states_with_cc_facility[["ohio"]]$ohio_facility,
+      states_with_cc_facility[["new_jersey"]]$confirmed_nj_doc,
+      states_with_cc_facility[["oklahoma"]]$ok_facilities,
+      oregon_data,
+      cc_facilities,
+      fed_info,
+      mass_data
+    ) %>% 
+    reduce(bind_rows) %>% 
+    #this line of code is sacrosanct. remove it at your own risk
+    filter(!str_detect(facilities, regex("Total"))) 
+  
+  list(all_confirmed_facilities %>% 
+         modify_if(is.integer,~as.numeric(.)), 
+       past_period)
+  
+} 
 path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
 path_to_facilities_data <- glue("data/daily/{path_to_data}")
 
@@ -201,13 +200,13 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     ) 
   nc_totals <- jails_data$north_carolina
   delaware_totals <- jails_data$delaware %>% 
-  select(
-    state,
-    scrape_date,
-    staff_positive = `Correctional Staff_total`,
-    contract_staff_positive = `Contracted Staff_total`,
-    inmates_positive = Offenders_total
-  )
+    select(
+      state,
+      scrape_date,
+      staff_positive = `Correctional Staff_total`,
+      contract_staff_positive = `Contracted Staff_total`,
+      inmates_positive = Offenders_total
+    )
   
   # collapse data into one df
   reduced_data <- list(summaries_states_facilities,

@@ -1,6 +1,9 @@
 test_that("scrapers are silent", {
   expect_silent(get_alaska_covid_data(xml2::read_html("https://doc.alaska.gov/covid-19")))
   
+
+  
+  
   expect_silent(get_delaware_covid_data(xml2::read_html("https://doc.delaware.gov/views/covid19.blade.shtml")))
   
   expect_silent(get_georgia_covid_data(xml2::read_html("http://www.dcor.state.ga.us/content/cases")))

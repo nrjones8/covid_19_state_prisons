@@ -56,7 +56,8 @@ state_data <-
          staff_positive,
          staff_negative,
          staff_deaths) %>%
-  mutate(state = as.factor(state))
+  mutate(state = as.factor(state),
+         scrape_date = lubridate::ymd(scrape_date))
 names(state_data) <- gsub("_", " ", names(state_data))
 names(state_data) <- crimeutils::capitalize_words(names(state_data))
 
@@ -85,7 +86,8 @@ facility_data <- facility_data %>%
           state,
           facilities) %>%
   # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
-  mutate(state = as.factor(state)) %>%
+  mutate(state = as.factor(state),
+         scrape_date = lubridate::ymd(scrape_date)) %>%
   rename(facility = facilities) %>%
   select(state,
          facility,
