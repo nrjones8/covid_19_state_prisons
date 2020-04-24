@@ -43,7 +43,7 @@ render_all_pages <- function() {
       virginia = get_virginia_covid_data,
       washington = get_washington_covid_data
     )
-
+  
   urls_to_scrape <- google_prison_sheet %>%
     filter(scraped_binary == 1,
            !state %in% c("Massachusetts", "Connecticut","Oregon")) %>%
@@ -67,6 +67,7 @@ group_summary <- function(.data,...){
     group_by(state,scrape_date) %>% 
     summarise(...)
 }
+
 
 write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
     # read in data from prior period
@@ -143,6 +144,7 @@ list(all_confirmed_facilities %>%
 
 # write off the facilities level csv
 write_facilities_csv <- function(jails_data,path_to_facilities_data){
+
 path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
 path_to_facilities_data <- glue("data/daily/{path_to_data}")
 
@@ -201,13 +203,13 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     ) 
   nc_totals <- jails_data$north_carolina
   delaware_totals <- jails_data$delaware %>% 
-  select(
-    state,
-    scrape_date,
-    staff_positive = `Correctional Staff_total`,
-    contract_staff_positive = `Contracted Staff_total`,
-    inmates_positive = Offenders_total
-  )
+    select(
+      state,
+      scrape_date,
+      staff_positive = `Correctional Staff_total`,
+      contract_staff_positive = `Contracted Staff_total`,
+      inmates_positive = Offenders_total
+    )
   
   # collapse data into one df
   reduced_data <- list(summaries_states_facilities,
