@@ -2,8 +2,8 @@ Package: CovidPrisonData
 Title: Project to Gather Data to Look at Covid-19 in State Prisons From Each DOC Website 
 Version: 0.0.0.9000
 Authors@R: c(
-    person(given = "", family = "", role = c("aut", "cre"), email = "",
-           comment = c(ORCID = "")),
+    person(given = "Sebastian", family = "Hoyos-Torres",
+    role = c("aut", "cre"), email = "sebtorres7021@gmail.com"),
     person(given = "Jacob", family = "Kaplan", role = c("aut"), 
            email = "jkkaplan6@gmail.com",
            comment = c(ORCID = "0000-0002-0601-0387")))

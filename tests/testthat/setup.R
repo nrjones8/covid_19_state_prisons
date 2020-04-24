@@ -18,13 +18,11 @@ texas <- get_texas_covid_data(xml2::read_html("https://www.tdcj.texas.gov/covid-
 
 utah <- get_utah_covid_data(xml2::read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates"))
 
-ohio <- get_ohio_covid_data(xml2::read_html("https://drc.ohio.gov/"))
+ohio <- get_ohio_covid_data(xml2::read_html("https://drc.ohio.gov/Family/COVID-19-UPDATES"))
 
 oklahoma <- get_oklahoma_covid_data(xml2::read_html("http://doc.ok.gov/"))
 
 virginia <- get_virginia_covid_data(xml2::read_html("https://vadoc.virginia.gov/news-press-releases/2020/covid-19-updates/"))
-
-vermont <- get_vermont_covid_data(xml2::read_html("https://doc.vermont.gov/covid-19-information-page"))
 
 north_carolina <- get_nc_covid_data(xml2::read_html("https://opus.doc.state.nc.us/DOPCovid19Stats/services/facilitystatsServlet"))
 
@@ -46,7 +44,7 @@ federal <- get_federal_data(xml2::read_html("https://www.bop.gov/coronavirus/jso
 
 illinois <- get_illinois_covid_data(xml2::read_html("https://www2.illinois.gov/idoc/facilities/Pages/Covid19Response.aspx"))
 
-indiana <- get_indiana_covid_data(xml2::read_html("https://www.in.gov/idoc/3780.htm"))
+# indiana <- get_indiana_covid_data(xml2::read_html("https://www.in.gov/idoc/3780.htm"))
 
 new_hampshire <- get_new_hampshire_covid_data(xml2::read_html("https://www.nh.gov/nhdoc/covid/index.html"))
 
@@ -54,8 +52,11 @@ new_york <- get_nys_covid_data(xml2::read_html("https://doccs.ny.gov/doccs-covid
 
 idaho <- get_idaho_covid_data(xml2::read_html("https://www.idoc.idaho.gov/content/careers/covid-19"))
 
-vermont <- get_vermont_covid_data(xml2::read_html("https://doc.vermont.gov/covid-19-information-page"))
+# vermont <- get_vermont_covid_data(xml2::read_html("https://doc.vermont.gov/covid-19-information-page"))
 
 washington <- get_washington_covid_data(xml2::read_html("https://www.doc.wa.gov/news/covid-19.htm#status"))
 
 federal <- get_federal_data(xml2::read_html("https://www.bop.gov/coronavirus/json/final.json?_=1587149952012"))
+
+
+new_jersey <- get_nj_covid_data(xml2::read_html("https://www.state.nj.us/corrections/pages/COVID19Updates.shtml"))
