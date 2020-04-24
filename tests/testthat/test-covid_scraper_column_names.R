@@ -1,4 +1,4 @@
-test_that("multiplication works", {
+test_that("column names are as expected", {
   expect_named(delaware,
                c("facilities",
                  "staff_positive", 
@@ -50,8 +50,11 @@ test_that("multiplication works", {
                  "inmates_step_down",
                  "inmates_recovered",
                  "inmates_covid_deaths_underlying_conditions",
-                 "inmates_covid_deaths",
                  "inmates_deaths",
+                 "inmates_deaths",
+                 "staff_positive",
+                 "staff_recovered",
+                 "staff_deaths",
                  "state",
                  "scrape_date"))
   
@@ -157,17 +160,11 @@ test_that("multiplication works", {
                  "state",
                  "scrape_date"))
   
-  expect_named(north_dakota,
-               c("facilities",
-                 "inmates_positive",
-                 "state",
-                 "scrape_date"))
-  
   expect_named(missouri,
                c("inmates_positive",
                  "inmates_deaths",
-                 "staff_positive",
                  "contract_staff_positive",
+                 "staff_positive",
                  "staff_deaths",
                  "state",
                  "scrape_date"))
@@ -212,18 +209,18 @@ test_that("multiplication works", {
                  "state",
                  "scrape_date"))
   
-  expect_named(indiana,
-               c("staff_positive",
-                 "staff_deaths",
-                 "inmates_isolated",
-                 "inmates_isolated_suspected_symptomatic",
-                 "inmates_quarantined",
-                 "type_of_housing",
-                 "inmates_positive",
-                 "inmates_deaths_probable",
-                 "inmates_deaths_confirmed",
-                 "state",
-                 "scrape_date"))
+  # expect_named(indiana,
+  #              c("staff_positive",
+  #                "staff_deaths",
+  #                "inmates_isolated",
+  #                "inmates_isolated_suspected_symptomatic",
+  #                "inmates_quarantined",
+  #                "type_of_housing",
+  #                "inmates_positive",
+  #                "inmates_deaths_probable",
+  #                "inmates_deaths_confirmed",
+  #                "state",
+  #                "scrape_date"))
   
   expect_named(new_hampshire,
                c("facilities",
@@ -259,25 +256,18 @@ test_that("multiplication works", {
                  "state",
                  "scrape_date"))
   
-  expect_named(vermont,
-               c("inmates_tests",
-                 "inmates_positive",
-                 "inmates_negative",
-                 "inmates_pending",
-                 "inmates_medical_isolation",
-                 "inmates_recovered",
-                 "inmcates_positive_currently_incarcerated",
-                 "inmates_hospital",
-                 "inmates_hosptal_discharges",
-                 "state",
-                 "scrape_date"))
-  
-  expect_named(new_jersey,
-               c("facilities",
-                 "staff_positive",
-                 "inmates_positive",
-                 "state",
-                 "scrape_date"))
+  # expect_named(vermont,
+  #              c("inmates_tests",
+  #                "inmates_positive",
+  #                "inmates_negative",
+  #                "inmates_pending",
+  #                "inmates_medical_isolation",
+  #                "inmates_recovered",
+  #                "inmcates_positive_currently_incarcerated",
+  #                "inmates_hospital",
+  #                "inmates_hosptal_discharges",
+  #                "state",
+  #                "scrape_date"))
   
   expect_named(federal,
                c("facilities",
