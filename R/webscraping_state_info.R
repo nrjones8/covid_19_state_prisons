@@ -200,7 +200,6 @@ get_arizona_covid_data <- function(az_doc_path) {
 }
 
 
-
 # Idaho -------------------------------------------------------------------
 get_idaho_covid_data <- function(idaho_doc_path) {
   # extracts the text for idaho
@@ -421,8 +420,13 @@ get_ohio_covid_data <- function(ohio_doc_path) {
       housing_type = 7,
       inmates_isolation = 8,
       inmates_positive = 9,
+<<<<<<< HEAD
+      inmates_probable_deaths = 10,
+      inmates_deaths = 11
+=======
       inmates_deaths = 10,
       inmates_covid_deaths = 11
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
     ) %>%
     slice(12:39) %>% 
     modify_at(c(2:4, 8:11),  ~ parse_number(.)) %>%
@@ -446,14 +450,15 @@ get_nj_covid_data <- function(nj_doc_path) {
   table_2 <- table_2[4:length(table_2)] %>%
     make_facility_table(1:3,2:3)
   
-  names(table_2) <- new_jersey_text[73:75]
+  names(table_2) <- c("facilities","inmates_positive","inmates_deaths")
   
   list(confirmed_nj_doc = table_1,
        confirmed_halfway_house_doc = table_2) %>% 
     map(~mutate(.,scrape_date = today(),
-                state = "New Jersey"))
+                state = "New Jersey")) %>% 
+    bind_rows() %>% 
+    filter(facilities !="Totals")
 }
-
 # North Carolina --------------------------------------------------------------
 get_nc_covid_data <- function(nc_doc_path) {
   column_totals <- nc_doc_path %>%
@@ -647,14 +652,15 @@ get_virginia_covid_data <- function(virginia_doc_path) {
 # Washington --------------------------------------------------------------
 get_washington_covid_data <- function(wash_doc_path) {
   wash_text <- wash_doc_path %>%
-    html_nodes(".default-top-border+ .default-top-border td") %>%
+    html_nodes(".no-padding:nth-child(21) td") %>%
     html_text()
   text_table_1 <- wash_text
   table_1_data <- text_table_1 %>%
     make_facility_table(1:3, 2:3)  
   names(table_1_data) <- c("facilities","staff_positive","inmates_positive")
   table_1_data %>% 
-    mutate(.,scrape_date = today(),state = "Washington")
+    mutate(.,scrape_date = today(),state = "Washington") %>% 
+    filter(facilities != "Prisons")
 }
 
 # Texas -------------------------------------------------------------------
@@ -693,7 +699,6 @@ get_texas_covid_data <- function(tx_doc_path) {
     mutate(scrape_date  = today(),
            state = "Texas")
 }
-
 
 # California --------------------------------------------------------------
 get_california_covid_data <- function(cali_doc_path) {
@@ -775,30 +780,29 @@ get_utah_covid_data <- function(ut_doc_path) {
 
 
 # Indiana ---------------------------------------------------------------------
-get_indiana_covid_data <- function(indiana_doc_path){
-  in_off_data <- indiana_doc_path %>% 
-    html_node("table") %>%
-    html_table() %>% 
-    rename(facilities = `Correctional Facility`,
-           inmates_positive = `Offender Confirmed`,
-           inmates_deaths = `Offender Death`) %>% 
-    filter(!grepl("Total", facilities))
-  
-  
-  in_staff_data <- indiana_doc_path %>%
-    html_nodes(xpath = '//*[@id="main"]/div/div[2]/article/div/section/p[2]/span') %>% 
-    html_text() %>% 
-    tibble::enframe() %>% 
-    mutate(value = parse_number(value)) %>% 
-    select(-name,staff_positive = value)
-  
-  list(offenders = in_off_data,
-       staff = in_staff_data) %>% 
-    map(~mutate(.,scrape_date = today(),
-                state = "Indiana"))
-  
-}
 
+get_indiana_covid_data <- function(indiana_doc_path) {
+  in_data <- indiana_doc_path %>%
+    html_node("table") %>%
+    html_table() %>%
+    rename(
+      facilities = 1,
+      staff_positive = 2,
+      staff_deaths = 3,
+      inmates_quarantine_positive = 4,
+      inmates_isolated = 5,
+      inmates_quarantined = 6,
+      housing_type = 7,
+      inmates_positive = 8,
+      inmates_probable_death = 9,
+      inmates_deaths = 10
+    ) %>%
+    filter(!grepl("Total", facilities)) %>%
+    mutate(., scrape_date = today(),
+           state = "Indiana")
+  in_data %>% 
+    as_tibble()
+}
 
 # oregon ------------------------------------------------------------------
 
@@ -847,6 +851,9 @@ get_oregon_covid_data <- function() {
 }
 
 # New Hampshire -----------------------------------------------------------
+read_html("https://www.nh.gov/nhdoc/covid/index.html") %>% 
+  html_nodes("tr:nth-child(6) p , tr:nth-child(5) p , td td td tr:nth-child(4) td , tr:nth-child(3) p , tr:nth-child(2) p") %>%
+  html_text()  
 get_new_hampshire_covid_data <- function(nh_doc_path) {
   nh_text <- nh_doc_path %>%
     html_nodes(
@@ -870,6 +877,7 @@ get_new_hampshire_covid_data <- function(nh_doc_path) {
 
 
 # Oklahoma --------------------------------------------------------------
+
 get_oklahoma_covid_data <- function(ok_doc_path) {
   path_to_pdf <- ok_doc_path %>%
     html_nodes("h4 a") %>%
@@ -888,7 +896,7 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
     ) %>%
     map_at(2,
            ~  select_if(., not_all_empty_char) %>%
-             dplyr::slice(5:10))
+             dplyr::slice(5:nrow(.)))
   names(oklahoma_data[[2]]) <- names(oklahoma_data[[3]])
   facilities_data <- oklahoma_data[2:3] %>%
     reduce(bind_rows) %>%
@@ -907,7 +915,6 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
     map(~mutate(.,state = "Oklahoma",scrape_date = today()))
   
 }
-
 
 
 # Missouri ----------------------------------------------------------------
@@ -939,9 +946,13 @@ get_missouri_covid_data <- function(miss_doc_path) {
   return(data)  
 }
 
-
 # Maine -------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+# Maine -------------------------------------------------------------------
+
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
 get_maine_covid_data <- function(maine_doc_path){
 url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
 areas <- tabulizer::locate_areas(maine_doc_path,
@@ -964,13 +975,19 @@ values <- values[values != ""]
 adult <- data.frame(t(values), stringsAsFactors = FALSE)
 names(adult) <- column_names
 adult[] <- sapply(adult, readr::parse_number)
+<<<<<<< HEAD
+=======
 
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
 adult %>% 
   mutate(scrape_date = today(),
          state = "Maine")
 }
 # Wisconsin ---------------------------------------------------------------
+<<<<<<< HEAD
+=======
 
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
 # get_wisconsin_covid_data <- function(wisc_doc_path) {
 #   
 # data <- tabulizer::extract_tables(here::here("Testing_Table.pdf"),
@@ -1023,7 +1040,11 @@ get_mass_covid_data <- function() {
   
   
   download.file(
+<<<<<<< HEAD
+    "https://data.aclum.org/sjc-12926-tracker/session/35b1eb9fdbcc62c1a6262a3857975280/download/downloadData?w=",
+=======
     "https://data.aclum.org/sjc-12926-tracker/session/b8c49700e11ae0df5334500957ec3b77/download/downloadData?w=",
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
