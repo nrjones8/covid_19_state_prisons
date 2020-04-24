@@ -70,11 +70,21 @@ get_delaware_covid_data <- function(delaware_doc_path) {
   # this extracts the facilities and summarizes the data for now.
   # currently, the facilities can be flattened. i just need to remember how to
   # collapse the strings
-  de_data %>%
+  de_data <-
+    de_data %>%
     modify_at(2:4,  ~ as.numeric(.)) %>%
-    summarise_at(2:4, list(total = ~ sum(., na.rm = T))) %>%
+    rename_all(tolower) %>%
     mutate(state = "Delaware",
            scrape_date = today())
+  
+  names(de_data) <- gsub(" ", "_", names(de_data))
+  de_data <-
+    de_data %>%
+    rename(facilities                = facility,
+           staff_positive            = correctional_staff,
+           contract_staff_positive   = contracted_staff,
+           inmates_positive          = offenders)
+  return(de_data)
 }
 
 # Georgia -----------------------------------------------------------------
@@ -224,6 +234,20 @@ get_federal_data <- function(federal_bop_path){
           clean_names())
   
 }
+
+# Federal BOP -----------------------------------------------------------------
+get_federal_data <- function(federal_bop_path){
+  f <- federal_bop_path %>%
+    jsonlite::fromJSON(.)
+  
+  list(offenders = f[[3]],
+       reentry = f[[2]],
+       overall_stats = f[[1]]) %>% 
+    map(~mutate(., scrape_date = today(),
+                state = "Federal"))
+    
+}
+
 
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){
@@ -396,8 +420,13 @@ get_ohio_covid_data <- function(ohio_doc_path) {
       housing_type = 7,
       inmates_isolation = 8,
       inmates_positive = 9,
+<<<<<<< HEAD
       inmates_probable_deaths = 10,
       inmates_deaths = 11
+=======
+      inmates_deaths = 10,
+      inmates_covid_deaths = 11
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
     ) %>%
     slice(12:39) %>% 
     modify_at(c(2:4, 8:11),  ~ parse_number(.)) %>%
@@ -406,7 +435,6 @@ get_ohio_covid_data <- function(ohio_doc_path) {
            state = "Ohio")
   list(ohio_facility = facility_ohio, ohio_totals = table_cleaning[[1]])
 }
-
 # New Jersey --------------------------------------------------------------
 get_nj_covid_data <- function(nj_doc_path) {
   new_jersey_text <- nj_doc_path %>%
@@ -920,6 +948,11 @@ get_missouri_covid_data <- function(miss_doc_path) {
 
 # Maine -------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+# Maine -------------------------------------------------------------------
+
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
 get_maine_covid_data <- function(maine_doc_path){
 url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
 areas <- tabulizer::locate_areas(maine_doc_path,
@@ -942,11 +975,19 @@ values <- values[values != ""]
 adult <- data.frame(t(values), stringsAsFactors = FALSE)
 names(adult) <- column_names
 adult[] <- sapply(adult, readr::parse_number)
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
 adult %>% 
   mutate(scrape_date = today(),
          state = "Maine")
 }
 # Wisconsin ---------------------------------------------------------------
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
 # get_wisconsin_covid_data <- function(wisc_doc_path) {
 #   
 # data <- tabulizer::extract_tables(here::here("Testing_Table.pdf"),
@@ -992,8 +1033,18 @@ adult %>%
 # Massachusetts -----------------------------------------------------------
 
 get_mass_covid_data <- function() {
+  links <- 
+    read_html("https://data.aclum.org/sjc-12926-tracker/") %>%
+    html_nodes("a") %>%
+    html_attr('href')
+  
+  
   download.file(
+<<<<<<< HEAD
     "https://data.aclum.org/sjc-12926-tracker/session/35b1eb9fdbcc62c1a6262a3857975280/download/downloadData?w=",
+=======
+    "https://data.aclum.org/sjc-12926-tracker/session/b8c49700e11ae0df5334500957ec3b77/download/downloadData?w=",
+>>>>>>> ee1a12247fdc84fda8490c4b1bf96c0569ec5d2c
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
