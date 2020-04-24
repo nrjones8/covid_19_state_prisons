@@ -1,16 +1,14 @@
 source(here::here("R","webscraping_state_info.R"))
-data_in_goog_sheet <-
+
+render_all_pages <- function() {
+  #covid scraper for connecticut is broken and need a better way to automate from the image on
+  # website to text. mass will be directly from aclu
+#read in the 
+  google_prison_sheet <-
   read_sheet(
     "https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
   )
 
-manual_entries <- 
-  read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/edit?ts=5e90b732#gid=0"
-  ,sheet = "manual")
-
-render_all_pages <- function(google_prison_sheet) {
-  #covid scraper for connecticut is broken and need a better way to automate from the image on
-  # website to text. mass will be directly from aclu
   fns_list <-
     list(
       alabama = get_ala_covid_data,
@@ -60,10 +58,9 @@ render_all_pages <- function(google_prison_sheet) {
   
   names(data_for_use) <- names(fns_list)
   # this runs the functions against the list of urls in the order present to that it's a 1:1 match
-  jails_data <- map2(fns_list, data_for_use,  ~ .(.y))
+  jails_data <<- map2(fns_list, data_for_use,  ~ .(.y))
   jails_data
 }
-jails_data <- render_all_pages(data_in_goog_sheet)
 # create summaries and extract summaries for a variety of states with the needed fields
 group_summary <- function(.data,...){
   .data %>% 
@@ -71,9 +68,7 @@ group_summary <- function(.data,...){
     summarise(...)
 }
 
-write_facilities_data <-
-  function(rendered_jail_data,
-           path_to_facilities_data) {
+write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
     # read in data from prior period
     past_period <- read_csv(path_to_facilities_data)
     # get data for states or feds which have facilities
@@ -144,7 +139,10 @@ list(all_confirmed_facilities %>%
    modify_if(is.integer,~as.numeric(.)), 
   past_period)
 
-  } 
+} 
+
+# write off the facilities level csv
+write_facilities_csv <- function(jails_data,path_to_facilities_data){
 path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
 path_to_facilities_data <- glue("data/daily/{path_to_data}")
 
@@ -160,10 +158,11 @@ path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today(
 data_facilities %>% 
   write_csv("data/daily/facilities_data_current.csv")
 
-
 data_facilities %>% 
   write_csv(glue("data/daily/{path_date}"))
+}
 
+# writing the state summaries
 write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
   # making the facilities data more modular
   summaries_states_facilities <- data_facilities %>%
@@ -171,6 +170,7 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     group_by(state, scrape_date) %>%
     summarise_at(vars(
       contains("positive"),
+      
       contains("negative"),
       contains("pending"),
       contains("death")
@@ -225,6 +225,8 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     reduce(bind_rows)
   reduced_data
 }
+# writing out the summaries to csvs
+write_summary_csv <- function(reduced_data){
 reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data,manual_entries = manual_entries)
 
 path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
@@ -233,5 +235,4 @@ reduced_data %>%
   write_csv(path_today_summary)
 reduced_data %>% 
   write_csv("data/daily/state_summaries_current.csv")
-
-
+}
