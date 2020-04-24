@@ -70,7 +70,7 @@ DT::datatable(state_data,
               options      = list(
                 pageLength = 15,
                 dom        = 'Bfrtip',
-                buttons    = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                buttons    = c('copy', 'csv', 'excel'),
                 colReorder = TRUE,
                 dom        = 't',
                 scrollX    = TRUE)) 
