@@ -395,7 +395,7 @@ get_ohio_covid_data <- function(ohio_doc_path) {
            ~  select_if(., not_all_empty_char)) 
   #rename the 2nd table with first table names
   names(table_cleaning[[2]]) <- names(table_cleaning[[3]])
-
+  
   facility_ohio <- table_cleaning[2:3] %>%
     bind_rows() %>%
     rename(
@@ -934,30 +934,30 @@ get_missouri_covid_data <- function(miss_doc_path) {
 # Maine -------------------------------------------------------------------
 
 get_maine_covid_data <- function(maine_doc_path){
-url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
-areas <- tabulizer::locate_areas(maine_doc_path,
-                                 pages = 1)
-areas <- c(198.5982, 281.4743, 238.0785, 544.6768)
-names(areas) <- c("top", "left", "bottom", "right")
-areas <- list(areas)
-
-adult <- tabulizer::extract_tables(url, area = areas)
-adult <- adult[[1]]
-column_names <- adult[1,]
-column_names <- column_names[column_names != ""]
-column_names <- tolower(column_names)
-column_names <- gsub(" ", "_", column_names)
-
-values <- adult[2, ]
-values <- values[values != ""]
-
-
-adult <- data.frame(t(values), stringsAsFactors = FALSE)
-names(adult) <- column_names
-adult[] <- sapply(adult, readr::parse_number)
-adult %>% 
-  mutate(scrape_date = today(),
-         state = "Maine")
+  url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
+  areas <- tabulizer::locate_areas(maine_doc_path,
+                                   pages = 1)
+  areas <- c(198.5982, 281.4743, 238.0785, 544.6768)
+  names(areas) <- c("top", "left", "bottom", "right")
+  areas <- list(areas)
+  
+  adult <- tabulizer::extract_tables(url, area = areas)
+  adult <- adult[[1]]
+  column_names <- adult[1,]
+  column_names <- column_names[column_names != ""]
+  column_names <- tolower(column_names)
+  column_names <- gsub(" ", "_", column_names)
+  
+  values <- adult[2, ]
+  values <- values[values != ""]
+  
+  
+  adult <- data.frame(t(values), stringsAsFactors = FALSE)
+  names(adult) <- column_names
+  adult[] <- sapply(adult, readr::parse_number)
+  adult %>% 
+    mutate(scrape_date = today(),
+           state = "Maine")
 }
 # Wisconsin ---------------------------------------------------------------
 # get_wisconsin_covid_data <- function(wisc_doc_path) {
@@ -1028,6 +1028,6 @@ get_mass_covid_data <- function() {
       contract_staff_positive = n_positive_contractor
     ) %>% 
     mutate(state = "Massachusetts") %>% 
-    modify_at(3:18,~as.numeric(.)) %>% 
-  }
+    modify_at(3:18,~as.numeric(.)) 
+}
 
