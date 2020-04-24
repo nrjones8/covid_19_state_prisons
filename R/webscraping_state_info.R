@@ -190,7 +190,6 @@ get_arizona_covid_data <- function(az_doc_path) {
 }
 
 
-
 # Idaho -------------------------------------------------------------------
 get_idaho_covid_data <- function(idaho_doc_path) {
   # extracts the text for idaho
@@ -407,6 +406,7 @@ get_ohio_covid_data <- function(ohio_doc_path) {
            state = "Ohio")
   list(ohio_facility = facility_ohio, ohio_totals = table_cleaning[[1]])
 }
+
 # New Jersey --------------------------------------------------------------
 get_nj_covid_data <- function(nj_doc_path) {
   new_jersey_text <- nj_doc_path %>%
@@ -422,14 +422,15 @@ get_nj_covid_data <- function(nj_doc_path) {
   table_2 <- table_2[4:length(table_2)] %>%
     make_facility_table(1:3,2:3)
   
-  names(table_2) <- new_jersey_text[73:75]
+  names(table_2) <- c("facilities","inmates_positive","inmates_deaths")
   
   list(confirmed_nj_doc = table_1,
        confirmed_halfway_house_doc = table_2) %>% 
     map(~mutate(.,scrape_date = today(),
-                state = "New Jersey"))
+                state = "New Jersey")) %>% 
+    bind_rows() %>% 
+    filter(facilities !="Totals")
 }
-
 # North Carolina --------------------------------------------------------------
 get_nc_covid_data <- function(nc_doc_path) {
   column_totals <- nc_doc_path %>%
@@ -623,7 +624,7 @@ get_virginia_covid_data <- function(virginia_doc_path) {
 # Washington --------------------------------------------------------------
 get_washington_covid_data <- function(wash_doc_path) {
   wash_text <- wash_doc_path %>%
-    html_nodes(".default-top-border+ .default-top-border td") %>%
+    html_nodes(".no-padding:nth-child(21) td") %>%
     html_text()
   text_table_1 <- wash_text
   table_1_data <- text_table_1 %>%
@@ -633,7 +634,6 @@ get_washington_covid_data <- function(wash_doc_path) {
     mutate(.,scrape_date = today(),state = "Washington") %>% 
     filter(facilities != "Prisons")
 }
-
 
 # Texas -------------------------------------------------------------------
 
@@ -918,7 +918,6 @@ get_missouri_covid_data <- function(miss_doc_path) {
   return(data)  
 }
 
-
 # Maine -------------------------------------------------------------------
 
 get_maine_covid_data <- function(maine_doc_path){
@@ -994,7 +993,7 @@ adult %>%
 
 get_mass_covid_data <- function() {
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/1880c1fe8550b3f648d3c7a9e7a76cb9/download/downloadData?w=",
+    "https://data.aclum.org/sjc-12926-tracker/session/35b1eb9fdbcc62c1a6262a3857975280/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
