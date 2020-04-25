@@ -193,8 +193,8 @@ get_arizona_covid_data <- function(az_doc_path) {
     html_text() %>%
     str_trim()
   # split the facilities table up and rename
-  az_facility_data <- az_text[6:length(az_text)] %>%
-    make_facility_table(1:6,2:6) 
+  az_facility_data <- az_text[7:length(az_text)] %>%
+    make_facility_table(1:7,2:7) 
   names(az_facility_data) <-
     c(
       "facilities",
@@ -202,6 +202,7 @@ get_arizona_covid_data <- function(az_doc_path) {
       "inmates_negative",
       "inmates_positive",
       "inmates_pending",
+      "inmates_recovered",
       "daily_total_population"
     )
   az_facility_data %>% 
@@ -209,7 +210,6 @@ get_arizona_covid_data <- function(az_doc_path) {
            state = "Arizona",
            scrape_date = today())
 }
-
 
 # Idaho -------------------------------------------------------------------
 get_idaho_covid_data <- function(idaho_doc_path) {
@@ -400,9 +400,36 @@ get_nys_covid_data <- function(nys_doc_path) {
       "incarcerated_deaths",
       "parolees_deaths"
     )
-  new_york_text %>%
+  new_york_totals <- new_york_text %>%
     mutate(state = "New York",
            scrape_date = today())
+  ny_pdf_path <- nys_doc_path %>% 
+    html_nodes("a") %>% 
+    html_attr("href") %>% 
+    pluck(32)
+  mat <- extract_tables(glue("https://doccs.ny.gov/{ny_pdf_path}"))
+  ny_nums <- mat[[1]][7:nrow(mat[[1]]),] %>% 
+    str_extract_all("\\d+") %>% 
+    unlist() %>% 
+    split(1:5) %>% 
+    as_tibble()
+  
+  facilities <- mat[[1]][7:nrow(mat[[1]]),] %>% 
+    word() %>% 
+    as_tibble()
+  
+  ny_facilities <- bind_cols(facilities,ny_nums)
+  ny_facilities <- ny_facilities %>% 
+    rename(facilities = value,
+           inmates_recovered = `1`,
+           inmates_deceased = `2`,
+           inmates_positive = `3`,
+           inmates_pending = `4`,
+           inmates_negative = `5`) %>% 
+    modify_at(2:6,~as.numeric(.)) %>% 
+    mutate(scrape_date = today(),
+           state = "New York")
+  list(totals = new_york_totals,facilities = ny_facilities)
 }
 
 
@@ -816,28 +843,65 @@ get_utah_covid_data <- function(ut_doc_path) {
 
 # Indiana ---------------------------------------------------------------------
 
+indi_img <- read_html("https://www.in.gov/idoc/3780.htm") %>% 
+  html_nodes("img") %>% 
+  html_attr("src") %>% 
+  pluck(3)
+image_to_scrape <- image_read(glue("https://www.in.gov{indi_img}")) %>% 
+  image_convert(type = "Grayscale") %>% 
+  image_enhance()
+  
+info_image <- image_to_scrape %>% 
+  image_info()
+crop_info <- sprintf('%sx30+0+%s',info_image$width, info_image$height - 30)
+totals_info <- image_to_scrape %>% 
+  image_crop(crop_info) %>% 
+  image_resize("2000x") %>% 
+  ocr() %>% 
+  str_extract_all(": -|\\d+|O")
+
+totals_info[[1]] %>% 
+  split(1:length(.)) %>% 
+  as_tibble() %>% 
+  rename(staff_positive = 1,
+         staff_deaths= 2,
+         inmates_quarantine = 3,
+         inmates_isolation = 4,
+         inmates_positive = 5,
+         inmates_probable_deaths = 6,
+         inmates_deaths = 7)
+
 get_indiana_covid_data <- function(indiana_doc_path) {
-  in_data <- indiana_doc_path %>%
-    html_node("table") %>%
-    html_table() %>%
-    rename(
-      facilities = 1,
-      staff_positive = 2,
-      staff_deaths = 3,
-      inmates_quarantine_positive = 4,
-      inmates_isolated = 5,
-      inmates_quarantined = 6,
-      housing_type = 7,
-      inmates_positive = 8,
-      inmates_probable_death = 9,
-      inmates_deaths = 10
-    ) %>%
-    filter(!grepl("Total", facilities)) %>%
-    mutate(.,
-           state = "Indiana",
-           scrape_date = today())
-  in_data %>% 
-    as_tibble()
+  
+  indi_img <- indiana_doc_path %>% 
+    html_nodes("img") %>% 
+    html_attr("src") %>% 
+    pluck(3)
+  image_to_scrape <- image_read(glue("https://www.in.gov{indi_img}")) %>% 
+    image_convert(type = "Grayscale") %>% 
+    image_enhance()
+  
+  info_image <- image_to_scrape %>% 
+    image_info()
+  crop_info <- sprintf('%sx30+0+%s',info_image$width, info_image$height - 30)
+  totals_info <- image_to_scrape %>% 
+    image_crop(crop_info) %>% 
+    image_resize("2000x") %>% 
+    ocr() %>% 
+    str_extract_all(": -|\\d+|O")
+  
+  totals_info[[1]] %>% 
+    split(1:length(.)) %>% 
+    as_tibble() %>% 
+    rename(staff_positive = 1,
+           staff_deaths= 2,
+           inmates_quarantine = 3,
+           inmates_isolation = 4,
+           inmates_positive = 5,
+           inmates_probable_deaths = 6,
+           inmates_deaths = 7) %>% 
+    mutate(scrape_date = today(),
+           state = "Indiana")
 }
 
 # oregon ------------------------------------------------------------------
@@ -887,9 +951,8 @@ get_oregon_covid_data <- function() {
 }
 
 # New Hampshire -----------------------------------------------------------
-read_html("https://www.nh.gov/nhdoc/covid/index.html") %>% 
-  html_nodes("tr:nth-child(6) p , tr:nth-child(5) p , td td td tr:nth-child(4) td , tr:nth-child(3) p , tr:nth-child(2) p") %>%
-  html_text()  
+
+
 get_new_hampshire_covid_data <- function(nh_doc_path) {
   nh_text <- nh_doc_path %>%
     html_nodes(
@@ -984,8 +1047,6 @@ get_missouri_covid_data <- function(miss_doc_path) {
 
 # Maine -------------------------------------------------------------------
 
-# Maine -------------------------------------------------------------------
-
 get_maine_covid_data <- function(maine_doc_path){
   url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
   areas <- tabulizer::locate_areas(maine_doc_path,
@@ -1063,7 +1124,7 @@ get_mass_covid_data <- function() {
     html_attr('href')
   
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/35b1eb9fdbcc62c1a6262a3857975280/download/downloadData?w=",
+      "https://data.aclum.org/sjc-12926-tracker/session/bc7c5d1ca762154f95c504b6e9c24633/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
@@ -1081,6 +1142,8 @@ get_mass_covid_data <- function() {
       contract_staff_positive = n_positive_contractor
     ) %>% 
     mutate(state = "Massachusetts") %>% 
-    modify_at(3:18,~as.numeric(.)) 
+    modify_at(3:18,~as.numeric(.)) %>% 
+    filter(scrape_date == today()-1)
 }
+
 
