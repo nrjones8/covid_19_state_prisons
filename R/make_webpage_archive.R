@@ -26,6 +26,7 @@ download_site_pdf <- function(directory, url, link) {
                 quiet = TRUE)
 }
 
+
 save_website_pages <- function(url, state) {
   
   directory <- paste0(here::here("data/webpages//"), state, "/", 
@@ -147,3 +148,4 @@ save_website_pages <- function(url, state) {
     
   }
 }
+
