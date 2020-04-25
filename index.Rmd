@@ -27,7 +27,7 @@ This site offers the following data (some states have less data available than t
 - Historical population data for state prisons.
 - Web scrapers built to extract data from Department of Corrections dashboards.
 
-### Figure 1. A State-and-County Level Map of the USA Showing 1) Positive COVID-19 Tests Among Incarcerated People and Correctional Staff, by State, and 2) Intensive Care Unit Beds and Percent of Population Aged 60+, by County
+### Figure 1. A State-Level Map of the USA Showing 1) Positive COVID-19 Tests Among Incarcerated People and Correctional Staff, and 2) Intensive Care Unit Beds
 
 ```{r, layout="l-page", fig.height = 6}
 make_choropleth_map(state_data)
@@ -56,7 +56,8 @@ state_data <-
          staff_positive,
          staff_negative,
          staff_deaths) %>%
-  mutate(state = as.factor(state))
+  mutate(state = as.factor(state),
+         scrape_date = lubridate::ymd(scrape_date))
 names(state_data) <- gsub("_", " ", names(state_data))
 names(state_data) <- crimeutils::capitalize_words(names(state_data))
 
@@ -69,7 +70,7 @@ DT::datatable(state_data,
               options      = list(
                 pageLength = 15,
                 dom        = 'Bfrtip',
-                buttons    = c('copy', 'csv', 'excel', 'pdf', 'print'),
+                buttons    = c('copy', 'csv', 'excel'),
                 colReorder = TRUE,
                 dom        = 't',
                 scrollX    = TRUE)) 
@@ -85,7 +86,8 @@ facility_data <- facility_data %>%
           state,
           facilities) %>%
   # mutate_if(is.numeric, prettyNum, big.mark = ",") %>%
-  mutate(state = as.factor(state)) %>%
+  mutate(state = as.factor(state),
+         scrape_date = lubridate::ymd(scrape_date)) %>%
   rename(facility = facilities) %>%
   select(state,
          facility,

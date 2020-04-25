@@ -1,6 +1,6 @@
 source(here::here("R", "utils.R"))
 
-get_all_current_website_pages()
+#get_all_current_website_pages()
 
 get_all_current_website_pages <- function() {
   sheet_info <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1CwD8aie_ib1wj3FtqACK3N2xssT0W_vX3d_WkKGpdOw/")
@@ -147,12 +147,3 @@ save_website_pages <- function(url, state) {
     
   }
 }
-
-
-# files <- list.files()
-# for (file in files) {
-#   setwd(file)
-#   temp <- list.files()
-#   file.remove(temp)
-#   setwd("..")
-# }
