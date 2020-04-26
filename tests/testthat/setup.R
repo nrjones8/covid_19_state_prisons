@@ -36,7 +36,7 @@ minnesota <- get_minnesota_covid_data(xml2::read_html("https://mn.gov/doc/about/
 
 florida <- get_fl_covid_data(xml2::read_html("http://www.dc.state.fl.us/comm/covid-19.html"))
 
-georgia <- get_georgia_covid_data(xml2::read_html("http://www.dcor.state.ga.us/content/cases"))
+# georgia <- get_georgia_covid_data(xml2::read_html("http://www.dcor.state.ga.us/content/cases"))
 
 alabama <- get_ala_covid_data(xml2::read_html("http://www.doc.alabama.gov/covid19news"))
 
