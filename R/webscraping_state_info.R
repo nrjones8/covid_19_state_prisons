@@ -631,24 +631,26 @@ get_michigan_data <- function(michigan_medium_page) {
   prisoner_data_image <- all_imgs[i]
   prison_img_details <- image_info(prisoner_data_image)
 
-  # Manual testing with OCR was a pain, but got it working when we crop the image to be (full width × 124) px
   # But the bottom border lines confuse tesseract, so have to be careful where exactly it gets cropped to
   # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
-  # "3786x124+0+3795" works as of 4/21/2020, which is based on the height / width of image at that point
-  height_offset <- prison_img_details$height - 230
-  crop_str <- sprintf('%sx124+0+%s', prison_img_details$width, height_offset)
+  # We can divide the image into 32 "rows" - one row for the header and padding above the, one "row" for each row in the table,
+  # and one "row" for the padding below the table. Then, to grab the totals (which is the last row in the table), we grab the
+  # second to last row of the image.
+  num_rows_in_image <- 32
+  from_bottom <- prison_img_details$height / num_rows_in_image
+  crop_str <- sprintf('%sx%s+0+%s', prison_img_details$width, from_bottom, prison_img_details$height - (from_bottom*2))
 
   cropped_prisoner_data_img <- prisoner_data_image %>% image_crop(crop_str)
   tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
   ocred_bottom <- cropped_prisoner_data_img %>% tesseract::ocr_data(engine=tesseract_digit_eng)
   as_integers <- ocred_bottom %>% mutate(as_int = as.integer(word)) %>% pull(as_int)
   tibble(
-    # as_integers[1] is the word "Total", which tesseract interprets as a "0", probably
-    # because of the "o" in "Total"
-    inmates_tested=as_integers[2],
-    inmates_positive=as_integers[3],
-    inmates_negative=as_integers[4],
-    inmates_pending=as_integers[5],
+    inmates_tested=as_integers[1],
+    inmates_positive=as_integers[2],
+    inmates_negative=as_integers[3],
+    inmates_pending=as_integers[4],
+    inmates_recovered=as_integers[6],
+    inmates_deaths=as_integers[7],
     scrape_date = today(),
     state = 'Michigan'
   )
