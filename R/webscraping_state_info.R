@@ -11,7 +11,6 @@ make_facility_table <- function(.data,splits,cols_to_turn_numeric){
     modify_at(cols_to_turn_numeric,~parse_number(.))
 }
 
-
 # Alaska ------------------------------------------------------------------
 get_alaska_covid_data <- function(alaska_doc) {
   alaska_tracker <- alaska_doc %>%
@@ -167,7 +166,6 @@ get_ala_covid_data <- function(ala_doc_path) {
     html_table() 
   # adjust the names of the data
   names(data) <- gsub(" |-|\\*", "_", names(data))
-  # tag the data as well as with the scrape date
   data <-
     data %>%
     dplyr::rename(facilities       = Facility,
@@ -176,40 +174,32 @@ get_ala_covid_data <- function(ala_doc_path) {
                   inmates_positive = Confirmed_Positive_,
                   inmates_deaths   = COVID_19_Related_Inmate_Deaths_) %>%
     mutate(state = "Alabama",
-                      scrape_date = today()) %>% 
+           scrape_date = today()) %>% 
     modify_at(c("inmates_tested",
                 "inmates_pending",
                 "inmates_positive",
-                "inmates_deaths"), readr::parse_number)
+                "inmates_deaths"), 
+              readr::parse_number)
   
   return(data)
 }
 
 # Arizona -----------------------------------------------------------------
 get_arizona_covid_data <- function(az_doc_path) {
-  az_text <- az_doc_path %>%
-    # grabs two tables
-    html_nodes("td") %>%
-    html_text() %>%
-    str_trim()
-  # split the facilities table up and rename
-  az_facility_data <- az_text[7:length(az_text)] %>%
-    make_facility_table(1:7,2:7) 
-  names(az_facility_data) <-
-    c(
-      "facilities",
-      "inmates_tested",
-      "inmates_negative",
-      "inmates_positive",
-      "inmates_pending",
-      "inmates_recovered",
-      "daily_total_population"
-    )
-  az_facility_data %>% 
-    mutate(.,
-           state = "Arizona",
-           scrape_date = today())
-}
+  data <- az_doc_path %>%
+    html_nodes("#block-views-covid-19-data-table-block > div > div > table") %>%
+    html_table()
+  data <- data[[1]]
+  names(data) <- gsub(" ", "_", names(data))
+  names(data) <- tolower(names(data))
+  data <-
+    data %>% 
+    dplyr::rename(facilities = location,
+                  inmates_positive = inmates_confirmed) %>%
+    dplyr::mutate(state = "Arizona",
+                  scrape_date = lubridate::today())
+  
+  return(data)
 
 # Idaho -------------------------------------------------------------------
 get_idaho_covid_data <- function(idaho_doc_path) {
@@ -251,8 +241,6 @@ get_federal_data <- function(federal_bop_path){
   
 }
 
-
-
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){
 #   
@@ -279,7 +267,6 @@ get_federal_data <- function(federal_bop_path){
 #     download.file(., fn, mode = "wb")
 # }
 # get_mi_covid_data(data_for_use[[21]])
-
 
 
 # Florida --------------------------------------------------------------
@@ -576,7 +563,6 @@ get_nd_covid_data <- function(nd_doc_path) {
 }
 
 # Minnesota ------------------------------------------------------------
-
 get_minnesota_covid_data <- function(minn_doc_path) {
   mn_img_src_relative <-  minn_doc_path %>%
     html_nodes('img[title="covid testing chart"]') %>%
@@ -610,6 +596,61 @@ get_minnesota_covid_data <- function(minn_doc_path) {
     inmates_deaths=ocred_data[8],
     state = 'Minnesota',
     scrape_date = today()
+  )
+}
+
+image_contains_regex <- function(image, search_regex) {
+  raw_ocr_text <- image %>% tesseract::ocr()
+  grepl(search_regex, raw_ocr_text)
+}
+
+# Michigan - the infamous Medium page --------------------------------------------------------------------
+# This is a fragile one, OCR had trouble with the image if it's not cropped just right - likely getting tripped
+# up on the border of the table cells, and thinking those are characters. Beware!
+get_michigan_data <- function(michigan_medium_page) {
+  all_img_paths <- michigan_medium_page %>%
+    read_html() %>%
+    html_nodes("img") %>%
+    html_attr("src") %>%
+    tibble::enframe() %>%
+    filter(! is.na(value)) %>%
+    pull(value)
+
+  all_imgs <- all_img_paths %>% image_read()
+  num_imgs <- all_imgs %>% length()
+  header_regex <- '(Prisoners Tested|Prisoners Confirmed|Prisoners Negative|Prisoner Deaths)'
+
+  # Iterate over all the images until we find one that looks like the table containing data about people
+  # in prison - just OCR every image and look for some of the words in the header.
+  for (i in 1:num_imgs) {
+    has_prisoner_text <- image_contains_regex(all_imgs[i], header_regex)
+    if (has_prisoner_text) {
+      break
+    }
+  }
+  prisoner_data_image <- all_imgs[i]
+  prison_img_details <- image_info(prisoner_data_image)
+
+  # Manual testing with OCR was a pain, but got it working when we crop the image to be (full width × 124) px
+  # But the bottom border lines confuse tesseract, so have to be careful where exactly it gets cropped to
+  # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
+  # "3786x124+0+3795" works as of 4/21/2020, which is based on the height / width of image at that point
+  height_offset <- prison_img_details$height - 230
+  crop_str <- sprintf('%sx124+0+%s', prison_img_details$width, height_offset)
+
+  cropped_prisoner_data_img <- prisoner_data_image %>% image_crop(crop_str)
+  tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
+  ocred_bottom <- cropped_prisoner_data_img %>% tesseract::ocr_data(engine=tesseract_digit_eng)
+  as_integers <- ocred_bottom %>% mutate(as_int = as.integer(word)) %>% pull(as_int)
+  tibble(
+    # as_integers[1] is the word "Total", which tesseract interprets as a "0", probably
+    # because of the "o" in "Total"
+    inmates_tested=as_integers[2],
+    inmates_positive=as_integers[3],
+    inmates_negative=as_integers[4],
+    inmates_pending=as_integers[5],
+    scrape_date = today(),
+    state = 'Michigan'
   )
 }
 
@@ -699,15 +740,37 @@ get_sc_covid_data <- function(sc_doc_path) {
 
 # Virginia ----------------------------------------------------------------
 get_virginia_covid_data <- function(virginia_doc_path) {
-  virginia_text <- virginia_doc_path %>%
-    html_nodes("tbody td , tbody th") %>%
-    html_text()
-  virginia_data <- virginia_text[6:length(virginia_text)] %>%
-    make_facility_table(1:5, 2:5)
-  names(virginia_data) <- c("facilities","inmates_positive","inmates_hospital","inmates_deaths","staff_positive")
-  virginia_data %>% 
-    mutate(state = "Virginia",
-           scrape_date = today())
+  data <- virginia_doc_path %>%
+    html_nodes("#covid19numbers") %>%
+    html_table()
+  data <- data[[1]]
+  names(data) <- tolower(names(data))
+  names(data) <- gsub(" |\\(|\\)|,|&|\\-", "_", names(data))
+  names(data) <- gsub("on.site", "on_site", names(data))
+  names(data) <- gsub("includes.+recovered", "includes_recovered", names(data))
+  
+  data <-
+    data %>%
+    dplyr::rename(facilities = location,
+                  inmates_positive_on_site = offenders_on_site,
+                  inmates_hospital = offenders_in_hospitals,
+                  inmates_positive = total_positive_offenders_includes_recovered__deceased____released_offenders_,
+                  staff_positive = staff__includes_both_employees___contractors_
+                  ) %>%
+    dplyr::filter(tolower(facilities) != "totals") %>%
+    dplyr::mutate_at(c("inmates_positive_on_site",
+                       "inmates_hospital",
+                       "inmates_positive"),
+                     dplyr::na_if, "n/a") %>%
+    dplyr::mutate_at(c("inmates_positive_on_site",
+                       "inmates_hospital",
+                       "inmates_positive"),
+                     readr::parse_number) %>%
+    dplyr::mutate(state = "Virginia",
+                  scrape_date = lubridate::today())
+  
+
+  return(data)
 }
 
 

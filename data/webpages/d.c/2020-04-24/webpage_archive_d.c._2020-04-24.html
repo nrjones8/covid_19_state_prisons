@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ og: http://ogp.me/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"348872d504",applicationID:"496267014"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><link rel="shortcut icon" href="https://doc.dc.gov/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<meta name="description" content="Medical Stay-In-Place">
+<meta name="generator" content="Drupal 7 (http://drupal.org)">
+<link rel="canonical" href="https://doc.dc.gov/page/coronavirus-prevention">
+<link rel="shortlink" href="https://doc.dc.gov/page/coronavirus-prevention">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="https://doc.dc.gov/page/coronavirus-prevention">
+<meta name="twitter:title" content="Coronavirus Prevention">
+<meta name="twitter:description" content="Medical Stay-In-Place">
+<title>Coronavirus Prevention | doc</title>
+<link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_PFKW89NpF0VPfMxzWvQhFMYNFsCa2aHlaaeeHDKeIE8.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_aN7JUBzlL2NtORSaseLNYl3Pqalpu5hdsfJyzHv1WTM.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_jhjc9dBT43wTvtgjTl2XUf8bMpz9E6K1QyUuYdk83SY.css" media="all">
+<link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_coT60ccp7JgDRVDr7f4tIuCDF1KtQ97IZ6xw9ShA9ZM.css" media="all">
+<!--[if (lt IE 9)&(!IEMobile)]>
+<link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_ASD_F3Cgrh4TrINm-4km8hzYjKf9cfcxye2ihPGLAoU.css" media="all" />
+<![endif]--><!--[if gte IE 9]><!--><link type="text/css" rel="stylesheet" href="https://doc.dc.gov/sites/default/files/css/css_ulMblnJuu94LySu1GZebJsgXh1DK_lpCUINOtMYxPYc.css" media="all">
+<!--<![endif]--><script type="text/javascript" src="https://doc.dc.gov/sites/default/files/js/js_ri60QNjcazMKdlAmWmDsmRb0iKaVkkXUQxH2MsgpmVo.js"></script><script type="text/javascript" src="https://doc.dc.gov/sites/default/files/js/js_xpcUaefRF16dGRM12CceyhwGxO2jTZMKo_3milCSqpk.js"></script><script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var text_resize_scope = "not-front #main, #zone-content";
+    var text_resize_minimum = "12";
+    var text_resize_maximum = "25";
+    var text_resize_line_height_allow = 1;
+    var text_resize_line_height_min = "16";
+    var text_resize_line_height_max = "36";
+//--><!]]>
+</script><script type="text/javascript" src="https://doc.dc.gov/sites/default/files/js/js_Eo5T__k7cT67RdWobG-2b-YrtvQ0lCM-iy2ivBhk9PY.js"></script><script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-2638726-1", {"cookieDomain":"auto"});ga("send", "pageview");
+//--><!]]>
+</script><script type="text/javascript" src="https://doc.dc.gov/sites/default/files/js/js_HCBPZLeEzBJLgRGNNYUlORsa04rsIGMbOCCEU3qKXiA.js"></script><script type="text/javascript" src="https://doc.dc.gov/sites/default/files/js/js_43n5FBy8pZxQHxPXkf-sQF7ZiacVZke14b0VlvSA554.js"></script><script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"dc_agency_omega","theme_token":"mUOB_VvVxjF8l6nBcCCjSwS9y_iZ0MnoP6JAcMEKaFU","js":{"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.8\/jquery.min.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/text_resize\/jquery.cookie.js":1,"0":1,"sites\/all\/modules\/text_resize\/text_resize.js":1,"sites\/all\/modules\/extlink\/extlink.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"1":1,"sites\/all\/themes\/dc_agency_omega\/js\/dcAgency.js":1,"sites\/all\/themes\/omega\/omega\/js\/jquery.formalize.js":1,"sites\/all\/themes\/omega\/omega\/js\/omega-mediaqueries.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/book\/book.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"sites\/all\/modules\/domain\/domain_nav\/domain_nav.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/flickrgallery\/flickrgallery.css":1,"sites\/all\/modules\/panels\/css\/panels.css":1,"sites\/all\/modules\/rate\/rate.css":1,"sites\/all\/modules\/text_resize\/text_resize.css":1,"sites\/all\/modules\/extlink\/extlink.css":1,"sites\/all\/themes\/dc_agency_omega\/css\/normalize.css":1,"sites\/all\/themes\/omega\/alpha\/css\/alpha-reset.css":1,"sites\/all\/themes\/omega\/alpha\/css\/alpha-mobile.css":1,"sites\/all\/themes\/omega\/omega\/css\/formalize.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-text.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-branding.css":1,"sites\/all\/themes\/omega\/omega\/css\/omega-forms.css":1,"sites\/all\/themes\/dc_agency_omega\/css\/global.css":1,"ie::normal::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default.css":1,"ie::normal::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default-normal.css":1,"ie::normal::sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/normal\/alpha-default-normal-24.css":1,"ie::normal::sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/normal\/alpha-default-normal-12.css":1,"narrow::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default.css":1,"narrow::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default-narrow.css":1,"sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/narrow\/alpha-default-narrow-24.css":1,"sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/narrow\/alpha-default-narrow-12.css":1,"normal::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default.css":1,"normal::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default-normal.css":1,"sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/normal\/alpha-default-normal-24.css":1,"sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/normal\/alpha-default-normal-12.css":1,"wide::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default.css":1,"wide::sites\/all\/themes\/dc_agency_omega\/css\/dc-agency-omega-alpha-default-wide.css":1,"sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/wide\/alpha-default-wide-24.css":1,"sites\/all\/themes\/omega\/alpha\/css\/grid\/alpha_default\/wide\/alpha-default-wide-12.css":1}},"extlink":{"extTarget":"_blank","extClass":"ext","extSubdomains":1,"extExclude":"http[s]*:\/\/[a-zA-Z0-9\\-\\.]*dc.gov[\\\/a-zA-Z0-9\\-\\.\\?\\=]*","extInclude":"","extAlert":0,"extAlertText":"The District government has provided links as a courtesy and is not responsible for information on websites outside the DC portal. Inquiries should be made to the sponsoring organizations.","mailtoClass":"mailto"},"better_exposed_filters":{"views":{"alerts":{"displays":{"emergency_alerts_block":{"filters":[]}}},"agency_information":{"displays":{"block":{"filters":[]},"agency_director":{"filters":[]}}},"features_blocks":{"displays":{"interior_1":{"filters":[]},"interior_2":{"filters":[]},"interior_3":{"filters":[]},"interior_4":{"filters":[]}}}}},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"omega":{"layouts":{"primary":"normal","order":["narrow","normal","wide"],"queries":{"narrow":"all and (min-width: 740px) and (min-device-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation:landscape)","normal":"all and (min-width: 980px) and (min-device-width: 980px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)","wide":"all and (min-width: 1220px)"}}}});
+//--><!]]>
+</script><!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1466366 node-type-page domain-doc-dc-gov i18n-en context-page">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+  <div class="region region-page-top" id="region-page-top">
+  <div class="region-inner region-page-top-inner">
+      </div>
+</div>  <div class="page clearfix" id="page">
+      <header id="section-header" class="section section-header"><div id="zone-menu-wrapper" class="zone-wrapper zone-menu-wrapper clearfix">  
+  <div id="zone-menu" class="zone zone-menu clearfix container-24">
+    <div class="grid-24 region region-menu" id="region-menu">
+  <div class="region-inner region-menu-inner">
+          </div>
+</div>
+  </div>
+</div>
+<div id="zone-branding-wrapper" class="zone-wrapper zone-branding-wrapper clearfix">  
+  <div id="zone-branding" class="zone zone-branding clearfix container-24">
+    <div class="grid-24 region region-branding" id="region-branding">
+  <div class="region-inner region-branding-inner">
+        <div class="branding-data clearfix">
+                        <hgroup class="site-name-slogan"><h1 id="site-name-only" class="site-name">doc</h1>
+                                        <h6 id="site-slogan" class="site-slogan">Department of Corrections</h6>
+              </hgroup>
+</div>
+        <div class="block block-block block-164 block-block-164 odd block-without-title" id="block-block-164">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <style type="text/css">#header #block-menu-block-2{
+text-align:left;}
+.dcSearchForm input{
+font-size:14px;padding:3px!important}
+.logo-text{
+padding-left:10px;font-size:14px}
+.logo-text a{font-size:14px!important}
+.zone-content-wrapper nav.node-links {
+    display: none;
+}
+/* Show node language translation block links on internal pages*/
+.not-front .zone-content-wrapper nav.node-links {
+   display: block!important;
+}
+/* .element-invisible {display: none;} */
+
+/* DCRA menu modification */
+.menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > .collapsed, 
+.menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-198786,
+.menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197476,
+.menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197951 {
+	display:none;
+}
+ 
+.page-node-1230386 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > .collapsed, 
+.page-node-1230386 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-198786,
+.page-node-1230386 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197476,
+.page-node-1230386 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197606,
+.page-node-447262 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197821,
+.page-node-1230511 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197606,
+.page-node-1230511 .menu-block-wrapper.menu-block-1.menu-name-menu-dcra-nav2.parent-mlid-0.menu-level-2 > .menu-sub > li.menu-mlid-197801{
+	display:block;
+}
+#section-header .menu-name-menu-dc-top-menu ul {
+	max-width: 390px;
+	float: right;
+}
+/* End of Global Styles */
+/* Narrow Styles */
+@media all and (min-device-width: 740px) and (min-width: 740px), (max-device-width: 800px) and (min-width: 740px) and (orientation: landscape){
+  #zone-branding1 {
+    margin-top: -15px;
+  }
+  #section-header .menu-name-menu-dc-top-menu ul {
+    max-width: 100%;
+    float: none;
+  }
+
+}
+/* End of Narrow Styles */
+/* Normal Styles */
+@media all and (min-width: 980px) and (min-device-width: 980px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape){
+  #zone-branding1 {
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }
+  #region-branding1 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+/* End of Normal Styles */
+/* Wide Styles */
+@media all and (min-width: 1220px) and (orientation:landscape){
+  #zone-branding1 {
+    margin-bottom: 5px;
+    margin-top: 20px;
+  }
+  #region-branding1 {
+    margin-left: 89px;
+    margin-right: 0px;
+    width: 280px !important;
+  }
+}
+/* End of Wide Styles */
+</style>
+<div class="dots"> </div>
+
+<div class="block block-menu-block" id="block-menu-block-2">
+<h2 class="element-invisible element-invisible">DC Agency Top Menu</h2>
+
+<div class="content">
+<div class="menu-block-wrapper menu-block-2 menu-name-menu-dc-top-menu parent-mlid-0 menu-level-1">
+<ul class="menu clearfix">
+<li class="first leaf menu-mlid-487 menu-487"><a href="https://311.dc.gov" title="311 Online">311 Online</a></li>
+	<li class="leaf"><a href="https://dc.gov/directory" title="Agency Directory">Agency Directory</a></li>
+	<li class="leaf"><a href="https://dc.gov/online-services" title="Online Services">Online Services</a></li>
+	<li class="last"><a href="https://dc.gov/page/dcgov-accessibility-policy" title="Accessibility">Accessibility</a></li>
+</ul>
+</div>
+
+<div class="navigation" id="navigation"> </div>
+</div>
+
+<div class="zone zone-branding clearfix" id="zone-branding1">
+<div class="grid-6 region region-branding" id="region-branding1">
+<div class="region-inner region-branding-inner">
+<div class="branding-data clearfix">
+<div class="logo-img"><a href="http://dc.gov/" rel="home" title="DC.gov Home"><img alt="DC.gov Home" id="logo" src="/sites/default/files/dc/dcgov_logo.jpg"></a></div>
+</div>
+
+<div class="logo-text"><a href="http://mayor.dc.gov" title="Mayor Muriel Bowser">Mayor Muriel Bowser</a></div>
+</div>
+</div>
+
+<div class="grid-18 region region-branding-second" id="region-branding-second">
+<div class="region-inner region-branding-second-inner">
+<div class="block block-block block-83 block-block-83 odd block-without-title" id="block-block-83">
+<div class="block-inner clearfix">
+<div class="content clearfix">
+<form accept-charset="UTF-8" action="javascript:submitForm()" id="search_form" method="get" name="search_form">
+<fieldset>
+<div class="dcSearchContainer">
+<div class="dcSearchContainerInner">
+<button alt="Submit Button" class="dcSearchButtonContainer" onclick="submitForm()" title="Submit Button"><div class="dcSearchButtonIcon"></div></button>
+<!-- Paste this to fix code button tag above, Drupal doesn't like <div> tag inside of a button tag   
+<button alt="Submit Button" class="dcSearchButtonContainer" onclick="submitForm()" title="Submit Button"><div class="dcSearchButtonIcon"></div></button> -->
+
+<div class="dcSearchForm">
+<input autocomplete="on" class="dcSearchFormInput" name="query" onblur="if(this.value=='What are you looking for today?'){this.value='What are you looking for today?'}" onfocus="if(this.value=='What are you looking for today?'){this.value=''}" placeholder="What are you looking for today?" style="padding: 0px; margin: 0px;" title="Type keyword, phrase or question" type="text" value=""><br><input name="affiliate" type="hidden">
+</div>
+</div>
+</div>
+
+<div class="site-filter dcSearchFilter">
+<div class="inner_site-filter"><script type="text/JavaScript">
+	                  var siteNameOnly = document.getElementById("site-name-only").innerHTML + "";
+                          var siteNameOnlyFix = "dc_" + siteNameOnly.replace(/\s+/g, '_');
+	                  if(siteNameOnly != "") {
+	                    document.write('&nbsp;');
+	                    document.write('<input class="filter-radio" id="radio_all" name="emb" title="DC.gov" type="radio" value="0" />');
+	                    document.write('&nbspDC.gov&nbsp;');
+	                    document.write('<input checked="checked" class="filter-radio" id="site_search" name="emb" title=" type=');
+	                    document.write(siteNameOnly);
+	                    document.write('" type="radio" value="1" />');
+	                    document.write('&nbsp;' + location.host + '');}
+
+	                  function submitForm(){
+	                    if(!document.search_form.emb[0].checked)  {
+	                      document.search_form.affiliate.value=siteNameOnlyFix.substring(0, 33);
+	                      document.search_form.action="https://search.usa.gov/search";
+	                      document.search_form.submit();}
+else{
+
+document.search_form.affiliate.value="dc_dcgov";
+	                      document.search_form.action="https://search.usa.gov/search";
+	                      document.search_form.submit();
+}
+}
+	                
+
+</script></div>
+</div>
+</fieldset>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<h1 class="agency_title"><script type="text/JavaScript">document.write(document.getElementById("site-slogan").innerHTML);</script></h1>
+</div>
+<script type="text/javascript">
+var site = window.location.host.split('.');
+
+//<![CDATA[
+      var usasearch_config = { siteHandle:site[0] };
+
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "https://search.usa.gov/javascripts/remote.loader.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+
+//]]>
+
+jQuery(document).ready(function() {
+	  function checkresponsiveOea() {
+
+	  	console.log("At least im loading");
+	  	//Create the views filter for mobile -NR
+		    if (jQuery('#mobile-filter').length < 1) {
+		        jQuery(".view-oea-decisions .view-content").before("<div id='mobile-filter'><div id='mobile-filter-container'></div></div>");
+		        //jQuery("#mobile-filter").before("<div class='filterButton'><a href='#'>Filter</a></div");
+		    }
+	  }
+
+	  checkresponsiveOea(); //Call the checkresponsive() to initialize the components
+	  
+	  function resizeStuffOea() {
+
+	      //Show mobile Views filter -NR
+	      if (jQuery(window).width() < 963) {
+	          jQuery("#views-exposed-form-oea-decisions-page").appendTo('#mobile-filter-container');
+
+	        }// End Show mobile Views filter -NR   End < 963
+	    
+	      //Hide mobile Views filter -NR
+	      if (jQuery(window).width() > 963) {
+	          jQuery("#views-exposed-form-oea-decisions-page").insertBefore("#block-views-agency-information-block");
+	      console.log("i should be showing");
+	      }// End Hide mobile Views filter -NR  End > 963
+
+  		} /* end resizeStuff() function */
+
+resizeStuffOea();
+	  // jQuery(function(){
+	  //   var TO = false;
+	  //   jQuery(window).resize(function () {
+	  //     if (TO !== false) {
+	  //         clearTimeout(TO);
+	  //     }
+	  //     TO = setTimeout(resizeStuffOea, 10); //100 is time in miliseconds
+	  //   }).resize();
+	  // });
+
+//ready.dc.gov language link fix
+if( jQuery(".domain-preview-ready-dc-gov").length > 0) {
+	var currentLanguage = jQuery("html").attr("lang");
+console.log(currentLanguage);
+	if (currentLanguage != 'en'){	
+console.log("language not english");
+	jQuery("article .field-name-body a").each(function(){
+console.log("inside link function");
+		var newlink =	jQuery(this).attr("href").replace('/node/', '/' + currentLanguage + '/node/');
+		jQuery(this).attr("href", newlink);
+    	}
+	);
+	}
+}
+
+});
+
+
+
+</script><style type="text/css">#edit-field-oea-decision-type-tid{max-width:200px;}.view-oea-decisions{margin-top:100px;}
+
+/* 
+#block-menu-block-2 .menu-block-2 a:link,
+.region-sidebar-first-inner a:link,
+#content-start .content a:link
+{font-weight: bold!important;}
+*/
+.front .zone-content-wrapper .region-agency-home-3col .item-list {display:block;margin-left: 10px;}
+</style>
+</div>
+  </div>
+</div>
+<div class="block block-views block-alerts-emergency-alerts-block block-views-alerts-emergency-alerts-block even block-without-title" id="block-views-alerts-emergency-alerts-block">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-alerts view-id-alerts view-display-id-emergency_alerts_block view-dom-id-82ab0bfb9814df88ed3de296fd0cf58c">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+          <p class="rtecenter"><a href="https://coronavirus.dc.gov/sites/default/files/dc/sites/coronavirus/page_content/attachments/Situational%20Update%20Presentation_042420.pdf" title="DC’s COVID-19 Situational Update">Read Mayor Bowser’s Presentation on DC’s COVID-19 Situational Update: April 24</a>.<br><a href="https://coronavirus.dc.gov/release/mayor-bowser-extends-public-health-emergency-stay-home-order-and-closure-non-essential">Mayor Bowser Extends Public Health Emergency, Stay at Home Order, and Closure of Non-Essential Businesses Through May 15</a></p>
+    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  </div>
+</div>  </div>
+</div>
+  </div>
+</div>
+<div id="zone-header-wrapper" class="zone-wrapper zone-header-wrapper clearfix"> 
+  <div id="stickyhideout" style="display: none;">
+  <div class="dclogo_small_desktop" style="display: block;"><a title="DC.Gov Home" href="/">
+   <img title="DC.Gov Logo" alt="DC.Gov Logo" src="/sites/default/files/dc/shared_assets/dc_home_logo2_small.png"></a></div>
+  <div class="sh_agency_title">
+   <script type="text/JavaScript">document.write(document.getElementById("site-slogan").innerHTML);</script>
+</div>
+  <div class="header_search">
+    <a href="javascript:void(0)">
+      <div class="header_search_icon"><img alt="Search DC.gov" title="Search DC.gov" src="/sites/default/files/dc/shared_assets/search2.png"></div>
+    </a>
+    <div class="search_dropdown" style="display: none;">
+      <div class="content clearfix">
+        <form name="gs2" method="get" id="gs2" action="javascript:submitForm2()">
+          <div class="header_search_form_container">
+            <h2 class="element-invisible">Search form</h2>
+            <a title="Close Search" class="close" href="javascript:void(0)">X</a>
+            <div class="header_search_form">
+              <label class="element-invisible">Search </label>
+              <input type="text" class="form-text" maxlength="128" size="40" value="" name="q" id="header-search-block-input" title="Enter the terms you wish to search for.">
+</div>
+            <div id="header-search-from-button" class="header-form-button">
+              <input type="submit" title="Search" class="form-submit" value="Go" name="op" id="edit-submit">
+</div>
+          </div>
+          <input type="hidden" value="xml_no_dtd" name="output"><input type="hidden" value="UTF-8" name="oe"><input type="hidden" value="UTF-8" name="ie"><input type="hidden" value="dc_v2" name="client"><input type="hidden" value="dc_v2" name="proxystylesheet"><input type="hidden" name="site"><script async="" src="//www.google-analytics.com/analytics.js"></script><script id="twitter-wjs" src="//platform.twitter.com/widgets.js"></script><script type="text/JavaScript">
+            function submitForm2(){
+              document.gs2.action="http://google.dc.gov/search"; document.gs2.submit();
+            }
+          </script>
+</form>    
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div id="zone-header" class="zone zone-header clearfix container-12">
+    <div class="grid-24 region region-header-first" id="region-header-first">
+  <div class="region-inner region-header-first-inner">
+    <div class="block block-domain-conf block-domain-main-links block-domain-conf-domain-main-links odd block-without-title" id="block-domain-conf-domain-main-links">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <ul class="menu-sub">
+<li class="first leaf"><a href="/" title="DOC Home">DOC Home</a></li>
+<li class="expanded">
+<a href="/services" title="Services">Services</a><ul class="menu-sub">
+<li class="first leaf"><a href="/service/attorney-comment-form" title="Attorney Comment Form">Attorney Comment Form</a></li>
+<li class="leaf"><a href="/service/automated-inmate-deposits" title="Automated Inmate Deposits">Automated Inmate Deposits</a></li>
+<li class="leaf"><a href="/service/crime-solvers" title="Crime Solvers">Crime Solvers</a></li>
+<li class="leaf"><a href="/service/docs-most-wanted" title="DOC's Most Wanted">DOC's Most Wanted</a></li>
+<li class="leaf"><a href="/service/inmate-telephone-services" title="Inmate Telephone Services">Inmate Telephone Services</a></li>
+<li class="leaf"><a href="/service/online-scheduling-video-visitationscheduling-face-face-visitation" title="Online Scheduling for Video Visitation">Online Scheduling for Video Visitation</a></li>
+<li class="leaf"><a href="/service/reasonable-accommodation" title="Reasonable Accommodation">Reasonable Accommodation</a></li>
+<li class="leaf"><a href="/service/veterans-services" title="Veterans Services">Veterans Services</a></li>
+<li class="last leaf"><a href="/service/victim-information-services" title="Victim Information Services">Victim Information Services</a></li>
+</ul>
+</li>
+<li class="expanded">
+<a href="/page/connect" title="Connect">Connect</a><ul class="menu-sub">
+<li class="first collapsed"><a href="/page/attorney-or-legal-visitor" title="Attorney or Legal Visitor">Attorney or Legal Visitor</a></li>
+<li class="leaf"><a href="/page/community-services-provider-or-general-public" title="Community Services Provider or General Public">Community Services Provider or General Public</a></li>
+<li class="collapsed"><a href="/page/crime-victim-seeking-information" title="Crime Victim Seeking Information">Crime Victim Seeking Information</a></li>
+<li class="collapsed"><a href="/page/friend-or-family-member" title="Friend or Family Member">Friend or Family Member</a></li>
+<li class="last leaf"><a href="/page/volunteer-or-service-provider" title="Volunteer or Service Provider">Volunteer or Service Provider</a></li>
+</ul>
+</li>
+<li class="expanded">
+<a href="/page/support" title="Support">Support</a><ul class="menu-sub">
+<li class="first collapsed"><a href="/page/community-input" title="Community Input">Community Input</a></li>
+<li class="leaf"><a href="/page/district-wide-recidivism-reduction-plan" title="District-wide Recidivism Reduction Plan">District-wide Recidivism Reduction Plan</a></li>
+<li class="collapsed"><a href="/page/preparing-returning-citizens-success" title="Preparing Returning Citizens for Success">Preparing Returning Citizens for Success</a></li>
+<li class="collapsed"><a href="/page/supporting-returning-citizens" title="Supporting Returning Citizens">Supporting Returning Citizens</a></li>
+<li class="last leaf"><a href="/service/ready-center" title="The READY Center">The READY Center</a></li>
+</ul>
+</li>
+<li class="leaf"><a href="/page/inmate-demographics-and-statistics" title="Inmate Demographics and Statistics">Data</a></li>
+<li class="expanded">
+<a href="/page/policies" title="Policies">Policies</a><ul class="menu-sub">
+<li class="first leaf"><a href="http://dccode.elaws.us/" title="DC Code">DC Code</a></li>
+<li class="leaf"><a href="/page/doc-program-statements" title="DOC Program Statements">DOC Program Statements</a></li>
+<li class="last leaf"><a href="/page/us-code" title="US Code">US Code</a></li>
+</ul>
+</li>
+<li class="expanded">
+<a href="/page/join-team-doc" title="Join Team DOC">Join Team DOC</a><ul class="menu-sub">
+<li class="first leaf"><a href="/page/career-opportunities-" title="Career Opportunities">Career Opportunities</a></li>
+<li class="leaf"><a href="/page/correctional-officers-training" title="Correctional Officers Training">Correctional Officers Training</a></li>
+<li class="last leaf"><a href="/page/dc-doc-vision">DC DOC Vision</a></li>
+</ul>
+</li>
+<li class="collapsed"><a href="/page/informacion-sobre-el-departamento-correccional-doc-en-espanol" title="Información Sobre el Departamento Correccional (DOC) en Español">en Español</a></li>
+<li class="leaf active-trail"><a href="/page/coronavirus-prevention" title="Coronavirus Prevention" class="active-trail active">Coronavirus Prevention</a></li>
+<li class="last expanded">
+<a href="/page/about-doc" title="About DOC">About DOC</a><ul class="menu-sub">
+<li class="first leaf"><a href="/page/correctional-facilities" title="Correctional Facilities">Correctional Facilities</a></li>
+<li class="leaf"><a href="/page/doc-frequently-asked-questions" title="DOC Frequently Asked Questions">DOC Frequently Asked Questions</a></li>
+<li class="leaf"><a href="/biography/quincy-l-booth" title="Director's Biography">Director's Biography</a></li>
+<li class="leaf"><a href="/foia-requests-doc" title="Open Government and FOIA">Open Government and FOIA</a></li>
+<li class="leaf"><a href="/page/partner-agencies" title="Partner Agencies">Partner Agencies</a></li>
+<li class="leaf"><a href="/page/budget-and-financials" title="Budget and Financials">Budget and Financials</a></li>
+<li class="leaf"><a href="/page/contracts" title="Contracts">Contracts</a></li>
+<li class="leaf"><a href="/page/organizational-chart-" title="Organizational Chart">Organizational Chart</a></li>
+<li class="leaf"><a href="/page/media-contact-0">Media Contact</a></li>
+<li class="leaf"><a href="/page/programs-and-case-management-pcm">Programs and Case Management (PCM)</a></li>
+<li class="last leaf"><a href="/page/services-offered-persons-housed-dc-doc-facilities" title="Programs and Services">Programs and Services</a></li>
+</ul>
+</li>
+</ul>
+</div>
+  </div>
+</div>  </div>
+</div> 
+  </div>
+</div>
+</header><section id="section-content" class="section section-content"><div id="zone-content-wrapper" class="zone-wrapper zone-content-wrapper clearfix">  
+  <div id="zone-content" class="zone zone-content clearfix container-24">
+
+    <aside class="grid-6 region region-sidebar-first" id="region-sidebar-first" aria-labelledby="region-sidebar-first"><div class="region-inner region-sidebar-first-inner">
+    <div class="block block-views block-agency-information-block block-views-agency-information-block odd block-without-title" id="block-views-agency-information-block">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-agency-information view-id-agency_information view-display-id-block view-dom-id-c3fe17acdcc6c41a21cf6b5a87bef5d7">
+            <div class="view-header">
+      <h2>Department of Corrections<br>
+</h2>    </div>
+  
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-image">        <div class="field-content"><a href="/"><img typeof="foaf:Image" src="https://doc.dc.gov/sites/default/files/styles/callout_interior_graphic/public/dc/sites/doc/agency_content/images/dc_doc_horizontal_logo_web.jpg?itok=7iRm75iQ" width="192" height="78" alt="Department of Corrections" title="Department of Corrections"></a></div>  </div>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><div class="view-agency-information-details">
+<strong>Office Hours</strong><br>Monday to Friday, 8 am to 5 pm<br><br><strong>Connect With Us</strong><br>2000 14th Street, NW, Seventh Floor, Washington, DC 20009
+<br>Phone: (202) 698-4932<br>
+Fax: (202) 671-2043<br>
+TTY: 711<br>
+
+Email: <a href="/cdn-cgi/l/email-protection#2642494566424508414950" title="doc@dc.gov"><span class="__cf_email__" data-cfemail="acc8c3cfecc8cf82cbc3da">[email protected]</span></a><br><br><a href="https://www.youtube.com/channel/UCBmbbdsKBjJXi3JacSVSUNw?feature=watch"><img src="/sites/default/files/dc/shared_assets/social_icons/youtube.png" title="youtube" alt="youtube"></a>
+
+<a href="https://www.facebook.com/dccorrections"><img src="/sites/default/files/dc/shared_assets/social_icons/facebook.png" title="facebook" alt="facebook"></a>
+<a href="https://twitter.com/dccorrections"><img src="/sites/default/files/dc/shared_assets/social_icons/twitter.png" title="twitter" alt="twitter"></a>
+<a href="https://www.linkedin.com/company/3723637?trk=vsrp_companies_res_name&amp;trkInfo=VSRPsearchId%3A682213341424813903771%2CVSRPtargetId%3A3723637%2CVSRPcmpt%3Aprimary"><img src="/sites/default/files/dc/shared_assets/social_icons/linkedin.png" title="linkedin" alt="linkedin"></a>
+<a href="https://www.instagram.com/dccorrections/?hl=en"><img src="/sites/default/files/dc/shared_assets/social_icons/instagram.png" title="instagram" alt="instagram"></a>
+
+
+
+
+<div class="views-field-field-askthedirectortitle">
+<a href="https://dcforms.dc.gov/webform/dc-department-correction-ask-director" title="Ask the Director" target="_blank">Ask the Director</a><br>
+</div>
+<a href="http://openbi.dc.gov/QvAJAXZfc/opendocnotoolbar.htm?document=Userdoc%2FqcomVariableButton.qvw&amp;Bookmark=Document%5CBM43" title="Agency Performance" target="_blank">Agency Performance</a><br><div class="field field-name-field-language-support field-type-node-reference field-label-hidden"><div class="field-items">
+<div class="field-item even"><a href="/page/amharic-%E1%8A%A0%E1%88%9B%E1%88%AD%E1%8A%9B-5">Amharic (አማርኛ)</a></div>
+<div class="field-item odd"><a href="/page/chinese-%E4%B8%AD%E6%96%87-5">Chinese (中文)</a></div>
+<div class="field-item even"><a href="/page/french-fran%C3%A7ais-5">French (Français)</a></div>
+<div class="field-item odd"><a href="/page/korean-%ED%95%9C%EA%B5%AD%EC%96%B4-5">Korean (한국어)</a></div>
+<div class="field-item even"><a href="/page/spanish-espa%C3%B1ol-2">Spanish (Español)</a></div>
+<div class="field-item odd"><a href="/page/vietnamese-ti%E1%BA%BFng-vi%E1%BB%87t-5">Vietnamese (Tiếng Việt)</a></div>
+</div></div>
+</div></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <br style="clear:both">
+</div>
+  
+  
+</div>    </div>
+  </div>
+</div>
+<div class="block block-views block-d57ea9063772fb95c21cdfa73d7c2d80 block-views-d57ea9063772fb95c21cdfa73d7c2d80 even block-without-title" id="block-views-d57ea9063772fb95c21cdfa73d7c2d80">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-agency-information view-id-agency_information view-display-id-agency_director view-dom-id-289ff56957ce02bcb6fcf802b57503e1">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <div class="views-field views-field-field-image">        <div class="field-content"><a href="/biography/quincy-l-booth"><img typeof="foaf:Image" src="https://doc.dc.gov/sites/default/files/styles/thumbnail/public/dc/sites/doc/biography_content/images/pic%20for%20hks_206x155jpg.jpg?itok=oCycWLGp" width="75" height="56" alt="Quincy L. Booth" title="Quincy L. Booth"></a></div>  </div>  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/biography/quincy-l-booth">Quincy L. Booth</a></span>  </div>  
+  <div class="views-field views-field-field-position">        <div class="field-content">Director</div>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  </div>
+</div>  </div>
+</aside><div class="grid-12 region region-content" id="region-content">
+  <div class="region-inner region-content-inner">
+	 <div class="block block-text-resize">
+	<a href="javascript:;" class="changer" id="text_resize_decrease"><sup>-</sup>A</a> <a href="javascript:;" class="changer" id="text_resize_increase"><sup>+</sup>A</a><div id="text_resize_clear"></div>	 </div>
+
+<div class="pane-add-this">
+	<a class="addthis_button" href="https://www.addthis.com/bookmark.php?v=300&amp;pubid=ra-4dc44024632b89e6">
+	<img alt="Bookmark and Share" height="16" src="https://s7.addthis.com/static/btn/v2/lg-share-en.gif" style="border:0" width="125"></a>
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#async=1#pubid=ra-4dc44024632b89e6"></script><script type="text/javascript">var addthis_config = {ui_click: true}</script>
+</div>
+
+<script src="//cdn1.readspeaker.com/script/6295/webReader/webReader.js?pids=wr" type="text/javascript"></script><div id="readspeaker_button1" class="rs_skip rsbtn rs_preserve">
+    <a rel="nofollow" class="rsbtn_play" accesskey="L" title="Listen to this page using ReadSpeaker webReader" href="//app-na.readspeaker.com/cgi-bin/rsent?customerid=6295&amp;lang=en_us&amp;readid=content-start&amp;url=https://doc.dc.gov/page/coronavirus-prevention">
+        <span class="rsbtn_left rsimg rspart"><span class="rsbtn_text"><span>Listen</span></span></span>
+        <span class="rsbtn_right rsimg rsplay rspart"></span>
+    </a>
+</div>
+
+<div id="content-start">
+    <a id="main-content"></a>
+                <h1 class="title" id="page-title">Coronavirus Prevention</h1>
+                        <div class="block block-system block-main block-system-main odd block-without-title" id="block-system-main">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <article about="/page/coronavirus-prevention" typeof="foaf:Document" class="node node-page node-published node-not-promoted node-not-sticky author-elizabethbrooks odd clearfix" id="node-page-1466366"><span property="dc:title" content="Coronavirus Prevention" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>    
+  
+  <div class="content clearfix">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<h3 class="rtecenter"><strong>Medical Stay-In-Place</strong></h3>
+
+<p><u><strong>Saturday, April 4, 2020 </strong></u>– Your health and safety is extremely important to us. Together, everyone needs to play their part in helping to flatten the curve. To mitigate the possible spread of coronavirus (COVID-19) through DC Department of Corrections (DC DOC) facilities, the Department will implement a medical stay-in-place, <strong>effective immediately</strong>, which will further limit movement of residents and help “flatten the curve”, as we anticipate the pandemic’s peak in the next several weeks.<br>
+During the medical stay in place, the following activities will occur:</p>
+
+<ul>
+<li>Residents will largely be restricted to their cells with the exception of a modified recreation schedule, where groups no larger than five are out at any one time, and practice social distancing of six feet to the fullest extent possible;</li>
+	<li>All non-urgent medical visits will be re-scheduled to minimize movement. To the extent possible medical care will be provided on the unit; </li>
+	<li>Commissary will continue once a week as scheduled;</li>
+	<li>Laundry will continue once a week as scheduled;  </li>
+	<li>Out of cell time <strong>is one hour</strong> each day for phone calls, showers, and cell wipe down;</li>
+</ul>
+<h3 class="rtecenter"> </h3>
+
+<h3 class="rtecenter"><strong>DC Department of Corrections’ COVID-19 Response FAQs</strong></h3>
+
+<p><strong>Has the District of Columbia Department of Corrections (DOC) taken steps to mitigate the spread of the COVID-19 virus throughout its facilities?</strong><br>
+Yes, DOC put in place a COVID-19 response plan prior to the report of the first individual testing positive for infection. The Department has taken a number of steps consistent with this plan to mitigate the spread of COVID-19 throughout its facilities: These measures are described in detail throughout this frequently asked questions (FAQ) document. </p>
+
+<p><strong>What guidance is being followed to respond to COVID-19?</strong><br>
+DOC is following guidance from DC Health and the Centers for Disease Control (CDC) to make health and safety decisions with regard preventing the spread of COVID-19 among staff and residents in its facilities. This guidance is evolving as more is learned about how the virus spreads and how to reduce transmission. As a result, the steps DOC takes may change or be modified based on this guidance and recommendations.</p>
+
+<p><strong>Is the guidance from CDC related to correctional facilities available for the general public to view?</strong><br>
+Yes. CDC’s guidance for responding to COVID-19 specific to correctional facilities can be found at <a href="https://www.cdc.gov/coronavirus/2019-ncov/community/correction-detention/index.html">https://www.cdc.gov/coronavirus/2019-ncov/community/correction-detention/index.html</a>.</p>
+
+<p><strong>What steps has DOC taken to help residents stay clean and healthy?</strong><br>
+Each resident receives a new bar of soap every week, free of charge. If they use up their bar of soap before the end of the week, DOC provides them an additional bar of soap. Each resident has access to a sink. They enjoy constant access to running water. They can frequently wash their hands to prevent spread of the virus. DOC conducts weekly clothing exchanges and weekly linen exchanges, so residents regularly receive clean clothing and linens.</p>
+
+<p><strong>What about hand sanitizer?</strong><br>
+CDC guidance recommends frequently washing with soap and water where soap and water are available. In fact, the CDC guidelines clarify that soap is more effective at killing germs. (<a href="https://www.cdc.gov/handwashing/pdf/hand-sanitizer-factsheet.pdf">https://www.cdc.gov/handwashing/pdf/hand-sanitizer-factsheet.pdf</a>).  CDC recommends that hand sanitizer should be spared for situations in which soap and water are not available. Staff is provided with access to hand sanitizer, because they will not have the same close, immediate access to soap and water that a resident does (who has the soap and water in their cell). DOC is acting consistently with this guidance.</p>
+
+<p><strong>What is DOC doing to help families and loved ones stay connected to residents?</strong><br>
+While all non-legal visits to DOC facilities have been halted to prevent transmission of COVID-19, DOC residents are still able to connect to families and loved ones through video-visits, phone calls and letters.</p>
+
+<p><strong>How has DOC operations responded?</strong><br>
+In response to the COVID-19 pandemic, Director Booth has activated the agency’s Incident Command Team, where each day, DOC’s department heads meet to discuss measures to combat the spread of COVID-19 in its facilities. DOC also meets with local detention stakeholders daily to discuss the spread of COVID-19 in the District.</p>
+
+<p><strong>Does DOC staff have Personal Protection Equipment (PPE)?</strong><br>
+Despite the national shortage of personal protective equipment, PPE, DOC is providing PPE to all staff including surgical masks and gloves. Staff working in DOC’s isolation units are provided with N95 masks, gowns and eye protection. This follows the current guidance provided by DC Health. <a href="/sites/default/files/dc/sites/doc/page_content/attachments/DOC-PPE-Infographic.pdf">The PPE guidelines are available here</a>.</p>
+
+<p><strong>What is the DOC doing to inform residents and staff of preventative measures they should take?</strong><br>
+DOC’s medical staff meets with staff and residents on DOC’s housing units to discuss COVID-19 preventative measures. DOC staff also provides training to the residents in its facilities on how to report to medical if experiencing symptoms such as dry cough or fever. Finally, DOC placed posters and signage throughout DOC’s facilities to remind staff and residents about what they should do to prevent the spread of COVID-19. </p>
+
+<p><strong>How is DOC supporting staff during this time?</strong><br>
+DOC’s medical staff connects with staff on a regular basis informing them about COVID-19 and how to properly take care of and protect themselves. COVID-19 updates are provided at Roll Call.  Staff who are in areas impacted by COVID-19 are trained and provided appropriate PPE, in accordance with CDC guidelines. The communications team links staff to virtual wellness resources. </p>
+
+<p><strong>How is DOC keeping facilities clean to prevent transmission of the virus?</strong><br>
+In addition to its standard facility cleaning practices, DOC mandates a cleaning of the common spaces and housing unit common areas in its facilities every two hours, on the <strong>am-4pm</strong> and <strong>pm-12pm</strong> shifts and twice during the <strong>M+Am-am</strong> shift, to provide adequate sanitization of high use and high touch areas.</p>
+
+<p><br><strong>What specific steps has DOC taken to prevent COVID-19 from entering the facility?</strong><br>
+DOC began screening staff and visitors with the CDC recommended screening questions on March 13th. Starting March 14th, DOC halted all non-legal visits to DOC facilities to prevent person to person transmission of the virus.</p>
+
+<p>All new residents entering a DOC facility are quarantined for 14 days with enhanced monitoring of any symptoms before they are assigned to their permanent housing unit.</p>
+
+<p>DOC has modified resident movement and activity at its facilities so that residents will only be moved from their housing units for court appearances, medical and dental appointments, work details and legal visits/calls. </p>
+
+<p>Finally, DOC has been in regular communication with subject matter experts (SME) at the National Commission on Correctional Health Care (NCCHC) to review its medical processes. DOC’s medical processes have been approved and the SME have approved of and support DOC’s proactive measures. DOC continues to modify operations consistent with guidance and recommendations from DC Health.</p>
+
+<p><strong>What does the DOC do to screen staff and legal visitors for the virus?</strong><br>
+Everyone entering a DOC facility, including – legal visitors, DOC employees, and residents—is screened for COVID-19 or flu symptoms, using a thermometer and a screening survey. The DOC staff conducting the screening wear masks and gloves, and DOC maintains the surveys, preserving a record of each screening. Staff who screen positive are sent away. The District offers COVID-19 testing for Correctional Officers at its first responder screening site.</p>
+
+<p><strong>What about residents? How does DOC screen residents?</strong><br>
+Upon arrival at a DOC facility, new residents are screened for COVID-19 or flu symptoms by an officer. If the resident has a positive screen they are immediately provided a surgical mask and sent to a qualified medical professional (stationed at the Inmate Reception Center, IRC) for evaluation. DOC then implements the qualified medical professional’s recommendations in consultation with DC Health.</p>
+
+<p><strong>How does DOC prevent pre-symptomatic and asymptomatic transmission from new residents?</strong><br>
+Again, all new residents entering a DOC facility are quarantined for 14 days with enhanced monitoring of any symptoms before they are assigned to their permanent housing unit.</p>
+
+<p><strong>How is DOC protecting the health of medically vulnerable residents?</strong><br>
+DOC closely monitors residents with medical conditions that make them particularly vulnerable to COVID-19. This includes prioritizing medical visits for residents with chronic and high-risk conditions and increasing medical services delivered on the units to decrease the need for movement throughout the facility. </p>
+
+<p><strong>What has DOC done to separate infected or potentially infected persons from transmitting the virus?</strong><br>
+Consistent with recommendations and guidance from DC Health and the CDC, DOC employs every effort possible to separate infected or potentially infected individuals from the rest of the incarcerated population. Thus, DOC established and engages in non-punitive quarantine for any resident believed to have been exposed to COVID-19, but is not yet symptomatic. Those who are infected are placed in non-punitive isolation with appropriate medical care.</p>
+
+<p><strong>What is DOC doing to hasten the release of inmates similar to other jails in other states?</strong><br>
+In the District, neither the DOC nor the Mayor has the legal authority to release residents from jail. The committing authorities, the DC Superior Court, Federal Bureau of Prisons, US Parole Commission, Court Services and Offender Supervision Agency, and the US Marshall’s Service, have the authority to release residents under their respective jurisdictions. The DOC is working diligently with these and other partner agencies to ensure that all official orders are faithfully executed in a timely way.<br>
+In response to the COVID-19 Response Emergency Amendment Act of 2020, DOC has modified its good time credit policy to allow eligible residents to receive up to 20 good time credits per month.</p>
+
+<p><strong>For updated COVID-19 data in the District, please visit</strong> <a href="https://coronavirus.dc.gov/page/coronavirus-data">https://coronavirus.dc.gov/page/coronavirus-data</a></p>
+
+<p>For the latest information on the District Government’s response to COVID-19 (Coronavirus), please visit <a href="https://coronavirus.dc.gov.">coronavirus.dc.gov</a>.</p>
+
+<p><br>
+ </p>
+
+<h3 class="rtecenter"><strong>Medical Stay-In-Place</strong></h3>
+
+<h3>
+<strong>Saturday, April 4, 2020</strong> – Your health and safety is extremely important to us. Together, everyone needs to play their part in helping to flatten the curve. To mitigate the possible spread of coronavirus (COVID-19) through DC Department of Corrections (DC DOC) facilities, the Department will implement a medical stay-in-place, <strong>effective immediately</strong>, which will further limit movement of residents and help “flatten the curve”, as we anticipate the pandemic’s peak in the next several weeks.</h3>
+
+<h3>During the medical stay in place, the following activities will occur:</h3>
+
+<ul>
+<li>
+	<h3>Residents will largely be restricted to their cells with the exception of a modified recreation schedule, where groups no larger than five are out at any one time, and practice social distancing of six feet to the fullest extent possible;</h3>
+	</li>
+	<li>
+	<h3>All non-urgent medical visits will be re-scheduled to minimize movement. To the extent possible medical care will be provided on the unit; </h3>
+	</li>
+	<li>
+	<h3>Commissary will continue once a week as scheduled;</h3>
+	</li>
+	<li>
+	<h3>Laundry will continue once a week as scheduled;  </h3>
+	</li>
+	<li>
+	<h3>Out of cell time of 30 minutes each day for phone calls, showers, and cell wipe down;</h3>
+	</li>
+	<li>
+	<h3>Parole Commission and Video Court Hearings would continue;</h3>
+	</li>
+	<li>
+	<h3>Medical escorts will continue for matters that cannot be handled on the unit;</h3>
+	</li>
+	<li>
+	<h3>Disciplinary hearings will continue as scheduled;</h3>
+	</li>
+	<li>
+	<h3>Culinary and Environmental details will continue as scheduled;</h3>
+	</li>
+	<li>
+	<h3>Mail services will continue as scheduled;</h3>
+	</li>
+	<li>
+	<h3>Stop all group activities and minimize the number of residents participating in recreation on tier (no more than 10 at a time); </h3>
+	</li>
+	<li>
+	<h3>Cease all movement between facilities unless in an emergency situation; </h3>
+	</li>
+	<li>
+	<h3>Cease all video visitation; and </h3>
+	</li>
+	<li>
+	<h3>Cease all visits with attorneys unless actively in trial for the same reason listed above.</h3>
+	</li>
+</ul>
+<h3>These changes are for the health and safety of our workforce, residents, and contractors.</h3>
+
+<h3>Please continue to utilize health and safety precautions to help keep our DOC facilities, staff, and residents safe and healthy. Follow the guidance below on how to reduce your risk of infection and slow its spread.</h3>
+
+<h3>Thoroughly wash your hands for at least 20 seconds.</h3>
+
+<ul>
+<li>
+	<h3>Avoid close contact with people who are sick.</h3>
+	</li>
+	<li>
+	<h3>Avoid touching your eyes, nose, and mouth </h3>
+	</li>
+	<li>
+	<h3>Sanitize your equipment.</h3>
+	</li>
+	<li>
+	<h3>Follow the safety protocols in place at each of the DOC facilities.</h3>
+	</li>
+	<li>
+	<h3>If you are sick, contact your healthcare provider and request sick leave through your supervisor.</h3>
+	</li>
+</ul>
+<h3>Thank you for your continued commitment to serving our city and our neighbors.</h3>
+
+<h3>For the latest information on the District Government’s response to COVID-19 (Coronavirus), please visit <a href="https://coronavirus.dc.gov"><font color="#000080">www.coronavirus.dc.gov</font></a>
+</h3>
+
+<h3 class="rtecenter"> </h3>
+
+<h3 class="rtecenter"><strong>Modified Movement and Activities</strong></h3>
+
+<p><strong>Effective</strong> <strong>4:30 p.m... Friday, March 27, 2020 </strong>– To mitigate the possible spread of coronavirus (COVID-19) through DC Department of Corrections (DC DOC) facilities, the Department will move to modified movement and activities <strong>effective immediately</strong>.</p>
+
+<p>For the safety of our workforce, residents, and contractors, DOC is implementing modified operations to minimize risk in our facilities, as much as practicable. This includes the cancellation of off-unit religious services, halting off-unit activities, and suspending barbering/cosmetology services.</p>
+
+<p>All residents are being authorized for movements under the following conditions:</p>
+
+<ul>
+<li>Court (in-person and teleconference);</li>
+	<li>Medical, mental health, and dental appointments;</li>
+	<li>Work detail; and</li>
+	<li>Legal visits/phone calls.</li>
+</ul>
+<p>On-unit activities will continue, which includes groups, video visitation visits, phone calls, showers, and modified recreation. Modified recreation will include a reduction in out-of-cell time (minimum of 2.5 hours daily) to reduce the number of social contacts. Individual and small group religious services can continue on housing units. Medical is developing a plan to provide services on the units when appropriate. DOC is exploring opportunities to provide paper-based mental stimulation activities for residents such as books, word searches and crossword puzzles, Sudoku etc. The College and Career Readiness (CCR) division will continue to utilize virtual education tools available on the tablets as well as creating education packets for any of the population who are interested. The Programs and Case Management (PCM) division will be providing tablets and some paper-based programming, but no groups will be held by PCM staff.</p>
+
+<p>Please continue to practice health and safety precautions to help keep our DOC facilities, staff, and residents safe and healthy. Follow the guidance below on how to reduce your risk of infection and slow its spread.</p>
+
+<ul>
+<li>Thoroughly wash your hands for at least 20 seconds.</li>
+	<li>Avoid close contact with people who are sick.</li>
+	<li>Avoid touching your eyes, nose, and mouth</li>
+	<li>Sanitize your equipment.</li>
+	<li>Follow the safety protocols in place at each of the DOC facilities.</li>
+	<li>If you are sick, contact your healthcare provider and request sick leave through your supervisor.</li>
+</ul>
+<p>Thank you for your continued commitment to serving our city and our neighbors.</p>
+
+<p><strong>For more information about COVID-19, visit:</strong></p>
+
+<p><a href="https://coronavirus.dc.gov/">https://coronavirus.dc.gov/</a></p>
+
+<p><a href="https://cdc.gov/coronavirus/2019-ncov/index.html">https://cdc.gov/coronavirus/2019-ncov/index.html</a></p>
+
+<p><a href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/">https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/</a></p>
+
+<p><br><strong>PLEASE READ AT ALL ROLL CALLS FOR SEVEN (7) CONSECUTIVE DAYS AND POST ON ALL APPROPRIATE BULLETIN BOARDS</strong></p>
+
+<p>For the latest information on the District Government’s response to COVID-19 (Coronavirus), please visit <a href="https://coronavirus.dc.gov"><font color="#000080">www.coronavirus.dc.gov</font></a>.</p>
+
+<p> </p>
+
+<h3 class="rtecenter"><strong>Staying in Communication with Your Loved Ones </strong></h3>
+
+<p>The Department of Corrections (DOC) has suspended all in-person visits, programming, and volunteer activities at its facilities for the entirety of the Public Health Emergency. To help you stay in communication with your loved ones during this unprecedented time, DOC and Global Tel Link (GTL) will provide two free 5-minute phone calls and one free 15-minute video call per week beginning March 20, 2020 through April 27, 2020. Securus Technologies will also provide two free calls per inmate per week, at the Correctional Treatment Facility. Phone calls and video visitations will be provided as conditions and security allow.</p>
+
+<p><strong>Free Calls: </strong><br>
+- Free call schedule dates will be provided on the following cycle:</p>
+
+<ul>
+<li>March 20-21, 2020</li>
+	<li>March 22-28, 2020</li>
+	<li>March 29-April 4, 2020</li>
+	<li>April 5-11, 2020</li>
+	<li>April 12-18, 2020</li>
+	<li>April 19-25, 2020</li>
+</ul>
+<p>- All persons incarcerated at the time free calls are offered will be provided two free 5-minute calls each week (Sunday-Saturday).<br>
+- You will not hear a free call message when making a call: only the called party will hear a message saying the call is provided at no charge before accepting the call.<br>
+- The two free calls will be applied to the first two calls you make each week (on the schedule above).<br>
+- If the free weekly calls are not used, no credit will be given.</p>
+
+<p><strong>Free Remote Visits: </strong><br>
+For a thirty-day period, GTL agrees to provide each inmate at the DC Department of Corrections one free video visit per week, lasting up to fifteen minutes.</p>
+
+<p><strong>Video Visitation Center: </strong><br>
+The Department will provide video visitation for inmates while in-person visitation is suspended. The VVC is located behind the Correctional Treatment Facility (1901 E Street, SE, Washington, DC 20009), on the ground level of The READY Center. All visits will continue to be scheduled via the Internet at  <a href="https://visitation.doc.dc.gov/app">https://visitation.doc.dc.gov/app</a> or by calling 1 (888) 906-6394 or (202) 442-6155 (Tuesday through Saturday from 9 am-5 pm).</p>
+
+<p>For more information on the District’s response to COVID-19, visit <a href="https://coronavirus.dc.gov">www.coronavirus.dc.gov</a>. </p>
+
+<p> </p>
+
+<p class="rtecenter"><strong>DC Department of Corrections Halts In-Person Visitations</strong></p>
+
+<p><strong>UPDATE: Effective 11:59 p.m... Saturday, March 14, 2020</strong> – In order to protect our residents, staff, and their families, the DC Department of Corrections is suspending all in-person visits, programming, and volunteer activities at its facilities for the entirety of the Public Health Emergency declared on March 11, 2020. The Department will provide video visitation for inmates while in-person visitation is suspended. While we recognize the significant impact this will have on inmates, their families, and loved ones, we are guided by medical experts who recommend social distancing measures as a proven method for preventing the spread of COVID-19. </p>
+
+<p>As the Centers for Disease Control and DC Health guidelines and recommendations change, DOC will provide updated information to everyone in our facilities. For more information regarding the coronavirus, please visit <a href="https://coronavirus.dc.gov">www.coronavirus.dc.gov</a>.</p>
+
+<p class="rtecenter"><strong>*  *  *</strong></p>
+
+<p>DC Department of Corrections Puts in Place New Policies to Protect Residents, Visitors, and Staff from COVID-19 and Ensure Continued Visitations, Including Screening Upon Entry  </p>
+
+<p>The DC Department of Corrections takes the safety and well-being of DOC residents, visitors, staff, volunteers, and contractors extremely seriously.</p>
+
+<p>As we continue to monitor COVID-19 in our community and follow guidance from DC Health and the Centers for Disease Control and Prevention, we are taking necessary steps to protect everyone in our facilities and ensure that residents can continue to safely receive visitors.  </p>
+
+<ul>
+<li>Established Incident Command Team</li>
+	<li>Medical Staff is staying vigilant and meeting with each housing unit and officer roll call</li>
+	<li>Developed and implemented a strategic communications plan</li>
+	<li>Enhanced cleaning efforts, especially within common areas</li>
+	<li>Ordered additional cleaning and sanitation supplies, including protective gloves, masks and clothing for staff</li>
+	<li>Initiated a two-hour cleaning of the entire facility (sanitizing and reminding people to wash their hands)</li>
+	<li>Continuously partnering and sharing info with our criminal justice partners</li>
+	<li>Sending daily COVID-19 emails to all employees to keep everyone informed</li>
+</ul>
+<p><b>Effective March 11, 2020</b>, in an effort to prevent the potential spread of the Coronavirus (COVID-19) throughout the District of Columbia Department of Corrections (DC DOC) facilities; Central Detention Facility (CDF) Correctional Treatment Facility (CTF), Central Cell Block (CCB), VVC (Video Visitation Center), The Center for Professional Development and Learning (CPDL), and The Ready Center, DOC will screen all staff and visitors (friends, family members, attorneys, contractors, volunteers, etc.) for the virus before they are allowed to enter the facilities. The screening will take place at the main entrances of the facilities. DOC staff and visitors will be asked if they are currently experiencing flu-like symptoms (cough, fever or shortness of breath), if they have come into direct contact with a person with the COVID-19 virus, or if they have recently traveled to country affected by the COVID-19 virus. If DOC staff responds “yes” to any of these questions, they will be sent home and advised to see their health care provider. If a visitor responds “yes” to any of these questions or exhibits obvious flu-like symptoms, they will be denied entry to the facilities.</p>
+
+<p>We will continue to keep you up to date on all DOC efforts regarding the coronavirus. As CDC and DC Health guidelines and recommendations change, we will provide updated information to everyone in our facilities. Also, for more information regarding the coronavirus, please visit <a href="https://coronavirus.dc.gov">www.coronavirus.dc.gov</a>.</p>
+</div></div></div>  </div>
+  
+  <div class="clearfix">
+          <nav class="links node-links clearfix"></nav>
+</div>
+</article>
+</div>
+  </div>
+</div>    </div>
+  </div>
+</div>
+<aside class="grid-6 region region-sidebar-second" id="region-sidebar-second" aria-labelledby="region-sidebar-second"><div class="region-inner region-sidebar-second-inner">
+    <div class="block block-views block-features-blocks-interior-1 block-views-features-blocks-interior-1 odd block-without-title" id="block-views-features-blocks-interior-1">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-features-blocks view-id-features_blocks view-display-id-interior_1 view-dom-id-25e348c889da1f005627e62d92cdd492">
+        
+  
+  
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  </div>
+</div>
+<div class="block block-views block-features-blocks-interior-2 block-views-features-blocks-interior-2 even block-without-title" id="block-views-features-blocks-interior-2">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-features-blocks view-id-features_blocks view-display-id-interior_2 view-dom-id-3ee2bae0b7834f5ba43d0521b72d5d17">
+        
+  
+  
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  </div>
+</div>
+<div class="block block-views block-features-blocks-interior-3 block-views-features-blocks-interior-3 odd block-without-title" id="block-views-features-blocks-interior-3">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-features-blocks view-id-features_blocks view-display-id-interior_3 view-dom-id-1a48b67b3bf4965662e833d4e4d68c59">
+        
+  
+  
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  </div>
+</div>
+<div class="block block-views block-features-blocks-interior-4 block-views-features-blocks-interior-4 even block-without-title" id="block-views-features-blocks-interior-4">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="view view-features-blocks view-id-features_blocks view-display-id-interior_4 view-dom-id-fb920ad4acdf78a4c30ea492a9d97032">
+        
+  
+  
+  
+  
+  
+  
+  
+  
+</div>    </div>
+  </div>
+</div>  </div>
+</aside>
+</div>
+</div>
+<div id="zone-postscript-wrapper" class="zone-wrapper zone-postscript-wrapper clearfix">  
+  <div id="zone-postscript" class="zone zone-postscript clearfix container-12">
+    <div class="grid-3 region region-postscript-first" id="region-postscript-first">
+  <div class="region-inner region-postscript-first-inner">
+    <div class="block block-block block-92 block-block-92 odd block-without-title" id="block-block-92">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <style type="text/css">p.more-link::after {
+  content: url("/sites/all/themes/dc_home_omega/images/more-arrow.png");
+  display: block;
+  float: right;
+  margin-left: 7px;
+  margin-top: 4px;
+}
+p.more-link a {
+  font-size: 18px;
+  font-family: Roboto-Regular;
+}
+</style>
+<div id="resource-icon-section">
+<div class="resource-content-block twitter-resource-icon" title="Twitter">
+<div class="resource-icon-text"><a alt="Twitter" href="/twitter" title="Twitter">Twitter</a></div>
+</div>
+
+<div class="resource-content-block facebook-resource-icon" title="Facebook">
+<div class="resource-icon-text"><a alt="Facebook" href="/facebook" title="Facebook">Facebook</a></div>
+</div>
+
+<div class="resource-content-block mobile-resource-icon" title="Mobile">
+<div class="resource-icon-text"><a alt="Mobile" href="https://dc.gov/page/mobile-apps" title="Mobile">Mobile</a></div>
+</div>
+
+<div class="resource-content-block maps-resource-icon" title="Maps">
+<div class="resource-icon-text"><a alt="Maps" href="https://octo.dc.gov/page/online-maps-listing" title="Maps">Maps</a></div>
+</div>
+
+<div class="resource-content-block webcasts-resource-icon" title="Webcasts">
+<div class="resource-icon-text"><a alt="Webcasts" href="/webcasts" title="Webcasts">Webcasts</a></div>
+</div>
+
+<div class="resource-content-block rss-resource-icon" title="RSS">
+<div class="resource-icon-text"><a alt="RSS" href="/rss" title="RSS">RSS</a></div>
+</div>
+
+<div class="resource-content-block data-resource-icon" title="Data">
+<div class="resource-icon-text"><a alt="Data" href="http://opendata.dc.gov" title="Data">Data</a></div>
+</div>
+
+<div class="resource-content-block subscribe-resource-icon" title="Subscribe">
+<div class="resource-icon-text"><a alt="Subscribe" href="/subscribe" title="Subscribe">Subscribe</a></div>
+</div>
+</div>
+
+<p class="more-link"><a class="more-links" href="/district-resources">More Resources</a></p>
+    </div>
+  </div>
+</div>  </div>
+</div>  </div>
+</div></section><footer id="section-footer" class="section section-footer"><div id="zone-prefooter" class="zone zone-prefooter clearfix container-12">
+    <div class="grid-24 region region-prefooter-first" id="region-prefooter-first">
+  <div class="region-inner region-prefooter-first-inner">
+      </div>
+</div>  </div>
+<div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
+  <div id="zone-footer" class="zone zone-footer clearfix container-12">
+    <div class="grid-12 region region-footer-first" id="region-footer-first">
+  <div class="region-inner region-footer-first-inner">
+    <div class="block block-block block-112 block-block-112 odd block-without-title" id="block-block-112">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="dcFooter">
+<div class="dcBar">
+<div class="dcFooterListLower" id="resources-link">
+<ul>
+<li class="dcFirstChild"><a title="Resources" href="/district-resources">Resources</a></li>
+</ul>
+</div>
+<span class="dcFooterList">
+<div class="footer-icon"><img title="District News" alt="District News" src="/sites/default/files/dc/shared_assets/map_icon_footer.png"></div>
+<div class="dcFooterLabel">District News</div>
+<ul id="list">
+<li><a title="Mayors Public Schedule" href="http://mayor.dc.gov/newsroom">Mayor's Public Schedule</a></li>
+<li><a title="Citywide News" href="http://newsroom.dc.gov">Citywide News</a></li>
+<li><a title="Citywide Calendar" href="http://calendar.dc.gov">Citywide Calendar</a></li>
+<li><a target="_blank" class="ext" title="Subscribe to Emails" href="https://service.govdelivery.com/service/user.html?code=DCWASH">Subscribe to Receive Emails</a></li>
+<li><a title="Subscribe to Text Alerts" href="https://textalert.ema.dc.gov/index.php?CCheck=1">Subscribe to Text Alerts</a></li>
+<li><a target="_blank" class="ext" title="Subscribe to Newsletters" href="https://public.govdelivery.com/accounts/DCWASH/subscriber/new?">Subscribe to Newsletters</a></li>
+</ul></span>
+<span class="dcFooterList">
+<div class="footer-icon"><img title="District Initiatives" alt="District Initiatives" src="/sites/default/files/dc/shared_assets/infoCenter_icon_footer.png"></div>
+<div class="dcFooterLabel">District Initiatives</div>
+<ul id="list2">
+<li><a title="Green DC" href="http://green.dc.gov">Green DC</a></li>
+<li><a title="Age-Friendly DC" href="http://agefriendly.dc.gov">Age-Friendly DC</a></li>
+<li><a title="Sustainable DC" href="http://sustainable.dc.gov">Sustainable DC</a></li>
+<li><a title="Connect DC" href="http://connect.dc.gov">Connect DC</a></li>
+<li><a title="Great Streets" href="http://greatstreets.dc.gov">Great Streets</a></li>
+<li><a title="Ready DC" href="http://ready.dc.gov/">Ready DC</a></li>
+</ul></span>
+<span class="dcFooterList">
+<div class="footer-icon"><img title="About DC" alt="About DC" src="/sites/default/files/dc/shared_assets/community_icon_footer.png"></div>
+<div class="dcFooterLabel">About DC</div>
+<ul id="list3">
+<li><a title="Open DC" href="http://open.dc.gov">Open DC</a></li>
+<li><a title="Budget" href="http://cfo.dc.gov/budget">Budget</a></li>
+<li><a title="Emancipation" href="http://emancipation.dc.gov">Emancipation</a></li>
+<li><a title="Consumer Protection" href="https://oag.dc.gov/consumer-protection">Consumer Protection</a></li>
+<li><a title="Contracts" href="http://dc.gov/contracts">Contracts</a></li>
+<li><a title="Property Quest" href="http://propertyquest.dc.gov">Property Quest</a></li>
+</ul></span>
+<span class="dcFooterList">
+<div class="footer-icon"><img title="Contact Us" alt="Contact Us" src="/sites/default/files/dc/shared_assets/contact_footer_icon.png"></div>
+<div class="dcFooterLabel">Contact Us</div>
+<ul id="list5">
+<li><a title="Agency Directory" href="https://dc.gov/directory">Agency Directory</a></li>
+<li><a title="Call 311" href="http://311.dc.gov/">Call 311</a></li>
+<li><a title="Contact the Mayor" href="https://dcforms.dc.gov/webform/executive-office-mayor-ask-mayor">Contact the Mayor</a></li>
+<li><a title="Contact Agency Directors" href="/page/contact-agency-directors">Contact Agency Directors</a></li>
+<li><a title="Make FOIA Requests" href="http://foia.dc.gov">FOIA Requests</a></li>
+<li><a title="Report Website Problems" href="http://dcforms.dc.gov/webform/problems-dc-government-website">Report Website Problems</a></li>
+<li><a title="Send Feedback" href="http://feedback.dc.gov">Send Feedback</a></li>
+<li><a title="Service Request Center" href="http://311.dc.gov/">Service Request Center</a></li>
+</ul></span>
+</div>
+</div>    </div>
+  </div>
+</div>  </div>
+</div>  </div>
+</div>
+<div id="zone-second-footer-wrapper" class="zone-wrapper zone-second-footer-wrapper clearfix">  
+  <div id="zone-second-footer" class="zone zone-second-footer clearfix container-24">
+    <div class="grid-24 region region-second-footer" id="region-second-footer">
+  <div class="region-inner region-second-footer-inner">
+    <div class="block block-block block-122 block-block-122 odd block-without-title" id="block-block-122">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div class="dcFooter" style="min-height:130px;">
+<div class="dcBar"> 
+<div class="dcFooterListLower">
+<ul>
+<li class="dcFirstChild"><a href="https://dc.gov/page/dcgov-accessibility-policy" title="Accessibility">Accessibility</a></li>
+	<li><a href="http://dc.gov/page/privacy-and-security" title="Privacy and Security">Privacy and Security</a></li>
+	<li><a href="http://dc.gov/page/terms-and-conditions-use" title="Terms and Conditions">Terms and Conditions</a></li>
+	<li><a href="http://dc.gov/page/about-district-government-website" title="About DC.Gov">About DC.Gov</a></li>
+	<li class="last"> </li>
+</ul>
+</div>
+</div>
+
+<div style="width: 310px;margin-left:auto;margin-right:auto;">
+<div style="background-color: #fff;padding: 1px;width: 120px;float:left;margin: 0 10px 5px 0;"><a href="http://govtech.com" target="_blank" title="Best of the Web 2014"><img alt="Best of the Web logo 2014" src="/sites/default/files/dc/shared_assets/BOW14_Winner.png" style="width:110px;padding:3px;"></a></div>
+
+<div style="background-color: #fff;padding: 3px;width: 120px;float:left;">
+<a href="http://govtech.com" target="_blank" title=""><img alt="Best of the Web logo 2013" src="/sites/default/files/dc/shared_assets/BOW13_final.jpg" style="width:110px;"></a>
+
+<div> </div>
+</div>
+<!-- include IF Vox before closing HEAD tag -->
+<script type="text/javascript">(function(){setTimeout(function(){var d=document,t='script',f=d.getElementsByTagName(t)[0],s=d.createElement(t);s.type='text/java'+t;s.async=true;s.src='//d2rnkf2kqy5m6h.cloudfront.net/vxc/uwxO-8vMSgaKorrjBbcQ1A/surveys.js?'+(new Date)/1;f.parentNode.insertBefore(s,f);},1);})();</script>
+</div>
+</div>    </div>
+  </div>
+</div>  </div>
+</div>  </div>
+</div></footer>
+</div>  <div class="region region-page-bottom" id="region-page-bottom">
+  <div class="region-inner region-page-bottom-inner">
+      </div>
+</div>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"348872d504","applicationID":"496267014","transactionName":"YVYAZxQEC0EHBhVYWVgcI1ASDApcSQsOVVNpQwNUAzoTWwMS","queueTime":0,"applicationTime":349,"atts":"TREDEVweGE8=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+</body>
+</html>

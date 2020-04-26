@@ -7,9 +7,15 @@ get_all_current_website_pages <- function() {
   sheet_info$state <- tolower(sheet_info$state)
   sheet_info$state <- gsub(" ", "_", sheet_info$state)
   
+  # Date when scraper starts - for when running scraper late at night and 
+  # it runs until the next morning.
+  scraper_date <- lubridate::today()
+  
   for (i in 1:nrow(sheet_info)) {
     if (!is.na(sheet_info$link[i])) {
-      save_website_pages(url = sheet_info$link[i], state = sheet_info$state[i])
+      save_website_pages(url           = sheet_info$link[i], 
+                         state         = sheet_info$state[i],
+                         scraper_date  = scraper_date)
     }
     print(paste0(sheet_info$state[i], " completed!")) 
   }
@@ -26,14 +32,15 @@ download_site_pdf <- function(directory, url, link) {
                 quiet = TRUE)
 }
 
+
 save_website_pages <- function(url, state) {
   
   directory <- paste0(here::here("data/webpages//"), state, "/", 
-                      lubridate::today(), "/")
+                      scraper_date, "/")
   
   dir.create(directory)
   
-  png_name  <- paste0("webpage_archive_", state, "_", lubridate::today(), ".png")
+  png_name  <- paste0("webpage_archive_", state, "_", scraper_date, ".png")
   png_name  <- gsub(":", "_", png_name)
   png_name  <- paste0(directory, png_name)
   pdf_name  <- gsub(".png$", ".pdf", png_name)
@@ -147,3 +154,4 @@ save_website_pages <- function(url, state) {
     
   }
 }
+
