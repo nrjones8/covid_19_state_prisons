@@ -209,18 +209,18 @@ test_that("column names are as expected", {
                  "state",
                  "scrape_date"))
   
-  # expect_named(indiana,
-  #              c("staff_positive",
-  #                "staff_deaths",
-  #                "inmates_isolated",
-  #                "inmates_isolated_suspected_symptomatic",
-  #                "inmates_quarantined",
-  #                "type_of_housing",
-  #                "inmates_positive",
-  #                "inmates_deaths_probable",
-  #                "inmates_deaths_confirmed",
-  #                "state",
-  #                "scrape_date"))
+  expect_named(indiana,
+               c("staff_positive",
+                 "staff_deaths",
+                 "inmates_isolated",
+                 "inmates_isolated_suspected_symptomatic",
+                 "inmates_quarantined",
+                 "type_of_housing",
+                 "inmates_positive",
+                 "inmates_deaths_probable",
+                 "inmates_deaths_confirmed",
+                 "state",
+                 "scrape_date"))
   
   expect_named(new_hampshire,
                c("facilities",

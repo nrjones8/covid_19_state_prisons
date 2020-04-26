@@ -167,7 +167,6 @@ get_ala_covid_data <- function(ala_doc_path) {
     html_table() 
   # adjust the names of the data
   names(data) <- gsub(" |-|\\*", "_", names(data))
-  # tag the data as well as with the scrape date
   data <-
     data %>%
     dplyr::rename(facilities       = Facility,
@@ -176,38 +175,33 @@ get_ala_covid_data <- function(ala_doc_path) {
                   inmates_positive = Confirmed_Positive_,
                   inmates_deaths   = COVID_19_Related_Inmate_Deaths_) %>%
     mutate(state = "Alabama",
-                      scrape_date = today()) %>% 
+           scrape_date = today()) %>% 
     modify_at(c("inmates_tested",
                 "inmates_pending",
                 "inmates_positive",
-                "inmates_deaths"), readr::parse_number)
+                "inmates_deaths"), 
+              readr::parse_number)
   
   return(data)
 }
 
 # Arizona -----------------------------------------------------------------
 get_arizona_covid_data <- function(az_doc_path) {
-  az_text <- az_doc_path %>%
+  data <- az_doc_path %>%
     # grabs two tables
-    html_nodes("td") %>%
-    html_text() %>%
-    str_trim()
-  # split the facilities table up and rename
-  az_facility_data <- az_text[6:length(az_text)] %>%
-    make_facility_table(1:6,2:6) 
-  names(az_facility_data) <-
-    c(
-      "facilities",
-      "inmates_tested",
-      "inmates_negative",
-      "inmates_positive",
-      "inmates_pending",
-      "daily_total_population"
-    )
-  az_facility_data %>% 
-    mutate(.,
-           state = "Arizona",
-           scrape_date = today())
+    html_nodes("#block-views-covid-19-data-table-block > div > div > table") %>%
+    html_table()
+  data <- data[[1]]
+  names(data) <- gsub(" ", "_", names(data))
+  names(data) <- tolower(names(data))
+  data <-
+    data %>% 
+    dplyr::rename(facilities = location,
+                  inmates_positive = inmates_confirmed) %>%
+    dplyr::mutate(state = "Arizona",
+                  scrape_date = lubridate::today())
+  
+  return(data)
 }
 
 
@@ -672,15 +666,37 @@ get_sc_covid_data <- function(sc_doc_path) {
 
 # Virginia ----------------------------------------------------------------
 get_virginia_covid_data <- function(virginia_doc_path) {
-  virginia_text <- virginia_doc_path %>%
-    html_nodes("tbody td , tbody th") %>%
-    html_text()
-  virginia_data <- virginia_text[6:length(virginia_text)] %>%
-    make_facility_table(1:5, 2:5)
-  names(virginia_data) <- c("facilities","inmates_positive","inmates_hospital","inmates_deaths","staff_positive")
-  virginia_data %>% 
-    mutate(state = "Virginia",
-           scrape_date = today())
+  data <- virginia_doc_path %>%
+    html_nodes("#covid19numbers") %>%
+    html_table()
+  data <- data[[1]]
+  names(data) <- tolower(names(data))
+  names(data) <- gsub(" |\\(|\\)|,|&|\\-", "_", names(data))
+  names(data) <- gsub("on.site", "on_site", names(data))
+  names(data) <- gsub("includes.+recovered", "includes_recovered", names(data))
+  
+  data <-
+    data %>%
+    dplyr::rename(facilities = location,
+                  inmates_positive_on_site = offenders_on_site,
+                  inmates_hospital = offenders_in_hospitals,
+                  inmates_positive = total_positive_offenders_includes_recovered__deceased____released_offenders_,
+                  staff_positive = staff__includes_both_employees___contractors_
+                  ) %>%
+    dplyr::filter(tolower(facilities) != "totals") %>%
+    dplyr::mutate_at(c("inmates_positive_on_site",
+                       "inmates_hospital",
+                       "inmates_positive"),
+                     dplyr::na_if, "n/a") %>%
+    dplyr::mutate_at(c("inmates_positive_on_site",
+                       "inmates_hospital",
+                       "inmates_positive"),
+                     readr::parse_number) %>%
+    dplyr::mutate(state = "Virginia",
+                  scrape_date = lubridate::today())
+  
+
+  return(data)
 }
 
 
