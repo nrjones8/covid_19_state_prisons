@@ -1,5 +1,6 @@
 source(here::here("R","webscraping_state_info.R"))
 
+
 render_all_pages <- function() {
   #covid scraper for connecticut is broken and need a better way to automate from the image on
   # website to text. mass will be directly from aclu
@@ -18,7 +19,7 @@ render_all_pages <- function() {
       delaware = get_delaware_covid_data,
       federal = get_federal_data,
       florida = get_fl_covid_data,
-      georgia = get_georgia_covid_data,
+      # georgia = get_georgia_covid_data,
       idaho = get_idaho_covid_data,
       illinois = get_illinois_covid_data,
       indiana = get_indiana_covid_data,
@@ -44,16 +45,13 @@ render_all_pages <- function() {
       washington = get_washington_covid_data
     )
   
-  urls_to_scrape <- google_prison_sheet %>%
+  data_for_use <- google_prison_sheet %>%
     filter(scraped_binary == 1,
-           !state %in% c("Massachusetts", "Connecticut","Oregon")) %>%
+           !state %in% c("Massachusetts", "Connecticut","Oregon","Georgia")) %>%
     arrange(state) %>% 
     pull(link) %>%
-    map( ~ safe_get(.))
+    map( ~ read_html(.))
   # extract results in a compact way. idk if this is necessary anymore since the links should all technically pass
-  data_for_use <- urls_to_scrape %>%
-    map("result") %>%
-    compact()
   # rename data for use
   
   names(data_for_use) <- names(fns_list)
@@ -80,19 +78,20 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
       "arizona",
       "florida",
       "california",
-      "georgia",
-      "indiana",
       "illinois",
       "louisiana",
       "kansas",
+      "delaware",
       "new_hampshire",
       "north_dakota",
       "iowa",
       "new_jersey",
+      "new_york",
       "ohio",
       "oklahoma",
       "pennsylvania",
       "south_carolina",
+      "north_carolina",
       "texas",
       "montana",
       "virginia",
@@ -101,18 +100,16 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
     )]
   # oregon data needs to be run separately from the above processes since it uses RSelenium
   # but ultimately produces facility level data
-  oregon_data <- get_oregon_covid_data()
+  oregon_data <- get_oregon_covid_data() 
   
   # indiana has two or more  sets of data and will need to be fixed up in the scraper somehow
   cc_facilities  <-
-    states_with_cc_facility[!names(states_with_cc_facility) %in% c("indiana","ohio","new_jersey",
-                                                                   "federal",
+    states_with_cc_facility[!names(states_with_cc_facility) %in% c("ohio","new_jersey",
+                                                                   "federal","new_york",
                                                                    "oklahoma")] %>%
     map(~as_tibble(.)) %>% 
     reduce(bind_rows) %>%
     select(facilities, state, scrape_date, everything()) 
-  cc_facilities %>% 
-    filter(state == "Montana")
   # modifying fed info
   fed_info <- states_with_cc_facility[["federal"]]$offenders %>% 
     rename_with(cols = vars(contains("_amt")),.fn = ~str_remove_all(.,"_amt")) %>% 
@@ -124,10 +121,10 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
   # join all confirmed facilities
   all_confirmed_facilities <-
     list(
-      as_tibble(states_with_cc_facility[["indiana"]]$offenders),
       states_with_cc_facility[["ohio"]]$ohio_facility,
       states_with_cc_facility[["new_jersey"]]$confirmed_nj_doc,
       states_with_cc_facility[["oklahoma"]]$ok_facilities,
+      states_with_cc_facility[["new_york"]]$facilities,
       oregon_data,
       cc_facilities,
       fed_info,
@@ -144,7 +141,7 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
 } 
 
 # write off the facilities level csv
-write_facilities_csv <- function(jails_data,path_to_facilities_data){
+write_facilities_csv <- function(jails_data){
   
   path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
   path_to_facilities_data <- glue("data/daily/{path_to_data}")
@@ -169,7 +166,7 @@ write_facilities_csv <- function(jails_data,path_to_facilities_data){
 write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
   # making the facilities data more modular
   summaries_states_facilities <- data_facilities %>%
-    filter(scrape_date == max(scrape_date,na.rm = T)) %>%
+    filter(scrape_date == max(scrape_date,na.rm = T),state != "New York") %>%
     group_by(state, scrape_date) %>%
     summarise_at(vars(
       contains("positive"),
@@ -185,7 +182,7 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     select(state, scrape_date, everything()) %>%
     modify_at(3:ncol(.),  ~ as.numeric(.)) 
   # extracting ny info
-  new_york_totals <- jails_data$new_york %>%
+  new_york_totals <- jails_data$new_york$totals %>%
     select(state,
            scrape_date,
            inmates_positive = incarcerated_positive,
@@ -197,28 +194,17 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     select(
       state,
       scrape_date,
-      inmates_tests = Tested,
-      inmates_pending = Pending,
-      inmates_positive = Positive,
-      inmates_negative = Negative
+      inmates_tested ,
+      inmates_pending ,
+      inmates_positive ,
+      inmates_negative 
     ) 
-  nc_totals <- jails_data$north_carolina
-  delaware_totals <- jails_data$delaware %>% 
-    select(
-      state,
-      scrape_date,
-      staff_positive = `Correctional Staff_total`,
-      contract_staff_positive = `Contracted Staff_total`,
-      inmates_positive = Offenders_total
-    )
   
   # collapse data into one df
   reduced_data <- list(summaries_states_facilities,
                        alaska_summary,
                        idaho_totals,
                        new_york_totals,
-                       nc_totals,
-                       delaware_totals,
                        jails_data$utah,
                        jails_data$minnesota,
                        jails_data$vermont,
@@ -228,9 +214,9 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
     reduce(bind_rows)
   reduced_data
 }
+
 # writing out the summaries to csvs
 write_summary_csv <- function(reduced_data){
-  reduced_data <- write_state_summaries(data_facilities = data_facilities,jails_data = jails_data,manual_entries = manual_entries)
   
   path_today_summary <- glue("data/daily/state_summaries_{year(today())}_0{month(today())}_{day(today())}.csv")
   
@@ -239,3 +225,4 @@ write_summary_csv <- function(reduced_data){
   reduced_data %>% 
     write_csv("data/daily/state_summaries_current.csv")
 }
+
