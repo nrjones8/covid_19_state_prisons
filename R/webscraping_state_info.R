@@ -127,35 +127,48 @@ get_illinois_covid_data <- function(il_doc_path) {
            scrape_date = today())
 }
 
+na_to_0 <- function(x) {
+  x[is.na(x)] <- 0
+  return(x)
+}
 
 # Pennsylvania ------------------------------------------------------------
 get_pa_covid_data <- function(pa_covid_doc_path) {
-  pa_text <- pa_covid_doc_path %>%
-    html_nodes("br~ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableOddCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default+ .ms-rteTableEvenRow-default .ms-rteTableEvenCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableOddCol-default , br~ .ms-rteTable-default .ms-rteTableOddRow-default .ms-rteTableEvenCol-default"
-    ) %>% 
-    html_text() %>%
-    str_trim()
-  #create a tibble from the data
-  pa_data <- pa_text %>%
-    split(1:7) %>% 
-    as_tibble() %>% 
-    slice(2:nrow(.))
-  # names of the dataframe
-  names(pa_data) <-
-    c(
-      "facilities",
-      "staff_positive",
-      "staff_negative",
-      "staff_deaths",
-      "inmates_positive",
-      "inmates_negative",
-      "inmates_deaths"
-    )
-  pa_data <- pa_data %>%
-    modify_at(2:7,  ~ parse_number(.)) %>% 
-    mutate(state = "Pennsylvania",
-           scrape_date = today())
-  pa_data
+  data <- pa_covid_doc_path %>%
+    html_nodes("table.ms-rteTable-default:nth-child(17)") %>%
+    html_table()
+  data <- data[[1]]
+  
+  column_names <- as.character(as.vector(data[1, ]))
+  column_names <- paste0(column_names, as.character(as.vector(data[2, ])))
+  data <- data[-c(1:2), ]
+  column_names <- gsub(" ", "_", column_names)
+  column_names <- tolower(column_names)
+  column_names <- iconv(column_names, from = 'UTF-8', to = 'ASCII', "")
+  names(data) <- column_names
+  
+  data <-
+    data %>%
+    dplyr::rename(facilities     = location,
+                  staff_positive = employees_positive,
+                  staff_negative = employees_negative,
+                  staff_deaths   = employees_deaths) %>%
+    dplyr::mutate_all(iconv, from = "UTF-8", to = "ASCII", "") %>%
+    dplyr::mutate_at(c("staff_positive",
+                       "staff_negative",
+                       "staff_deaths",
+                       "inmates_positive",
+                       "inmates_negative",
+                       "inmates_deaths"),
+                     readr::parse_number) %>%
+    dplyr::mutate_all(na_to_0) %>%
+    dplyr::mutate(facilities = readr::parse_character(facilities),
+                  state = "Pennsylvania",
+                  scrape_date = today()) %>%
+    dplyr::filter(tolower(facilities) != "total")
+  
+  return(data)
+
 }
 
 
@@ -302,7 +315,7 @@ get_fl_covid_data <- function(fl_doc_path) {
                        "inmates_positive",
                        "staff_positive"),
                      readr::parse_number)
-
+  
   return(data)
 }
 
@@ -311,19 +324,28 @@ get_fl_covid_data <- function(fl_doc_path) {
 
 # Kansas ------------------------------------------------------------------
 get_ks_covid_data <- function(ks_doc_path) {
-  data_for_ks <- ks_doc_path %>%
-    html_nodes("td") %>%
-    html_text() %>%
-    split(1:5) %>%
-    as_tibble() %>%
-    modify_at(2:5,  ~ parse_number(.))
+  data <- ks_doc_path %>%
+    html_nodes("table.plain") %>%
+    html_table()
+  data <- data[[1]]
+  names(data) <- tolower(names(data))
+  names(data) <- gsub(" ", "_", names(data))
   
-  names(data_for_ks) <-
-    c("facilities", "staff_positive", "inmates_positive","staff_recovered","inmates_recovered")
+  data <-
+    data %>%
+    dplyr::rename(staff_positive = staff_confirmed,
+                  inmates_positive = inmates_confirmed,
+                  staff_recovered = staff_returned_to_work,
+                  inmates_recovered = residents_recovered) %>%
+    dplyr::mutate_at(c("inmates_positive",
+                       "staff_recovered",
+                       "inmates_recovered"),
+                     readr::parse_number) %>%
+    dplyr::mutate(state = "Kansas",
+                  scrape_date = today())
   
-  data_for_ks %>%
-    mutate(state = "Kansas",
-           scrape_date = today())
+  
+  return(data)
 }
 
 
@@ -511,17 +533,17 @@ get_nj_covid_data <- function(nj_doc_path) {
 get_nc_covid_data <- function(nc_doc_path) {
   
   data <-
-   nc_doc_path %>%
+    nc_doc_path %>%
     html_nodes(xpath = "/html/body/div[1]/div/table") %>%
     html_table()
   data <- data[[1]]
   data <-
     data %>%
-    rename(facilities = Facility,
-           inmates_tested = TestsPerformed,
+    rename(facilities       = Facility,
+           inmates_tested   = TestsPerformed,
            inmates_positive = Positive,
            inmates_negative = Negative) %>%
-    mutate(inmates_tested = readr::parse_number(inmates_tested),
+    mutate(inmates_tested   = readr::parse_number(inmates_tested),
            inmates_positive = readr::parse_number(inmates_positive),
            inmates_negative = readr::parse_number(inmates_negative),
            state = "North Carolina",
@@ -727,19 +749,33 @@ get_vermont_covid_data <- function(vermont_doc_path) {
 
 # South Carolina ----------------------------------------------------------
 get_sc_covid_data <- function(sc_doc_path) {
-  sc_text <- sc_doc_path %>%
-    html_nodes("td") %>%
-    html_text()
+  data <- sc_doc_path %>%
+    html_nodes(".box > table:nth-child(2)") %>%
+    html_table()
+  data <- data[[1]]
   
-  table_headers <- sc_text[1:3]
+  column_names <- as.character(as.vector(data[1, ]))
+  data <- data[-1, ]
+  column_names <- gsub(" |\\*", "_", column_names)
+  column_names <- tolower(column_names)
+  column_names <- iconv(column_names, from = 'UTF-8', to = 'ASCII', "")
+  names(data) <- column_names
   
-  sc_data <- sc_text[4:length(sc_text)] %>%
-    make_facility_table(1:3,2:3)
+  data <-
+    data %>%
+    dplyr::rename(facilities = assigned_locations,
+                  staff_positive = staff_,
+                  inmates_positive = offenders) %>%
+    dplyr::mutate_all(iconv, from = "UTF-8", to = "ASCII", "") %>%
+    dplyr::mutate_at(c("staff_positive",
+                       "inmates_positive"),
+                     readr::parse_number) %>%
+    dplyr::mutate(state = "South Carolina",
+                  scrape_date = today()) %>%
+    dplyr::filter(tolower(facilities) != "total confirmed cases")
   
-  names(sc_data) <- c("facilities","staff_positive","inmates_positive")
-  sc_data %>% 
-    mutate(state = "South Carolina",
-           scrape_date = today())
+  
+  return(data)
 }
 
 
@@ -762,7 +798,7 @@ get_virginia_covid_data <- function(virginia_doc_path) {
                   inmates_hospital = offenders_in_hospitals,
                   inmates_positive = total_positive_offenders_includes_recovered__deceased____released_offenders_,
                   staff_positive = staff__includes_both_employees___contractors_
-                  ) %>%
+    ) %>%
     dplyr::filter(tolower(facilities) != "totals") %>%
     dplyr::mutate_at(c("inmates_positive_on_site",
                        "inmates_hospital",
@@ -775,7 +811,7 @@ get_virginia_covid_data <- function(virginia_doc_path) {
     dplyr::mutate(state = "Virginia",
                   scrape_date = lubridate::today())
   
-
+  
   return(data)
 }
 
@@ -866,21 +902,30 @@ get_california_covid_data <- function(cali_doc_path) {
 # Montana -----------------------------------------------------------------
 get_montana_covid_data <- function(montana_doc_path) {
   data <- montana_doc_path %>%
-    html_nodes("td") %>%
-    html_text()
-  data <- matrix(data, ncol = 2, byrow = TRUE)
-  data <- data.frame(data, stringsAsFactors = FALSE)
-  names(data) <- c("facilities", "inmates_positive")
+    html_nodes("#dnn_ctr93899_HtmlModule_lblContent > table:nth-child(11)") %>%
+    html_table()
+  data <- data[[1]]
+  
+  column_names <- as.character(as.vector(data[1, ]))
   data <- data[-1, ]
+  column_names <- gsub(" ", "_", column_names)
+  column_names <- tolower(column_names)
+  names(data) <- column_names
+  
   data <-
     data %>%
-    filter(stringr::str_trim(inmates_positive) != "",
-           facilities != "Total confirmed cases") %>%
-    mutate(inmates_positive = stringr::str_trim(inmates_positive),
-           facilities         = stringr::str_trim(facilities),
-           state            = "Montana",
-           scrape_date      = lubridate::today(),
-           inmates_positive = as.numeric(inmates_positive))
+    dplyr::rename(facilities = location,
+                  inmates_positive = inmate_confirmed) %>%
+    dplyr::mutate(inmates_positive = readr::parse_number(inmates_positive),
+                  state = "Montana",
+                  scrape_date = lubridate::today()) %>%
+    dplyr::filter(!tolower(facilities) %in% c("total confirmed cases",
+                                              "secure - state",
+                                              "secure - contracted",
+                                              "community - contracted",
+                                              ""))
+  
+  
   
   return(data)
 }
@@ -889,22 +934,28 @@ get_montana_covid_data <- function(montana_doc_path) {
 # Iowa --------------------------------------------------------------------
 get_iowa_covid_data <- function(iowa_doc_path) {
   data <- iowa_doc_path %>%
-    html_nodes("td") %>%
-    html_text()
-  data <- matrix(data, ncol = 4, byrow = TRUE)
-  data <- data.frame(data, stringsAsFactors = FALSE)
-  names(data) <- c("facilities", "inmates_tested", "inmates_positive", "staff_positive")
+    html_nodes(".field-items > div:nth-child(1) > table:nth-child(6)") %>%
+    html_table()
+  data <- data[[1]]
+
+  column_names <- as.character(as.vector(data[1, ]))
   data <- data[-1, ]
+  column_names <- gsub(" ", "_", column_names)
+  column_names <- gsub("\\*", "", column_names)
+  column_names <- tolower(column_names)
+  names(data) <- column_names
   
   data <-
     data %>%
-    mutate_all(stringr::str_trim) %>%
-    filter(facilities != "Total") %>%
-    mutate(state            = "Iowa",
+    dplyr::rename(facilities = prison) %>%
+    dplyr::mutate_all(stringr::str_trim) %>%
+    dplyr::filter(tolower(facilities) != "total") %>%
+    dplyr::mutate(state            = "Iowa",
            scrape_date      = lubridate::today(),
-           inmates_positive = as.numeric(inmates_positive),
-           inmates_tested   = as.numeric(inmates_tested),
-           staff_positive   = as.numeric(staff_positive)) 
+           inmates_positive = readr::parse_number(inmates_positive),
+           inmates_tested   = readr::parse_number(inmates_tested),
+           staff_positive   = readr::parse_number(staff_positive)) 
+  
   return(data)
 }
 
@@ -1102,7 +1153,6 @@ get_missouri_covid_data <- function(miss_doc_path) {
   return(data)  
 }
 
-# Maine -------------------------------------------------------------------
 
 get_maine_covid_data <- function(maine_doc_path){
   url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"

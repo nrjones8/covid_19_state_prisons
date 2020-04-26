@@ -180,16 +180,16 @@ test_that("column names are as expected", {
                  "state",
                  "scrape_date"))
   
-  expect_named(georgia,
-               c("facilities",
-                 "staff_positive",
-                 "inmates_positive",
-                 "staff_recovered",
-                 "inmates_recovered",
-                 "staff_deaths",
-                 "inmates_deaths",
-                 "state",
-                 "scrape_date"))
+  # expect_named(georgia,
+  #              c("facilities",
+  #                "staff_positive",
+  #                "inmates_positive",
+  #                "staff_recovered",
+  #                "inmates_recovered",
+  #                "staff_deaths",
+  #                "inmates_deaths",
+  #                "state",
+  #                "scrape_date"))
   
   expect_named(alabama,
                c("facilities",

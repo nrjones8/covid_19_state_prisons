@@ -108,7 +108,7 @@ make_choropleth_map <- function(data) {
                          group       = "states",
                          color       = "black",
                          weight      = 1,
-                         fillColor   = pal_raw(states$total_positive_raw),
+                         fillColor   = mypalette(states$total_positive_raw),
                          fillOpacity = 1,
                          label  = lapply(labs, htmltools::HTML)) %>%
     # leaflet::addPolygons(data   = counties,
@@ -124,7 +124,7 @@ make_choropleth_map <- function(data) {
                           stroke  = TRUE,
                           opacity = 1,
                           weight  = 1.5) %>%
-    leaflet::addLegend(pal      = pal_raw, 
+    leaflet::addLegend(pal      = mypalette, 
                        group    = "states",
                        values   = states$total_positive_raw,
                        opacity  = 1,

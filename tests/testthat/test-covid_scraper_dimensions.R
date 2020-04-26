@@ -6,7 +6,7 @@ test_that("dimensions are as expected", {
   expect_equal(ncol(alaska), 6)
   
   expect_equal(nrow(arizona), 18)
-  expect_equal(ncol(arizona), 8)
+  expect_equal(ncol(arizona), 9)
   
   expect_equal(nrow(iowa), 9)
   expect_equal(ncol(iowa), 6)
@@ -15,10 +15,10 @@ test_that("dimensions are as expected", {
   expect_equal(ncol(kansas), 7)
   
   expect_equal(nrow(louisiana), 8)
-  expect_equal(ncol(louisiana), 8)
+  expect_equal(ncol(louisiana), 15)
   
-  expect_equal(nrow(pennsylvania), 8)
-  expect_equal(ncol(pennsylvania), 8)
+  expect_equal(nrow(pennsylvania), 28)
+  expect_equal(ncol(pennsylvania), 9)
   
   expect_equal(nrow(south_carolina), 21)
   expect_equal(ncol(south_carolina), 5)
