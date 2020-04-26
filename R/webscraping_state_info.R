@@ -731,7 +731,7 @@ get_texas_covid_data <- function(tx_doc_path) {
   tx_text <-  tx_doc_path %>%
     html_nodes("img~ .div_for_table td") %>%
     html_text()
-  # this divides the columns so that things stay even
+;  # this divides the columns so that things stay even
   tx_length <- length(tx_text)/5 
   # subsetting everything since there are currently 107 facilities in tx
   table_1 <- tx_text[1:tx_length]
@@ -755,13 +755,52 @@ get_texas_covid_data <- function(tx_doc_path) {
       "inmates_medical_restriction" = 5,
       "inmates_medical_isolation" = 6
     )
-  reduced_df %>% 
+  reduced_df <- reduced_df %>% 
     modify_at(2:6,~as.numeric(.)) %>%
     filter(facilities != "No Longer in Custody") %>% 
     mutate(state = "Texas",
            scrape_date  = today())
-}
+  #employee data
+  facilit <- read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
+    html_nodes(".div_container_employee+ .positive td") %>% 
+    html_text() %>% 
+    str_squish() %>% 
+    str_extract_all("[^0-9]") %>% 
+    map(~str_flatten(.)) %>% 
+    unlist()  
+  
+  facilit <- as_tibble(facilit[facilit != "" & !duplicated(facilit)]  )
+  vals <- read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
+    html_nodes(".div_container_employee+ .positive td") %>% 
+    html_text() %>% 
+    str_squish() %>% 
+    str_extract_all("[0-9]") %>% 
+    map(~str_flatten(.)) %>% 
+    unlist()
+  vals_offer <- vals[(vals == "") == c(rep(c(F,T),12),T)] %>% 
+    `[`(. != "")
+  
+  staff_pos <- as_tibble(c(vals[2],vals_offer,vals[length(vals)]))
+  facilities_first_box <- bind_cols(facilit,staff_pos) %>% 
+    rename(facilities = 1,
+           staff_positive = 2)
+  rest_boxes <- read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
+    html_nodes(".positive+ .positive td") %>% 
+    html_text() %>% 
+    str_squish() %>% 
+    unlist() %>% 
+    split(1:2) %>% 
+    as_tibble() %>% 
+    rename(facilities = 1,
+           staff_positive = 2) %>% 
+    bind_rows(facilities_first_box) %>% 
+    mutate(staff_positive = as.numeric(staff_positive))
+  full_join(reduced_df,rest_boxes,by = "facilities")
+  }
 
+read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
+  get_texas_covid_data() %>% 
+  View()
 # California --------------------------------------------------------------
 get_california_covid_data <- function(cali_doc_path) {
   cali_emp_text <-cali_doc_path %>% 
@@ -1124,7 +1163,7 @@ get_mass_covid_data <- function() {
     html_attr('href')
   
   download.file(
-      "https://data.aclum.org/sjc-12926-tracker/session/bc7c5d1ca762154f95c504b6e9c24633/download/downloadData?w=",
+      "https://data.aclum.org/sjc-12926-tracker/session/b6ec19cf940b4a119d97900a24931863/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
@@ -1143,7 +1182,69 @@ get_mass_covid_data <- function() {
     ) %>% 
     mutate(state = "Massachusetts") %>% 
     modify_at(3:18,~as.numeric(.)) %>% 
-    filter(scrape_date == today()-1)
+    filter(scrape_date == today())
 }
 
+# D.C. --------------------------------------------------------------------
+read_html("https://coronavirus.dc.gov/page/public-safety-agency-covid-19-case-data") %>% 
+  html_nodes("ul:nth-child(51)") %>% 
+  html_text() %>% 
+  str_extract_all("\\d+") %>% 
+  flatten() %>% 
+  as_tibble(.name_repair = "minimal") %>% 
+  `[`(c(1:3,5:8)) %>% 
+  rename(inmates_positive = 1,
+         inmates_positive_isolation = 2,
+         inmates_recovered = 3,
+         inmates_quarantine = 4,
+         inmates_positive_quarantine = 5,
+         inmates_return_gen_pop = 6,
+         inmates_deaths = 7) %>% 
+  mutate(state = "District of Columbia",
+         scrape_date = today())
 
+# Puerto Rico -------------------------------------------------------------
+read_html("http://dcr.pr.gov/covid-19/") %>% 
+  html_nodes("p.wp-block-pdfemb-pdf-embedder-viewer") %>% 
+  html_nodes("img")
+
+image_to_test <- image_read("~/Downloads/download.png") %>% 
+  image_convert(type = "Grayscale") 
+image_to_test_info <- image_to_test %>% 
+  image_info()
+crop_str <- sprintf('%sx1000+10+%s', image_to_test_info$width, image_to_test_info$height - 10)
+image_to_test_info
+image_to_test %>% 
+  image_crop("1574x400+100-10")
+
+# Tennessee ---------------------------------------------------------------
+
+get_tn_covid_data <- function() {
+  table_opt <-
+    list(c(
+      top = 128.27711,
+      left = 16.04819,
+      bottom =  465.28916,
+      right =  562.55422
+    ))
+  test1 <-
+    extract_tables(
+      "https://www.tn.gov/content/dam/tn/correction/documents/TDOCInmatesCOVID19.pdf",
+      area = table_opt
+    )
+  
+  test1[[1]] %>%
+    as_tibble() %>%
+    select_if(not_all_empty_char) %>%
+    rename(
+      facilities = V1,
+      inmates_tested = V3,
+      inmates_posiitive = V5,
+      inmates_negative = V7,
+      inmates_pending = V9
+    ) %>%
+    filter(facilities != "", inmates_tested != "") %>%
+    mutate(across(2:5, parse_number),
+           scrape_date = today(),
+           state = "Tennessee")
+}
