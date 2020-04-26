@@ -1,26 +1,22 @@
 
 
-
-
-
 get_california_incarcerated_data <- function() {
   library(RSelenium)
   remDr <- RSelenium::remoteDriver(
     remoteServerAddr = "localhost",
     browser = "firefox",
-    port = 13L)
+    port = 4445L)
   remDr$open()
   remDr$navigate("https://app.powerbigov.us/view?r=eyJrIjoiOWQ3YzQ0YjItYjIxMy00ZTVlLWIxODMtMjE4YzM2N2QzZmY4IiwidCI6IjA2NjI0NzdkLWZhMGMtNDU1Ni1hOGY1LWMzYmM2MmFhMGQ5YyJ9")
   
   
   Sys.sleep(15)
   
-  library(rvest)
-  library(dplyr)
   inconclusive <-
     read_html(remDr$getPageSource()[[1]]) %>%
-    html_nodes("div:nth-child(5) .tablixAlignCenter") %>%
+    html_nodes(".pivotTableCellNoWrap.cell-interactive") %>%
     html_text()
+  
   inconclusive <- inconclusive[-length(inconclusive)]
   inconclusive <- inconclusive[-1]
   
@@ -73,7 +69,7 @@ get_california_incarcerated_data <- function() {
   
   california_prison_level <- data.frame(state              = "California",
                                         scrape_date        = lubridate::today(),
-                                        facility           = prison,
+                                        facilities           = prison,
                                         inconclusive_tests = inconclusive,
                                         inmates_negative   = negative,
                                         inmates_positive   = positive,
@@ -87,5 +83,5 @@ get_california_incarcerated_data <- function() {
   
   return(california_prison_level)
 }
-
+#get_california_incarcerated_data()
 

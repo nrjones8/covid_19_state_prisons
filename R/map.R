@@ -2,50 +2,57 @@
 make_choropleth_map <- function(data) {
   # If either of these columns is NA, treat as if it is 0!
   data$total_positive <- rowSums(data[, c("inmates_positive", "staff_positive")],
-                                  na.rm = TRUE)
+                                 na.rm = TRUE)
   
-  counties <- tigris::counties(cb = TRUE, resolution = "20m")
-  counties <- sf::st_as_sf(counties)  %>%
-    mutate(cnty_fips = paste0(STATEFP, COUNTYFP)) %>%
-    select(geometry,
-           cnty_fips)
+  # counties <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_county_20m.shp"))
+  # counties <- sf::st_as_sf(counties)  %>%
+  #   mutate(cnty_fips = paste0(STATEFP, COUNTYFP)) %>%
+  #   select(geometry,
+  #          cnty_fips)
   
   county_hospitals <- readxl::read_excel(here::here("data/misc/KHN_ICU_bed_county_analysis_2.xlsx"))
   names(county_hospitals)[9:11] <- paste0("X", names(county_hospitals)[9:11])
   
-  counties <-
-    counties %>%
-    left_join(county_hospitals) %>%
-    select(X60plus_pct, 
-           geometry,
-           all_icu,
-           cnty_name,
-           state)
-  counties$X60plus_pct <- counties$X60plus_pct * 100
-  counties$X60plus_pct_pretty <- paste0(counties$X60plus_pct, "%")
+  state_hospitals <-
+    county_hospitals %>%
+    dplyr::group_by(state) %>%
+    dplyr::summarize(X60plus  = sum(X60plus),
+           total_pop   = sum(Total_pop),
+           all_icu     = sum(all_icu)) %>%
+    dplyr::mutate(pop_60_plus_percent = round(X60plus / total_pop * 100, 3)) %>%
+    dplyr::ungroup()
+  
+  # counties <-
+  #   counties %>%
+  #   left_join(county_hospitals) %>%
+  #   select(X60plus_pct, 
+  #          geometry,
+  #          all_icu,
+  #          cnty_name,
+  #          state)
+  # counties$X60plus_pct <- counties$X60plus_pct * 100
+  # counties$X60plus_pct_pretty <- paste0(counties$X60plus_pct, "%")
   
   
-  counties$popup <-  paste0("<b>",
-                            counties$cnty_name, ", ",
-                            counties$state,
-                            "</b>",
-                            "<br>",
-                            "Population Aged 60+: ",
-                            counties$X60plus_pct_pretty,
-                            "<br>",
-                            "Total ICU Beds: ", counties$all_icu)
-  county_labs <- as.list(counties$popup)
+  # counties$popup <-  paste0("<b>",
+  #                           counties$cnty_name, ", ",
+  #                           counties$state,
+  #                           "</b>",
+  #                           "<br>",
+  #                           "Population Aged 60+: ",
+  #                           counties$X60plus_pct_pretty,
+  #                           "<br>",
+  #                           "Total ICU Beds: ", counties$all_icu)
+ #county_labs <- as.list(counties$popup)
   
-  
-  states <- tigris::states(cb = TRUE, resolution = "20m")
+  states <- sf::read_sf(here::here("data/shapefiles/cb_2018_us_state_20m.shp"))
   states <- sf::st_as_sf(states) %>%
-    select(geometry,
-           NAME)
-  states$state <- states$NAME
-  states$NAME <- NULL
-  states <-
-    states %>%
-    dplyr::left_join(data)
+    dplyr::select(geometry,
+                  NAME) %>%
+    dplyr::rename(state = NAME) %>%
+    dplyr::left_join(data) %>%
+    dplyr::left_join(state_hospitals)
+  
   states$popup <-  paste0("<b>",
                           states$state,
                           "</b>",
@@ -63,17 +70,29 @@ make_choropleth_map <- function(data) {
                           format(states$staff_positive, big.mark = ","),
                           "<br>",
                           "Corrections Staff Deaths: ",   
-                          format(states$staff_deaths, big.mark = ","))
+                          format(states$staff_deaths, big.mark = ","),
+                          "<br>",
+                          "# of ICU Beds in State: ",
+                          format(states$all_icu, big.mark = ","))
   
   states <-
     states %>%
+    mutate(total_positive_raw = total_positive,
+           total_positive = log(total_positive+1)
+    ) %>% 
     select(geometry,
            popup,
+           total_positive_raw,
            total_positive)
   
   labs <- as.list(states$popup)
-  pal  <- leaflet::colorNumeric("OrRd", states$total_positive)
-  county_pal  <- leaflet::colorNumeric("OrRd", counties$X60plus_pct)
+  
+  mybins <- c(0, 100, 200, 300, 400, 500, 600, 700, Inf)
+  mypalette <- leaflet::colorBin( palette="YlOrBr", domain=states$total_positive_raw, bins=mybins)
+  
+  pal_raw     <- leaflet::colorNumeric("OrRd", states$total_positive_raw)
+  pal_logged  <- leaflet::colorNumeric("OrRd", states$total_positive)
+  #county_pal  <- leaflet::colorNumeric("OrRd", counties$X60plus_pct)
   css_fix <- "div.info.legend.leaflet-control br {clear: both;}" # CSS to correct spacing
   html_fix <- htmltools::tags$style(type = "text/css", css_fix)  # Convert CSS to HTML
   
@@ -83,33 +102,31 @@ make_choropleth_map <- function(data) {
   leaflet::leaflet() %>%
     leaflet::addTiles('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
                       attribution = '&copy; <a href="http://openstreetmap.org">
-                OpenStreetMap</a> contributors') %>%
+                      OpenStreetMap</a> contributors') %>%
     leaflet::setView(-98.483330, 38.712046, zoom = 4) %>% 
     leaflet::addPolygons(data        = states,
                          group       = "states",
                          color       = "black",
                          weight      = 1,
-                         fillColor   = pal(states$total_positive),
+                         fillColor   = pal_raw(states$total_positive_raw),
                          fillOpacity = 1,
-                         label  = lapply(labs, htmltools::HTML),
-                         popup  = states$popup) %>%
-    leaflet::addPolygons(data   = counties,
-                         group  = "counties",
-                         color    = "black",
-                         weight = 1,
-                         fillOpacity = 1,
-                         fillColor = county_pal(counties$X60plus_pct),
-                         label   = lapply(county_labs, htmltools::HTML),
-                         popup   = counties$popup) %>%
+                         label  = lapply(labs, htmltools::HTML)) %>%
+    # leaflet::addPolygons(data   = counties,
+    #                      group  = "counties",
+    #                      color    = "black",
+    #                      weight = 1,
+    #                      fillOpacity = 1,
+    #                      fillColor = county_pal(counties$X60plus_pct),
+    #                      label   = lapply(county_labs, htmltools::HTML)) %>%
     leaflet::addPolylines(data    = states,
                           color   = "black",
                           group   = "borders",
                           stroke  = TRUE,
                           opacity = 1,
                           weight  = 1.5) %>%
-    leaflet::addLegend(pal      = pal, 
+    leaflet::addLegend(pal      = pal_raw, 
                        group    = "states",
-                       values   = states$total_positive,
+                       values   = states$total_positive_raw,
                        opacity  = 1,
                        na.label = "Data Not Available",
                        title    = paste0("Incarcerated People + 
@@ -117,15 +134,15 @@ make_choropleth_map <- function(data) {
                                   <br>(",
                                          make_pretty_date(unique_date),
                                          ")")) %>%
-    leaflet::addLegend(pal      = county_pal, 
-                       group    = "counties",
-                       values   = counties$X60plus_pct,
-                       opacity  = 1,
-                       na.label = "Data Not Available",
-                       title    = "Percent of Population <br>Aged 60+: ") %>%
-    leaflet::groupOptions("states",       zoomLevels = 0:5) %>%
-    leaflet::groupOptions("counties",     zoomLevels = 6:18) %>%
-    leaflet::groupOptions("borders",     zoomLevels = 6:18) %>%
+    # leaflet::addLegend(pal      = county_pal, 
+    #                    group    = "counties",
+    #                    values   = counties$X60plus_pct,
+    #                    opacity  = 1,
+    #                    na.label = "Data Not Available",
+    #                    title    = "Percent of Population <br>Aged 60+: ") %>%
+  #  leaflet::groupOptions("states",       zoomLevels = 0:5) %>%
+  #  leaflet::groupOptions("counties",     zoomLevels = 6:18) %>%
+   # leaflet::groupOptions("borders",     zoomLevels = 6:18) %>%
     htmlwidgets::prependContent(html_fix) 
   
 }

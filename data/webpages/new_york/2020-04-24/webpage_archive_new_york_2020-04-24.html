@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"a873d11659",applicationID:"277555192"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-113480639-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");</script><meta name="title" content="DOCCS COVID-19 Report | Department of Corrections and Community Supervision">
+<link rel="shortcut icon" href="/profiles/custom/webny/themes/custom/webny_theme/favicon.ico">
+<meta property="og:site_name" content="Department of Corrections and Community Supervision">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" sizes="16x16" href="/profiles/custom/webny/themes/custom/webny_theme/icons/icon-16x16.png">
+<link rel="icon" sizes="32x32" href="/profiles/custom/webny/themes/custom/webny_theme/icons/icon-32x32.png">
+<meta property="og:title" content="DOCCS COVID-19 Report">
+<link rel="icon" sizes="96x96" href="/profiles/custom/webny/themes/custom/webny_theme/icons/icon-96x96.png">
+<link rel="icon" sizes="192x192" href="/profiles/custom/webny/themes/custom/webny_theme/icons/icon-192x192.png">
+<meta name="twitter:image" content="https://doccs.ny.gov/sites/g/files/oee1076/files/media/2020/04/coronavirus.jpg">
+<link rel="apple-touch-icon" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-76x76.png">
+<meta property="og:image" content="https://doccs.ny.gov/sites/g/files/oee1076/files/media/2020/04/coronavirus.jpg">
+<meta property="og:image:url" content="https://doccs.ny.gov/profiles/custom/webny/themes/custom/webny_theme/images/nys-default.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon-precomposed" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-57x57-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-76x76-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-120x120-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-152x152-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/profiles/custom/webny/themes/custom/webny_theme/icons/apple-touch/apple-touch-icon-180x180-precomposed.png">
+<meta name="Generator" content="Drupal 8 (https://www.drupal.org)">
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://doccs.ny.gov/doccs-covid-19-report">
+<link rel="shortlink" href="https://doccs.ny.gov/node/13661">
+<link rel="revision" href="https://doccs.ny.gov/doccs-covid-19-report">
+<title>DOCCS COVID-19 Report | Department of Corrections and Community Supervision</title>
+<link rel="stylesheet" media="all" href="/sites/g/files/oee1076/files/css/css_qfabf9JnQe47YOnz99yKGe76_0-f7_RjWCmQHpthGMU.css">
+<link rel="stylesheet" media="all" href="/sites/g/files/oee1076/files/css/css_mIBmxE8Ph2NWRexjgcRHbliw0C4BvFur-ImKTs_StjY.css">
+<link rel="stylesheet" media="print" href="/sites/g/files/oee1076/files/css/css_zMJSiCCVIgmvArV4vWSupHGzZ9mJKD5wKHkhSB2svT0.css">
+<link rel="stylesheet" media="all" href="/sites/g/files/oee1076/files/css/css_hDsqhFadU1k4CFfjH-jKODJZVymHHy-DP3Eb2hcn4D4.css">
+<!--[if lte IE 8]>
+<script src="/sites/g/files/oee1076/files/js/js_VtafjXmRvoUgAzqzYTA3Wrjkx9wcWhjP0G4ZnnqRamA.js"></script>
+<![endif]--><script src="/sites/g/files/oee1076/files/js/js_MVso1WGxGvqlxI3OBIGjQonJPKPBEZP7UVwlExH07u4.js"></script>
+</head>
+<body class="body-sidebars-none">
+        <div class="nygov-logo">
+      <img src="/profiles/custom/webny/themes/custom/webny_theme/images/nygov-logo.png" alt="nygov-logo">
+</div>
+    <a href="#main-content" class="visually-hidden focusable skip-to-main">
+      Skip to main content
+    </a>
+    <div id="nygov-universal-navigation" class="nygov-universal-container" data-iframe="true" data-updated="2014-11-07 08:30">
+    <noscript>
+        <iframe width="100%" height="86px" src="//static-assets.ny.gov/load_global_menu/ajax?iframe=true" frameborder="0" style="border:none; overflow:hidden; width:100%; height:86px;" scrolling="no">
+            Your browser does not support iFrames
+        </iframe>
+    </noscript>
+    <script type="text/javascript">
+        var _NY = {
+            HOST: "static-assets.ny.gov",
+            BASE_HOST: "www.ny.gov",
+            hideSettings: false,
+            hideSearch: false
+        };
+        (function (document, bundle, head) {
+            head = document.getElementsByTagName('head')[0];
+            bundle = document.createElement('script');
+            bundle.type = 'text/javascript';
+            bundle.async = true;
+            bundle.src = "//static-assets.ny.gov/sites/all/widgets/universal-navigation/js/dist/global-nav-bundle.js";
+            head.appendChild(bundle);
+        }(document));
+    </script>
+</div>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    <div class="layout-container">
+
+  <header role="banner"><nav id="webny-global-header" class="webny-global-header horizontal stacked" aria-label="primary-site"><div class="nav-toggle">
+            <a href="#" role="button" id="webny-menu-control">Navigation menu</a>
+        </div>
+            <h1><a href="/">Department of Corrections and Community Supervision</a></h1>
+        <ul class="gnav-ul">
+<li class="gnav-mitems gnav-topli" aria-expanded="false">
+<a href="/">Find an Offender</a><ul class="gnav-items-ul" aria-hidden="true">
+<li class="gnav-toplink"><a href="/">Find an Offender</a></li>
+<li><a href="http://nysdoccslookup.doccs.ny.gov/">Inmate Look-Up</a></li>
+<li><a href="https://publicapps.doccs.ny.gov/ParoleeLookup/default.aspx">Parolee Look-Up</a></li>
+<li><a href="/most-wanted">Most Wanted</a></li>
+</ul>
+</li>
+<li class="gnav-mitems gnav-topli" aria-expanded="false">
+<a href="/find-facility">Facilities</a><ul class="gnav-items-ul" aria-hidden="true">
+<li class="gnav-toplink"><a href="/find-facility">Facilities</a></li>
+<li><a href="/program-services">Program Services</a></li>
+<li><a href="/prea">PREA</a></li>
+</ul>
+</li>
+<li class="gnav-mitems gnav-topli solotop" aria-expanded="false"><a href="/visitors">Visitors</a></li>
+<li class="gnav-mitems gnav-topli" aria-expanded="false">
+<a href="/board-parole">Board of Parole</a><ul class="gnav-items-ul" aria-hidden="true">
+<li class="gnav-toplink"><a href="/board-parole">Board of Parole</a></li>
+<li><a href="/parole-board#history-of-parole">About the Board</a></li>
+<li><a href="https://publicapps.doccs.ny.gov/ParoleBoardCalendar/default.aspx">Parole Calendar</a></li>
+</ul>
+</li>
+<li class="gnav-mitems gnav-topli" aria-expanded="false">
+<a href="/community-supervision-0">Community Supervision</a><ul class="gnav-items-ul" aria-hidden="true">
+<li class="gnav-toplink"><a href="/community-supervision-0">Community Supervision</a></li>
+<li><a href="/re-entry-services">Re-entry Services</a></li>
+<li><a href="/offices">Find an Office</a></li>
+</ul>
+</li>
+<li class="gnav-mitems gnav-topli solotop" aria-expanded="false"><a href="/victims">Victims</a></li>
+<li class="gnav-mitems gnav-topli" aria-expanded="false">
+<a href="/attorneys-advocates">Attorneys &amp; Advocates</a><ul class="gnav-items-ul" aria-hidden="true">
+<li class="gnav-toplink"><a href="/attorneys-advocates">Attorneys &amp; Advocates</a></li>
+<li><a href="/research-and-reports">Research &amp; Reports</a></li>
+</ul>
+</li>
+</ul></nav></header><main role="main"><a id="main-content" tabindex="-1"></a>
+    <div class="layout-content">
+        <div>
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+
+
+
+
+
+<div class="webny-generic-content-page webny-toc-page">
+
+    <article data-history-node-id="13661" role="article" about="/doccs-covid-19-report" class="hero-layout"><div class="hero-header hero-has-image hero-generic">
+                
+                <div class="hero-image">
+                    
+            <div><article><div>    <picture><!--[if IE 9]><video style="display: none;"><![endif]--><source srcset="/sites/g/files/oee1076/files/styles/wide_lead/public/media/2020/04/coronavirus.jpg?h=f89a15af&amp;itok=5gbypJDS 1x" media="all and (min-width: 769px)" type="image/jpeg"></source><source srcset="/sites/g/files/oee1076/files/styles/narrow_lead/public/media/2020/04/coronavirus.jpg?h=f89a15af&amp;itok=TQZmPw6X 1x" media="all and (min-width: 461px) and (max-width: 768px)" type="image/jpeg"></source><source srcset="/sites/g/files/oee1076/files/styles/mobile_lead/public/media/2020/04/coronavirus.jpg?h=f89a15af&amp;itok=Ctb7Ez9f 1x" type="image/jpeg"></source><!--[if IE 9]></video><![endif]--><img src="/sites/g/files/oee1076/files/styles/mobile_lead/public/media/2020/04/coronavirus.jpg?h=f89a15af&amp;itok=Ctb7Ez9f" alt="Coronavirus" title="Coronavirus" typeof="foaf:Image"></picture>
+</div>
+      
+  </article></div>
+      
+                </div>
+                <!-- BACKGROUND GRAD -->
+                <div class="hero-bkg"></div>
+            </div>
+
+                                        <div class="hero-inner hero-generic-inner hero-has-image-content">
+                    
+                    <div class="hero-generic-wrapper">
+
+                                            <div class="assoc-landing">
+                            
+                        </div>
+                    
+                    
+                                        <h1>
+<span>DOCCS COVID-19 Report</span>
+</h1>
+
+                                        <div class="hero-generic-summary">
+                        
+                    </div>
+
+                                        <div class="hero-keywords">
+                                            </div>
+
+                    </div>
+<!--end hero-generic-wrapper-->
+
+                                                            
+            </div>
+
+                
+                                
+    </article><div class="actions">
+  <div class="webny-action-bar">
+    <div class="webny-action-top"><a href="#top">TOP<span class="icon-arrow-up"></span></a></div>
+    <div class="webny-action-label">DOCCS COVID-19 Report</div>
+    <div class="webny-share">
+      <div class="webny-action-share-label">SHARE</div>
+      <div class="webny-action-share-button">
+        <a href="/cdn-cgi/l/email-protection#edd2be988f87888e99d0a9889d8c9f9980888399cd828bcdae829f9f888e998482839ecd8c8389cdae8280809883849994cdbe989d889f9b849e848283d7cda9a2aeaebecdaea2bba4a9c0dcd4cdbf889d829f99cbaf828994d08599999d9ed7c2c289828e8e9ec38394c38a829bc289828e8e9ec08e829b8489c0dcd4c09f889d829f99"><span class="icon-email"></span></a>
+      </div>
+      <div class="webny-action-share-button">
+        <a href="http://www.facebook.com/share.php?u=https://doccs.ny.gov/doccs-covid-19-report" target="_blank"><span class="icon-facebook"></span></a>
+      </div>
+      <div class="webny-action-share-button">
+        <a href="https://twitter.com/intent/tweet?text=DOCCS%20COVID-19%20Report&amp;url=https://doccs.ny.gov/doccs-covid-19-report" target="_blank"><span class="icon-twitter"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    <div class="page-paragraphs gp-paragraphs with-nav-sidebar">
+    <div class="page-paragraphs-in">
+      <aside id="toc-sidebar"><header>Sections</header><ul>
+<li class="see-all"><a href="#" class="icon-all_steps"><span>See All</span></a></li>
+        </ul>
+<span class="arrow"></span>
+      </aside><div class="article-content">
+        <div class="toc-chapters">
+          
+
+    
+        
+
+
+    <section id="toc_7581" rel="enabled" class="toc-para webny_wysiwyg_pgtype gp_enabled"><h2>
+            <span class="toc-mobile-spacer"></span>
+
+                            Daily Update
+            
+            
+        </h2>
+        <div>
+        
+            <div class="wysiwyg--field-webny-wysiwyg-body">
+<table>
+<caption>
+	<h4>April 24, 2020</h4>
+
+	<p> </p>
+
+	<h5>DOCCS COVID-19 CONFIRMED</h5>
+
+	<p> </p>
+	</caption>
+	<tbody>
+<tr>
+<th>
+			<p class="text-align-center">Staff</p>
+			</th>
+			<th>
+			<p class="text-align-center">Incarcerated Population</p>
+			</th>
+			<th>
+			<p class="text-align-center">Parolees</p>
+			</th>
+		</tr>
+<tr>
+<td>
+			<p class="text-align-center">926</p>
+			</td>
+			<td>
+			<p class="text-align-center">269*</p>
+			</td>
+			<td>
+			<p class="text-align-center">38</p>
+			</td>
+		</tr>
+</tbody>
+</table>
+<p><strong>*Of these confirmed cases, 98 are now recovered and out of isolation.</strong></p>
+
+<p> </p>
+
+<h5 class="text-align-center">DOCCS COVID-19 CONFIRMED DEATHS</h5>
+
+<p> </p>
+
+<table><tbody>
+<tr>
+<th>
+			<p class="text-align-center">Staff</p>
+			</th>
+			<th>
+			<p class="text-align-center">Incarcerated Population</p>
+			</th>
+			<th>
+			<p class="text-align-center">Parolees</p>
+			</th>
+		</tr>
+<tr>
+<td>
+			<p class="text-align-center">2</p>
+			</td>
+			<td>
+			<p class="text-align-center">7</p>
+			</td>
+			<td>
+			<p class="text-align-center">4</p>
+			</td>
+		</tr>
+</tbody></table>
+<p><strong>NOTE: The official cause of death is determined and released by the County Medical Examiner's Office</strong></p>
+</div>
+      
+        </div>
+        <div class="next-section">
+            <div class="next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
+            </div>
+            <span class="next-section-title"></span>
+        </div>
+    </section><section id="toc_7696" rel="enabled" class="paragraph paragraph--type--webny-documents paragraph--view-mode--generic toc-para webny-documents gp_enabled generic-paragraphs"><h2>
+                    <span class="frame-title webny-frametitle">
+                      <span class="toc-mobile-spacer"></span>
+                        DOCCS Confirmed Cases By Facility
+                    </span>
+
+                    <span class="frame-headline webny-headline">
+                         
+                    </span>
+              </h2>
+        
+              <div class="generic-docdesc">
+            <p>For security reasons, DOCCS is not disclosing information on the facility where those impacted work or are hospitalized.</p>
+
+<p>With each confirmed case, the New York State Department of Corrections and Community Supervision (DOCCS) works with the New York State Department of Health to identify any potentially exposed individuals to provide notifications and to stop the spread of the virus. </p>
+
+<p>The testing process is currently the same for those in prison as it is for those in the community. Our physicians, nurse practitioners and physician assistants, working with our nurses, are following the guidance of the NYS Department of Health and incarcerated individuals are tested when exhibiting symptoms and after a medical evaluation is conducted. In addition, if an incarcerated individual is quarantined (mandatory or precautionary) and has shown symptoms of COVID-19 illness, or if facts and circumstances warrant, as determined by the treating clinician in consultation with state and local department of health officials, they are also isolated and tested.</p>
+
+<p>Our process identifies patients who are ill and require special monitoring and care and isolates those who create the greatest risk of transmission to others. Asymptomatic patients who wear a mask and follow social distancing and hand hygiene guidelines have minimal risk to others. A nurse will swab the individual and that swab is then sent to an authorized lab. As we await the results, the individual is isolated. If an individual’s test result is positive that person is maintained in isolation for a minimum of 14 days.</p>
+
+        </div>
+      
+    
+      
+      <div>
+              <div>
+
+
+
+<article data-history-node-id="13931" role="article" about="/doccs-confirmed-incarcerated-population-facility-april-23-2020" class="webny-document node--view-mode-attached-documents"><div class="webny-document node--view-mode-attached-documents attdoc-node">
+
+    <ul class="doc-list">
+<li class="document-wrapper">
+
+          <div class="doc-info">
+            <div class="fa-document"> </div>
+            <h4 class="doc-title">
+                                    <a href="/system/files/documents/2020/04/doccs-covid-19-confirmed-incarcerated-population-by-facility-april-23-2020.pdf"><span>DOCCS Confirmed Incarcerated Population by Facility April 23, 2020</span>
+</a>
+                            </h4>
+            <span class="doc-language"></span>
+            <span class="doc-description">
+            <div><p>Table of DOCCS Confirmed Incarcerated Population by Facility, April 23, 2020</p></div>
+      </span>
+          </div>
+<!--end doc-info-->
+          
+
+                          <a href="/system/files/documents/2020/04/doccs-covid-19-confirmed-incarcerated-population-by-facility-april-23-2020.pdf" class="download-link">
+                          <div class="download">
+                <div class="fa-download"> </div>
+                <p>Download</p>
+              </div>
+            </a>
+            
+        </li>
+<!--end document-wrapper-->
+    </ul>
+</div>
+          </article>
+</div>
+  
+        <div class="next-section">
+      <div class="next-section-links">
+          <p>Next Section</p>
+          <p class="icon-thin_down_arrow next-section-link">Continue</p>
+      </div>
+      <span class="next-section-title"></span>
+    </div>
+  
+
+    
+        
+
+
+    <section id="toc_7586" rel="enabled" class="toc-para webny_wysiwyg_pgtype gp_enabled"><h2>
+            <span class="toc-mobile-spacer"></span>
+
+                            Preparedness
+            
+            
+        </h2>
+        <div>
+        
+            <div class="wysiwyg--field-webny-wysiwyg-body">
+<p>In its history, the Department has successfully managed infectious outbreaks, such as tuberculosis, AIDS, and Hepatitis C. DOCCS maintains a comprehensive Pandemic Flu protocol that has been modified for COVID-19.</p>
+
+<p>DOCCS retains supplies, equipment and other resources that are being made available, as needed, for impacted correctional facilities during the spread of this infectious disease. As with the occurrence of any widespread public health threat, the Department is involved in ongoing discussions and preparations, including protocol review and emergency supply inventory to ensure that the Department’s policies and procedures are as up to date as possible. The Department also has negative air flow isolation rooms and Regional Medical Units.</p>
+
+<p>Emergency control plans are in place at each facility and regularly reviewed.  Each plan is uniquely designed to meet that facility’s needs. These plans include preparedness measures, response mechanisms, and short- and long-term recovery provisions. The Department has been and continues conducting table-top exercises to prepare for additional positive cases.</p>
+
+<p>The Department employs medical staff specially trained in infection control in facilities across the state and has plans for each facility to implement to deal with significant staff absences.</p>
+
+<p>In addition, a COVID-19 Task Force has been created and meets regularly to monitor and assess all actions and potential actions in response to this public health crisis. The Department’s executive team has consistent communication with all Facility Supervising Superintendents, Superintendents, as well as Community Supervision Regional Directors and Assistant Regional Directors as a means of monitoring in real time all COVID-19 related issues that arise within the system. </p>
+
+<p>Ongoing communication is delivered to staff and incarcerated individuals on preventative measures to stay healthy, including the top Centers for Disease Control and Prevention and the New York State Department of Health recommendations, as well as cleaning guidelines issued by the New York State Office of General Services.</p>
+</div>
+      
+        </div>
+        <div class="next-section">
+            <div class="next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
+            </div>
+            <span class="next-section-title"></span>
+        </div>
+    </section><section id="toc_7591" rel="enabled" class="toc-para webny_wysiwyg_pgtype gp_enabled"><h2>
+            <span class="toc-mobile-spacer"></span>
+
+                            What DOCCS Is Doing
+            
+            
+        </h2>
+        <div>
+        
+            <div class="wysiwyg--field-webny-wysiwyg-body">
+<p>The Department takes the continued spread of this global health emergency seriously and shares the same concerns as staff, incarcerated individuals, and their loved ones.</p>
+
+<p>Our focus is ensuring that the hardworking men and women of this Department, as well as our incarcerated and formerly incarcerated populations, are healthy and safe. Just as we have successfully managed infectious outbreaks in the past, we have emergency protocols in place and have proactively made adjustments in our facilities and community supervision offices in an attempt to limit any outbreaks.</p>
+
+<p>Each action we take in response to the spread of COVID-19 is done in the best interest of those who work and are incarcerated in our facilities or supervised in the community. We will continue to evaluate all options as this situation unfolds.</p>
+
+<p>Here are some of the measures DOCCS has initiated to ensure the safety and well-being of staff, incarcerated individuals, and parolees:</p>
+
+<ul>
+<li>Mandating all staff to wear face masks while on duty.</li>
+	<li>Supplying incarcerated individuals subject to isolation and quarantine with surgical-type masks to further reduce the risk of secondary transmission of COVID-19.</li>
+	<li>Allowing the incarcerated population to use state-issued handkerchiefs as masks.</li>
+	<li>Suspending all intake of incarcerated individuals from county facilities.</li>
+	<li>Stopping internal transfers of incarcerated individuals, except for medical and other exigent circumstances.</li>
+	<li>Suspending visitation while allowing incarcerated individuals access to 5 free stamps per week, along with successfully working with our phone and tablet vendors to offer incarcerated individuals 2 free phone calls of 30 minutes in duration, and 2 free secure messages per week.</li>
+	<li>Requiring non-essential staff to remain home.</li>
+	<li>Implementing a health/travel questionnaire for staff entering facilities and community supervision offices.</li>
+	<li>Displaying posters with information on COVID-19 and safety tips throughout DOCCS facilities and offices statewide.</li>
+	<li>Regularly showing a video to the incarcerated population and staff at the facilities on proper handwashing.</li>
+	<li>Issuing enhanced cleaning/sanitizing measures and disinfecting procedures for office surfaces and devices consistent with the Centers for Disease Control and Prevention and New York State Department of Health guidelines, including working with landlords to ensure cleaning protocols are followed under the appropriate guidelines with increased frequency throughout offices especially high-risk areas and issuing appropriate protocols on how to clean vehicles.</li>
+	<li>Suspending in-person reports of individuals under state community supervision.</li>
+	<li>Suspending the ability for individuals under community supervision to transfer to other locations.</li>
+	<li>Releasing low-level technical parole violators from local jails.</li>
+	<li>Issuing hand sanitizer to all facilities for staff and the incarcerated population to use, as well as community supervision offices.</li>
+	<li>Enlisting Corcraft, an entity of DOCCS, to develop and bottle a 75% Isopropyl alcohol-based formula as recommended by the World Health Organization (WHO) at three facilities: Great Meadow Correctional Facility in Washington County, Shawangunk Correctional Facility in Ulster County, and Albion Correctional Facility in Orleans County.</li>
+</ul>
+</div>
+      
+        </div>
+        <div class="next-section">
+            <div class="next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
+            </div>
+            <span class="next-section-title"></span>
+        </div>
+    </section><section id="toc_7596" rel="enabled" class="toc-para webny_wysiwyg_pgtype gp_enabled"><h2>
+            <span class="toc-mobile-spacer"></span>
+
+                            New Protocols
+            
+            
+        </h2>
+        <div>
+        
+            <div class="wysiwyg--field-webny-wysiwyg-body">
+<h5> </h5>
+
+<h5>FACILITIES</h5>
+
+<hr>
+<h5><strong>Masks</strong></h5>
+
+<h6><em>Effective April 9, 2020</em></h6>
+
+<p>To continue protecting staff and the incarcerated population from COVID-19 entering or leaving our facilities and community supervision offices, staff are permitted, and will be provided, a face mask to wear while on duty. The Department supports their use if there is a chance using them may slow or even stop the spread of this virus from entering our facilities.</p>
+
+<p>Incarcerated individuals subject to quarantine are issued a surgical-type mask to further reduce the risk of any secondary transmission of COVID-19. The general population can now use state-issued handkerchiefs as masks.</p>
+
+<h5> </h5>
+
+<h5><strong>Releases</strong></h5>
+
+<h6><em>Effective March 27, 2020</em></h6>
+
+<p>DOCCS was directed to release low-level technical parole violators from local jails. The Department immediately identified individuals under parole supervision who were detained in a local jail pursuant to a warrant resulting from an alleged technical violation, including absconders.</p>
+
+<p>Following an individualized review, the Department began canceling parole warrants where the individual has identified adequate housing is available and the release of the individual does not present an undue risk to public safety. Based on initial estimates, this action could impact up to 1,100 people, including 400 people in New York City and 700 people throughout the rest of the state.</p>
+
+<p>Furthermore, new procedures temporarily modified the issuance of violations to ensure that people who would be subject to release under these protocols are not detained in the first place.</p>
+
+<p>This significant action is being taken in response to a growing number of COVID-19 cases in local jails over the past few days and weeks. Our top priority remains the public health and safety of New Yorkers during this global public health emergency and this measure will further protect a vulnerable population from contracting and transmitting this infectious disease.</p>
+
+<h5> </h5>
+
+<h5><strong>Facility Visits</strong></h5>
+
+<h6><em>Effective March 14, 2020</em></h6>
+
+<h6><em>Suspended at all correctional facilities through April 29, 2020</em></h6>
+
+<p>While this suspension of visitation is temporary, the Department recognizes the immediate impact on incarcerated individuals throughout the correctional system. However, the current situation demands this significant action to safeguard the health and safety of all incarcerated individuals and employees, as well as their families and communities. While in-person visitations are impossible to replace, the Department will provide the following benefits to encourage individuals to keep in contact with their family and friends during this temporary suspension.</p>
+
+<p>While all incarcerated individuals have tablets for reading, education, communication, and other uses, the Department is providing the following additional benefits to encourage individuals to keep in contact with their family and friends during this temporary suspension:</p>
+
+<ul>
+<li>Five (5) free stamps per week for use in accordance with Directive #4422, “Inmate Correspondence Program”.</li>
+	<li>Two (2) free secure messages per week via electronic tablet, with additional stamps as part of their bundles, and</li>
+	<li>Three (3) free 30-minute phones call per week in accordance with Directive #4423 “Inmate Telephone Calls”.</li>
+	<li>Starting Wednesday, April 15, 2020, for four (4) consecutive Wednesdays, every secure message sent by a friend or family member on Wednesday will be accompanied with a free prepaid stamp that will allow the incarcerated individual to reply to the sender, through May 6, 2020.</li>
+</ul>
+<h5> </h5>
+
+<h5><strong>Reunion Programs</strong></h5>
+
+<h6><em>Effective March 14, 2020</em></h6>
+
+<p>Family reunion programs were suspended until further notice.</p>
+
+<h5> </h5>
+
+<h5><strong>Legal Visits</strong></h5>
+
+<h6><em>Effective March 14, 2020</em></h6>
+
+<p>Legal visits will be conducted as non-contact as requests are submitted and that option remains available within the facilities.</p>
+
+<p> </p>
+
+<h5><strong>COMMUNITY SUPERVISION</strong></h5>
+
+<hr>
+<h5><strong>In-Person Parolee Reports Suspended in All Counties</strong></h5>
+
+<h6><em>Effective March 20, 2020 through April 29, 2020</em></h6>
+
+<p>The Department has suspended office reports, including off-site reporting locations, for all persons under community supervision. The temporary suspension of office visits is designed to increase social distancing and minimize group gatherings. The Department’s community supervision staff will continue to maintain contact with the parolee population to ensure public safety.  </p>
+
+<p>Specifically, parolees will have their in-person office supervision contacts suspended until April 29, 2020. Department staff will use technology, such as telephone calls, text messages, videoconferencing, GPS electronic monitoring, and other methods to maintain contact. This electronic contact will count as a positive field contact during this interim period.</p>
+
+<p>As this public health emergency rapidly develops, the Department will closely monitor the situation and extend this precautionary measure to a future date as necessary.</p>
+
+<p> </p>
+
+<h5><strong>BOARD OF PAROLE</strong></h5>
+
+<hr>
+<h5><strong>Interviews</strong></h5>
+
+<p>The Board of Parole is continuing to conduct interviews and issuing determinations. Decisions will continue to be issued within two weeks of the interview date.</p>
+
+<p> </p>
+
+<h5><strong>Business Meetings</strong></h5>
+
+<p>The April 20, 2020 Board of Parole business meeting has been postponed.</p>
+
+<p> </p>
+</div>
+      
+        </div>
+        <div class="next-section">
+            <div class="next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
+            </div>
+            <span class="next-section-title"></span>
+        </div>
+    </section><section id="toc_7601" rel="enabled" class="toc-para webny_wysiwyg_pgtype gp_enabled"><h2>
+            <span class="toc-mobile-spacer"></span>
+
+                            COVID-19 Resources
+            
+            
+        </h2>
+        <div>
+        
+            <div class="wysiwyg--field-webny-wysiwyg-body">
+<h6 class="text-align-center">For more information on COVID-19 and New York’s response, visit the following websites</h6>
+
+<p> </p>
+
+<h6 class="text-align-center"><strong>New York on PAUSE</strong></h6>
+
+<p>New York State is working to reduce the spread of COVID-19. As a further protective measure, Governor Cuomo issued New York State on PAUSE, a 10-point policy to assure safety for everyone. It includes a directive for non-essential businesses statewide to close in-office personnel functions, a temporary ban on all non-essential gatherings of individuals of any size for any reason, and steps to ensure the well-being of all New Yorkers.</p>
+
+<p class="text-align-center"><a href="https://coronavirus.health.ny.gov/home"><strong><span class="button">NYS on pause</span></strong></a></p>
+
+<h6 class="text-align-center"> </h6>
+
+<h6 class="text-align-center"><strong>New York State Department of Health COVID-19 Tracker</strong></h6>
+
+<p>Governor Cuomo has launched a new website to provide New York’s comprehensive COVID-19 testing data to the public</p>
+
+<p class="text-align-center"><strong><a href="https://covid19tracker.health.ny.gov/views/NYS-COVID19-Tracker/NYSDOHCOVID-19Tracker-Map?%253Aembed=yes&amp;%253Atoolbar=no&amp;:isGuestRedirectFromVizportal=y&amp;:embed=y"><span class="button">DOH COVID-19 Tracker</span></a></strong></p>
+
+<h6 class="text-align-center"> </h6>
+
+<h6 class="text-align-center"><strong>New York State Department of Health COVID-19 Webpage</strong></h6>
+
+<p class="text-align-center"><a href="https://health.ny.gov/"><strong><span class="button">DOH Covid-19 info</span></strong></a></p>
+
+<h6 class="text-align-center"> </h6>
+
+<h6 class="text-align-center"><strong>Centers for Disease Control and Prevention COVID-19 Webpage</strong></h6>
+
+<p class="text-align-center"><a href="https://www.cdc.gov/coronavirus/2019-ncov/"><strong><span class="button">CDC COVID-19 INFO</span></strong></a></p>
+
+<p> </p>
+
+<p> </p>
+</div>
+      
+        </div>
+        <div class="next-section">
+            <div class="next-section-links">
+                <p>Next Section</p>
+                <p class="icon-thin_down_arrow next-section-link">Continue</p>
+            </div>
+            <span class="next-section-title"></span>
+        </div>
+    </section>
+</div>
+      </section>
+</div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+  </div>
+
+    </div>
+    
+    
+  
+
+  
+</div>
+  </main>
+</div>
+
+     
+
+<div class="webny-global-footer">
+
+    <div id="block-sitebranding">
+        <div class="agency-name">
+            <a href="/" title="Home" rel="home">Department of Corrections and Community Supervision</a>
+        </div>
+    </div>
+    <nav id="block-global-footer-menu" class="footer-menu footer-horizontal"><ul class="global-footer-top-links">
+<li>
+                <a href="/about-us" data-drupal-link-system-path="node/1651">About Us</a>
+                            </li>
+                    <li>
+                <a href="/accessibility" data-drupal-link-system-path="node/1846">Accessibility</a>
+                            </li>
+                    <li>
+                <a href="https://publicapps.doccs.ny.gov/DOCCSWebContactForm.aspx">Contact Us</a>
+                            </li>
+                    <li>
+                <a href="http://www.corcraft.org/webapp/wcs/stores/servlet/TopCategoriesDisplay?langId=-1&amp;storeId=10001&amp;catalogId=10051">Corcraft</a>
+                            </li>
+                    <li>
+                <a href="/disclaimer" data-drupal-link-system-path="node/1851">Disclaimer</a>
+                            </li>
+                    <li>
+                <a href="/employment-opportunities" data-drupal-link-system-path="node/26">Employment Opportunities</a>
+                            </li>
+                    <li>
+                <a href="/events" data-drupal-link-system-path="node/1891">Events</a>
+                            </li>
+                    <li>
+                <a href="/community-supervision-handbook/executive-clemency" data-drupal-link-system-path="node/131">Executive Clemency</a>
+                            </li>
+                    <li>
+                <a href="https://executiveorder38.ny.gov/">Executive Order 38</a>
+                            </li>
+                    <li>
+                <a href="https://goer.ny.gov/executive-order-187">Executive Order 187</a>
+                            </li>
+                    <li>
+                <a href="/freedom-information-law-foil" data-drupal-link-system-path="node/5786">FOIL</a>
+                            </li>
+                    <li>
+                <a href="/language-access" data-drupal-link-system-path="node/5741">Language Access</a>
+                            </li>
+                    <li>
+                <a href="/legal" data-drupal-link-system-path="node/1826">Laws, Rules &amp; Directives</a>
+                            </li>
+                    <li>
+                <a href="/april-2020-monthly-report" data-drupal-link-system-path="node/13476">Monthly Report</a>
+                            </li>
+                    <li>
+                <a href="/office-special-investigations-osi" data-drupal-link-system-path="node/1041">Office of Special Investigations</a>
+                            </li>
+                    <li>
+                <a href="/prea" data-drupal-link-system-path="node/11">PREA</a>
+                            </li>
+                    <li>
+                <a href="/pressroom" data-drupal-link-system-path="node/656">Pressroom</a>
+                            </li>
+                    <li>
+                <a href="/privacy-policy" data-drupal-link-system-path="node/1856">Privacy Policy</a>
+                            </li>
+                    <li>
+                <a href="/procurement-opportunities" data-drupal-link-system-path="node/1006">Procurement Opportunities</a>
+                            </li>
+                    <li>
+                <a href="/sitemap" data-drupal-link-system-path="sitemap">Site Map</a>
+                            </li>
+            </ul></nav><nav id="block-global-footer-social-menu" class="social-media"><h2>CONNECT WITH US</h2>
+        <ul>
+<li><a class="imgico_facebook" href="https://www.facebook.com/NYSDOCCS">FACEBOOK</a></li>
+<li><a class="imgico_twitter" href="https://twitter.com/nysdoccs">TWITTER</a></li>
+<li><a class="imgico_youtube" href="https://www.youtube.com/channel/UCLLbFtfAZsgUSTc9lWTW9VA">YOUTUBE</a></li>
+</ul></nav>
+</div>
+<!-- uNav interactive footer -->
+<div id="nygov-universal-footer">
+    <noscript>
+        <iframe width="100%" height="200px" src="//static-assets.ny.gov/load_global_footer/ajax?iframe=true" frameborder="0" style="border:none; overflow:hidden; width:100%; height:200px;" scrolling="no">
+            Your browser does not support iFrames
+        </iframe>
+    </noscript>
+</div>
+<!-- end uNav interactive footer -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/13661","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"google_analytics":{"trackOutbound":true,"trackMailto":true,"trackDownload":true,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"user":{"uid":0,"permissionsHash":"cfc64e21bd3ff09fc67915d41d398072c704997ebdc4edb22195c101e6b64e6c"}}</script><script src="/sites/g/files/oee1076/files/js/js_OC-tEZ98LPxFxUBwCuu49RXcww4wqzcFPJQqiOG1VQg.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"a873d11659","applicationID":"277555192,141443075","transactionName":"YANVY0BRC0tQW01fW1lJdlRGWQpWHnxLQ0RWCmt0XUIAZHxdV0NocwNRVkdcEXVUVkx6XVkNY0VXVShZX1FJQ1hWElhFQR1bX1RWXERVQwN+WVZVHXlfXGpZRkM=","queueTime":0,"applicationTime":262,"atts":"TERWFQhLGEU=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+</div>
+</body>
+</html>

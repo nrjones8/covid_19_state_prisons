@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7]><html class="iem7"  lang="en" dir="ltr"><![endif]--><!--[if lte IE 6]><html class="lt-ie9 lt-ie8 lt-ie7"  lang="en" dir="ltr"><![endif]--><!--[if (IE 7)&(!IEMobile)]><html class="lt-ie9 lt-ie8"  lang="en" dir="ltr"><![endif]--><!--[if IE 8]><html class="lt-ie9"  lang="en" dir="ltr"><![endif]--><!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html lang="en" dir="ltr" prefix="og: http://ogp.me/ns# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema#">
+<!--<![endif]--><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"2ce3f7ec05",applicationID:"11711233"};window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var i=n[t]={exports:{}};e[t][0].call(i.exports,function(n){var i=e[t][1][n];return r(i||n)},i,i.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<t.length;i++)r(t[i]);return r}({1:[function(e,n,t){function r(){}function i(e,n,t){return function(){return o(e,[u.now()].concat(f(arguments)),n?null:this,t),n?void 0:this}}var o=e("handle"),a=e(4),f=e(5),c=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",d=l+"ixn-";a(p,function(e,n){s[n]=i(l+n,!0,"api")}),s.addPageAction=i(l+"addPageAction",!0),s.setCurrentRouteName=i(l+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,i="function"==typeof n;return o(d+"tracer",[u.now(),e,t],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],t),i)try{return n.apply(this,arguments)}catch(e){throw c.emit("fn-err",[arguments,this,e],t),e}finally{c.emit("fn-end",[u.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=i(d+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){var t=e.getEntries();t.forEach(function(e){"first-paint"===e.name?c("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&c("timing",["fcp",Math.floor(e.startTime)])})}function i(e,n){var t=e.getEntries();t.length>0&&c("lcp",[t[t.length-1]])}function o(e){if(e instanceof s&&!l){var n,t=Math.round(e.timeStamp);n=t>1e12?Date.now()-t:u.now()-t,l=!0,c("timing",["fi",t,{type:e.type,fid:n}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,f,c=e("handle"),u=e("loader"),s=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),f=new PerformanceObserver(i);try{a.observe({entryTypes:["paint"]}),f.observe({entryTypes:["largest-contentful-paint"]})}catch(p){}}if("addEventListener"in document){var l=!1,d=["click","keydown","mousedown","pointerdown","touchstart"];d.forEach(function(e){document.addEventListener(e,o,!1)})}}},{}],3:[function(e,n,t){function r(e,n){if(!i)return!1;if(e!==i)return!1;if(!n)return!0;if(!o)return!1;for(var t=o.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}n.exports={agent:i,version:o,match:r}},{}],4:[function(e,n,t){function r(e,n){var t=[],r="",o=0;for(r in e)i.call(e,r)&&(t[o]=n(r,e[r]),o+=1);return t}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],5:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,i=t-n||0,o=Array(i<0?0:i);++r<i;)o[r]=e[n+r];return o}n.exports=r},{}],6:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function i(e){function n(e){return e&&e instanceof r?e:e?c(e,f,o):o()}function t(t,r,i,o){if(!l.aborted||o){e&&e(t,r,i);for(var a=n(i),f=v(t),c=f.length,u=0;u<c;u++)f[u].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function d(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||i(t)}function w(e,n){u(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:d,addEventListener:d,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(l.aborted=!0,s=l.backlog={})}var f="nr@context",c=e("gos"),u=e(4),s={},p={},l=n.exports=i();l.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(i.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[n]=r,r}var i=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){i.buffer([e],r),i.emit(e,n,t)}var i=e("ee").get("handle");n.exports=r,r.ee=i},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!x++){var e=E.info=NREUM.info,n=d.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();u(y,function(n,t){e[n]||(e[n]=t)}),c("mark",["onload",a()+E.offset],null,"api");var t=d.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function i(){"complete"===d.readyState&&o()}function o(){c("mark",["domContent",a()+E.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(f=Math.max((new Date).getTime(),f))-E.offset}var f=(new Date).getTime(),c=e("handle"),u=e(4),s=e("ee"),p=e(3),l=window,d=l.document,m="addEventListener",v="attachEvent",g=l.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:g,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1167.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),E=n.exports={offset:f,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),e(2),d[m]?(d[m]("DOMContentLoaded",o,!1),l[m]("load",r,!1)):(d[v]("onreadystatechange",i),l[v]("onload",r)),c("mark",["firstbyte",f],null,"api");var x=0,O=e(6)},{}],"wrap-function":[function(e,n,t){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(5),a="nr@original",f=Object.prototype.hasOwnProperty,c=!1;n.exports=function(e,n){function t(e,n,t,i){function nrWrapper(){var r,a,f,c;try{a=this,r=o(arguments),f="function"==typeof t?t(r,a):t||{}}catch(u){l([u,"",[r,a,i],f])}s(n+"start",[r,a,i],f);try{return c=e.apply(a,r)}catch(p){throw s(n+"err",[r,a,p],f),p}finally{s(n+"end",[r,a,c],f)}}return r(e)?e:(n||(n=""),nrWrapper[a]=e,p(e,nrWrapper),nrWrapper)}function u(e,n,i,o){i||(i="");var a,f,c,u="-"===i.charAt(0);for(c=0;c<n.length;c++)f=n[c],a=e[f],r(a)||(e[f]=t(a,u?f+i:i,o,f))}function s(t,r,i){if(!c||n){var o=c;c=!0;try{e.emit(t,r,i,n)}catch(a){l([a,t,r,i])}c=o}}function p(e,n){if(Object.defineProperty&&Object.keys)try{var t=Object.keys(e);return t.forEach(function(t){Object.defineProperty(n,t,{get:function(){return e[t]},set:function(n){return e[t]=n,n}})}),n}catch(r){l([r])}for(var i in e)f.call(e,i)&&(n[i]=e[i]);return n}function l(n){try{e.emit("internal-error",n)}catch(t){}}return e||(e=i),t.inPlace=u,t.flag=a,t}},{}]},{},["loader"]);</script><link rel="shortcut icon" href="https://corrections.az.gov/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon">
+<meta name="description" content="Last Updated 4/21/2020*Indicates third party partner">
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)">
+<link rel="canonical" href="https://corrections.az.gov/adcrr-covid-19-dashboard">
+<link rel="shortlink" href="https://corrections.az.gov/node/1813">
+<meta property="og:site_name" content="Arizona Department of Corrections">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://corrections.az.gov/adcrr-covid-19-dashboard">
+<meta property="og:title" content="ADCRR COVID-19 Dashboard">
+<meta property="og:description" content="Last Updated 4/21/2020*Indicates third party partner">
+<meta property="og:updated_time" content="2020-04-21T22:46:33+00:00">
+<meta property="article:published_time" content="2020-04-09T18:41:22+00:00">
+<meta property="article:modified_time" content="2020-04-21T22:46:33+00:00">
+<title>ADCRR COVID-19 Dashboard | Arizona Department of Corrections</title>
+<meta name="MobileOptimized" content="width">
+<meta name="HandheldFriendly" content="true">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="cleartype" content="on">
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_kShW4RPmRstZ3SpIC-ZvVGNFVAi0WEMuCnI0ZkYIaFw.css" media="all">
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_GMagQ-7H5bwtCBGfmoMcjttdHdK6DZnd9_46QKcdI64.css" media="all">
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_BSFxYlal4GRU5nS4h1GSNFiix3gx7Zf7UDrkFfC6yyA.css" media="all">
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" media="all" />
+<![endif]--><!--[if lt IE 10]>
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU.css" media="all" />
+<![endif]--><link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_ITqV3eM29HiUxH2A2V3eIAv4poaJ95FqXc2eITVY4Uk.css" media="all">
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_6RIizP3jgerkydOda_RC_L3azNDncI7HxKM4-vgvgB4.css" media="all">
+<link rel="stylesheet" href="https://corrections.az.gov/sites/default/files/css/css_Aq8grlTx_nQ09hFG3weNgjrw6HEl9ltuD5rShWo9ECU.css" media="all">
+<!--[if lt IE 9]>
+    <script src="/sites/default/themes/contrib/zen/js/html5-respond.js"></script>
+    <![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1813 node-type-page section-adcrr-covid-19-dashboard">
+      <p id="skip-link">
+      <a href="#superfish-1" class="element-invisible element-focusable">Jump to navigation</a>
+    </p>
+    <script src="https://corrections.az.gov/sites/default/files/js/js_qikmINIYTWe4jcTUn8cKiMr8bmSDiZB9LQqvceZ6wlM.js"></script><script src="//www.google.com/jsapi"></script><script src="https://corrections.az.gov/sites/default/files/js/js_SPlDHbbaReGtXT_08My3ZH6vQN3xxLHPr-3XzynMETQ.js"></script><script>L_ROOT_URL = "/sites/default/libraries/leaflet/";</script><script src="https://corrections.az.gov/sites/default/files/js/js_WXEg1oWrqZRCHlCret5B94KaZeOLauMXPRx3twgNid8.js"></script><script src="https://corrections.az.gov/sites/default/files/js/js_JY3vI16lOTiqWogp0LaV344spFx5HYHeI1G7Jr1f1zI.js"></script><script src="https://corrections.az.gov/sites/default/files/js/js_DuCBxVBnmwlqi-FUiwD_uvjmLVBk6uphM_23_gbOteI.js"></script><script>jQuery.extend(Drupal.absolute_messages, {"dismiss":{"status":false,"warning":false,"error":false},"dismiss_time":{"status":"","warning":"","error":""},"dismiss_all_count":2});</script><script src="https://corrections.az.gov/sites/default/files/js/js_bePoJj-VQZUygC3v-7UFAQGTPpdRHbdST4GVKwQrSRQ.js"></script><script src="https://www.google.com/jsapi"></script><script src="https://corrections.az.gov/sites/default/files/js/js_yOQxQvfh-0qGvakGh8xTGUn1k0l4L4dB9DKf2YPorU0.js"></script><script>L.Icon.Default.imagePath = "/sites/default/libraries/leaflet/images/";</script><script src="https://corrections.az.gov/sites/default/files/js/js_tWfG1NThEnXPSofFRLLP6EAlszy99Pget56zvSAEi4g.js"></script><script>(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-51918641-29", {"cookieDomain":"auto"});ga("send", "pageview");</script><script src="https://corrections.az.gov/sites/default/files/js/js_80hHo0ELsJvIqUtJq05kKL6_VH2IaMI4CTlBSnEq-OY.js"></script><script src="https://corrections.az.gov/sites/default/files/js_injector/js_injector_1.js?q95txt"></script><script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"corrections_theme","theme_token":"hGimFSTzgb00GcGnfRYzJEQwvQ__0GDa7lzqOMlnnCI","jquery_version":"default","js":{"sites\/all\/modules\/contrib\/extlink_extra\/extlink_extra.js":1,"https:\/\/static.az.gov\/sliver\/sliver.js":1,"misc\/jquery.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"\/\/www.google.com\/jsapi":1,"sites\/default\/modules\/contrib\/charts\/modules\/charts_google\/charts_google.js":1,"0":1,"sites\/default\/libraries\/leaflet\/leaflet.js":1,"misc\/jquery.cookie.js":1,"misc\/jquery.form.js":1,"sites\/default\/libraries\/jquery.placeholder\/jquery.placeholder.min.js":1,"sites\/all\/modules\/contrib\/jquery_placeholder\/jquery_placeholder.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"sites\/default\/modules\/custom\/corrections_custom\/corrections_custom.js":1,"sites\/default\/modules\/custom\/corrections_custom\/js\/jquery.marquee.min.js":1,"sites\/default\/modules\/custom\/corrections_menu\/js\/corrections_menu.js":1,"sites\/all\/modules\/contrib\/extlink\/extlink.js":1,"sites\/default\/modules\/contrib\/absolute_messages\/absolute_messages.js":1,"1":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox_load.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox_inline.js":1,"https:\/\/www.google.com\/jsapi":1,"sites\/default\/libraries\/jquery.webks-responsive-table\/jquery.webks-responsive-table.js":1,"sites\/all\/modules\/contrib\/jquery_wrt\/jquery_wrt.js":1,"sites\/default\/modules\/contrib\/leaflet\/leaflet.drupal.js":1,"2":1,"sites\/all\/modules\/contrib\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/contrib\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/custom\/menu_block_placement\/modules\/mbp_defaults\/mbp_defaults.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"3":1,"sites\/default\/modules\/contrib\/leaflet_more_maps\/leaflet_more_maps.js":1,"sites\/default\/libraries\/superfish\/jquery.hoverIntent.minified.js":1,"sites\/default\/libraries\/superfish\/sfsmallscreen.js":1,"sites\/default\/libraries\/superfish\/supposition.js":1,"sites\/default\/libraries\/superfish\/superfish.js":1,"sites\/default\/libraries\/superfish\/supersubs.js":1,"sites\/default\/modules\/contrib\/superfish\/superfish.js":1,"sites\/default\/files\/js_injector\/js_injector_1.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/default\/modules\/custom\/azdoc_notifications\/azdoc_notifications.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"modules\/comment\/comment.css":1,"sites\/default\/modules\/custom\/corrections_menu\/css\/corrections_menu.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/logintoboggan\/logintoboggan.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/extlink\/extlink.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/media\/modules\/media_wysiwyg\/css\/media_wysiwyg.base.css":1,"sites\/default\/modules\/contrib\/absolute_messages\/absolute_messages.css":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/default\/libraries\/jquery.webks-responsive-table\/jquery.webks-responsive-table.css":1,"sites\/all\/modules\/contrib\/jquery_wrt\/jquery_wrt.css":1,"sites\/default\/modules\/contrib\/leaflet\/leaflet_extras.css":1,"sites\/default\/libraries\/leaflet\/leaflet.css":1,"sites\/default\/libraries\/leaflet\/leaflet.ie.css":1,"public:\/\/ctools\/css\/d41d8cd98f00b204e9800998ecf8427e.css":1,"sites\/default\/libraries\/superfish\/css\/superfish.css":1,"sites\/default\/themes\/custom\/corrections_theme\/system.menus.css":1,"sites\/default\/themes\/custom\/corrections_theme\/css\/normalize.css":1,"sites\/default\/themes\/custom\/corrections_theme\/css\/styles.css.less":1,"sites\/default\/files\/css_injector\/css_injector_1.css":1,"sites\/default\/files\/css_injector\/css_injector_5.css":1}},"colorbox":{"opacity":"0.85","current":"{current} of {total}","previous":"\u00ab Prev","next":"Next \u00bb","close":"Close","maxWidth":"98%","maxHeight":"98%","fixed":true,"mobiledetect":true,"mobiledevicewidth":"480px"},"jquery_wrt":{"module_path":"sites\/all\/modules\/contrib\/jquery_wrt","jquery_wrt_preserve_classes":true,"jquery_wrt_dynamic":true,"jquery_wrt_showswitch":true,"jquery_wrt_breakpoint":"960","jquery_wrt_subselector":":not( .table-exclude table ):not(.exclude-table-collapse):not(.sticky-header):not(.field-multiple-table):not(:has(tr.draggable))","jquery_wrt_header_selector":"thead td, thead th, tr th","jquery_wrt_row_selector":"tbody tr","jquery_wrt_responsive_row_element":"\u003Cdl\u003E\u003C\/dl\u003E","jquery_wrt_row_responsive_column_title_element":"\u003Cdt\u003E\u003C\/dt\u003E","jquery_wrt_row_responsive_column_value_element":"\u003Cdd\u003E\u003C\/dd\u003E","jquery_wrt_update_on_resize":true,"jquery_wrt_path_match_exclude":"admin\/*\r\nimce*"},"leaflet":[{"mapId":"leaflet-map-1442438989","map":{"label":"Google roadmap (zoom 0..21)","description":"Google roadmap","settings":{"maxZoom":18,"attributionControl":true,"closePopupOnClick":true,"doubleClickZoom":true,"dragging":true,"fadeAnimation":true,"layerControl":false,"minZoom":0,"scrollWheelZoom":1,"touchZoom":true,"trackResize":true,"zoomAnimation":true,"zoomControl":true},"layers":{"layer":{"type":"google","urlTemplate":"\/\/mt{s}.googleapis.com\/vt?x={x}\u0026y={y}\u0026z={z}","options":{"attribution":"Map data \u0026copy; \u003Ca target=\u0022attr\u0022 href=\u0022http:\/\/googlemaps.com\u0022\u003EGoogle\u003C\/a\u003E","detectRetina":false,"subdomains":[0,1,2,3]}}}},"features":[{"type":"point","lat":32.830935,"lon":-109.562482,"popup":"\u003Carticle class=\u0022node-1795 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/safford\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Safford\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003ESafford\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1598\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.038423,"lon":-111.372786,"popup":"\u003Carticle class=\u0022node-1796 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/cacf\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022CACF*\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003ECentral Arizona Correctional Facility (CACF)\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1269\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E6\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E6\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":31.454886,"lon":-109.595611,"popup":"\u003Carticle class=\u0022node-1797 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/douglas\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Douglas\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EDouglas\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E2106\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E3\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E3\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.028127,"lon":-111.340506,"popup":"\u003Carticle class=\u0022node-1798 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/eyman\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Eyman\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EEyman\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E5636\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E21\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E13\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":32.48748,"lon":-114.639561,"popup":"\u003Carticle class=\u0022node-1799 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/yuma\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Yuma\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EYuma\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4893\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E6\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E5\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.432093,"lon":-112.132568,"popup":"\u003Carticle class=\u0022node-1800 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/phoenix-west\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Phoenix West*\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EPhoenix West\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E471\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":32.80697,"lon":-111.519608,"popup":"\u003Carticle class=\u0022node-1801 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/red-rock\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Red Rock*\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003ERed Rock Correctional Center\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1970\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E12\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E12\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-location-type field-type-taxonomy-term-reference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation Type:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E\u003Ca href=\u0022\/location-type\/private-facility\u0022 typeof=\u0022skos:Concept\u0022 property=\u0022rdfs:label skos:prefLabel\u0022 datatype=\u0022\u0022\u003EPrivate Facility\u003C\/a\u003E\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.455385,"lon":-112.028616,"popup":"\u003Carticle class=\u0022node-1802 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/phoenix\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Phoenix\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EPhoenix\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E800\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E2\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.46827,"lon":-112.444102,"popup":"\u003Carticle class=\u0022node-1803 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/perryville\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Perryville\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EPerryville\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4117\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.70985,"lon":-112.12188,"popup":"\u003Carticle class=\u0022node-1804 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/mrc\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022MRC\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EMaricopa Reentry Center\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E11\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.201207,"lon":-112.652923,"popup":"\u003Carticle class=\u0022node-1805 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/lewis\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Lewis\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003ELewis\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4575\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E3\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E3\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":35.028963,"lon":-114.179679,"popup":"\u003Carticle class=\u0022node-1806 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/kingman\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Kingman*\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EKingman\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E3191\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E5\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E5\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.038425,"lon":-111.375635,"popup":"\u003Carticle class=\u0022node-1807 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/florence-west\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Florence West*\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EFlorence West\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E658\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":32.20558,"lon":-110.99398,"popup":"\u003Carticle class=\u0022node-1808 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/prc\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022PRC\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EPima Reentry Center (PRC)\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":33.031185,"lon":-111.372091,"popup":"\u003Carticle class=\u0022node-1809 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/florence\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Florence\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EFlorence\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E3598\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E77\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E43\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E18\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E16\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":34.985081,"lon":-110.714622,"popup":"\u003Carticle class=\u0022node-1810 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/winslow\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Winslow\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EWinslow\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1339\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E2\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E2\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":32.065092,"lon":-110.868678,"popup":"\u003Carticle class=\u0022node-1811 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/tucson\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Tucson\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003ETucson\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E4916\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E22\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E20\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E1\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"},{"type":"point","lat":32.417091,"lon":-111.23447,"popup":"\u003Carticle class=\u0022node-1812 node node-covid-19-data view-mode-full clearfix\u0022 about=\u0022\/marana\u0022 typeof=\u0022sioc:Item foaf:Document\u0022\u003E\n\n      \u003Cheader\u003E\n                  \u003Cspan property=\u0022dc:title\u0022 content=\u0022Marana*\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\u003Cspan property=\u0022sioc:num_replies\u0022 content=\u00220\u0022 datatype=\u0022xsd:integer\u0022 class=\u0022rdf-meta element-hidden\u0022\u003E\u003C\/span\u003E\n      \n          \u003C\/header\u003E\n  \n  \u003Cdiv class=\u0022field field-name-field-location field-type-entityreference field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003ELocation:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003EMarana\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-daily-total-population field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EDaily Total Population:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E442\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-tested field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Tested:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E11\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-negative field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Negative:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E5\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-confirmed field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Confirmed:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E6\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\u003Cdiv class=\u0022field field-name-field-inmates-pending field-type-number-integer field-label-above\u0022\u003E\u003Cdiv class=\u0022field-label\u0022\u003EInmates Pending:\u0026nbsp;\u003C\/div\u003E\u003Cdiv class=\u0022field-items\u0022\u003E\u003Cdiv class=\u0022field-item even\u0022\u003E0\u003C\/div\u003E\u003C\/div\u003E\u003C\/div\u003E\n  \n  \n\u003C\/article\u003E\u003C!-- \/.node --\u003E\n"}]}],"extlink":{"extTarget":"_blank","extClass":"ext","extLabel":"(link is external)","extImgClass":0,"extIconPlacement":"append","extSubdomains":1,"extExclude":"","extInclude":"\\.pdf","extCssExclude":"","extCssExplicit":"","extAlert":"_blank","extAlertText":{"value":"This link will take you to an external web site and you will be leaving this official .gov web site.","format":"basic_html"},"mailtoClass":0,"mailtoLabel":"(link sends e-mail)"},"extlink_extra":{"extlink_alert_type":"confirm","extlink_alert_timer":0,"extlink_alert_url":"\/now-leaving","extlink_cache_fix":0,"extlink_exclude_warning":"\\.pdf","extlink_508_fix":0,"extlink_508_text":" [external link]","extlink_url_override":0,"extlink_url_params":{"external_url":null,"back_url":null}},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip","trackColorbox":1},"jquery_placeholder":{"edit-search-block-form--2":{"selector":"#edit-search-block-form--2"}},"urlIsAjaxTrusted":{"\/adcrr-covid-19-dashboard":true},"superfish":{"1":{"id":"1","sf":{"animation":{"opacity":"show"},"speed":"\u0027fast\u0027","autoArrows":true,"dropShadows":true,"disableHI":false},"plugins":{"smallscreen":{"mode":"window_width","addSelected":false,"menuClasses":false,"hyperlinkClasses":false,"title":"Main menu"},"supposition":true,"bgiframe":false,"supersubs":{"minWidth":"12","maxWidth":"27","extraWidth":1}}}}});</script><div id="header-top">
+    <div class="region region-header-top">
+    <div id="block-feature-sliver-sliver" class="block block-feature-sliver first last odd">
+
+      
+  
+</div>
+  </div>
+</div>
+
+<div id="page-container">
+
+<header id="header" role="banner"><div class="header__region region region-header">
+    <div id="block-nodeblock-8" class="block block-nodeblock site-logo first odd">
+
+      
+  <div id="node-8" class="node node-block view-mode-full clearfix" about="/block/site-logo" typeof="sioc:Item foaf:Document">
+
+        <span property="dc:title" content="Site logo" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<p><a href="//corrections.az.gov/"><img alt="AZ Corrections" src="//corrections.az.gov/sites/default/files/images/sitelogo.png"></a></p>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</div>
+<div id="block-search-form" class="block block-search even" role="search">
+
+      
+  <form action="/adcrr-covid-19-dashboard" method="post" id="search-block-form" accept-charset="UTF-8"><div>
+<div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-searchfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." placeholder="Search ADC" type="search" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text form-search">
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit"></div>
+<input type="hidden" name="form_build_id" value="form-UCe6AvfWyhgcPDNh4OEABJnOtaGbRUggvcXKUJhvP7Q"><input type="hidden" name="form_id" value="search_block_form">
+</div>
+</div></form>
+</div>
+<div id="block-nodeblock-735" class="block block-nodeblock block-google-translate odd">
+
+      
+  <div id="node-735" class="node node-block view-mode-full clearfix" about="/block/google-translate" typeof="sioc:Item foaf:Document">
+
+        <span property="dc:title" content="Google Translate" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<div id="google_translate_element"></div>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</div>
+<div class="mobile-menu-popout">
+<div id="block-corrections-menu-responsive-menu" class="block block-corrections-menu last even">
+
+      
+  <div class="menu-block-wrapper menu-block-responsive_menu menu-name-main-menu parent-mlid-0 menu-level-0">
+  <ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-715"><a href="/" title="" class="menu__link">Home</a></li>
+<li class="menu__item is-expanded is-active-trail expanded active-trail menu-mlid-800">
+<a href="/prisons" class="menu__link is-active-trail active-trail">Prisons &amp; Visitation</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-723"><a href="/inmate-visitation-application" class="menu__link">Application To Visit An Inmate / Phone Application</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-795"><a href="/capacity-custody-level" class="menu__link">Historical Daily Count Sheets</a></li>
+<li class="menu__item is-expanded is-active-trail expanded active-trail menu-mlid-891">
+<a href="/prisons" class="menu__link is-active-trail active-trail">State Map of Complexes</a><ul class="menu">
+<li class="menu__item is-leaf is-active-trail is-active first last leaf active-trail active menu-mlid-886"><a href="/location/unit/201/santa-maria-unit" class="menu__link is-active-trail menu-position-link active-trail">Santa Maria Unit</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf last leaf menu-mlid-972"><a href="/parole-office-locations" title="Parole Office Locations" class="menu__link">Parole Office Locations</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-844">
+<a href="/public-resources" class="menu__link">Public Resources</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-1222"><a href="/public-resources/inmate-datasearch" class="menu__link">Inmate DataSearch</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-782">
+<a href="/victim-services" class="menu__link">Victim Services</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-784"><a href="/public-resources/victim-services/victim-rights" class="menu__link">Victim Rights</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-845"><a href="/victim-faqs#pcnr" title="" class="menu__link">Post-Conviction Notification</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-846"><a href="/victim-faqs#order" title="" class="menu__link">Protective Services</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-847"><a href="/victim-faqs#restitution" title="" class="menu__link">Restitution</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-848"><a href="/victim-organizations-related-links" class="menu__link">Victim Organizations &amp; Related Links</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-849"><a href="/county-contact-information" class="menu__link">County Contact Information</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-722"><a href="/victim-faqs#hearings" class="menu__link">Information on Hearings</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-783"><a href="/victim-faqs" class="menu__link">Victim FAQs</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-773"><a href="/contact-victim-services" class="menu__link">Contact Victim Services</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-729">
+<a href="/deputy-director/constituent-services" class="menu__link">Constituent Services</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-746"><a href="/public-resources/constituent-services/communicating-adc-about-inmate" class="menu__link">Communicating With ADC About Inmate</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-763"><a href="/public-resources/constituent-services/inmate-information-connection" class="menu__link">Inmate Information Connection</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-761"><a href="/public-resources/constituent-services/family-assistance-and-other-useful-links" class="menu__link">Family Assistance and Other Useful Links</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-3633"><a href="/public-resources/constituent-services/electronic-payments" class="menu__link">Inmate Trust Accounts Electronic Payments</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-3463"><a href="/public-resources/public-records" class="menu__link">Public Records</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-802"><a href="/public-resources/emergency-preparedness" class="menu__link">Emergency Preparedness</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-793">
+<a href="/public-resources/prison-operations" class="menu__link">Prison Operations</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-852"><a href="/administration" class="menu__link">Administration</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-853"><a href="/security-operations" class="menu__link">Security Operations</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-854"><a href="/prisons" title="" class="menu__link">Prison Complexes</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-856"><a href="/contract-beds-bureau" class="menu__link">Contract Beds Bureau</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-857"><a href="/offender-services" class="menu__link">Offender Services</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-724">
+<a href="/public-resources/inspector-general" class="menu__link">Inspector General</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-750"><a href="/administrative-investigations" class="menu__link">Administrative Investigations</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-751"><a href="/policy-unit" class="menu__link">Policy Unit</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-749"><a href="/audit-unit" class="menu__link">Audit Unit</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-748"><a href="/background-investigations" class="menu__link">Background Investigations</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-745"><a href="/criminal-investigations" class="menu__link">Criminal Investigations</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-742">
+<a href="/public-resources/inspector-general/security-threat-groups" class="menu__link">Security Threat Group Unit</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-864"><a href="/public-resources/inspector-general/security-threat-groups/frequently-used-terminology" title="" class="menu__link">Frequently Used Terminology</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-866"><a href="/public-resources/inspector-general/security-threat-group-unit/stg-earmarks" class="menu__link">STG Earmarks</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-869"><a href="/membership-validation-criteria" title="" class="menu__link">Membership Validation Criteria</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-870"><a href="/public-resources/inspector-general/security-threat-group-unit/certified-and-monitored-stgs" title="" class="menu__link">Certified and Monitored STGs</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-872"><a href="/public-resources/inspector-general/security-threat-group-unit/associated-sites" class="menu__link">Associated Sites</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-873"><a href="/public-resources/inspector-general/security-threat-group-unit/security-threat-group-faqs" class="menu__link">Security Threat Group FAQs</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-874"><a href="/public-resources/inspector-general/security-threat-group-unit/contact-adcs-stg-unit" class="menu__link">Contact</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf last leaf menu-mlid-813"><a href="/public-resources/inspector-general/special-operations" class="menu__link">Special Operations</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-850">
+<a href="/public-resources/death-row" class="menu__link">Death Row</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-1267"><a href="/public-resources/death-row/most-recent-execution" title="Most Recent Execution" class="menu__link">Most Recent Execution</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1268"><a href="/public-resources/death-row/executions-prior-1992-execution-methods" title="Executed Prior to 1992 &amp; Execution Methods" class="menu__link">Executed Prior to 1992 &amp; Execution Methods</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1269"><a href="/public-resources/death-row/witness-groups" title="" class="menu__link">Witness Groups</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1270"><a href="/public-resources/death-row/arizona-death-penalty-history" title="" class="menu__link">Death Penalty History</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1271"><a href="/public-resources/death-row/death-row-sentences-county-breakdown" title="" class="menu__link">Sentencing Counties</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1220"><a href="/public-resources/death-row/last-meals-request" class="menu__link">Executed since 1992/Last Meals</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-1272"><a href="/public-resources/death-row/death-row-information-and-frequently-asked-questions" title="" class="menu__link">Death Row Information and FAQ</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf last leaf menu-mlid-951"><a href="/external-links" title="External Website Links" class="menu__link">External Links</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-799">
+<a href="/programs-services" class="menu__link">Programs &amp; Services</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-726"><a href="/health-services" class="menu__link">Medical Services</a></li>
+<li class="menu__item is-expanded last expanded menu-mlid-954">
+<a href="/programs-services/inmate-programs-reentry" title="Inmate Programs &amp; Reentry" class="menu__link">Inmate Programs &amp; Reentry</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-958"><a href="/workforce-development" title="Inmate Education" class="menu__link">Inmate Education</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-962">
+<a href="/religious-services" title="Religious Services" class="menu__link">Religious Services</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-963"><a href="/programs-services/religious-services/frequently-asked-questions" title="Frequently Asked Questions" class="menu__link">Frequently Asked Questions</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-964"><a href="/programs-services/religious-services/inmate-marriages" title="Inmate Marriages" class="menu__link">Inmate Marriages</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-966"><a href="/programs-services/religious-services/institutional-chaplains" title="Institutional Chaplains" class="menu__link">Institutional Chaplains</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-943"><a href="/programs-services/inmate-programs-reentry/religious-services/religious-advisory-committee" title="Religious Advisory Committee" class="menu__link">Religious Advisory Committee</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-968"><a href="/programs-services/religious-services/religious-diets" title="Religious Diets" class="menu__link">Religious Diets</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-969"><a href="/programs-services/religious-services/religious-property" title="Religious Property" class="menu__link">Religious Property</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-3653">
+<a href="/community-corrections" class="menu__link">Community Corrections</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-858"><a href="/parole-office-locations" title="Parole Office Locations" class="menu__link">Parole Office Locations</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-975"><a href="/community-corrections-fees" title="Community Corrections Fees" class="menu__link">Community Corrections Fees</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-957"><a href="/arizona-correctional-industries" title="Arizona Correctional Industries" class="menu__link">Arizona Correctional Industries</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-959"><a href="/addiction-treatment-services" title="Counseling &amp; Treatment Services" class="menu__link">Counseling &amp; Treatment Services</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3625"><a href="/programs-services/inmate-programs-reentry/program-systems" class="menu__link">Program Systems</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3629"><a href="/programs-services/inmate-programs-reentry/new-inmate-release-card-program" class="menu__link">Inmate Release Card Program</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-3844"><a href="https://corrections.az.gov/arizona-department-corrections-americorps-program" title="" class="menu__link">AmeriCorps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-798">
+<a href="/employment" class="menu__link">Employment</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-717"><a href="/adc-careers" class="menu__link">ADC Careers</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-727">
+<a href="/correctional-officer-careers" class="menu__link">Correctional Officer Careers</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-3642"><a href="/employment/correctional-officer-careers/temporary-correctional-officer-trainee-program" class="menu__link">Correctional Officer Trainee</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-3643">
+<a href="/employment/correctional-officer-careers/correctional-officer-hiring-process" class="menu__link">Hiring Process</a><ul class="menu">
+<li class="menu__item is-leaf first last leaf menu-mlid-776"><a href="/employment/correctional-officer-careers/requirements/fitness-test" class="menu__link">Fitness Test</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-747">
+<a href="/benefits" class="menu__link">Benefits</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-765"><a href="/salary-range" class="menu__link">Salary Range</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-775"><a href="/co-benefits" class="menu__link">CO Benefits</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3455"><a href="/employment/correctional-officer-careers/benefits/corrections-officer-retirement-plan" class="menu__link">CO Retirement Plan</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-930"><a href="/employment/correctional-officer-careers/benefits/corp-board-meeting-schedule" class="menu__link">CORP Board Meeting Schedule</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3654"><a href="/employment/correctional-officer-careers/benefits/corp-meeting-agenda" class="menu__link">CORP Meeting Agenda</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3655"><a href="/employment/correctional-officer-careers/benefits/corp-notice-meeting-cancellation" class="menu__link">CORP Notice of Meeting Cancellation</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-932"><a href="/employment/correctional-officer-careers/benefits/corp-meeting-minutes" class="menu__link">CORP Meeting Minutes</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-933"><a href="/employment/correctional-officer-careers/benefits/corp-notice-public-meeting" class="menu__link">CORP Notice of Public Meeting</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-935"><a href="/employment/correctional-officer-careers/benefits/corp-pre-retirement-seminars" class="menu__link">CORP Pre-Retirement Seminars</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-934"><a href="/employment/correctional-officer-careers/benefits/eligible-corp-job-classifications" class="menu__link">Eligible CORP Job Classifications</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-936"><a href="/employment/correctional-officer-careers/benefits/retirement-input-forms" class="menu__link">Retirement Input Forms</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-927"><a href="/cdn-cgi/l/email-protection#cfaca0bdbfada0aebdab8faeb5aca0bdbdaaacbba6a0a1bce1a8a0b9" title="" class="menu__link">Email the Local CORP Board</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-937"><a href="/employment/correctional-officer-careers/benefits/retirement-plan-corp/return-work-fact-sheet" class="menu__link">Return To Work Fact Sheet</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-744"><a href="/recruiterscontact-rush" class="menu__link">Recruiters/Contact RUSH</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3141"><a href="/employment/correctional-officer-careers/central-promotional-register" class="menu__link">Central Promotional Register</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-755"><a href="/correctional-officer-training-academy-cota" class="menu__link">Correctional Officer Training Academy (COTA)</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-734">
+<a href="/employment/human-resources-development-group" class="menu__link">Human Resources &amp; Development Group</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-759"><a href="/employee-assistance-office" title="Employee Assistance Office" class="menu__link">Employee Assistance Office</a></li>
+<li class="menu__item is-expanded last expanded menu-mlid-728">
+<a href="/staff-development-training-bureau" title="Staff Development &amp; Training Bureau" class="menu__link">Staff Development &amp; Training Bureau</a><ul class="menu">
+<li class="menu__item is-leaf first last leaf menu-mlid-3341"><a href="/programs-services/staff-development-training-bureau/correctional-officer-training-academy-cota" class="menu__link">Correctional Officer Training Academy (COTA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu__item is-expanded last expanded menu-mlid-739">
+<a href="/policies" class="menu__link">CO Selection Process</a><ul class="menu">
+<li class="menu__item is-leaf first last leaf menu-mlid-790"><a href="http://corrections.az.gov/sites/default/files/cota_conduct_general_info_032513.pdf" title="" class="menu__link">COTA Conduct and General Information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-871">
+<a href="/reports-documents" class="menu__link">Reports &amp; Documents</a><ul class="menu">
+<li class="menu__item is-expanded first expanded menu-mlid-893">
+<a href="/reports-documents/adc-policies" class="menu__link">ADC Policies</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-897"><a href="/reports-documents/adc-policies/department-orders-index" title="Department Orders" class="menu__link">Department Orders</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-896"><a href="/reports-documents/adc-policies/directors-instructions-list" title="Director's Instructions" class="menu__link">Director's Instructions</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-892">
+<a href="/reports-documents/reports" class="menu__link">Reports</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-1878"><a href="/reports-documents/reports/corrections-glance" class="menu__link">Corrections at a Glance</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3208"><a href="/reports-documents/reports/adc-institutional-capacity-committed-population" class="menu__link">ADC Institutional Capacity &amp; Committed Population</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-3207"><a href="/reports-documents/reports/inmate-assault-self-harm-mortality-data" class="menu__link">Inmate Assault, Self-Harm &amp; Mortality Data</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf last leaf menu-mlid-3761"><a href="/reports-documents/meet-confer" class="menu__link">Meet &amp; Confer</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded last expanded menu-mlid-612">
+<a href="/about" class="menu__link">About</a><ul class="menu">
+<li class="menu__item is-expanded first expanded menu-mlid-733">
+<a href="/directors-office" class="menu__link">Director's Office</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-756"><a href="/mission-statement" class="menu__link">Mission Statement</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-760">
+<a href="/media-relations" class="menu__link">Media Relations</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-889"><a href="/articles" class="menu__link">News</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-890"><a href="/events" class="menu__link">Events</a></li>
+<li class="menu__item is-expanded last expanded menu-mlid-898">
+<a href="/reports-documents/adc-policies" title="" class="menu__link">ADC Policies</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-952"><a href="/reports-documents/adc-policies/department-orders-index" title="Department Orders" class="menu__link">Department Orders</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-953"><a href="/reports-documents/adc-policies/directors-instructions-list" title="Director's Instructions" class="menu__link">Director's Instructions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-758"><a href="/about/directors-office/legislative-liaison" class="menu__link">Legislative Liaison</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-757"><a href="/legal-services" class="menu__link">Legal Services</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-754"><a href="/strategic-planning" class="menu__link">The Office of Continuous Improvement &amp; Strategic Planning</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-797"><a href="/deputy-director" class="menu__link">Deputy Director</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-732">
+<a href="/admin-services" class="menu__link">Administrative Services</a><ul class="menu">
+<li class="menu__item is-expanded first expanded menu-mlid-877">
+<a href="/procurement" class="menu__link">Procurement</a><ul class="menu">
+<li class="menu__item is-leaf first last leaf menu-mlid-904"><a href="/about/administrative-services/procurement/procurement-servicesrequest-proposal-rfp" class="menu__link">Procurement Services/Request for Proposal (RFP)</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-878"><a href="/financial-services" class="menu__link">Financial Services</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-901"><a href="/about/administrative-services/information-technology-it" class="menu__link">Information Technology</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-902"><a href="/about/administrative-services/planning-budget-research-bureau" class="menu__link">Planning, Budget &amp; Research</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-903"><a href="/about/administrative-services/engineering-and-facilities-bureau" class="menu__link">Engineering and Facilities Bureau</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-736">
+<a href="/adc-news" class="menu__link">ADC In The News</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-944"><a href="/adc-press-releases" title="" class="menu__link">ADC Press Releases</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-3437"><a href="/events" title="Scheduled Meetings" class="menu__link">ADC Events</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-738">
+<a href="/adc-history" class="menu__link">ADC History</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-1774"><a href="/about/adc-history/adc-remembers-staff-killed-in-the-line-of-duty" title="ADC Staff Killed In The Line Of Duty" class="menu__link">Remembrance</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-1770">
+<a href="https://corrections.az.gov/about/adc-history/historical-prison-register" title="Historical Prison Register for 100 years to 1972" class="menu__link">Historical Prison Register</a><ul class="menu">
+<li class="menu__item is-leaf first last leaf menu-mlid-2352"><a href="/about/adc-history/historical-prison-register/historical-prison-register" class="menu__link">Historical Prison Register</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-1771"><a href="/women-corrections" title="Women in Corrections" class="menu__link">Women in Corrections</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-3461"><a href="/about/adc-history/adc-badges-patches-medals-awards" class="menu__link">ADC Badges and Patches</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1773"><a href="/about/adc-history/past-adc-directors" title="ADC Director History" class="menu__link">ADC Director History</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-1775"><a href="/historical-prison-register" title="" class="menu__link">Life Imprisonment and Death Sentences 1875-1966</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-1776"><a href="/public-resources/death-row/arizona-death-penalty-history" title="" class="menu__link">Death Penalty History</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-859"><a href="/prisons" title="" class="menu__link">ADC Prisons</a></li>
+<li class="menu__item is-expanded expanded menu-mlid-781">
+<a href="/about/adc-community-information" class="menu__link">ADC Community</a><ul class="menu">
+<li class="menu__item is-leaf first leaf menu-mlid-861"><a href="http://www.100club.org/" title="" class="menu__link">100 Club</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-863"><a href="https://az.gov/government" title="" class="menu__link">AZ Gov Information Resource Locator</a></li>
+<li class="menu__item is-leaf leaf menu-mlid-865"><a href="https://servicearizona.com/voterRegistration" title="" class="menu__link">EZ Voter Registration</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-868"><a href="/local-community-contacts" class="menu__link">Local Community Contacts</a></li>
+</ul>
+</li>
+<li class="menu__item is-expanded expanded menu-mlid-735">
+<a href="/inmate-labor" class="menu__link">Inmate Labor</a><ul class="menu">
+<li class="menu__item is-leaf first last leaf menu-mlid-792"><a href="/arizona-correctional-industries" title="" class="menu__link">Arizona Correctional Industries</a></li>
+</ul>
+</li>
+<li class="menu__item is-leaf leaf menu-mlid-718"><a href="/volunteer-opportunities" class="menu__link">Volunteer Opportunities</a></li>
+<li class="menu__item is-leaf last leaf menu-mlid-924"><a href="/about/contact-us" class="menu__link">Contact Us</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+</div>
+</div>  </div>
+</header><div id="page">
+
+  <div id="main">
+
+    <div id="navigation">
+        <div class="region region-navigation">
+    <div id="block-superfish-1" class="block block-superfish main-menu main-menu-no-mobile first odd">
+
+      
+  <ul id="superfish-1" class="menu sf-menu sf-main-menu sf-horizontal sf-style-none sf-total-items-7 sf-parent-items-6 sf-single-items-1">
+<li id="menu-715-1" class="first odd sf-item-1 sf-depth-1 sf-no-children"><a href="/" title="" class="sf-depth-1">Home</a></li>
+<li id="menu-800-1" class="middle even sf-item-2 sf-depth-1 sf-total-children-4 sf-parent-children-1 sf-single-children-3 menuparent">
+<a href="/prisons" class="sf-depth-1 menuparent">Prisons &amp; Visitation</a><ul>
+<li id="menu-723-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/inmate-visitation-application" class="sf-depth-2">Application To Visit An Inmate / Phone Application</a></li>
+<li id="menu-795-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/capacity-custody-level" class="sf-depth-2">Historical Daily Count Sheets</a></li>
+<li id="menu-891-1" class="middle odd sf-item-3 sf-depth-2"><a href="/prisons" class="sf-depth-2">State Map of Complexes</a></li>
+<li id="menu-972-1" class="last even sf-item-4 sf-depth-2 sf-no-children"><a href="/parole-office-locations" title="Parole Office Locations" class="sf-depth-2">Parole Office Locations</a></li>
+</ul>
+</li>
+<li id="menu-844-1" class="middle odd sf-item-3 sf-depth-1 sf-total-children-9 sf-parent-children-5 sf-single-children-4 menuparent">
+<a href="/public-resources" class="sf-depth-1 menuparent">Public Resources</a><ul>
+<li id="menu-1222-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/public-resources/inmate-datasearch" class="sf-depth-2">Inmate DataSearch</a></li>
+<li id="menu-782-1" class="middle even sf-item-2 sf-depth-2 sf-total-children-9 sf-parent-children-0 sf-single-children-9 menuparent">
+<a href="/victim-services" class="sf-depth-2 menuparent">Victim Services</a><ul>
+<li id="menu-784-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/public-resources/victim-services/victim-rights" class="sf-depth-3">Victim Rights</a></li>
+<li id="menu-845-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/victim-faqs#pcnr" title="" class="sf-depth-3">Post-Conviction Notification</a></li>
+<li id="menu-846-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/victim-faqs#order" title="" class="sf-depth-3">Protective Services</a></li>
+<li id="menu-847-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/victim-faqs#restitution" title="" class="sf-depth-3">Restitution</a></li>
+<li id="menu-848-1" class="middle odd sf-item-5 sf-depth-3 sf-no-children"><a href="/victim-organizations-related-links" class="sf-depth-3">Victim Organizations &amp; Related Links</a></li>
+<li id="menu-849-1" class="middle even sf-item-6 sf-depth-3 sf-no-children"><a href="/county-contact-information" class="sf-depth-3">County Contact Information</a></li>
+<li id="menu-722-1" class="middle odd sf-item-7 sf-depth-3 sf-no-children"><a href="/victim-faqs#hearings" class="sf-depth-3">Information on Hearings</a></li>
+<li id="menu-783-1" class="middle even sf-item-8 sf-depth-3 sf-no-children"><a href="/victim-faqs" class="sf-depth-3">Victim FAQs</a></li>
+<li id="menu-773-1" class="last odd sf-item-9 sf-depth-3 sf-no-children"><a href="/contact-victim-services" class="sf-depth-3">Contact Victim Services</a></li>
+</ul>
+</li>
+<li id="menu-729-1" class="middle odd sf-item-3 sf-depth-2 sf-total-children-4 sf-parent-children-0 sf-single-children-4 menuparent">
+<a href="/deputy-director/constituent-services" class="sf-depth-2 menuparent">Constituent Services</a><ul>
+<li id="menu-746-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/public-resources/constituent-services/communicating-adc-about-inmate" class="sf-depth-3">Communicating With ADC About Inmate</a></li>
+<li id="menu-763-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/public-resources/constituent-services/inmate-information-connection" class="sf-depth-3">Inmate Information Connection</a></li>
+<li id="menu-761-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/public-resources/constituent-services/family-assistance-and-other-useful-links" class="sf-depth-3">Family Assistance and Other Useful Links</a></li>
+<li id="menu-3633-1" class="last even sf-item-4 sf-depth-3 sf-no-children"><a href="/public-resources/constituent-services/electronic-payments" class="sf-depth-3">Inmate Trust Accounts Electronic Payments</a></li>
+</ul>
+</li>
+<li id="menu-3463-1" class="middle even sf-item-4 sf-depth-2 sf-no-children"><a href="/public-resources/public-records" class="sf-depth-2">Public Records</a></li>
+<li id="menu-802-1" class="middle odd sf-item-5 sf-depth-2 sf-no-children"><a href="/public-resources/emergency-preparedness" class="sf-depth-2">Emergency Preparedness</a></li>
+<li id="menu-793-1" class="middle even sf-item-6 sf-depth-2 sf-total-children-5 sf-parent-children-0 sf-single-children-5 menuparent">
+<a href="/public-resources/prison-operations" class="sf-depth-2 menuparent">Prison Operations</a><ul>
+<li id="menu-852-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/administration" class="sf-depth-3">Administration</a></li>
+<li id="menu-853-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/security-operations" class="sf-depth-3">Security Operations</a></li>
+<li id="menu-854-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/prisons" title="" class="sf-depth-3">Prison Complexes</a></li>
+<li id="menu-856-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/contract-beds-bureau" class="sf-depth-3">Contract Beds Bureau</a></li>
+<li id="menu-857-1" class="last odd sf-item-5 sf-depth-3 sf-no-children"><a href="/offender-services" class="sf-depth-3">Offender Services</a></li>
+</ul>
+</li>
+<li id="menu-724-1" class="middle odd sf-item-7 sf-depth-2 sf-total-children-7 sf-parent-children-1 sf-single-children-6 menuparent">
+<a href="/public-resources/inspector-general" class="sf-depth-2 menuparent">Inspector General</a><ul>
+<li id="menu-750-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/administrative-investigations" class="sf-depth-3">Administrative Investigations</a></li>
+<li id="menu-751-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/policy-unit" class="sf-depth-3">Policy Unit</a></li>
+<li id="menu-749-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/audit-unit" class="sf-depth-3">Audit Unit</a></li>
+<li id="menu-748-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/background-investigations" class="sf-depth-3">Background Investigations</a></li>
+<li id="menu-745-1" class="middle odd sf-item-5 sf-depth-3 sf-no-children"><a href="/criminal-investigations" class="sf-depth-3">Criminal Investigations</a></li>
+<li id="menu-742-1" class="middle even sf-item-6 sf-depth-3"><a href="/public-resources/inspector-general/security-threat-groups" class="sf-depth-3">Security Threat Group Unit</a></li>
+<li id="menu-813-1" class="last odd sf-item-7 sf-depth-3 sf-no-children"><a href="/public-resources/inspector-general/special-operations" class="sf-depth-3">Special Operations</a></li>
+</ul>
+</li>
+<li id="menu-850-1" class="middle even sf-item-8 sf-depth-2 sf-total-children-7 sf-parent-children-0 sf-single-children-7 menuparent">
+<a href="/public-resources/death-row" class="sf-depth-2 menuparent">Death Row</a><ul>
+<li id="menu-1267-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/most-recent-execution" title="Most Recent Execution" class="sf-depth-3">Most Recent Execution</a></li>
+<li id="menu-1268-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/executions-prior-1992-execution-methods" title="Executed Prior to 1992 &amp; Execution Methods" class="sf-depth-3">Executed Prior to 1992 &amp; Execution Methods</a></li>
+<li id="menu-1269-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/witness-groups" title="" class="sf-depth-3">Witness Groups</a></li>
+<li id="menu-1270-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/arizona-death-penalty-history" title="" class="sf-depth-3">Death Penalty History</a></li>
+<li id="menu-1271-1" class="middle odd sf-item-5 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/death-row-sentences-county-breakdown" title="" class="sf-depth-3">Sentencing Counties</a></li>
+<li id="menu-1220-1" class="middle even sf-item-6 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/last-meals-request" class="sf-depth-3">Executed since 1992/Last Meals</a></li>
+<li id="menu-1272-1" class="last odd sf-item-7 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/death-row-information-and-frequently-asked-questions" title="" class="sf-depth-3">Death Row Information and FAQ</a></li>
+</ul>
+</li>
+<li id="menu-951-1" class="last odd sf-item-9 sf-depth-2 sf-no-children"><a href="/external-links" title="External Website Links" class="sf-depth-2">External Links</a></li>
+</ul>
+</li>
+<li id="menu-799-1" class="middle even sf-item-4 sf-depth-1 sf-total-children-2 sf-parent-children-1 sf-single-children-1 menuparent">
+<a href="/programs-services" class="sf-depth-1 menuparent">Programs &amp; Services</a><ul>
+<li id="menu-726-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/health-services" class="sf-depth-2">Medical Services</a></li>
+<li id="menu-954-1" class="last even sf-item-2 sf-depth-2 sf-total-children-8 sf-parent-children-2 sf-single-children-6 menuparent">
+<a href="/programs-services/inmate-programs-reentry" title="Inmate Programs &amp; Reentry" class="sf-depth-2 menuparent">Inmate Programs &amp; Reentry</a><ul>
+<li id="menu-958-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/workforce-development" title="Inmate Education" class="sf-depth-3">Inmate Education</a></li>
+<li id="menu-962-1" class="middle even sf-item-2 sf-depth-3"><a href="/religious-services" title="Religious Services" class="sf-depth-3">Religious Services</a></li>
+<li id="menu-3653-1" class="middle odd sf-item-3 sf-depth-3"><a href="/community-corrections" class="sf-depth-3">Community Corrections</a></li>
+<li id="menu-957-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/arizona-correctional-industries" title="Arizona Correctional Industries" class="sf-depth-3">Arizona Correctional Industries</a></li>
+<li id="menu-959-1" class="middle odd sf-item-5 sf-depth-3 sf-no-children"><a href="/addiction-treatment-services" title="Counseling &amp; Treatment Services" class="sf-depth-3">Counseling &amp; Treatment Services</a></li>
+<li id="menu-3625-1" class="middle even sf-item-6 sf-depth-3 sf-no-children"><a href="/programs-services/inmate-programs-reentry/program-systems" class="sf-depth-3">Program Systems</a></li>
+<li id="menu-3629-1" class="middle odd sf-item-7 sf-depth-3 sf-no-children"><a href="/programs-services/inmate-programs-reentry/new-inmate-release-card-program" class="sf-depth-3">Inmate Release Card Program</a></li>
+<li id="menu-3844-1" class="last even sf-item-8 sf-depth-3 sf-no-children"><a href="https://corrections.az.gov/arizona-department-corrections-americorps-program" title="" class="sf-depth-3">AmeriCorps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-798-1" class="middle odd sf-item-5 sf-depth-1 sf-total-children-4 sf-parent-children-3 sf-single-children-1 menuparent">
+<a href="/employment" class="sf-depth-1 menuparent">Employment</a><ul>
+<li id="menu-717-1" class="first odd sf-item-1 sf-depth-2 sf-no-children"><a href="/adc-careers" class="sf-depth-2">ADC Careers</a></li>
+<li id="menu-727-1" class="middle even sf-item-2 sf-depth-2 sf-total-children-6 sf-parent-children-2 sf-single-children-4 menuparent">
+<a href="/correctional-officer-careers" class="sf-depth-2 menuparent">Correctional Officer Careers</a><ul>
+<li id="menu-3642-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/employment/correctional-officer-careers/temporary-correctional-officer-trainee-program" class="sf-depth-3">Correctional Officer Trainee</a></li>
+<li id="menu-3643-1" class="middle even sf-item-2 sf-depth-3"><a href="/employment/correctional-officer-careers/correctional-officer-hiring-process" class="sf-depth-3">Hiring Process</a></li>
+<li id="menu-747-1" class="middle odd sf-item-3 sf-depth-3"><a href="/benefits" class="sf-depth-3">Benefits</a></li>
+<li id="menu-744-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/recruiterscontact-rush" class="sf-depth-3">Recruiters/Contact RUSH</a></li>
+<li id="menu-3141-1" class="middle odd sf-item-5 sf-depth-3 sf-no-children"><a href="/employment/correctional-officer-careers/central-promotional-register" class="sf-depth-3">Central Promotional Register</a></li>
+<li id="menu-755-1" class="last even sf-item-6 sf-depth-3 sf-no-children"><a href="/correctional-officer-training-academy-cota" class="sf-depth-3">Correctional Officer Training Academy (COTA)</a></li>
+</ul>
+</li>
+<li id="menu-734-1" class="middle odd sf-item-3 sf-depth-2 sf-total-children-2 sf-parent-children-1 sf-single-children-1 menuparent">
+<a href="/employment/human-resources-development-group" class="sf-depth-2 menuparent">Human Resources &amp; Development Group</a><ul>
+<li id="menu-759-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/employee-assistance-office" title="Employee Assistance Office" class="sf-depth-3">Employee Assistance Office</a></li>
+<li id="menu-728-1" class="last even sf-item-2 sf-depth-3"><a href="/staff-development-training-bureau" title="Staff Development &amp; Training Bureau" class="sf-depth-3">Staff Development &amp; Training Bureau</a></li>
+</ul>
+</li>
+<li id="menu-739-1" class="last even sf-item-4 sf-depth-2 sf-total-children-1 sf-parent-children-0 sf-single-children-1 menuparent">
+<a href="/policies" class="sf-depth-2 menuparent">CO Selection Process</a><ul><li id="menu-790-1" class="firstandlast odd sf-item-1 sf-depth-3 sf-no-children"><a href="http://corrections.az.gov/sites/default/files/cota_conduct_general_info_032513.pdf" title="" class="sf-depth-3">COTA Conduct and General Information</a></li></ul>
+</li>
+</ul>
+</li>
+<li id="menu-871-1" class="middle even sf-item-6 sf-depth-1 sf-total-children-3 sf-parent-children-2 sf-single-children-1 menuparent">
+<a href="/reports-documents" class="sf-depth-1 menuparent">Reports &amp; Documents</a><ul>
+<li id="menu-893-1" class="first odd sf-item-1 sf-depth-2 sf-total-children-2 sf-parent-children-0 sf-single-children-2 menuparent">
+<a href="/reports-documents/adc-policies" class="sf-depth-2 menuparent">ADC Policies</a><ul>
+<li id="menu-897-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/reports-documents/adc-policies/department-orders-index" title="Department Orders" class="sf-depth-3">Department Orders</a></li>
+<li id="menu-896-1" class="last even sf-item-2 sf-depth-3 sf-no-children"><a href="/reports-documents/adc-policies/directors-instructions-list" title="Director's Instructions" class="sf-depth-3">Director's Instructions</a></li>
+</ul>
+</li>
+<li id="menu-892-1" class="middle even sf-item-2 sf-depth-2 sf-total-children-3 sf-parent-children-0 sf-single-children-3 menuparent">
+<a href="/reports-documents/reports" class="sf-depth-2 menuparent">Reports</a><ul>
+<li id="menu-1878-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/reports-documents/reports/corrections-glance" class="sf-depth-3">Corrections at a Glance</a></li>
+<li id="menu-3208-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/reports-documents/reports/adc-institutional-capacity-committed-population" class="sf-depth-3">ADC Institutional Capacity &amp; Committed Population</a></li>
+<li id="menu-3207-1" class="last odd sf-item-3 sf-depth-3 sf-no-children"><a href="/reports-documents/reports/inmate-assault-self-harm-mortality-data" class="sf-depth-3">Inmate Assault, Self-Harm &amp; Mortality Data</a></li>
+</ul>
+</li>
+<li id="menu-3761-1" class="last odd sf-item-3 sf-depth-2 sf-no-children"><a href="/reports-documents/meet-confer" class="sf-depth-2">Meet &amp; Confer</a></li>
+</ul>
+</li>
+<li id="menu-612-1" class="last odd sf-item-7 sf-depth-1 sf-total-children-10 sf-parent-children-6 sf-single-children-4 menuparent">
+<a href="/about" class="sf-depth-1 menuparent">About</a><ul>
+<li id="menu-733-1" class="first odd sf-item-1 sf-depth-2 sf-total-children-5 sf-parent-children-1 sf-single-children-4 menuparent">
+<a href="/directors-office" class="sf-depth-2 menuparent">Director's Office</a><ul>
+<li id="menu-756-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/mission-statement" class="sf-depth-3">Mission Statement</a></li>
+<li id="menu-760-1" class="middle even sf-item-2 sf-depth-3"><a href="/media-relations" class="sf-depth-3">Media Relations</a></li>
+<li id="menu-758-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/about/directors-office/legislative-liaison" class="sf-depth-3">Legislative Liaison</a></li>
+<li id="menu-757-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/legal-services" class="sf-depth-3">Legal Services</a></li>
+<li id="menu-754-1" class="last odd sf-item-5 sf-depth-3 sf-no-children"><a href="/strategic-planning" class="sf-depth-3">The Office of Continuous Improvement &amp; Strategic Planning</a></li>
+</ul>
+</li>
+<li id="menu-797-1" class="middle even sf-item-2 sf-depth-2 sf-no-children"><a href="/deputy-director" class="sf-depth-2">Deputy Director</a></li>
+<li id="menu-732-1" class="middle odd sf-item-3 sf-depth-2 sf-total-children-5 sf-parent-children-1 sf-single-children-4 menuparent">
+<a href="/admin-services" class="sf-depth-2 menuparent">Administrative Services</a><ul>
+<li id="menu-877-1" class="first odd sf-item-1 sf-depth-3"><a href="/procurement" class="sf-depth-3">Procurement</a></li>
+<li id="menu-878-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="/financial-services" class="sf-depth-3">Financial Services</a></li>
+<li id="menu-901-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/about/administrative-services/information-technology-it" class="sf-depth-3">Information Technology</a></li>
+<li id="menu-902-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/about/administrative-services/planning-budget-research-bureau" class="sf-depth-3">Planning, Budget &amp; Research</a></li>
+<li id="menu-903-1" class="last odd sf-item-5 sf-depth-3 sf-no-children"><a href="/about/administrative-services/engineering-and-facilities-bureau" class="sf-depth-3">Engineering and Facilities Bureau</a></li>
+</ul>
+</li>
+<li id="menu-736-1" class="middle even sf-item-4 sf-depth-2 sf-total-children-2 sf-parent-children-0 sf-single-children-2 menuparent">
+<a href="/adc-news" class="sf-depth-2 menuparent">ADC In The News</a><ul>
+<li id="menu-944-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/adc-press-releases" title="" class="sf-depth-3">ADC Press Releases</a></li>
+<li id="menu-3437-1" class="last even sf-item-2 sf-depth-3 sf-no-children"><a href="/events" title="Scheduled Meetings" class="sf-depth-3">ADC Events</a></li>
+</ul>
+</li>
+<li id="menu-738-1" class="middle odd sf-item-5 sf-depth-2 sf-total-children-7 sf-parent-children-1 sf-single-children-6 menuparent">
+<a href="/adc-history" class="sf-depth-2 menuparent">ADC History</a><ul>
+<li id="menu-1774-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="/about/adc-history/adc-remembers-staff-killed-in-the-line-of-duty" title="ADC Staff Killed In The Line Of Duty" class="sf-depth-3">Remembrance</a></li>
+<li id="menu-1770-1" class="middle even sf-item-2 sf-depth-3"><a href="https://corrections.az.gov/about/adc-history/historical-prison-register" title="Historical Prison Register for 100 years to 1972" class="sf-depth-3">Historical Prison Register</a></li>
+<li id="menu-1771-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="/women-corrections" title="Women in Corrections" class="sf-depth-3">Women in Corrections</a></li>
+<li id="menu-3461-1" class="middle even sf-item-4 sf-depth-3 sf-no-children"><a href="/about/adc-history/adc-badges-patches-medals-awards" class="sf-depth-3">ADC Badges and Patches</a></li>
+<li id="menu-1773-1" class="middle odd sf-item-5 sf-depth-3 sf-no-children"><a href="/about/adc-history/past-adc-directors" title="ADC Director History" class="sf-depth-3">ADC Director History</a></li>
+<li id="menu-1775-1" class="middle even sf-item-6 sf-depth-3 sf-no-children"><a href="/historical-prison-register" title="" class="sf-depth-3">Life Imprisonment and Death Sentences 1875-1966</a></li>
+<li id="menu-1776-1" class="last odd sf-item-7 sf-depth-3 sf-no-children"><a href="/public-resources/death-row/arizona-death-penalty-history" title="" class="sf-depth-3">Death Penalty History</a></li>
+</ul>
+</li>
+<li id="menu-859-1" class="middle even sf-item-6 sf-depth-2 sf-no-children"><a href="/prisons" title="" class="sf-depth-2">ADC Prisons</a></li>
+<li id="menu-781-1" class="middle odd sf-item-7 sf-depth-2 sf-total-children-4 sf-parent-children-0 sf-single-children-4 menuparent">
+<a href="/about/adc-community-information" class="sf-depth-2 menuparent">ADC Community</a><ul>
+<li id="menu-861-1" class="first odd sf-item-1 sf-depth-3 sf-no-children"><a href="http://www.100club.org/" title="" class="sf-depth-3">100 Club</a></li>
+<li id="menu-863-1" class="middle even sf-item-2 sf-depth-3 sf-no-children"><a href="https://az.gov/government" title="" class="sf-depth-3">AZ Gov Information Resource Locator</a></li>
+<li id="menu-865-1" class="middle odd sf-item-3 sf-depth-3 sf-no-children"><a href="https://servicearizona.com/voterRegistration" title="" class="sf-depth-3">EZ Voter Registration</a></li>
+<li id="menu-868-1" class="last even sf-item-4 sf-depth-3 sf-no-children"><a href="/local-community-contacts" class="sf-depth-3">Local Community Contacts</a></li>
+</ul>
+</li>
+<li id="menu-735-1" class="middle even sf-item-8 sf-depth-2 sf-total-children-1 sf-parent-children-0 sf-single-children-1 menuparent">
+<a href="/inmate-labor" class="sf-depth-2 menuparent">Inmate Labor</a><ul><li id="menu-792-1" class="firstandlast odd sf-item-1 sf-depth-3 sf-no-children"><a href="/arizona-correctional-industries" title="" class="sf-depth-3">Arizona Correctional Industries</a></li></ul>
+</li>
+<li id="menu-718-1" class="middle odd sf-item-9 sf-depth-2 sf-no-children"><a href="/volunteer-opportunities" class="sf-depth-2">Volunteer Opportunities</a></li>
+<li id="menu-924-1" class="last even sf-item-10 sf-depth-2 sf-no-children"><a href="/about/contact-us" class="sf-depth-2">Contact Us</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="block-azdoc-notifications-notification-block" class="block block-azdoc-notifications last even">
+
+      
+  <link href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap" rel="stylesheet">
+<style type="text/css">
+	img{
+		border-radius: 7px 7px 0 0;
+	}
+
+	li:last-child{
+		border-radius: 0 0 7px 7px;
+	}
+	.container-div h5, .container-div h3, .container-div h3, .container-div p{
+		margin: 0;
+		padding: 0;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
+	}
+	.list-group{
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		margin: 5px; 
+		padding: 5px;
+		background-color: red;
+	}
+	.list-group-item.active{	
+		color: #fff;
+		background-color: #818182;
+		border-color: #818182;
+	}
+	.list-group-item.active:hover{	
+		background-color:#818182;
+	}
+	.list-group-item{
+		min-height: 110px;
+		position: relative;
+		display: block;
+		padding: .75rem 1.25rem;
+		margin-bottom: -1px;
+		background-color: #fff;
+		border: 1px solid rgba(0,0,0,.125); 
+		color: #818182;
+	}
+	.list-group-item:hover{
+		background-color:#ececf6;
+	}
+	#block-azdoc-notifications-notification-block{
+		padding: 0;
+		background-color: red;
+	}
+	.Button {	
+		-webkit-perspective: 600px;
+		perspective: 600px;
+	}
+	.Button.Button--start {
+		width: 400px;
+		height: 50px;
+	}
+	.Button.Button--start button {
+		border-radius: 4px;
+	}
+	.Button.Button--select {
+		width: 60px;
+		height: 60px;
+	}
+	.Button.Button--select button {
+		border-radius: 50%;
+	}
+	button {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		box-shadow: 0px 0px 0px #750014;
+		background: radial-gradient(ellipse at center, #d60d2e 0%, #c20020 100%);
+		-webkit-transition: box-shadow 0.15s, -webkit-transform 0.15s;
+		transition: box-shadow 0.15s, -webkit-transform 0.15s;
+		transition: transform 0.15s, box-shadow 0.15s;
+		transition: transform 0.15s, box-shadow 0.15s, -webkit-transform 0.15s;
+		-webkit-transform: rotateX(0deg) translateY(0);
+		transform: rotateX(0deg) translateY(0);
+		cursor: pointer;
+		-webkit-font-smoothing: antialiased;
+	}
+	button:hover {
+		box-shadow: 0px 5px 0px #750014;
+		border-radius: 8px;
+		-webkit-transform: rotateX(30deg) translateY(0);
+		transform: rotateX(30deg) translateY(0);
+	}
+	button:hover:active {
+		text-shadow: 0 0 4px #ad001d;
+		box-shadow: 0 1px 0 #423847;
+		background: radial-gradient(ellipse at center, #ff002b 0%, #ed0028 100%);
+		-webkit-transition: box-shadow 0.05s, -webkit-transform 0.05s;
+		transition: box-shadow 0.05s, -webkit-transform 0.05s;
+		transition: transform 0.05s, box-shadow 0.05s;
+		transition: transform 0.05s, box-shadow 0.05s, -webkit-transform 0.05s;
+		-webkit-transform: rotateX(30deg) translateY(4px);
+		transform: rotateX(30deg) translateY(4px);
+	}
+	button span {
+		position: relative;
+		font-size: 21px;
+		color: #fff;
+		text-transform: uppercase;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+	h2.button-title{
+		margin: 0;
+	}
+
+</style>
+<div class="container-div">	
+	<ul class="list-group">
+<img style="width:100%;" src="https://corrections.az.gov/sites/default/files/images/logos/adcrrcovid19mangementstrategy_intranet_oswald.jpg"><li class="list-group-item">			
+			<div style="display:flex; justify-content: center; align-items: center;">
+				<div class="Button Button--start">	
+					<h2 class="button-title">MANAGEMENT STRATEGY UPDATES</h2>
+					<a href="https://corrections.az.gov/covid-19-management-updates"><button><span>Click Here</span></button></a>	
+				</div>		
+			</div>
+		</li>	
+
+		<li class="list-group-item">
+			<div style="display:flex; justify-content: center; align-items: center;">
+				<div class="Button Button--start">						
+						<h2 class="button-title">ADCRR COVID-19 DASHBOARD</h2>
+						<a href="https://corrections.az.gov/adcrr-covid-19-dashboard"><button><span>CLICK HERE</span></button></a>
+				</div>		
+			</div>
+		</li>	
+	</ul>
+</div>
+
+
+</div>
+  </div>
+    </div>
+<!-- /#navigation -->
+    <div id="content-wrapper">
+
+      <div id="content" class="column" role="main">
+                        <a id="main-content"></a>
+                          <h1 class="title" id="page-title">ADCRR COVID-19 Dashboard</h1>
+                                                                
+<div id="block-views-covid-19-data-table-block-1" class="block block-views first odd">
+
+      
+  <div class="view view-covid-19-data-table view-id-covid_19_data_table view-display-id-block_1 view-dom-id-621b6e62153b25b2704d8fe02f2e462b">
+        
+  
+  
+      <div class="view-content">
+      <table class="views-table cols-5">
+<thead><tr>
+<th scope="col">
+            Inmates Tested          </th>
+                  <th scope="col">
+            Inmates Negative          </th>
+                  <th scope="col">
+            Inmates Confirmed          </th>
+                  <th scope="col">
+            Inmates Pending          </th>
+                  <th scope="col">
+            Daily Total Population          </th>
+              </tr></thead>
+<tbody><tr class="odd views-row-first views-row-last">
+<td>
+            172          </td>
+                  <td>
+            118          </td>
+                  <td>
+            29          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">25</div></div></div>          </td>
+                  <td>
+            41594          </td>
+              </tr></tbody>
+</table>
+</div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+<div id="block-views-covid-19-data-table-block-2" class="block block-views even">
+
+      
+  <div class="view view-covid-19-data-table view-id-covid_19_data_table view-display-id-block_2 view-dom-id-aa095d910cb99743ea58df19e02bc953">
+        
+  
+  
+      <div class="view-content">
+      <div class="charts-google chart" data-chart='{"visualization":"BarChart","options":{"title":"COVID-19 Total Testing","titleTextStyle":{"color":"#000","bold":false,"italic":false,"fontSize":14},"titlePosition":"out","colors":["#2f7ed8","#0d233a","#8bbc21","#910000","#1aadce","#492970","#f28f43","#77a1e5","#c42525","#a6c96a"],"fontName":"Arial","fontSize":12,"backgroundColor":{"fill":"transparent"},"isStacked":false,"tooltip":{"trigger":"focus","isHtml":false},"legend":{"position":"top","alignment":"center","titleTextStyle":{"bold":true,"italic":false},"textStyle":{"bold":false,"italic":false}},"interpolateNulls":true,"animation":{"duration":10000,"easing":"out"},"vAxes":[{"title":"","titleTextStyle":{"color":"#000","bold":false,"italic":false,"fontSize":12},"textStyle":{"color":"#000","bold":false,"italic":false},"slantedTextAngle":0,"gridlines":{"color":"#ccc"},"baselineColor":"#ccc","minorGridlines":{"color":"#e0e0e0"},"viewWindow":[]}],"hAxis":{"title":"","titleTextStyle":{"color":"#000","bold":false,"italic":false,"fontSize":12},"textStyle":{"color":"#000","bold":false,"italic":false},"slantedTextAngle":0,"gridlines":{"color":"#ccc"},"baselineColor":"#ccc","minorGridlines":{"color":"#e0e0e0"},"viewWindow":[]},"series":[{"color":"#2f7ed8","pointSize":3,"visibleInLegend":true,"pieSliceText":"none","_format":{"format":"#"}},{"color":"#0d233a","pointSize":3,"visibleInLegend":true,"pieSliceText":"none","_format":{"format":"#"}},{"color":"#8bbc21","pointSize":3,"visibleInLegend":true,"pieSliceText":"none","_format":{"format":"#"}},{"color":"#1aadce","pointSize":3,"visibleInLegend":true,"pieSliceText":"none","_format":{"format":"#"}}],"hAxes":[{"format":"#"}]},"data":[["x","Inmates Tested","Inmates Negative","Inmates Confirmed","Inmates Pending"],[null,172,118,29,25]]}' id="chart-covid-19-data-table--block-2"></div>    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+<div id="block-views-location-map-block-4" class="block block-views odd">
+
+      
+  <div class="view view-location-map view-id-location_map view-display-id-block_4 view-dom-id-1988d696db22b73aa6da6f89e5869a7f">
+        
+  
+  
+      <div class="view-content">
+      <div id="leaflet-map-1442438989" style="height: 400px"></div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+<div id="block-views-covid-19-data-table-block" class="block block-views even">
+
+      
+  <div class="view view-covid-19-data-table view-id-covid_19_data_table view-display-id-block view-dom-id-d8e994b21d4b9985a60aad281f231094">
+        
+  
+  
+      <div class="view-content">
+      <table class="views-table cols-6">
+<thead><tr>
+<th scope="col">
+            <a href="/adcrr-covid-19-dashboard?order=title_field&amp;sort=asc" title="sort by Location" class="active">Location</a>          </th>
+                  <th scope="col">
+            <a href="/adcrr-covid-19-dashboard?order=field_inmates_tested&amp;sort=desc" title="sort by Inmates Tested" class="active">Inmates Tested</a>          </th>
+                  <th scope="col">
+            <a href="/adcrr-covid-19-dashboard?order=field_inmates_negative&amp;sort=desc" title="sort by Inmates Negative" class="active">Inmates Negative</a>          </th>
+                  <th scope="col">
+            <a href="/adcrr-covid-19-dashboard?order=field_inmates_confirmed&amp;sort=desc" title="sort by Inmates Confirmed" class="active">Inmates Confirmed</a>          </th>
+                  <th scope="col">
+            <a href="/adcrr-covid-19-dashboard?order=field_inmates_pending&amp;sort=desc" title="sort by Inmates Pending" class="active">Inmates Pending</a>          </th>
+                  <th scope="col">
+            <a href="/adcrr-covid-19-dashboard?order=field_daily_total_population&amp;sort=desc" title="sort by Daily Total Population" class="active">Daily Total Population</a>          </th>
+              </tr></thead>
+<tbody>
+<tr class="odd views-row-first">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Safford</div></div></div>          </td>
+                  <td>
+            1          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">1</div></div></div>          </td>
+                  <td>
+            1598          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">CACF*</div></div></div>          </td>
+                  <td>
+            6          </td>
+                  <td>
+            6          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            1269          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Douglas</div></div></div>          </td>
+                  <td>
+            3          </td>
+                  <td>
+            3          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            2106          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Eyman</div></div></div>          </td>
+                  <td>
+            21          </td>
+                  <td>
+            13          </td>
+                  <td>
+            4          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">4</div></div></div>          </td>
+                  <td>
+            5636          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Yuma</div></div></div>          </td>
+                  <td>
+            6          </td>
+                  <td>
+            5          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">1</div></div></div>          </td>
+                  <td>
+            4893          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Phoenix West*</div></div></div>          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            471          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Red Rock*</div></div></div>          </td>
+                  <td>
+            12          </td>
+                  <td>
+            12          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            1970          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Phoenix</div></div></div>          </td>
+                  <td>
+            2          </td>
+                  <td>
+            1          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">1</div></div></div>          </td>
+                  <td>
+            800          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Perryville</div></div></div>          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            4117          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">MRC</div></div></div>          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            11          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Lewis</div></div></div>          </td>
+                  <td>
+            3          </td>
+                  <td>
+            3          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            4575          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Kingman*</div></div></div>          </td>
+                  <td>
+            5          </td>
+                  <td>
+            5          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            3191          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Florence West*</div></div></div>          </td>
+                  <td>
+            1          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">1</div></div></div>          </td>
+                  <td>
+            658          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">PRC</div></div></div>          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            4          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Florence</div></div></div>          </td>
+                  <td>
+            77          </td>
+                  <td>
+            43          </td>
+                  <td>
+            18          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">16</div></div></div>          </td>
+                  <td>
+            3598          </td>
+              </tr>
+<tr class="even">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Winslow</div></div></div>          </td>
+                  <td>
+            2          </td>
+                  <td>
+            2          </td>
+                  <td>
+            0          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            1339          </td>
+              </tr>
+<tr class="odd">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Tucson</div></div></div>          </td>
+                  <td>
+            22          </td>
+                  <td>
+            20          </td>
+                  <td>
+            1          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">1</div></div></div>          </td>
+                  <td>
+            4916          </td>
+              </tr>
+<tr class="even views-row-last">
+<td>
+            <div class="field field-name-title-field field-type-text field-label-hidden"><div class="field-items"><div class="field-item even">Marana*</div></div></div>          </td>
+                  <td>
+            11          </td>
+                  <td>
+            5          </td>
+                  <td>
+            6          </td>
+                  <td>
+            <div class="field field-name-field-inmates-pending field-type-number-integer field-label-hidden"><div class="field-items"><div class="field-item even">0</div></div></div>          </td>
+                  <td>
+            442          </td>
+              </tr>
+</tbody>
+</table>
+</div>
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+
+
+<article class="node-1813 node node-page view-mode-full clearfix" about="/adcrr-covid-19-dashboard" typeof="foaf:Document"><header><span property="dc:title" content="ADCRR COVID-19 Dashboard" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+      
+          </header><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<p>Last Updated 4/21/2020</p>
+<p>*Indicates third party partner</p>
+</div></div></div>
+  
+  
+</article><!-- /.node -->
+</div>
+<!-- /#content -->
+
+      
+      
+    </div>
+  </div>
+<!-- /#main -->
+
+</div>
+<!-- /#page -->
+</div>
+<!-- /#page-container -->
+
+<div id="footer-wrapper">
+    <footer id="footer" class="region region-footer"><div id="block-nodeblock-261" class="block block-nodeblock footer-logo-block first odd">
+
+      
+  <div id="node-261" class="node node-block view-mode-full clearfix" about="/block/footer-logo" typeof="sioc:Item foaf:Document">
+
+        <span property="dc:title" content="Footer Logo" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<p><a href="//corrections.az.gov/"><img alt="AZ Department of Corrections Logo" src="//corrections.az.gov/sites/default/files/images/footer-logo.png" style="width: 139px; height: 116px;"></a></p>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</div>
+<div id="block-nodeblock-262" class="block block-nodeblock social-media-block even">
+
+      
+  <div id="node-262" class="node node-block view-mode-full clearfix" about="/block/social-media" typeof="sioc:Item foaf:Document">
+
+        <span property="dc:title" content="Social Media" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<p><a href="https://www.facebook.com/AZCorrections"><img alt="Facebook Link" src="//corrections.az.gov/sites/default/files/facebook.png" style="width: 22px; height: 22px;"></a> <a href="https://twitter.com/AZcorrections"><img alt="Twitter" src="//corrections.az.gov/sites/default/files/twitter_0.png" style="width: 24px; height: 24px;"></a> <a href="https://www.youtube.com/user/azcorrections"><img alt="YouTube Channel" src="//corrections.az.gov/sites/default/files/youtube.png" style="width: 22px; height: 22px;"></a> <a href="/cdn-cgi/l/email-protection#eb868e8f828aab8a91888499998e889f82848598c58c849d"><img alt="Email AZ Corrections" src="//corrections.az.gov/sites/default/files/images/mail_icon.png" style="width: 24px; height: 24px;"></a></p>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</div>
+<div id="block-menu-menu-footer-links" class="block block-menu footer-links odd" role="navigation">
+
+      
+  <ul class="menu">
+<li class="menu__item is-leaf first leaf"><a href="/employment" title="" class="menu__link">Employment</a></li>
+<li class="menu__item is-leaf leaf"><a href="/prisons" title="" class="menu__link">Prisons &amp; Visitation</a></li>
+<li class="menu__item is-leaf leaf"><a href="/public-resources" title="" class="menu__link">Public Resources</a></li>
+<li class="menu__item is-leaf leaf"><a href="/programs-services" title="" class="menu__link">Programs &amp; Services</a></li>
+<li class="menu__item is-leaf last leaf"><a href="/about" title="" class="menu__link">About</a></li>
+</ul>
+</div>
+<div id="block-nodeblock-14" class="block block-nodeblock contact-info-block last even">
+
+        <h2 class="block__title block-title">Contact Us</h2>
+    
+  <div id="node-14" class="node node-block view-mode-full clearfix" about="/block/contact-us" typeof="sioc:Item foaf:Document">
+
+        <span property="dc:title" content="Contact Us" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<div class="container-inline-block column-2 contact-card">
+<p><strong>Arizona Department of Corrections, Rehabilitation &amp; Reentry</strong></p>
+<div>
+<p>1601 W. Jefferson</p>
+<p>Phoenix, AZ 85007</p>
+<p><a href="https://goo.gl/maps/ohVaF" target="_blank">View in Google Maps</a></p>
+</div>
+<div class="last">
+<p>Phone: 602-542-5497</p>
+<p><a href="//corrections.az.gov/about/contact-us">Contact Us</a></p>
+</div>
+</div>
+<div class="map"><a href="https://goo.gl/maps/ohVaF" target="_blank"><img alt="View Google Map" class="no-mobile" src="//corrections.az.gov/sites/default/files/map-img.jpg" style="width: 147px; height: 144px;"></a></div>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</div>
+  </footer>
+</div>
+
+  <div class="region region-bottom">
+    <div id="block-nodeblock-16" class="block block-nodeblock copyright-block first odd">
+
+      
+  <div id="node-16" class="node node-block view-mode-full clearfix" about="/block/copyright-block" typeof="sioc:Item foaf:Document">
+
+        <span property="dc:title" content="Copyright Block" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded">
+<p>© 2020 Copyright Arizona Department of Corrections, Rehabilitation &amp; Reentry</p>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</div>
+<div id="block-menu-menu-page-bottom-links" class="block block-menu page-bottom-links last even" role="navigation">
+
+      
+  <ul class="menu">
+<li class="menu__item is-leaf first leaf"><a href="/about/contact-us" title="" class="menu__link">Contact Us</a></li>
+<li class="menu__item is-leaf leaf"><a href="/user/login" title="" class="menu__link">Sign In</a></li>
+<li class="menu__item is-leaf leaf"><a href="/privacy-policy" title="" class="menu__link">Privacy Policy</a></li>
+<li class="menu__item is-leaf last leaf"><a href="/web-page-disclaimer" title="Web Page Disclaimer" class="menu__link">Web Page Disclaimer</a></li>
+</ul>
+</div>
+  </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://corrections.az.gov/sites/default/files/js/js_AZ9y0PShar4GyPuQUcAgecHmIwX4TUOo0HFPa06mnF0.js"></script><script src="https://static.az.gov/sliver/sliver.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"2ce3f7ec05","applicationID":"11711233","transactionName":"Y1MBbRYFChcCWkEMXFoZNksNS0sNDV1QHR1EXhM=","queueTime":0,"applicationTime":9,"atts":"TxQCG14fGRk=","errorBeacon":"bam.nr-data.net","agent":""}</script>
+</body>
+</html>
