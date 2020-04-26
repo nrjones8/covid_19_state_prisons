@@ -16,13 +16,14 @@ render_all_pages <- function() {
       alaska = get_alaska_covid_data,
       arizona = get_arizona_covid_data,
       california = get_california_covid_data,
+      district_columbia = get_dc_covid_data,
       delaware = get_delaware_covid_data,
       federal = get_federal_data,
       florida = get_fl_covid_data,
-      # georgia = get_georgia_covid_data,
+      #georgia = get_georgia_covid_data,
       idaho = get_idaho_covid_data,
       illinois = get_illinois_covid_data,
-      indiana = get_indiana_covid_data,
+      #indiana = get_indiana_covid_data,
       iowa = get_iowa_covid_data,
       kansas = get_ks_covid_data,
       louisiana = get_la_covid_data,
@@ -46,19 +47,28 @@ render_all_pages <- function() {
     )
   
   data_for_use <- google_prison_sheet %>%
-    filter(scraped_binary == 1,
-           !state %in% c("Massachusetts", "Connecticut","Oregon","Georgia")) %>%
-    arrange(state) %>% 
+    filter(
+      scraped_binary == 1,
+      !state %in% c(
+        "Massachusetts",
+        "Connecticut",
+        "Oregon",
+        "Georgia",
+        "Indiana",
+        "Tennessee"
+      )
+    ) %>%
+    arrange(state) %>%
     pull(link) %>%
-    map( ~ read_html(.))
+    map(~ read_html(.))
   # extract results in a compact way. idk if this is necessary anymore since the links should all technically pass
   # rename data for use
-  
   names(data_for_use) <- names(fns_list)
   # this runs the functions against the list of urls in the order present to that it's a 1:1 match
-  jails_data <<- map2(fns_list, data_for_use,  ~ .(.y))
+  jails_data <<- map2(fns_list, data_for_use,  ~.x(.y))
   jails_data
 }
+render_all_pages()
 # create summaries and extract summaries for a variety of states with the needed fields
 group_summary <- function(.data,...) {
   .data %>% 
@@ -101,7 +111,7 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
   # oregon data needs to be run separately from the above processes since it uses RSelenium
   # but ultimately produces facility level data
   oregon_data <- get_oregon_covid_data() 
-  
+  tn_data <- get_tn_covid_data()
   # indiana has two or more  sets of data and will need to be fixed up in the scraper somehow
   cc_facilities  <-
     states_with_cc_facility[!names(states_with_cc_facility) %in% c("ohio","new_jersey",
@@ -128,7 +138,8 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
       oregon_data,
       cc_facilities,
       fed_info,
-      mass_data
+      mass_data,
+      tn_data
     ) %>% 
     reduce(bind_rows) %>% 
     #this line of code is sacrosanct. remove it at your own risk
@@ -141,26 +152,23 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
 } 
 
 # write off the facilities level csv
-write_facilities_csv <- function(jails_data){
-  
-  path_to_data <- glue("facilities_data_{year(today()-1)}_0{month(today()-1)}_{day(today()-1)}.csv")
-  path_to_facilities_data <- glue("data/daily/{path_to_data}")
+write_facilities_csv <- function(jails_data,path_to_facilities_data ){
   
   # write and collapse the past and present data
   data_facilities <- write_facilities_data(rendered_jail_data = jails_data,path_to_facilities_data = path_to_facilities_data)  %>% 
     map(~as_tibble(.) %>% 
           modify_at(vars(contains("quarantine")),~as.character(.))) %>% 
     reduce(bind_rows) %>% 
-    select(facilities,state,scrape_date,everything())
+    select(facilities,state,scrape_date,everything())  
   # write the new csv file for facilities out
   path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today())}.csv")
-  
   data_facilities %>% 
     write_csv("data/daily/facilities_data_current.csv")
   
   data_facilities %>% 
     write_csv(glue("data/daily/{path_date}"))
 }
+
 
 # writing the state summaries
 write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
@@ -175,7 +183,7 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
       contains("pending"),
       contains("death")
     ),
-    ~ sum(., na.rm = T)) %>% 
+    ~ sum(as.numeric(.), na.rm = T)) %>% 
     ungroup()
   # extracting alaska info
   alaska_summary <- jails_data$alaska %>%
@@ -212,7 +220,7 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
                        manual_entries
   ) %>%
     reduce(bind_rows)
-  reduced_data
+  
 }
 
 # writing out the summaries to csvs
