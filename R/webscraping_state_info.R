@@ -633,9 +633,15 @@ get_michigan_data <- function(michigan_medium_page) {
 
   # But the bottom border lines confuse tesseract, so have to be careful where exactly it gets cropped to
   # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
-  # We can divide the image into 32 "rows" - one row for the header and padding above the, one "row" for each row in the table,
+  # We can divide the image into 32 "rows" - one row for the header and padding above, one "row" for each row in the table,
   # and one "row" for the padding below the table. Then, to grab the totals (which is the last row in the table), we grab the
   # second to last row of the image.
+  # So image is basically:
+  # 1 header row
+  # 29 prison rows
+  # 1 total row
+  # 1 padding row at the bottom
+  # = 32 in total
   num_rows_in_image <- 32
   from_bottom <- prison_img_details$height / num_rows_in_image
   crop_str <- sprintf('%sx%s+0+%s', prison_img_details$width, from_bottom, prison_img_details$height - (from_bottom*2))
