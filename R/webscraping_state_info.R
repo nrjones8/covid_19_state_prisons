@@ -843,6 +843,9 @@ get_texas_covid_data <- function(tx_doc_path) {
   full_join(reduced_df,rest_boxes,by = "facilities")
   }
 
+read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
+  get_texas_covid_data() %>% 
+  View()
 # California --------------------------------------------------------------
 get_california_covid_data <- function(cali_doc_path) {
   cali_emp_text <-cali_doc_path %>% 
@@ -1178,7 +1181,7 @@ get_mass_covid_data <- function() {
     html_attr('href')
   
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/7dfd96991b7fe5aae3723b125da56d4f/download/downloadData?w=",
+    "https://data.aclum.org/sjc-12926-tracker/session/5b34f877279dd17eba99c5202690d3a5/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
@@ -1197,7 +1200,7 @@ get_mass_covid_data <- function() {
     ) %>% 
     mutate(state = "Massachusetts") %>% 
     modify_at(3:18,~as.numeric(.)) %>% 
-    filter(scrape_date == today()-1)
+    filter(scrape_date == today())
 }
 # D.C. --------------------------------------------------------------------
 

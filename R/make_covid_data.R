@@ -159,8 +159,7 @@ write_facilities_csv <- function(jails_data,path_to_facilities_data ){
     map(~as_tibble(.) %>% 
           modify_at(vars(contains("quarantine")),~as.character(.))) %>% 
     reduce(bind_rows) %>% 
-    select(facilities,state,scrape_date,everything()) %>% 
-    mutate(scrape_date = if_else(scrape_date == today(),today()-1,as.Date(scrape_date)))
+    select(facilities,state,scrape_date,everything())  
   # write the new csv file for facilities out
   path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today())}.csv")
   data_facilities %>% 
@@ -221,8 +220,7 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
                        manual_entries
   ) %>%
     reduce(bind_rows)
-  reduced_data %>% 
-    mutate(scrape_date = today()-1)
+  
 }
 
 # writing out the summaries to csvs
