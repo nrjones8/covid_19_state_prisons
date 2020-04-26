@@ -684,10 +684,10 @@ get_michigan_data <- function(michigan_medium_page) {
 
 
 # Vermont --------------------------------------------------------------------
-get_vermont_covid_data <- function(vermont_doc_path) {
+get_vermont_covid_data <- function(vermont_html) {
   # As of 4/20/20, there are two imgs on the page - the first one contains data about incarcerated people, the
   # second about staff
-  imgs <- vermont_doc_path %>%
+  imgs <- vermont_html %>%
     html_nodes("img") %>%
     html_attr("src")
   inmate_data_img_src <- imgs[1]
@@ -740,9 +740,6 @@ get_vermont_covid_data <- function(vermont_doc_path) {
          inmates_negative=total_negatives,
          inmates_pending=pending_results,
          inmates_tested=total_tests,
-         inmates_medical_isolation=inmates_medical_isolation,
-         inmates_released_medical_isolation=inmates_released_medical_isolation,
-         inmates_hospital=inmates_hospital,
          staff_positive=num_staff_positive) %>%
     mutate(scrape_date = today(), state = 'Vermont')
 }
