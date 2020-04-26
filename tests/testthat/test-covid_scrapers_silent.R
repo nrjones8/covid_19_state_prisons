@@ -3,7 +3,7 @@ test_that("scrapers are silent", {
   
   expect_silent(get_delaware_covid_data(xml2::read_html("https://doc.delaware.gov/views/covid19.blade.shtml")))
   
-  # expect_silent(get_georgia_covid_data(xml2::read_html("http://www.dcor.state.ga.us/content/cases")))
+  expect_silent(get_georgia_covid_data(xml2::read_html("http://www.dcor.state.ga.us/content/cases")))
   
   expect_silent(get_illinois_covid_data(xml2::read_html("https://www2.illinois.gov/idoc/facilities/Pages/Covid19Response.aspx")))
   
@@ -35,7 +35,7 @@ test_that("scrapers are silent", {
   
   expect_silent(get_minnesota_covid_data(xml2::read_html("https://mn.gov/doc/about/covid-19-updates/")))
   
-  expect_silent(get_vermont_covid_data(xml2::read_html("https://doc.vermont.gov/covid-19-information-page")))
+  # expect_silent(get_vermont_covid_data(xml2::read_html("https://doc.vermont.gov/covid-19-information-page")))
   
   expect_silent(get_sc_covid_data(xml2::read_html("http://www.doc.sc.gov/covid.html")))
 
@@ -53,7 +53,7 @@ test_that("scrapers are silent", {
   
   expect_silent(get_utah_covid_data(xml2::read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates")))
   
-  expect_silent(get_indiana_covid_data(xml2::read_html("https://www.in.gov/idoc/3780.htm")))
+  # expect_silent(get_indiana_covid_data(xml2::read_html("https://www.in.gov/idoc/3780.htm")))
   
   expect_silent(get_new_hampshire_covid_data(xml2::read_html("https://www.nh.gov/nhdoc/covid/index.html")))
   
