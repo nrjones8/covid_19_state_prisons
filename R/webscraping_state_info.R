@@ -11,7 +11,6 @@ make_facility_table <- function(.data,splits,cols_to_turn_numeric){
     modify_at(cols_to_turn_numeric,~parse_number(.))
 }
 
-
 # Alaska ------------------------------------------------------------------
 get_alaska_covid_data <- function(alaska_doc) {
   alaska_tracker <- alaska_doc %>%
@@ -242,8 +241,6 @@ get_federal_data <- function(federal_bop_path){
   
 }
 
-
-
 # Michigan --------------------------------------------------------------------
 # get_mi_covid_data <- function(mi_covid_path){
 #   
@@ -270,7 +267,6 @@ get_federal_data <- function(federal_bop_path){
 #     download.file(., fn, mode = "wb")
 # }
 # get_mi_covid_data(data_for_use[[21]])
-
 
 
 # Florida --------------------------------------------------------------
@@ -567,7 +563,6 @@ get_nd_covid_data <- function(nd_doc_path) {
 }
 
 # Minnesota ------------------------------------------------------------
-
 get_minnesota_covid_data <- function(minn_doc_path) {
   mn_img_src_relative <-  minn_doc_path %>%
     html_nodes('img[title="covid testing chart"]') %>%
@@ -601,6 +596,61 @@ get_minnesota_covid_data <- function(minn_doc_path) {
     inmates_deaths=ocred_data[8],
     state = 'Minnesota',
     scrape_date = today()
+  )
+}
+
+image_contains_regex <- function(image, search_regex) {
+  raw_ocr_text <- image %>% tesseract::ocr()
+  grepl(search_regex, raw_ocr_text)
+}
+
+# Michigan - the infamous Medium page --------------------------------------------------------------------
+# This is a fragile one, OCR had trouble with the image if it's not cropped just right - likely getting tripped
+# up on the border of the table cells, and thinking those are characters. Beware!
+get_michigan_data <- function(michigan_medium_page) {
+  all_img_paths <- michigan_medium_page %>%
+    read_html() %>%
+    html_nodes("img") %>%
+    html_attr("src") %>%
+    tibble::enframe() %>%
+    filter(! is.na(value)) %>%
+    pull(value)
+
+  all_imgs <- all_img_paths %>% image_read()
+  num_imgs <- all_imgs %>% length()
+  header_regex <- '(Prisoners Tested|Prisoners Confirmed|Prisoners Negative|Prisoner Deaths)'
+
+  # Iterate over all the images until we find one that looks like the table containing data about people
+  # in prison - just OCR every image and look for some of the words in the header.
+  for (i in 1:num_imgs) {
+    has_prisoner_text <- image_contains_regex(all_imgs[i], header_regex)
+    if (has_prisoner_text) {
+      break
+    }
+  }
+  prisoner_data_image <- all_imgs[i]
+  prison_img_details <- image_info(prisoner_data_image)
+
+  # Manual testing with OCR was a pain, but got it working when we crop the image to be (full width × 124) px
+  # But the bottom border lines confuse tesseract, so have to be careful where exactly it gets cropped to
+  # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
+  # "3786x124+0+3795" works as of 4/21/2020, which is based on the height / width of image at that point
+  height_offset <- prison_img_details$height - 230
+  crop_str <- sprintf('%sx124+0+%s', prison_img_details$width, height_offset)
+
+  cropped_prisoner_data_img <- prisoner_data_image %>% image_crop(crop_str)
+  tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
+  ocred_bottom <- cropped_prisoner_data_img %>% tesseract::ocr_data(engine=tesseract_digit_eng)
+  as_integers <- ocred_bottom %>% mutate(as_int = as.integer(word)) %>% pull(as_int)
+  tibble(
+    # as_integers[1] is the word "Total", which tesseract interprets as a "0", probably
+    # because of the "o" in "Total"
+    inmates_tested=as_integers[2],
+    inmates_positive=as_integers[3],
+    inmates_negative=as_integers[4],
+    inmates_pending=as_integers[5],
+    scrape_date = today(),
+    state = 'Michigan'
   )
 }
 
