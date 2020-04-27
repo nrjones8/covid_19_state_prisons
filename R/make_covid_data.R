@@ -68,8 +68,9 @@ render_all_pages <- function() {
   jails_data <<- map2(fns_list, data_for_use,  ~.x(.y))
   jails_data
 }
-render_all_pages()
+#render_all_pages()
 # create summaries and extract summaries for a variety of states with the needed fields
+
 group_summary <- function(.data,...) {
   .data %>% 
     group_by(state,
