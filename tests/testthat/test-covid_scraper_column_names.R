@@ -41,6 +41,7 @@ test_that("column names are as expected", {
                  "inmates_positive",
                  "staff_recovered",
                  "inmates_recovered",
+                 "inmates_deaths",
                  "state",
                  "scrape_date"))
   
@@ -87,6 +88,7 @@ test_that("column names are as expected", {
                  "inmates_positive",
                  "inmates_medical_restriction",
                  "inmates_medical_isolation",
+                 "staff_positive",
                  "state",
                  "scrape_date"))
   
@@ -96,14 +98,13 @@ test_that("column names are as expected", {
                  "scrape_date"))
   
   expect_named(minnesota,
-               c("facilities",
-                 "inmates_tested",
+               c("inmates_tested",
                  "inmates_positive",
                  "inmates_negative",
                  "inmates_pending",
                  "inmates_presumed_positive",
                  "inmates_recovered",
-                 "inmates_hospitalized",
+                 "inmates_hospital",
                  "inmates_deaths",
                  "state",
                  "scrape_date"))
@@ -121,6 +122,8 @@ test_that("column names are as expected", {
                  "inmates_positive",
                  "inmates_deaths_probable",
                  "inmates_deaths_confirmed",
+                 "inmates_pending",
+                 "inmates_recovered",
                  "state",
                  "scrape_date"))
   
@@ -276,13 +279,19 @@ test_that("column names are as expected", {
   
   expect_named(federal,
                c("facilities",
-                 "contract_number",
-                 "inmates_recovered",
-                 "inmates_deaths",
-                 "inmates_positive",
                  "staff_positive",
                  "staff_recovered",
+                 "inmates_positive",
+                 "inmates_deaths",
+                 "inmates_recovered",
                  "staff_deaths",
+                 "state",
+                 "scrape_date"))
+  
+  expect_named(washington,
+               c("facilities",
+                 "staff_positive",
+                 "inmates_positive",
                  "state",
                  "scrape_date"))
 })

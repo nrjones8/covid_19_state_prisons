@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.com/seathebass/covid_19_state_prisons.svg?branch=master)](https://travis-ci.com/seathebass/covid_19_state_prisons)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/seathebass/covid_19_state_prisons?branch=master&svg=true)](https://ci.appveyor.com/project/seathebass/covid_19_state_prisons)
+[![CircleCI build status](https://circleci.com/gh/seathebass/covid_19_state_prisons.svg?style=svg)](https://circleci.com/gh/seathebass/covid_19_state_prisons)
 <!-- badges: end -->
 
 
