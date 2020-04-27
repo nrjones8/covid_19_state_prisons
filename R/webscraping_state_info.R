@@ -1,6 +1,5 @@
 source(here::here("R", "utils.R"))
 
-
 # create a safe function
 safe_get <- safely(read_html)
 # this is somewhat useful to reduce replication
@@ -263,7 +262,6 @@ get_pa_covid_data <- function(pa_covid_doc_path) {
   
 }
 
-
 # alabama -----------------------------------------------------------------
 get_ala_covid_data <- function(ala_doc_path) {
   data <- ala_doc_path %>%
@@ -489,7 +487,7 @@ get_la_covid_data <- function(la_doc_path) {
                   staff_recovered = recovered,
                   staff_deaths    = deaths) %>%
     dplyr::filter(tolower(facilities) != "total")
-  
+
   
   data <-
     inmate_data %>%
@@ -1071,9 +1069,12 @@ get_texas_covid_data <- function(tx_doc_path) {
   full_join(reduced_df,rest_boxes,by = "facilities")
 }
 
+<<<<<<< HEAD
+=======
 # read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
 #   get_texas_covid_data() %>% 
 #   View()
+>>>>>>> d5cedf9ef66da7932f408ae9e760380eba47128a
 # California --------------------------------------------------------------
 get_california_covid_data <- function(cali_doc_path) {
   cali_emp_text <-cali_doc_path %>% 
