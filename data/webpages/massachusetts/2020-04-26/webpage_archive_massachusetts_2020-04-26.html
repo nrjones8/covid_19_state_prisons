@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="application/shiny-singletons">991a9dee8b6f41039f0d48e0f3cb481dfef69248,abbc5191535f7e95ba1254171676097ac26b5edc,2581d36bc09732ee052ca2bcc5a7ae809019206f,d57fdfaeb5294246b39e900b7b43d90488f1a108</script><script type="application/html-dependencies">json2[2014.02.04];jquery[3.4.1];shiny[1.4.0.2];font-awesome[5.3.1];selectize[0.11.2];htmlwidgets[1.5.1];plotly-binding[4.9.2.1];leaflet[1.3.1];leafletfix[1.0.0];Proj4Leaflet[1.0.1];rstudio_leaflet[1.3.1];leaflet-binding[2.0.3];datatables-css[0.0.0];datatables-binding[0.13];crosstalk[1.1.0.1];bootstrap[3.4.1]</script><script src="shared/json2-min.js"></script><script src="shared/jquery.min.js"></script><link href="shared/shiny.css" rel="stylesheet">
+<script src="shared/shiny.min.js"></script><link href="font-awesome-5.3.1/css/all.min.css" rel="stylesheet">
+<link href="font-awesome-5.3.1/css/v4-shims.min.css" rel="stylesheet">
+<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="shared/selectize/js/es5-shim.min.js"></script>
+<![endif]--><script src="shared/selectize/js/selectize.min.js"></script><script src="htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="plotly-binding-4.9.2.1/plotly.js"></script><link href="leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="leaflet-1.3.1/leaflet.js"></script><link href="leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="leaflet-binding-2.0.3/leaflet.js"></script><link href="datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="datatables-binding-0.13/datatables.js"></script><link href="crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="crosstalk-1.1.0.1/js/crosstalk.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="shared/bootstrap/js/bootstrap.min.js"></script><script src="shared/bootstrap/shim/html5shiv.min.js"></script><script src="shared/bootstrap/shim/respond.min.js"></script><link rel="stylesheet" type="text/css" href="sjc_12926_app.css">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
+<title>Tracking COVID-19 in Massachusetts Prison &amp; Jails</title>
+<link rel="stylesheet" href="assets/spinner.css">
+<link rel="stylesheet" href="css-loaders/css/fallback.css">
+<link rel="stylesheet" href="css-loaders/css/load4.css">
+<style>#spinner-69220be7b3b6f133d86b2eda755a0eea {color: #b5b5b5}</style>
+<style>#spinner-69220be7b3b6f133d86b2eda755a0eea {font-size: 8px}spinner-69220be7b3b6f133d86b2eda755a0eea8</style>
+<style>#spinner-30e2a722adcd7cf0a1e949b01a101a19 {color: #b5b5b5}</style>
+<style>#spinner-30e2a722adcd7cf0a1e949b01a101a19 {font-size: 8px}spinner-30e2a722adcd7cf0a1e949b01a101a198</style>
+<style>#spinner-093ffef614de0f350ded7d6deaaaeb2d {color: #b5b5b5}</style>
+<style>#spinner-093ffef614de0f350ded7d6deaaaeb2d {font-size: 8px}spinner-093ffef614de0f350ded7d6deaaaeb2d8</style>
+<style>#spinner-da9082815e36fd34ecf0dc409e22b3da {color: #b5b5b5}</style>
+<style>#spinner-da9082815e36fd34ecf0dc409e22b3da {font-size: 8px}spinner-da9082815e36fd34ecf0dc409e22b3da8</style>
+<style>#spinner-abec878b2affa6a1fa3fb76b92bd0116 {color: #b5b5b5}</style>
+<style>#spinner-abec878b2affa6a1fa3fb76b92bd0116 {font-size: 8px}spinner-abec878b2affa6a1fa3fb76b92bd01168</style>
+<style>#spinner-462b5e6a83fd9123147a2817e4941ce9 {color: #b5b5b5}</style>
+<style>#spinner-462b5e6a83fd9123147a2817e4941ce9 {font-size: 8px}spinner-462b5e6a83fd9123147a2817e4941ce98</style>
+<style>#spinner-4e9e5aceceb24a8e95fbaf745dcadeea {color: #b5b5b5}</style>
+<style>#spinner-4e9e5aceceb24a8e95fbaf745dcadeea {font-size: 8px}spinner-4e9e5aceceb24a8e95fbaf745dcadeea8</style>
+<style>#spinner-e79ff6685f655e4ebf49c76788b1d0db {color: #b5b5b5}</style>
+<style>#spinner-e79ff6685f655e4ebf49c76788b1d0db {font-size: 8px}spinner-e79ff6685f655e4ebf49c76788b1d0db8</style>
+<style>#spinner-1471f488174aa1db87079044fbf6116e {color: #b5b5b5}</style>
+<style>#spinner-1471f488174aa1db87079044fbf6116e {font-size: 8px}spinner-1471f488174aa1db87079044fbf6116e8</style>
+<style>#spinner-43b46b8767ee0fff506393a193e1b01c {color: #b5b5b5}</style>
+<style>#spinner-43b46b8767ee0fff506393a193e1b01c {font-size: 8px}spinner-43b46b8767ee0fff506393a193e1b01c8</style>
+<style>#spinner-4b5292969d2d89db47b3e1eac3612b6e {color: #b5b5b5}</style>
+<style>#spinner-4b5292969d2d89db47b3e1eac3612b6e {font-size: 8px}spinner-4b5292969d2d89db47b3e1eac3612b6e8</style>
+<style>#spinner-e451f83cf662aeb4c205bb9d0288748d {color: #b5b5b5}</style>
+<style>#spinner-e451f83cf662aeb4c205bb9d0288748d {font-size: 8px}spinner-e451f83cf662aeb4c205bb9d0288748d8</style>
+<script src="__assets__/sockjs-0.3.4.min.js"></script><script src="__assets__/shiny-server-client.min.js"></script><script>preShinyInit({reconnect:true,disableProtocols:[]});</script><link rel="stylesheet" type="text/css" href="__assets__/shiny-server.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div id="title">
+      <h2>Tracking COVID-19 in Massachusetts Prison &amp; Jails</h2>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-sm-3 well">
+          <ul class="nav nav-pills nav-stacked shiny-tab-input" id="panels" data-tabsetid="9376">
+<li class="active">
+              <a href="#tab-9376-1" data-toggle="tab" data-value="About">About</a>
+            </li>
+            <li>
+              <a href="#tab-9376-2" data-toggle="tab" data-value="External Resources">External Resources</a>
+            </li>
+            <li>
+              <a href="#tab-9376-3" data-toggle="tab" data-value="Total Releases">Total Releases</a>
+            </li>
+            <li>
+              <a href="#tab-9376-4" data-toggle="tab" data-value="Releases Over Time">Releases Over Time</a>
+            </li>
+            <li>
+              <a href="#tab-9376-5" data-toggle="tab" data-value="Total Tests">Total Tests</a>
+            </li>
+            <li>
+              <a href="#tab-9376-6" data-toggle="tab" data-value="Tests Over Time">Tests Over Time</a>
+            </li>
+            <li>
+              <a href="#tab-9376-7" data-toggle="tab" data-value="Total Positive Tests">Total Positive Tests</a>
+            </li>
+            <li>
+              <a href="#tab-9376-8" data-toggle="tab" data-value="Positive Tests Over Time">Positive Tests Over Time</a>
+            </li>
+            <li>
+              <a href="#tab-9376-9" data-toggle="tab" data-value="Incarcerated Population Over Time">Incarcerated Population Over Time</a>
+            </li>
+            <li>
+              <a href="#tab-9376-10" data-toggle="tab" data-value="Mapping County Trends">Mapping County Trends</a>
+            </li>
+            <li>
+              <a href="#tab-9376-11" data-toggle="tab" data-value="DOC Facilities: Positive Test Totals">DOC Facilities: Positive Test Totals</a>
+            </li>
+            <li>
+              <a href="#tab-9376-12" data-toggle="tab" data-value="DOC Facilities: Positive Tests v. Time">DOC Facilities: Positive Tests v. Time</a>
+            </li>
+            <li>
+              <a href="#tab-9376-13" data-toggle="tab" data-value="Explore Data">Explore Data</a>
+            </li>
+            <li>
+              <a href="#tab-9376-14" data-toggle="tab" data-value="Download Data">Download Data</a>
+            </li>
+          </ul>
+</div>
+        <div class="col-sm-9">
+          <div class="tab-content" data-tabsetid="9376">
+            <div class="tab-pane active" data-value="About" id="tab-9376-1">
+              <h3>Explore Massachusetts Prisons and Jails' Response to COVID-19</h3>
+              <p>
+                View plots in the different tabs to track testing, positive
+                cases, and releases in prisons and jail during the COVID-19
+                pandemic, as documented in reports made by Massachusetts
+                prisons and jails to the Supreme Judicial Court (SJC).
+              </p>
+              <h3>About the Data</h3>
+              <p>
+                The data displayed here are compiled from information supplied by
+                county sheriffs and the Massachusetts Department of Correction (DOC) in
+                <a href="https://www.aclum.org/en/cases/committee-public-counsel-services-v-chief-justice-trial-court" target="_blank">Committee for Public Counsel Services (CPCS) v. Chief Justice of the Trial Court, SJC-12926,</a>
+                a case brought by the Committee for Public Counsel Services
+                (the Massachusetts public defenders), the Massachusetts
+                Association of Criminal Defense Lawyers, and the ACLU of
+                Massachusetts. This case seeks releases of incarcerated people
+                to protect them, correctional staffs, and the public from the COVID-19 pandemic.
+              </p>
+              <p>
+                Following an
+                <a href="https://www.mass.gov/doc/sjc-12926-opinion/download" target="_blank">opinion</a>
+                by the Massachusetts Supreme Judicial Court in this case on
+                April 3, 2020, sheriffs and the DOC have been required to
+                provide daily reports that shed light on the COVID-19 situation
+                inside Massachusetts prisons, jails, and houses of correction.
+              </p>
+              <p>
+                Learn more about the history, details, and outcomes of the 
+                case at the ACLU of Massachusetts website:
+                <a href="https://www.aclum.org/en/cases/committee-public-counsel-services-v-chief-justice-trial-court" target="_blank">Committee for Public Counsel Services (CPCS) v. Chief Justice of the Trial Court.</a>
+              </p>
+              <p style="margin-top: 1rem;">
+                The data sourced for all visualizations on this site are available for download
+                <a id="link_to_download" href="#" class="action-button">here.</a>
+              </p>
+              <h3>Source Code</h3>
+              <p>
+                Interested programmers can view the source code for this app, written in R, on
+                <a href="https://github.com/ACLUmass/sjc-12926-covid-19">GitHub.</a>
+              </p>
+              <div id="dev-warning">
+                <div class="well">
+                  <i class="fa fa-exclamation-triangle"></i>
+                  <h4>Disclaimer</h4>
+                  <em>
+                    All data and analysis presented here is subject to change
+                    based on updates and amendments received from the counties
+                    and the state. For more resources on dealing with inconsistencies
+                    in these data, visit our page on
+                    <a id="link_to_external" href="#" class="action-button">external resources.</a>
+                  </em>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" data-value="External Resources" id="tab-9376-2">
+              <h3>Inconsistencies in Reporting</h3>
+              <p>
+                This site exists as a resource to document data which Massachusets
+                prisons, jails, and houses of corrections report to the SJC
+                amidst the COVID-19 crisis.
+              </p>
+              <p>
+                However, it became evident in the first few days of reports that
+                there were inconsistencies in data collection from the various
+                institutions.
+              </p>
+              <h3>Recommended Resources</h3>
+              <p>
+                To gain additional perspectives on how the COVID-19 crisis is
+                affecting incarcerated people in Massachusetts, we recommend
+                the following resources:
+              </p>
+              <ul>
+<li><a href="https://www.middlesexsheriff.org/covid19" target="_blank">Middlesex Sheriff's Office Daily COVID-19 Reports</a></li>
+                  <li><a href="https://twitter.com/BristolSheriff" target="_blank">Bristol Sheriff's Office Twitter</a></li>
+                  <li>Various Reporting
+                      <ul>
+<li><a href="https://www.wbur.org/commonhealth/2020/04/01/mass-prisons-jails-coronavirus" target="_blank">WBUR: DOC 4/1/2020</a></li>
+                        <li><a href="https://www.southcoasttoday.com/news/20200408/two-bristol-county-sheriffs-officers-test-positive-for-covid-19" target="_blank">SouthCoast Today: Bristol 4/8/2020</a></li>
+                        <li><a href="https://www.wbur.org/news/2020/04/09/covid-19-sheriff-essex-county-jail-soars" target="_blank">WBUR: Essex 4/9/2020</a></li>
+                        <li><a href="https://commonwealthmagazine.org/health-care/virus-notes-22-mayors-back-vote-by-mail/" target="_blank">Commonwealth Magazine: DOC 4/22/2020</a></li>
+                        <li><a href="https://www.masslive.com/coronavirus/2020/04/doc-yet-to-provide-missing-data-about-prisoners-and-staff-with-coronavirus-dating-back-to-april-3-public-defender-agency-of-mass-claims.html" target="_blank">MassLive: DOC 4/23/2020</a></li>
+                      </ul>
+</li>
+                </ul>
+</div>
+            <div class="tab-pane" data-value="Total Releases" id="tab-9376-3">
+              <div class="well" id="internal_well">
+                <p>Select kind of prisoner:</p>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label shiny-label-null" for="select_release"></label>
+                  <div>
+                    <select id="select_release"><option value="All" selected>All</option>
+<option value="Pre-Trial">Pre-Trial</option>
+<option value="Sentenced">Sentenced</option>
+<option value="Total">Total</option></select><script type="application/json" data-for="select_release" data-nonempty="">{}</script>
+</div>
+                </div>
+                <em>
+                  Exact number of releases per county annotated in
+                  "Pre-Trial", "Sentenced", and "Total" plots.
+                </em>
+              </div>
+              <h2 align="center">
+                <div id="n_releases_str" class="shiny-text-output"></div>
+              </h2>
+              <p align="center">Prisoners released pursuant to SJC 12926</p>
+              <script src="assets/spinner.js"></script><div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-69220be7b3b6f133d86b2eda755a0eea" class="loader">Loading...</div>
+                </div>
+                <div id="all_releases_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Releases Over Time" id="tab-9376-4">
+              <div data-display-if="input.select_county1_rel == 'Hampshire'|input.select_county2_rel == 'Hampshire'|input.select_county3_rel == 'Hampshire'" data-ns-prefix="">
+                <div id="dev-warning">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <i class="fa fa-exclamation-triangle"></i>
+                      </div>
+                      <div class="col-sm-11">
+                        <h4>Hampshire County Releases</h4>
+                        <em style="margin-top:0px">
+                          We are awaiting verification from Hampshire County
+                          that might lead to changes in their daily reports of releases.
+                        </em>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="well" id="internal_well">
+                <p>Select up to three locations to plot versus time.</p>
+                <div class="shiny-split-layout">
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county1_rel"></label>
+                      <div>
+                        <select id="select_county1_rel"><option value="--">--</option>
+<option value="All" selected>All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county1_rel" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county2_rel"></label>
+                      <div>
+                        <select id="select_county2_rel"><option value="--">--</option>
+<option value="All">All</option>
+<option value="All Counties" selected>All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county2_rel" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county3_rel"></label>
+                      <div>
+                        <select id="select_county3_rel"><option value="--">--</option>
+<option value="All">All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC" selected>DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county3_rel" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-30e2a722adcd7cf0a1e949b01a101a19" class="loader">Loading...</div>
+                </div>
+                <div id="releases_v_time_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Total Tests" id="tab-9376-5">
+              <div data-display-if="input.select_tested == 'All'|input.select_tested == 'Staff'|input.select_tested == 'Total'" data-ns-prefix="">
+                <div id="dev-info">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <i class="fa fa-info-circle"></i>
+                      </div>
+                      <div class="col-sm-11">
+                        <h4>DOC Staff Testing</h4>
+                        <em style="margin-top:0px">Please note the DOC is not reporting tests of staff.</em>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="well" id="internal_well">
+                <p>Select kind of individual:</p>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label shiny-label-null" for="select_tested"></label>
+                  <div>
+                    <select id="select_tested"><option value="All" selected>All</option>
+<option value="Prisoners">Prisoners</option>
+<option value="Staff">Staff</option>
+<option value="Total">Total</option></select><script type="application/json" data-for="select_tested" data-nonempty="">{}</script>
+</div>
+                </div>
+                <em>
+                  Exact number of tests per county annotated in "Prisoners",
+                  "Staff", and "Total" plots.
+                </em>
+              </div>
+              <h2 align="center">
+                <div id="n_tests_str" class="shiny-text-output"></div>
+              </h2>
+              <p align="center">
+                Reports of
+                <span id="type_tested" class="shiny-text-output"></span>
+                tested for COVID-19  pursuant to SJC 12926
+              </p>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-093ffef614de0f350ded7d6deaaaeb2d" class="loader">Loading...</div>
+                </div>
+                <div id="all_tests_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Tests Over Time" id="tab-9376-6">
+              <div class="well" id="internal_well">
+                <p id="radio_prompt">Select population to plot.</p>
+                <div id="test_radio" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+                  <label class="control-label shiny-label-null" for="test_radio"></label>
+                  <div class="shiny-options-group">
+                    <label class="radio-inline">
+                      <input type="radio" name="test_radio" value="p"><span>Prisoners</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="test_radio" value="s"><span>Staff</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="test_radio" value="ps" checked><span>Prisoners &amp; Staff</span>
+                    </label>
+                  </div>
+                </div>
+                <p>Select up to three locations to plot versus time.</p>
+                <div class="shiny-split-layout">
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county1_test"></label>
+                      <div>
+                        <select id="select_county1_test"><option value="--">--</option>
+<option value="All" selected>All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county1_test" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county2_test"></label>
+                      <div>
+                        <select id="select_county2_test"><option value="--">--</option>
+<option value="All">All</option>
+<option value="All Counties" selected>All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county2_test" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county3_test"></label>
+                      <div>
+                        <select id="select_county3_test"><option value="--">--</option>
+<option value="All">All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC" selected>DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county3_test" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-da9082815e36fd34ecf0dc409e22b3da" class="loader">Loading...</div>
+                </div>
+                <div id="tests_v_time_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Total Positive Tests" id="tab-9376-7">
+              <div class="well" id="internal_well">
+                <p>Select kind of individual:</p>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label shiny-label-null" for="select_positive"></label>
+                  <div>
+                    <select id="select_positive"><option value="All" selected>All</option>
+<option value="Prisoners">Prisoners</option>
+<option value="Staff">Staff</option>
+<option value="Total">Total</option></select><script type="application/json" data-for="select_positive" data-nonempty="">{}</script>
+</div>
+                </div>
+                <em>
+                  Exact number of positive tests per county annotated in
+                  "Prisoners", "Staff", and "Total" plots.
+                </em>
+              </div>
+              <h2 align="center">
+                <div id="n_positive_str" class="shiny-text-output"></div>
+              </h2>
+              <p align="center">
+                Reports of
+                <span id="type_positive" class="shiny-text-output"></span>
+                tested
+                <strong>positive</strong>
+                for COVID-19 pursuant to SJC 12926
+              </p>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-abec878b2affa6a1fa3fb76b92bd0116" class="loader">Loading...</div>
+                </div>
+                <div id="all_positives_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Positive Tests Over Time" id="tab-9376-8">
+              <div class="well" id="internal_well">
+                <p id="radio_prompt">Select population to plot.</p>
+                <div id="positive_radio" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+                  <label class="control-label shiny-label-null" for="positive_radio"></label>
+                  <div class="shiny-options-group">
+                    <label class="radio-inline">
+                      <input type="radio" name="positive_radio" value="p"><span>Prisoners</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="positive_radio" value="s"><span>Staff</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="positive_radio" value="ps" checked><span>Prisoners &amp; Staff</span>
+                    </label>
+                  </div>
+                </div>
+                <p>Select up to three locations to plot versus time.</p>
+                <div class="shiny-split-layout">
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county1_pos"></label>
+                      <div>
+                        <select id="select_county1_pos"><option value="--">--</option>
+<option value="All" selected>All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county1_pos" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county2_pos"></label>
+                      <div>
+                        <select id="select_county2_pos"><option value="--">--</option>
+<option value="All">All</option>
+<option value="All Counties" selected>All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county2_pos" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county3_pos"></label>
+                      <div>
+                        <select id="select_county3_pos"><option value="--">--</option>
+<option value="All">All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC" selected>DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county3_pos" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-462b5e6a83fd9123147a2817e4941ce9" class="loader">Loading...</div>
+                </div>
+                <div id="positives_v_time_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Incarcerated Population Over Time" id="tab-9376-9">
+              <div class="well" id="internal_well">
+                <p>Select up to three locations to plot versus time.</p>
+                <div class="shiny-split-layout">
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county1_pop"></label>
+                      <div>
+                        <select id="select_county1_pop"><option value="--">--</option>
+<option value="All" selected>All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county1_pop" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county2_pop"></label>
+                      <div>
+                        <select id="select_county2_pop"><option value="--" selected>--</option>
+<option value="All">All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county2_pop" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_county3_pop"></label>
+                      <div>
+                        <select id="select_county3_pop"><option value="--" selected>--</option>
+<option value="All">All</option>
+<option value="All Counties">All Counties</option>
+<option value="DOC">DOC</option>
+<option value="Barnstable">Barnstable</option>
+<option value="Berkshire">Berkshire</option>
+<option value="Bristol">Bristol</option>
+<option value="Dukes">Dukes</option>
+<option value="Essex">Essex</option>
+<option value="Franklin">Franklin</option>
+<option value="Hampden">Hampden</option>
+<option value="Hampshire">Hampshire</option>
+<option value="Middlesex">Middlesex</option>
+<option value="Norfolk">Norfolk</option>
+<option value="Plymouth">Plymouth</option>
+<option value="Suffolk">Suffolk</option>
+<option value="Worcester">Worcester</option></select><script type="application/json" data-for="select_county3_pop" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-4e9e5aceceb24a8e95fbaf745dcadeea" class="loader">Loading...</div>
+                </div>
+                <div id="pop_v_time_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Mapping County Trends" id="tab-9376-10">
+              <div class="well" id="internal_well">
+                <p>Select value to plot.</p>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label shiny-label-null" for="select_y_plot"></label>
+                  <div>
+                    <select id="select_y_plot"><option value="Releases" selected>Releases</option>
+<option value="Tests">Tests</option>
+<option value="Positive Cases">Positive Cases</option></select><script type="application/json" data-for="select_y_plot" data-nonempty="">{}</script>
+</div>
+                </div>
+              </div>
+              <em>
+                All maps reflect data from county jails and HOCs alone,
+                as the Massachsuetts DOC is reporting only state-level, not facility-level, data.
+              </em>
+              <em>Maps of tests and positive cases include both prisoner and staff data.</em>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-e79ff6685f655e4ebf49c76788b1d0db" class="loader">Loading...</div>
+                </div>
+                <div id="county_maps" style="width:100%; height:400px; " class="leaflet html-widget html-widget-output"></div>
+              </div>
+            </div>
+            <div class="tab-pane" data-value="DOC Facilities: Positive Test Totals" id="tab-9376-11">
+              <div class="well" id="internal_well">
+                <p>Select kind of individual:</p>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label shiny-label-null" for="select_positive_fac"></label>
+                  <div>
+                    <select id="select_positive_fac"><option value="All" selected>All</option>
+<option value="Prisoners">Prisoners</option>
+<option value="Staff">Staff</option>
+<option value="Total">Total</option></select><script type="application/json" data-for="select_positive_fac" data-nonempty="">{}</script>
+</div>
+                </div>
+                <em>
+                  Exact number of positive tests per facility annotated in
+                  "Prisoners", "Staff", and "Total" plots.
+                </em>
+              </div>
+              <div align="center">
+                <h2>
+                  <div id="n_positive_DOC_str" class="shiny-text-output"></div>
+                </h2>
+                <p align="center">
+                  Reports of
+                  <span id="type_positive_fac" class="shiny-text-output"></span>
+                  tested
+                  <strong>positive</strong>
+                  for COVID-19 at individual DOC facilities pursuant to SJC 12926
+                </p>
+                <em>
+                  *The DOC only began reporting facility-level data on April 13.
+                  See the Total Positive Tests page for longer-term totals.
+                </em>
+              </div>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-1471f488174aa1db87079044fbf6116e" class="loader">Loading...</div>
+                </div>
+                <div id="DOC_positives_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="DOC Facilities: Positive Tests v. Time" id="tab-9376-12">
+              <div class="well" id="internal_well">
+                <p id="radio_prompt">Select population to plot.</p>
+                <div id="doc_positive_radio" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
+                  <label class="control-label shiny-label-null" for="doc_positive_radio"></label>
+                  <div class="shiny-options-group">
+                    <label class="radio-inline">
+                      <input type="radio" name="doc_positive_radio" value="p"><span>Prisoners</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="doc_positive_radio" value="s"><span>Staff</span>
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="doc_positive_radio" value="ps" checked><span>Prisoners &amp; Staff</span>
+                    </label>
+                  </div>
+                </div>
+                <p>Select up to three facilities to plot versus time.*</p>
+                <div class="shiny-split-layout">
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_fac1"></label>
+                      <div>
+                        <select id="select_fac1"><option value="--">--</option>
+<option value="DOC Total**" selected>DOC Total**</option>
+<option value="All DOC Facilities">All DOC Facilities</option>
+<option value="Boston Pre">Boston Pre</option>
+<option value="BSH">BSH</option>
+<option value="LSH">LSH</option>
+<option value="MASAC">MASAC</option>
+<option value="MCI-C">MCI-C</option>
+<option value="MCI-CJ">MCI-CJ</option>
+<option value="MCI-F">MCI-F</option>
+<option value="MCI-Norfolk">MCI-Norfolk</option>
+<option value="MCI-Shirley">MCI-Shirley</option>
+<option value="MTC">MTC</option>
+<option value="NCCI-Gardn">NCCI-Gardn</option>
+<option value="OCCC">OCCC</option>
+<option value="Pondville">Pondville</option>
+<option value="SBCC">SBCC</option>
+<option value="SMCC">SMCC</option></select><script type="application/json" data-for="select_fac1" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_fac2"></label>
+                      <div>
+                        <select id="select_fac2"><option value="--">--</option>
+<option value="DOC Total**">DOC Total**</option>
+<option value="All DOC Facilities" selected>All DOC Facilities</option>
+<option value="Boston Pre">Boston Pre</option>
+<option value="BSH">BSH</option>
+<option value="LSH">LSH</option>
+<option value="MASAC">MASAC</option>
+<option value="MCI-C">MCI-C</option>
+<option value="MCI-CJ">MCI-CJ</option>
+<option value="MCI-F">MCI-F</option>
+<option value="MCI-Norfolk">MCI-Norfolk</option>
+<option value="MCI-Shirley">MCI-Shirley</option>
+<option value="MTC">MTC</option>
+<option value="NCCI-Gardn">NCCI-Gardn</option>
+<option value="OCCC">OCCC</option>
+<option value="Pondville">Pondville</option>
+<option value="SBCC">SBCC</option>
+<option value="SMCC">SMCC</option></select><script type="application/json" data-for="select_fac2" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                  <div style="width: 33.333%;">
+                    <div class="form-group shiny-input-container">
+                      <label class="control-label shiny-label-null" for="select_fac3"></label>
+                      <div>
+                        <select id="select_fac3"><option value="--">--</option>
+<option value="DOC Total**">DOC Total**</option>
+<option value="All DOC Facilities">All DOC Facilities</option>
+<option value="Boston Pre">Boston Pre</option>
+<option value="BSH">BSH</option>
+<option value="LSH">LSH</option>
+<option value="MASAC">MASAC</option>
+<option value="MCI-C">MCI-C</option>
+<option value="MCI-CJ">MCI-CJ</option>
+<option value="MCI-F">MCI-F</option>
+<option value="MCI-Norfolk">MCI-Norfolk</option>
+<option value="MCI-Shirley">MCI-Shirley</option>
+<option value="MTC" selected>MTC</option>
+<option value="NCCI-Gardn">NCCI-Gardn</option>
+<option value="OCCC">OCCC</option>
+<option value="Pondville">Pondville</option>
+<option value="SBCC">SBCC</option>
+<option value="SMCC">SMCC</option></select><script type="application/json" data-for="select_fac3" data-nonempty="">{}</script>
+</div>
+                    </div>
+                  </div>
+                </div>
+                <em>
+                  *The DOC only began reporting facility-level prisoner data on April 13,
+                  and facility-level staff data on April 15.
+                  See the Positive Tests Over Time page for longer-term DOC tracking
+                </em>
+                <em style="display: block; margin-top: 1rem;">
+                  **DOC Total reflects DOC-wide reports, and might undercount prisoner
+                  cases as compared to the facility total due to the DOC reporting
+                  active, rather than total, cases.
+                  Additionally, DOC Total staff includes staff categorized as "Other"
+                  while the facility total does not.
+                </em>
+              </div>
+              <div class="shiny-spinner-output-container">
+                <div class="load-container load4 shiny-spinner-hidden">
+                  <div id="spinner-43b46b8767ee0fff506393a193e1b01c" class="loader">Loading...</div>
+                </div>
+                <div id="DOC_time_plot" style="width:100%; height:400px; " class="plotly html-widget html-widget-output shiny-report-size"></div>
+              </div>
+              <em>Please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+            </div>
+            <div class="tab-pane" data-value="Explore Data" id="tab-9376-13">
+              <div id="dev-warning">
+                <div class="well">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <i class="fa fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="col-sm-11">
+                      <h4>Hampshire County Releases</h4>
+                      <em style="margin-top:0px">
+                        We are awaiting verification from Hampshire County
+                        that might lead to changes in their daily reports of releases.
+                      </em>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="dev-info">
+                <div class="well">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <i class="fa fa-info-circle"></i>
+                    </div>
+                    <div class="col-sm-11">
+                      <em style="margin-top:0px">
+                        Please be aware that the data below is entered in a
+                        non-cumulative manner. Values in each row reflect not updated tallies of
+                        cases, tests, or releases on the noted day, but rather the number of
+                        <strong>new</strong>
+                        cases, tests, or releases in a 24-hour period.
+                      </em>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <em>
+                Note: Empty cells denote that the given county
+                did not report that value, while cells with value 0 mean 0 was reported.
+              </em>
+              <em>Additionally, please note that prisoner deaths due to COVID-19 are not included in these data.</em>
+              <br><br><div class="tabbable">
+                <ul class="nav nav-tabs" data-tabsetid="8447">
+<li class="active">
+                    <a href="#tab-8447-1" data-toggle="tab" data-value="Counties and DOC">Counties and DOC</a>
+                  </li>
+                  <li>
+                    <a href="#tab-8447-2" data-toggle="tab" data-value="DOC Facilities">DOC Facilities</a>
+                  </li>
+                </ul>
+<div class="tab-content" data-tabsetid="8447">
+                  <div class="tab-pane active" data-value="Counties and DOC" id="tab-8447-1">
+                    <div class="shiny-spinner-output-container">
+                      <div class="load-container load4 shiny-spinner-hidden">
+                        <div id="spinner-4b5292969d2d89db47b3e1eac3612b6e" class="loader">Loading...</div>
+                      </div>
+                      <div style="height:400px" class="shiny-spinner-placeholder"></div>
+                      <div id="df_table" style="width:100%; height:auto; " class="datatables html-widget html-widget-output"></div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" data-value="DOC Facilities" id="tab-8447-2">
+                    <div class="shiny-spinner-output-container">
+                      <div class="load-container load4 shiny-spinner-hidden">
+                        <div id="spinner-e451f83cf662aeb4c205bb9d0288748d" class="loader">Loading...</div>
+                      </div>
+                      <div style="height:400px" class="shiny-spinner-placeholder"></div>
+                      <div id="DOC_df_table" style="width:100%; height:auto; " class="datatables html-widget html-widget-output"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" data-value="Download Data" id="tab-9376-14">
+              <p>
+                Data analysts at the ACLU of Massachusetts compile the daily
+                reports recieved from the counties and DOC into a single
+                spreadsheet. This spreadsheet is what we source for all
+                visualizations on this site.
+              </p>
+              <p>
+                <strong>Current file size: </strong>
+                <span id="n_rows" class="shiny-text-output"></span>
+                entries
+              </p>
+              <p>The accumulated database is available for download here:</p>
+              <a id="downloadData" class="btn btn-default shiny-download-link " href="" target="_blank" download>
+                <i class="fa fa-download"></i>
+                Download XLSX
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <em align="right" style="opacity: 0.6;">
+        
+
+Data last downloaded:
+        <span id="latest_time_str" class="shiny-text-output"></span>
+      </em>
+      <br><hr>
+<div align="center">
+        <a href="https://www.aclum.org/" target="_blank">
+          <img src="Logo_CMYK_Massachusetts_Massachusetts.png" height="50px" style="display: inline; margin: 10px;"></a>
+        <a href="https://www.data.aclum.org/" target="_blank">
+          <img src="D4J-logo.png" height="50px" style="display: inline; margin: 10px;"></a>
+      </div>
+      <p align="center" style="opacity: 0.6;">Please contact lchambers@aclum.org with questions.</p>
+    </div>
+  </div>
+</body>
+</html>
