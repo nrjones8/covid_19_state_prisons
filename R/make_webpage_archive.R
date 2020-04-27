@@ -33,7 +33,7 @@ download_site_pdf <- function(directory, url, link) {
 }
 
 
-save_website_pages <- function(url, state) {
+save_website_pages <- function(url, state, scraper_date) {
   
   directory <- paste0(here::here("data/webpages//"), state, "/", 
                       scraper_date, "/")

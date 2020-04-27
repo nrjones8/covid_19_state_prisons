@@ -1,4 +1,4 @@
-delaware <- get_delaware_covid_data(xml2::read_html("https://doc.delaware.gov/views/covid19.blade.shtml"))
+delaware <- get_delaware_covid_data()
 
 alaska <- get_alaska_covid_data(xml2::read_html("https://doc.alaska.gov/covid-19"))
 
@@ -19,8 +19,10 @@ texas <- get_texas_covid_data(xml2::read_html("https://www.tdcj.texas.gov/covid-
 utah <- get_utah_covid_data(xml2::read_html("https://corrections.utah.gov/index.php/home/alerts-2/1237-udc-coronavirus-updates"))
 
 ohio <- get_ohio_covid_data(xml2::read_html("https://drc.ohio.gov/Family/COVID-19-UPDATES"))
+ohio <- ohio$ohio_facility
 
 oklahoma <- get_oklahoma_covid_data(xml2::read_html("http://doc.ok.gov/"))
+oklahoma <- oklahoma$ok_facilities
 
 virginia <- get_virginia_covid_data(xml2::read_html("https://vadoc.virginia.gov/news-press-releases/2020/covid-19-updates/"))
 
@@ -44,11 +46,12 @@ federal <- get_federal_data(xml2::read_html("https://www.bop.gov/coronavirus/jso
 
 illinois <- get_illinois_covid_data(xml2::read_html("https://www2.illinois.gov/idoc/facilities/Pages/Covid19Response.aspx"))
 
-# indiana <- get_indiana_covid_data(xml2::read_html("https://www.in.gov/idoc/3780.htm"))
+#indiana <- get_indiana_covid_data(xml2::read_html("https://www.in.gov/idoc/3780.htm"))
 
 new_hampshire <- get_new_hampshire_covid_data(xml2::read_html("https://www.nh.gov/nhdoc/covid/index.html"))
 
 new_york <- get_nys_covid_data(xml2::read_html("https://doccs.ny.gov/doccs-covid-19-report"))
+new_york <- new_york$facilities
 
 idaho <- get_idaho_covid_data(xml2::read_html("https://www.idoc.idaho.gov/content/careers/covid-19"))
 
