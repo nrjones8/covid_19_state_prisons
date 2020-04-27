@@ -112,23 +112,80 @@ get_delaware_covid_data <- function() {
 
 # Georgia -----------------------------------------------------------------
 get_georgia_covid_data <- function(georgia_doc_path) {
-  georgia_text <- georgia_doc_path %>%
-    html_nodes("table:nth-child(1) td") %>%
-    html_text()
-  # fix up the names of the data
-  recovered_text <- paste(georgia_text[7:8], georgia_text[3])
-  confirmed_text <- paste(georgia_text[5:6], georgia_text[2])
-  names_of_df <-
-    str_trim(c(georgia_text[4] , confirmed_text, recovered_text))
-  georgia_data <- georgia_text[9:length(georgia_text)]
-  # split into length 5 list of 20 elements each to make the 20x5 tibble
-  georgia_data <- georgia_data %>%
-    make_facility_table(1:5,2:5)
-  names(georgia_data) <- c("facilities","staff_positive","inmates_positive","staff_recovered","inmates_recovered")
+  public_facilities <- georgia_doc_path %>%
+    html_nodes(".field-item > table:nth-child(1)") %>%
+    html_table()
+  public_facilities <- public_facilities[[1]]
+  column_names <- as.character(as.vector(public_facilities[1, ]))
+  column_names <- paste0(column_names, as.character(as.vector(public_facilities[2, ])))
+  public_facilities <- public_facilities[-c(1:2), ]
+  column_names <- gsub(" |\\*", "_", column_names)
+  column_names <- tolower(column_names)
+  column_names <- gsub("covid.*19", "covid_19", column_names)
+  names(public_facilities) <- column_names
   
-  georgia_data %>%
-    mutate(state = "Georgia",
-           scrape_date = today())
+  public_facilities <-
+    public_facilities %>%
+    dplyr::rename(facilities        = gdc_facilities,
+                  staff_positive    = confirmed_covid_19_casesstaff_,
+                  inmates_positive  = confirmed_covid_19_casesoffenders,
+                  staff_recovered   = recovered_casesstaff_,
+                  inmates_recovered = recovered_casesoffenders) %>%
+    dplyr::mutate(facilities = iconv(facilities, from = "UTF-8", to = "ASCII", "")) %>%
+    dplyr::filter(tolower(facilities) != "total cases")
+  
+  private_facilities <- georgia_doc_path %>%
+    html_nodes(".field-item > table:nth-child(3)") %>%
+    html_table()
+  private_facilities <- private_facilities[[1]]
+  column_names <- as.character(as.vector(private_facilities[1, ]))
+  column_names <- paste0(column_names, as.character(as.vector(private_facilities[2, ])))
+  private_facilities <- private_facilities[-c(1:2), ]
+  column_names <- gsub(" |\\*|\\/", "_", column_names)
+  column_names <- tolower(column_names)
+  column_names <- gsub("covid.*19", "covid_19", column_names)
+  names(private_facilities) <- column_names
+  
+  private_facilities <-
+    private_facilities %>%
+    dplyr::rename_all(iconv, from = "UTF-8", to = "ASCII", "") %>%
+    dplyr::rename(facilities        = county_private_facilities,
+                  inmates_positive  = confirmed_covid_19_casesoffenders,
+                  inmates_recovered = recovered_casesoffenders)
+  
+  deaths <- georgia_doc_path %>%
+    html_nodes(".field-item > table:nth-child(6)") %>%
+    html_table()
+  deaths <- deaths[[1]]
+  deaths <-
+    deaths %>%
+    janitor::row_to_names(row_number = 1) %>%
+    dplyr::rename_all(tolower) %>%
+    dplyr::rename_all(iconv, from = "UTF-8", to = "ASCII", "") %>%
+    dplyr::rename(facilities     = locations,
+                  staff_deaths   = staff,
+                  inmates_deaths = offenders) %>%
+    dplyr::mutate_at(c("staff_deaths",
+                       "inmates_deaths"),
+                     readr::parse_number) %>%
+    dplyr::mutate_at(c("staff_deaths",
+                       "inmates_deaths"),
+                     na_to_0) 
+  
+
+  data <-
+    public_facilities %>%
+    dplyr::bind_rows(private_facilities) %>%
+    dplyr::left_join(deaths, by = "facilities") %>%
+    dplyr::mutate(state = "Georgia",
+                  scrape_date = lubridate::today()) %>%
+    dplyr::mutate_at(c("staff_positive",
+                       "inmates_positive",
+                       "staff_recovered",
+                       "inmates_recovered"),
+                     readr::parse_number)
+  
+  return(data)
 }
 
 
@@ -467,51 +524,81 @@ get_la_covid_data <- function(la_doc_path) {
 # New York ----------------------------------------------------------------
 # reformat Aaron's code
 get_nys_covid_data <- function(nys_doc_path) {
-  new_york_text <- nys_doc_path %>%
-    html_nodes("td") %>%
-    html_text() %>%
-    str_extract_all("[:number:]") %>%
-    map( ~ str_flatten(., "")) %>%
-    as_tibble(.name_repair = "minimal")
-  names(new_york_text) <-
-    c(
-      "staff_positive",
-      "incarcerated_positive",
-      "parolees_positive",
-      "staff_deaths",
-      "incarcerated_deaths",
-      "parolees_deaths"
-    )
-  new_york_totals <- new_york_text %>%
-    mutate(state = "New York",
-           scrape_date = today())
+  state_table1 <-
+    nys_doc_path %>%
+    html_nodes("#toc_7581 > div:nth-child(2) > div > table:nth-child(1)") %>%
+    html_table()
+  state_table1 <- state_table1[[1]]
+  names(state_table1) <- tolower(names(state_table1))
+  names(state_table1) <- gsub(" ", "_", names(state_table1))
+  state_table1 <-
+    state_table1 %>%
+    dplyr::rename(staff_positive    = staff,
+                  inmates_positive  = incarcerated_population,
+                  parolees_positive = parolees)
+  
+  state_table2 <-
+    nys_doc_path %>%
+    html_nodes("#toc_7581 > div:nth-child(2) > div > table:nth-child(6)") %>%
+    html_table()
+  state_table2 <- state_table2[[1]]
+  names(state_table2) <- tolower(names(state_table2))
+  names(state_table2) <- gsub(" ", "_", names(state_table2))
+  state_table2 <-
+    state_table2 %>%
+    dplyr::rename(staff_deaths    = staff,
+                  inmates_deaths  = incarcerated_population,
+                  parolees_deaths = parolees)
+  state_data <- dplyr::bind_cols(state_table1, state_table2) %>%
+    dplyr::mutate(state = "New York",
+                  scrape_date = today())
+  
+
+  
   ny_pdf_path <- nys_doc_path %>% 
     html_nodes("a") %>% 
     html_attr("href") %>% 
     pluck(32)
-  mat <- extract_tables(glue("https://doccs.ny.gov/{ny_pdf_path}"))
-  ny_nums <- mat[[1]][7:nrow(mat[[1]]),] %>% 
-    str_extract_all("\\d+") %>% 
-    unlist() %>% 
-    split(1:5) %>% 
-    as_tibble()
+  data <- extract_tables(glue("https://doccs.ny.gov/{ny_pdf_path}"))
+  data <- data[[1]]
+  data <- data[5:nrow(data)]
   
-  facilities <- mat[[1]][7:nrow(mat[[1]]),] %>% 
-    word() %>% 
-    as_tibble()
+  data <- gsub("HOUSING FACILITY", "facilities", data)
+  data <- data[-grep("^total ", data, ignore.case = TRUE)]
+  column_names <- as.character(as.vector(data[1]))
+  data <- data[-1]
+  column_names <- strsplit(column_names, " ")[[1]]
+  column_names <- tolower(column_names)
+  data <- gsub("([[:alpha:]]) ([[:alpha:]])", "\\1_\\2", data)
+  data <- stringr::str_split_fixed(data, " ", n = 6)
+  data <- data.frame(data)
+  names(data) <- column_names
+  data$facilities <- gsub("_", " ", data$facilities)
+  data <-
+    data %>%
+    dplyr::rename(inmates_recovered = recovered,
+                  inmates_deaths    = deceased,
+                  inmates_positive  = positive,
+                  inmates_pending   = pending,
+                  inmates_negative  = negative) %>%
+    dplyr::mutate_at(c("inmates_recovered",
+                       "inmates_deaths",
+                       "inmates_positive",
+                       "inmates_pending",
+                       "inmates_negative"),
+                     as.character) %>%
+    dplyr::mutate_at(c("inmates_recovered",
+                       "inmates_deaths",
+                       "inmates_positive",
+                       "inmates_pending",
+                       "inmates_negative"),
+                     readr::parse_number) %>%
+    dplyr::mutate(state = "New York",
+                  scrape_date = lubridate::today())
   
-  ny_facilities <- bind_cols(facilities,ny_nums)
-  ny_facilities <- ny_facilities %>% 
-    rename(facilities = value,
-           inmates_recovered = `1`,
-           inmates_deceased = `2`,
-           inmates_positive = `3`,
-           inmates_pending = `4`,
-           inmates_negative = `5`) %>% 
-    modify_at(2:6,~as.numeric(.)) %>% 
-    mutate(scrape_date = today(),
-           state = "New York")
-  list(totals = new_york_totals,facilities = ny_facilities)
+ 
+  list(totals = state_data,
+       facilities = data)
 }
 
 
@@ -531,7 +618,6 @@ get_ohio_covid_data <- function(ohio_doc_path) {
     extract_tables(path_to_ohio_pdf,
                    method = "decide",
                    output = "matrix")
-  scrape_text <- extract_text(path_to_ohio_pdf)
   
   state_date <-
     scrape_table[[1]]
@@ -755,25 +841,33 @@ get_michigan_data <- function(michigan_medium_page) {
   }
   prisoner_data_image <- all_imgs[i]
   prison_img_details <- image_info(prisoner_data_image)
-  
-  # Manual testing with OCR was a pain, but got it working when we crop the image to be (full width × 124) px
+
   # But the bottom border lines confuse tesseract, so have to be careful where exactly it gets cropped to
   # See https://cran.r-project.org/web/packages/magick/vignettes/intro.html#cut_and_edit
-  # "3786x124+0+3795" works as of 4/21/2020, which is based on the height / width of image at that point
-  height_offset <- prison_img_details$height - 230
-  crop_str <- sprintf('%sx124+0+%s', prison_img_details$width, height_offset)
-  
+  # We can divide the image into 32 "rows" - one row for the header and padding above, one "row" for each row in the table,
+  # and one "row" for the padding below the table. Then, to grab the totals (which is the last row in the table), we grab the
+  # second to last row of the image.
+  # So image is basically:
+  # 1 header row
+  # 29 prison rows
+  # 1 total row
+  # 1 padding row at the bottom
+  # = 32 in total
+  num_rows_in_image <- 32
+  from_bottom <- prison_img_details$height / num_rows_in_image
+  crop_str <- sprintf('%sx%s+0+%s', prison_img_details$width, from_bottom, prison_img_details$height - (from_bottom*2))
+
   cropped_prisoner_data_img <- prisoner_data_image %>% image_crop(crop_str)
   tesseract_digit_eng <- tesseract(options = list(tessedit_char_whitelist = "0123456789"))
   ocred_bottom <- cropped_prisoner_data_img %>% tesseract::ocr_data(engine=tesseract_digit_eng)
   as_integers <- ocred_bottom %>% mutate(as_int = as.integer(word)) %>% pull(as_int)
   tibble(
-    # as_integers[1] is the word "Total", which tesseract interprets as a "0", probably
-    # because of the "o" in "Total"
-    inmates_tested=as_integers[2],
-    inmates_positive=as_integers[3],
-    inmates_negative=as_integers[4],
-    inmates_pending=as_integers[5],
+    inmates_tested=as_integers[1],
+    inmates_positive=as_integers[2],
+    inmates_negative=as_integers[3],
+    inmates_pending=as_integers[4],
+    inmates_recovered=as_integers[6],
+    inmates_deaths=as_integers[7],
     scrape_date = today(),
     state = 'Michigan'
   )
@@ -1214,7 +1308,7 @@ get_oklahoma_covid_data <- function(ok_doc_path) {
       "inmates_isolation",
       "staff_positive"
     )
-  list(ok_facilities = facilities_data , ok_total = oklahoma_data[[1]]) %>% 
+  list(ok_facilities = facilities_data, ok_total = oklahoma_data[[1]]) %>% 
     map(~mutate(.,state = "Oklahoma",scrape_date = today()))
   
 }

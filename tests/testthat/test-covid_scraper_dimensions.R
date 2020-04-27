@@ -56,7 +56,7 @@ test_that("dimensions are as expected", {
   expect_equal(nrow(florida), 61)
   expect_equal(ncol(florida), 10)
   
-  expect_equal(nrow(georgia), 61)
+  expect_equal(nrow(georgia), 32)
   expect_equal(ncol(georgia), 9)
   
   expect_equal(nrow(alabama), 27)
