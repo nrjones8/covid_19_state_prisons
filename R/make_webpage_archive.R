@@ -63,7 +63,7 @@ save_website_pages <- function(url, state, scraper_date) {
 
     
     if (length(links) > 0) {
-      links <- grep(".pdf$", links, value = TRUE)
+      links <- grep(".pdf$|.png$|.jpg$", links, value = TRUE, ignore.case = TRUE)
       if (length(links) > 0) {
         for (link in links) {
           
@@ -81,7 +81,7 @@ save_website_pages <- function(url, state, scraper_date) {
               result <- NULL
             })
             if (is.null(result) & attempt == 6) {
-              print(paste("Could not download PDF:", 
+              print(paste("Could not download file:", 
                           gsub(".*/|%20", "", link),  "in:", state))
             }
           }

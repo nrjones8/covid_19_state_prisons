@@ -43,6 +43,7 @@ georgia <- get_georgia_covid_data(xml2::read_html("http://www.dcor.state.ga.us/c
 alabama <- get_ala_covid_data(xml2::read_html("http://www.doc.alabama.gov/covid19news"))
 
 federal <- get_federal_data(xml2::read_html("https://www.bop.gov/coronavirus/json/final.json?_=1587149952012"))
+federal <- federal$offenders
 
 illinois <- get_illinois_covid_data(xml2::read_html("https://www2.illinois.gov/idoc/facilities/Pages/Covid19Response.aspx"))
 
@@ -58,8 +59,6 @@ idaho <- get_idaho_covid_data(xml2::read_html("https://www.idoc.idaho.gov/conten
 # vermont <- get_vermont_covid_data(xml2::read_html("https://doc.vermont.gov/covid-19-information-page"))
 
 washington <- get_washington_covid_data(xml2::read_html("https://www.doc.wa.gov/news/covid-19.htm#status"))
-
-federal <- get_federal_data(xml2::read_html("https://www.bop.gov/coronavirus/json/final.json?_=1587149952012"))
 
 
 new_jersey <- get_nj_covid_data(xml2::read_html("https://www.state.nj.us/corrections/pages/COVID19Updates.shtml"))
