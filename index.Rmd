@@ -80,8 +80,10 @@ DT::datatable(state_data,
 
 ```{r, layout="l-page"}
 
+max_date <- max(facility_data$scrape_date[!is.na(facility_data$scrape_date)])
+
 facility_data <- facility_data %>%
-  filter(scrape_date %in% max(scrape_date)) %>%
+  filter(scrape_date %in% max_date) %>%
   arrange(desc(inmates_positive),
           state,
           facilities) %>%

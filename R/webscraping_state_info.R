@@ -660,9 +660,9 @@ get_ohio_covid_data <- function(ohio_doc_path) {
     pluck(2)
   path_to_ohio_pdf <- glue("https://drc.ohio.gov{path_to_ohio_pdf}")
   scrape_table <-
-    extract_tables(path_to_ohio_pdf,
+   suppressMessages(extract_tables(path_to_ohio_pdf,
                    method = "decide",
-                   output = "matrix")
+                   output = "matrix"))
   
   state_data <-
     scrape_table[[1]]
@@ -823,8 +823,10 @@ get_nd_covid_data <- function(nd_doc_path) {
     nd_data %>% 
     select(type,
            everything()) %>% 
-    t() %>% 
-    as_tibble() %>% 
+    t()
+  nd_data <- data.frame(nd_data, stringsAsFactors = FALSE)
+  nd_data <- 
+    nd_data %>% 
     row_to_names(1) %>% 
     mutate(facilities = c("ndsp", "jrcc", "mrcc", "ycc")) %>% 
     dplyr::mutate(inmates_positive = gsub("O", "0", inmates_positive)) %>%
