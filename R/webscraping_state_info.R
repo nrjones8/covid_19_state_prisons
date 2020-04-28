@@ -1069,12 +1069,6 @@ get_texas_covid_data <- function(tx_doc_path) {
   full_join(reduced_df,rest_boxes,by = "facilities")
 }
 
-<<<<<<< HEAD
-=======
-# read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
-#   get_texas_covid_data() %>% 
-#   View()
->>>>>>> d5cedf9ef66da7932f408ae9e760380eba47128a
 # California --------------------------------------------------------------
 get_california_covid_data <- function(cali_doc_path) {
   cali_emp_text <-cali_doc_path %>% 
@@ -1344,6 +1338,9 @@ get_missouri_covid_data <- function(miss_doc_path) {
 }
 
 
+
+# Maine -------------------------------------------------------------------
+
 get_maine_covid_data <- function(maine_doc_path){
   url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
   areas <- tabulizer::locate_areas(maine_doc_path,
@@ -1421,7 +1418,7 @@ get_mass_covid_data <- function() {
     html_attr('href')
   
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/bc7c5d1ca762154f95c504b6e9c24633/download/downloadData?w=",
+    "https://data.aclum.org/sjc-12926-tracker/session/bc0c96b43d38f964caa9b95841b788e5/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
@@ -1443,13 +1440,13 @@ get_mass_covid_data <- function() {
     filter(scrape_date == today())
 }
 # D.C. --------------------------------------------------------------------
-
 get_dc_covid_data <- function(dc_doc_path){
   dc_doc_path %>%
     html_nodes("ul:nth-child(51)") %>%
     html_text() %>%
     str_extract_all("\\d+") %>%
-    flatten() %>%
+    unlist() %>% 
+    split(1:length(.)) %>% 
     as_tibble(.name_repair = "minimal") %>%
     `[`(c(1:3, 5:8)) %>%
     rename(

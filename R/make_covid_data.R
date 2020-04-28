@@ -17,10 +17,10 @@ render_all_pages <- function() {
       arizona = get_arizona_covid_data,
       california = get_california_covid_data,
       district_columbia = get_dc_covid_data,
-      delaware = get_delaware_covid_data,
+      #delaware = get_delaware_covid_data,
       federal = get_federal_data,
       florida = get_fl_covid_data,
-      #georgia = get_georgia_covid_data,
+      georgia = get_georgia_covid_data,
       idaho = get_idaho_covid_data,
       illinois = get_illinois_covid_data,
       #indiana = get_indiana_covid_data,
@@ -53,9 +53,9 @@ render_all_pages <- function() {
         "Massachusetts",
         "Connecticut",
         "Oregon",
-        "Georgia",
         "Indiana",
-        "Tennessee"
+        "Tennessee",
+        "Delaware"
       )
     ) %>%
     arrange(state) %>%
@@ -68,7 +68,6 @@ render_all_pages <- function() {
   jails_data <<- map2(fns_list, data_for_use,  ~.x(.y))
   jails_data
 }
-#render_all_pages()
 # create summaries and extract summaries for a variety of states with the needed fields
 
 group_summary <- function(.data,...) {
