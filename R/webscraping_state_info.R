@@ -11,11 +11,11 @@ make_facility_table <- function(.data,splits,cols_to_turn_numeric){
 }
 
 # Alaska ------------------------------------------------------------------
+
 get_alaska_covid_data <- function(alaska_doc) {
   
   #tracker
-  
-  
+
   alaska_tracker <- alaska_doc %>%
     html_nodes("#tracker") %>%
     html_text()
@@ -641,7 +641,6 @@ get_nys_covid_data <- function(nys_doc_path) {
        facilities = data)
 }
 
-
 # Ohio --------------------------------------------------------------------
 # more code reformatted from Aaron
 not_all_empty_char <- function(x){
@@ -1168,12 +1167,6 @@ get_texas_covid_data <- function(tx_doc_path) {
   return(data)
 }
 
-<<<<<<< HEAD
-=======
-# read_html("https://www.tdcj.texas.gov/covid-19/offender_mac.html") %>% 
-#   get_texas_covid_data() %>% 
-#   View()
->>>>>>> d5cedf9ef66da7932f408ae9e760380eba47128a
 # California --------------------------------------------------------------
 get_california_covid_data <- function(cali_doc_path) {
   data <-cali_doc_path %>% 
@@ -1498,6 +1491,9 @@ get_missouri_covid_data <- function(miss_doc_path) {
 }
 
 
+
+# Maine -------------------------------------------------------------------
+
 get_maine_covid_data <- function(maine_doc_path){
   url <- "https://www.maine.gov/corrections/home/MDOC%20COVID19%20Web%20Dashboard%204-17-2020.pdf"
   areas <- tabulizer::locate_areas(maine_doc_path,
@@ -1569,13 +1565,9 @@ get_maine_covid_data <- function(maine_doc_path){
 
 # Massachusetts -----------------------------------------------------------
 get_mass_covid_data <- function() {
-  links <- 
-    read_html("https://data.aclum.org/sjc-12926-tracker/") %>%
-    html_nodes("a") %>%
-    html_attr('href')
   
   download.file(
-    "https://data.aclum.org/sjc-12926-tracker/session/bc7c5d1ca762154f95c504b6e9c24633/download/downloadData?w=",
+    "https://data.aclum.org/sjc-12926-tracker/session/9e2945e433500b9bda15509f105fbce6/download/downloadData?w=",
     destfile = "test.xlsx"
   )
   mass_data <- read_xlsx("test.xlsx")
@@ -1597,23 +1589,27 @@ get_mass_covid_data <- function() {
     filter(scrape_date == today())
 }
 # D.C. --------------------------------------------------------------------
-
 get_dc_covid_data <- function(dc_doc_path){
-  dc_doc_path %>%
-    html_nodes("ul:nth-child(51)") %>%
+  text_data <- dc_doc_path %>%
+    html_nodes("ul:nth-child(24) li") %>%
     html_text() %>%
     str_extract_all("\\d+") %>%
-    flatten() %>%
-    as_tibble(.name_repair = "minimal") %>%
-    `[`(c(1:3, 5:8)) %>%
+    unlist() 
+  if(length(text_data[!duplicated(text_data)])!= 8){
+    rlang::abort("D.C has changed their columns or they have duplicated fields")
+  }
+  text_data[!duplicated(text_data)] %>% 
+    split(1:length(.)) %>% 
+    as_tibble(.name_repair = "minimal")  %>%
+    `[`(c(1:3,5:8)) %>% 
     rename(
-      inmates_positive = 1,
-      inmates_positive_isolation = 2,
-      inmates_recovered = 3,
-      inmates_quarantine = 4,
-      inmates_positive_quarantine = 5,
-      inmates_return_gen_pop = 6,
-      inmates_deaths = 7
+      inmates_positive = `1`,
+      inmates_positive_isolation = `2`,
+      inmates_recovered = `3`,
+      inmates_quarantine = `5`,
+      inmates_positive_quarantine = `6`,
+      inmates_return_gen_pop = `7`,
+      inmates_deaths = `8`
     ) %>%
     mutate(state = "District of Columbia",
            scrape_date = today())

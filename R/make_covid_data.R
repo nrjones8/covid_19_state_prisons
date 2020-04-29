@@ -17,10 +17,10 @@ render_all_pages <- function() {
       arizona = get_arizona_covid_data,
       california = get_california_covid_data,
       district_columbia = get_dc_covid_data,
-      delaware = get_delaware_covid_data,
+      #delaware = get_delaware_covid_data,
       federal = get_federal_data,
       florida = get_fl_covid_data,
-      #georgia = get_georgia_covid_data,
+      georgia = get_georgia_covid_data,
       idaho = get_idaho_covid_data,
       illinois = get_illinois_covid_data,
       #indiana = get_indiana_covid_data,
@@ -53,22 +53,20 @@ render_all_pages <- function() {
         "Massachusetts",
         "Connecticut",
         "Oregon",
-        "Georgia",
         "Indiana",
-        "Tennessee"
+        "Tennessee",
+        "Delaware"
       )
     ) %>%
     arrange(state) %>%
     pull(link) %>%
     map(~ read_html(.))
-  # extract results in a compact way. idk if this is necessary anymore since the links should all technically pass
   # rename data for use
   names(data_for_use) <- names(fns_list)
   # this runs the functions against the list of urls in the order present to that it's a 1:1 match
   jails_data <<- map2(fns_list, data_for_use,  ~.x(.y))
   jails_data
 }
-#render_all_pages()
 # create summaries and extract summaries for a variety of states with the needed fields
 
 group_summary <- function(.data,...) {
@@ -118,17 +116,15 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
     states_with_cc_facility[!names(states_with_cc_facility) %in% c("ohio","new_jersey",
                                                                    "federal","new_york",
                                                                    "oklahoma")] %>%
-    map(~as_tibble(.)) %>% 
+    map(~as_tibble(.) %>% 
+          modify_at(vars(contains("deaths")),~as.numeric(.))) %>% 
     reduce(bind_rows) %>%
     select(facilities, state, scrape_date, everything()) 
   # modifying fed info
-  fed_info <- states_with_cc_facility[["federal"]]$offenders %>% 
-    rename_with(cols = vars(contains("_amt")),.fn = ~str_remove_all(.,"_amt")) %>% 
-    rename_with(cols = vars(contains("inmates")),.fn = ~str_replace_all(.,"inmate","inmates")) %>% 
-    rename_with(cols= vars(contains("death")),.fn = ~str_replace_all(.,"death","deaths")) %>% 
-    select(facilities  = id,everything())
+  fed_info <- states_with_cc_facility[["federal"]]$offenders 
   # massachussets data
-  mass_data <- get_mass_covid_data()    
+  mass_data <- get_mass_covid_data()
+  delaware_data <- get_delaware_covid_data()
   # join all confirmed facilities
   all_confirmed_facilities <-
     list(
@@ -140,12 +136,16 @@ write_facilities_data <-function(rendered_jail_data ,path_to_facilities_data) {
       cc_facilities,
       fed_info,
       mass_data,
-      tn_data
+      tn_data,
+      delaware_data
     ) %>% 
+    map(~as_tibble(.) %>% 
+          modify_at(vars(contains("staff_"),contains("inmates_")),~as.numeric(.)) %>% 
+          modify_at(vars(contains("quarantine")),~as.character(.))) %>% 
     reduce(bind_rows) %>% 
     #this line of code is sacrosanct. remove it at your own risk
     filter(!str_detect(facilities, regex("Total"))) 
-  
+    
   list(all_confirmed_facilities %>% 
          modify_if(is.integer,~as.numeric(.)), 
        past_period)
@@ -162,7 +162,7 @@ write_facilities_csv <- function(jails_data,path_to_facilities_data ){
     reduce(bind_rows) %>% 
     select(facilities,state,scrape_date,everything())  
   # write the new csv file for facilities out
-  path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today())}.csv")
+  path_date <- glue("facilities_data_{year(today())}_0{month(today())}_{day(today()-1)}.csv")
   data_facilities %>% 
     write_csv("data/daily/facilities_data_current.csv")
   
@@ -194,7 +194,7 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
   new_york_totals <- jails_data$new_york$totals %>%
     select(state,
            scrape_date,
-           inmates_positive = incarcerated_positive,
+           inmates_positive,
            staff_positive,
            staff_deaths) %>%
     modify_at(3:ncol(.),  ~ as.numeric(.))
@@ -220,8 +220,8 @@ write_state_summaries <- function(data_facilities, jails_data,manual_entries ) {
                        jails_data$missouri,
                        manual_entries
   ) %>%
-    reduce(bind_rows)
-  
+    reduce(bind_rows) 
+  reduced_data
 }
 
 # writing out the summaries to csvs
