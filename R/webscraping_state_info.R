@@ -132,7 +132,7 @@ get_delaware_covid_data <- function() {
                   scrape_date = lubridate::today())
   return(data)
 }
-get_delaware_covid_data()
+
 # Georgia -----------------------------------------------------------------
 get_georgia_covid_data <- function(georgia_doc_path) {
   public_facilities <- georgia_doc_path %>%
