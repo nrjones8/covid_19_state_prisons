@@ -396,34 +396,6 @@ get_federal_data <- function(federal_bop_path){
   return(data)
 }
 
-# Michigan --------------------------------------------------------------------
-# get_mi_covid_data <- function(mi_covid_path){
-#   
-#   imgs <- mi_covid_path %>%
-#     html_nodes("img") 
-#   
-#   
-#   fn <- paste0("./data/raw_data/michigan/mi_doc_covid_", 
-#                format(Sys.time(), "%Y_%m_%d_%H_%M_%S")
-#                , ".png")
-#   
-#   imgs[8] %>%
-#     html_attr("src") %>%
-#     tibble() %>% 
-#     mutate(link = gsub("/48/", "/3314/", .)) %>%
-#     pull(link) %>% 
-#     download.file(., fn, mode = "wb")
-#   
-#   fn <- paste0("./data/raw_data/michigan/mi_doc_staff_covid_", 
-#                format(Sys.time(), "%Y_%m_%d_%H_%M_%S"),
-#                ".png")
-#   imgs[13] %>% 
-#     html_attr("src") %>% 
-#     download.file(., fn, mode = "wb")
-# }
-# get_mi_covid_data(data_for_use[[21]])
-
-
 # Florida --------------------------------------------------------------
 get_fl_covid_data <- function(fl_doc_path) {
   data <- fl_doc_path %>%
@@ -876,6 +848,36 @@ get_minnesota_covid_data <- function(minn_doc_path) {
     inmates_deaths=ocred_data[8],
     state = 'Minnesota',
     scrape_date = today()
+  )
+}
+
+get_kentucky_data <- function(kentucky_url) {
+  covid_cases_img_path <- kentucky_url %>%
+    read_html() %>%
+    html_nodes("img") %>%
+    html_attr("src") %>%
+    tibble::enframe() %>%
+    # There are a few images on their page - the one we care about is named something like
+    # "/Facilities/AI/PublishingImages/COVID%20Cases%204-28-20.jpg"
+    # so just grep for "Cases"
+    filter(grepl('Cases', value)) %>%
+    pull(value)
+  img_url <- paste('https://corrections.ky.gov', covid_cases_img_path, sep='')
+  img <- image_read(img_url)
+  ocred_img <- tesseract::ocr_data(img)
+
+  # The last row looks like "Total", "29", "0", "44", "2" - so find the index where "Total" appears, and
+  # the data will come right after that. Their image is high quality!
+  starting_row_for_totals_data <- which(ocred_img$word == 'Total') + 1
+  data_row_for_totals <- ocred_img[starting_row_for_totals_data:nrow(ocred_img), ]
+
+  tibble(
+    staff_positive = as.integer(data_row_for_totals$word[1]),
+    staff_deaths = as.integer(data_row_for_totals$word[2]),
+    inmates_positive = as.integer(data_row_for_totals$word[3]),
+    inmates_deaths = as.integer(data_row_for_totals$word[4]),
+    scrape_date = today(),
+    state = 'Kentucky'
   )
 }
 
