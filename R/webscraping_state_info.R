@@ -77,51 +77,46 @@ get_alaska_covid_data <- function(alaska_doc) {
 # Delaware ----------------------------------------------------------------
 get_delaware_covid_data <- function() {
   data <- pdftools::pdf_text("https://doc.delaware.gov/assets/documents/Confirmed_COVID_Cases.pdf")
+  data <- gsub("\r\nPlummer\r\nCommunity Corrections\r\nCenter\r\n",
+               " \r\nPlummer Community Corrections Center", data)
+  data <- gsub("\r\nHoward R. Young\r\nCorrectional Institution\r\n",
+               " \r\nHoward R. Young Correctional Institution", data)
+  data <- gsub("\r\nHazel D. Plant\r\nWoman's Treatment\r\nFacility\r\n",
+               " \r\nHazel D. Plant Woman's Treatment Facility", data)
+  data <- gsub("\r\nDelores J. Baylor\r\nWoman's Correctional\r\nInstitution",
+               " \r\nDelores J. Baylor Woman's Correctional Institution", data)
+  data <- gsub("\r\nNew Castle Probation &\r\nParole & Day Reporting\r\nCenter \\(Hares Corner\\)\r\n",
+               " \r\nNew Castle Probation & Parole & Day Reporting Center \\(Hares Corner\\)", data)
+  data <- gsub("\r\nGeorgetown\r\nAdministrative Services\r\n",
+               " \r\nGeorgetown Administrative Services", data)
+  data <- gsub("\r\nGeorgetown Probation &",
+               " \r\nGeorgetown Probation &", data)
+  data <- gsub("\r\nSussex Correctiona",
+               " \r\nSussex Correctiona", data)
+  data <- gsub("\r\nSussex Community",
+               " \r\nSussex Community", data)
+  data <- gsub("\r\nNorthern New Castle\r\nCounty Adult Probation\r\n& Parole \\(Cherry Lane\\)\r\n",
+               " \r\nNorthern New Castle County Adult Probation & Parole \\(Cherry Lane\\)", data)
+  data <- gsub("([[:alpha:]])\\r", "\\1 \\\r", data)
+  data <- gsub("Contracted Staff Offenders", "Contracted Staff   Offenders", data)
+  data <- strsplit(data, split = " \\r\\n")
   
+  data <- data[[1]]
+  data <- data[-grep("DE DOC CONFIRMED|Updated", data)]
+  data <- trimws(data)
+  data <- stringr::str_split_fixed(data, " {2,}", n = 4)
+  data <- data.frame(data, stringsAsFactors = FALSE)
   
-  data <- data %>%
-    trimws() %>%
-    str_remove_all(regex("DE DOC CONFIRMED COVID- 19 CASES|Updated")) %>%
-    str_replace_all("\\n", " ") %>%
-    str_replace_all("James T. Vaughn"," James T. Vaughn") %>% 
-    str_replace_all("Georgetown Probation &      ", " Georgetown Probation and Parole") %>%
-    str_replace_all("Parole Seaford Probation &          ", " Seaford Probation and Parole") %>%
-    str_replace_all("Sussex Correctional             ", " Sussex Correctional Institution ") %>%
-    str_replace_all("Institution Morris Community",
-                    " Morris Community Corrections Center") %>%
-    str_replace_all(
-      "Corrections Center Hazel D. Plant Woman's Treatment Facility        ",
-      " Hazel D. Plant Woman's Treatment Facility"
-    ) %>%
-    str_replace_all("Sussex Community              ", " Sussex Community Corrections Center") %>%
-    str_replace_all("Corrections Center Special Operations ",
-                    " Special Operations Group") %>%
-    str_replace_all("Plummer Community Corrections Center"," Plummer Community Corrections Center") %>% 
-    str_replace_all("Group Dover Probation and       ", " Dover Probation and Parole ") %>%
-    str_replace_all("Correctional Center Howard R. Young Correctional Institution                                ",
-                    " Howard R. Young Correctional Institution") %>% 
-    str_replace_all("Georgetown Administrative Services",
-                    " Georgetown Administrative Services") %>%
-    str_replace_all("Delores J. Baylor Woman's Correctional Institution",
-                    " Delores J. Baylor Woman's Correctional Institution") %>% 
-    str_remove_all("Parole         ")  %>% 
-    str_replace_all(regex("Parole New Castle Probation & Parole & Day Reporting Center (?=\\().*?(?<=\\))"),
-                          " New Castle Probation and Parole and Day Reporting Center") %>% 
-    str_replace_all(regex("Northern New Castle County Adult Probation & Parole (?=\\().*?(?<=\\))                                  "),
-                    " Northern New Castle County Adult Probation & Parole  ")  %>% 
-    str_replace_all("Contracted Staff Offenders","Contracted Staff  Offenders") %>% 
-    str_trim() %>% 
-    str_split("\\s{2,}") %>% 
-    unlist()
+  column_names <- as.character(as.vector(data[1, ]))
+  data <- data[-1, ]
+  column_names <- janitor::make_clean_names(column_names)
+  names(data) <- column_names
   
-  if(length(data[5:(length(data) - 1)]) %% 4 != 0){
-    rlang::abort("columns of data have changed. Please Check Delaware")
-  }
-  column_names <- data[1:4]
-  data <- data[5:(length(data) - 1)] %>% 
-    split(1:4) %>% 
-    as_tibble()
-  names(data) <- janitor::make_clean_names(column_names)
+  facility_name_part2 <- gsub("\r\n(.*)", "\\1", data$offenders)
+  facility_name_part2 <- gsub("[0-9]+", "", facility_name_part2)
+  
+  data$facility <- paste(data$facility, facility_name_part2)
+  data$offenders <- gsub("\r\n.*", "", data$offenders)
   
   data <-
     data %>%
@@ -137,7 +132,7 @@ get_delaware_covid_data <- function() {
                   scrape_date = lubridate::today())
   return(data)
 }
-
+get_delaware_covid_data()
 # Georgia -----------------------------------------------------------------
 get_georgia_covid_data <- function(georgia_doc_path) {
   public_facilities <- georgia_doc_path %>%
@@ -645,7 +640,6 @@ get_nys_covid_data <- function(nys_doc_path) {
   list(totals = state_data,
        facilities = data)
 }
-
 
 # Ohio --------------------------------------------------------------------
 # more code reformatted from Aaron
